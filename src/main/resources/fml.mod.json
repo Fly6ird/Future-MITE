@@ -1,0 +1,19 @@
+{
+	"schemaVersion": 1,
+	"id": "future-mite",
+	"version": "${version}",
+	"depends": {
+		"fishmodloader": ">=3.2.1"
+	},
+	"environment": "*",
+	"name": "FutureMITE",
+	"description": "",
+	"authors": ["FlyBird"],
+	"entrypoints": {
+		"main": ["com.github.FlyBird.FutureMITE.FutureMITEStart"]
+	},
+	"mixins": [
+		"FutureMITE.mixins.json"
+	],
+	"accessWidener": "FutureMITE.accesswidener"
+}
