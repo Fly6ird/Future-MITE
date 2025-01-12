@@ -61,7 +61,7 @@ public class ItemNewBoat extends Item {
         RaycastCollision movingobjectposition = world.getBlockCollisionForSelection(vec3, vec31, true);
 
         if (movingobjectposition == null) {
-            return true;
+            return false;
         }
         Vec3 vec32 = player.getLook(f);
         boolean flag = false;
@@ -83,7 +83,7 @@ public class ItemNewBoat extends Item {
         }
 
         if (flag) {
-            return true;
+            return false;
         }
         if (movingobjectposition.isBlock()) {
             i = movingobjectposition.block_hit_x;
@@ -114,13 +114,14 @@ public class ItemNewBoat extends Item {
             }
 
             if (!world.getCollidingBoundingBoxes(entityboat, entityboat.boundingBox.expand(-0.1D, -0.1D, -0.1D)).isEmpty()) {
-                return true;
+                return false;
             }else {
                 if (!world.isRemote) {
                     world.spawnEntityInWorld(entityboat);
                     if (!player.capabilities.isCreativeMode) {
                         --itemStack.stackSize;
                     }
+                    return true;
                 }
                 return true;
             }

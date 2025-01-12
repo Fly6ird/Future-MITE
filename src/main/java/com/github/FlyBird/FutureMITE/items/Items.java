@@ -1,9 +1,10 @@
 package com.github.FlyBird.FutureMITE.items;
 
+import com.github.FlyBird.FutureMITE.FutureMITEStart;
+import com.github.FlyBird.FutureMITE.blocks.Blocks;
 import com.github.FlyBird.FutureMITE.entities.EntityNewBoat;
-import net.minecraft.Block;
-import net.minecraft.Item;
-import net.minecraft.ItemStack;
+import com.github.FlyBird.FutureMITE.misc.EnumWoodType;
+import net.minecraft.*;
 import net.xiaoyu233.fml.reload.event.ItemRegistryEvent;
 import net.xiaoyu233.fml.reload.event.RecipeRegistryEvent;
 import net.xiaoyu233.fml.reload.utils.IdUtil;
@@ -19,12 +20,51 @@ public class Items extends Item {
     public static final ItemNewBoat jungleChestBoat=new ItemNewBoat(getNextItemID(), EntityNewBoat.Type.JUNGLE, true);
     public static final ItemNewBoat spruceChestBoat=new ItemNewBoat(getNextItemID(), EntityNewBoat.Type.SPRUCE, true);
 
+    public static final Item sweetBerry = new ItemSweetBerry(getNextItemID(), 1, 1, false, true, Blocks.sweetBerryBush.blockID, "sweet_berries").setUnlocalizedName("sweetberries");
 
+    public static final Item birchDoor = new ItemNewDoor(getNextItemID(), EnumWoodType.BIRCH);
+    public static final Item jungleDoor = new ItemNewDoor(getNextItemID(),EnumWoodType.JUNGLE);
+    public static final Item spruceDoor = new ItemNewDoor(getNextItemID(),EnumWoodType.SPRUCE);
+
+    public static final ItemMeat rabbitRaw= (ItemMeat)(new ItemMeat(getNextItemID(), 3, 3, false, false, "rabbit_raw")).setUnlocalizedName("rabbitRaw");
+    public static final ItemMeat rabbitCooked= (ItemMeat)(new ItemMeat(getNextItemID(), 6, 6, false, false, "rabbit_cooked")).setUnlocalizedName("rabbitCooked");
+    public static final Item rabbitHide = (new Items(getNextItemID(), Material.leather, "rabbit_hide")).setCraftingDifficultyAsComponent(100.0F).setUnlocalizedName("rabbitHide").setCreativeTab(CreativeTabs.tabMaterials);
+    public static final Item rabbitFoot = (new Items(getNextItemID(), Material.blaze, "rabbit_foot")).setCraftingDifficultyAsComponent(25.0F).setUnlocalizedName("rabbitFoot").setPotionEffect(PotionHelper.blazePowderEffect).setCreativeTab(CreativeTabs.tabBrewing);
+    public static final Item bowlRabbitStew = (new ItemBowl(getNextItemID(), Material.beef_stew, "rabbit_stew")).setFoodValue(12, 14, true, false, true).setPlantProduct().setUnlocalizedName("rabbit_stew");
+
+    public static final ItemArmourStand armourStand=new ItemArmourStand(getNextItemID(),Material.wood,"wooden_armorstand");
+
+    //海晶碎片
+    public static final Item prismarineShard = (new Items(getNextItemID(), Material.diamond, "prismarine_shard")).setCraftingDifficultyAsComponent(100.0F).setUnlocalizedName("prismarineShard").setCreativeTab(CreativeTabs.tabMaterials);
+    //海晶砂粒
+    public static final Item prismarineCrystals = (new Items(getNextItemID(), Material.diamond, "prismarine_crystals")).setCraftingDifficultyAsComponent(100.0F).setUnlocalizedName("prismarineCrystals").setCreativeTab(CreativeTabs.tabMaterials);
+
+    protected Items(int id, Material material, String texture) {
+        super(id,material,texture);
+    }
     public static void registerItems(ItemRegistryEvent event) {
-
+        event.register(FutureMITEStart.NameSpaceCompact,"doors/birch_door", birchDoor);
+        event.register(FutureMITEStart.NameSpaceCompact,"doors/jungle_door", jungleDoor);
+        event.register(FutureMITEStart.NameSpaceCompact,"doors/spruce_door", spruceDoor);
+        jungleDoor.setUnlocalizedName("jungledoor");
+        birchDoor.setUnlocalizedName("birchdoor");
+        spruceDoor.setUnlocalizedName("sprucedoor");
     }
 
     public static void registerRecipes(RecipeRegistryEvent register) {
+        register.registerShapedRecipe(new ItemStack(armourStand, 1), true, new Object[] {"AAA"," A ","ABA",Character.valueOf('A'),new ItemStack(Item.stick,1),Character.valueOf('B'),new ItemStack(Block.stoneSingleSlab,1)});
+
+        register.registerShapedRecipe(new ItemStack(birchDoor, 1), true, new Object[]{"AA ", "AA ", "AA ", Character.valueOf('A'), new ItemStack((Block.planks), 1, 2)});
+        register.registerShapedRecipe(new ItemStack(birchDoor, 1), true, new Object[] {" AA"," AA"," AA",Character.valueOf('A'),new ItemStack((Block.planks),1,2)});
+        register.registerShapedRecipe(new ItemStack(jungleDoor, 1), true, new Object[] {"AA ","AA ","AA ",Character.valueOf('A'),new ItemStack((Block.planks),1,3)});
+        register.registerShapedRecipe(new ItemStack(jungleDoor, 1), true, new Object[] {" AA"," AA"," AA",Character.valueOf('A'),new ItemStack((Block.planks),1,3)});
+        register.registerShapedRecipe(new ItemStack(spruceDoor, 1), true, new Object[] {"AA ","AA ","AA ",Character.valueOf('A'),new ItemStack((Block.planks),1,1)});
+        register.registerShapedRecipe(new ItemStack(spruceDoor, 1), true, new Object[] {" AA"," AA"," AA",Character.valueOf('A'),new ItemStack((Block.planks),1,1)});
+
+        register.registerShapelessRecipe(new ItemStack(bowlRabbitStew,1,0), true, new ItemStack(rabbitCooked),new ItemStack(carrot),new ItemStack(potato),new ItemStack(Block.mushroomRed),new ItemStack(bowlWater));
+        register.registerShapelessRecipe(new ItemStack(bowlRabbitStew,1,0), true, new ItemStack(rabbitCooked),new ItemStack(carrot),new ItemStack(potato),new ItemStack(Block.mushroomBrown),new ItemStack(bowlWater));
+        register.registerShapedRecipe(new ItemStack(leather,1),true,new Object[] {"AA","AA", 'A',new ItemStack(rabbitHide,1)});
+
         registerBoatRecipes(register,oakBoat);
         registerBoatRecipes(register,birchBoat);
         registerBoatRecipes(register,jungleBoat);

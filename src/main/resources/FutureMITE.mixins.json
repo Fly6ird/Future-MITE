@@ -5,9 +5,30 @@
   "target": "DEFAULT",
   "minVersion": "0.8.3",
   "mixins": [
+    "ComponentVillageHouse2LootTableMixin",
+    "block.BlockMixin",
+    "block.BlockSpongeMixin",
+    "block.BlockWallMixin",
+    "block.canBePlacedOnBlockMixin",
+    "entity.EntityEnderPearlMixin",
+    "entity.EntityMixin",
     "entity.EntityPlayerMPMixin",
-
-    "network.NetClientHandlerMixin"
+    "entity.EntityTrackerEntryMixin",
+    "entity.SpawnerAnimalsMixin",
+    "item.ItemAxeMixin",
+    "item.ItemFlintAndSteelMixin",
+    "item.ItemShovelMixin",
+    "network.ClientPlayerMixin",
+    "network.NetClientHandlerMixin",
+    "network.ServerPlayerMixin",
+    "render.ItemRendererMixin",
+    "render.RenderBlocksMixin",
+    "render.RenderGlobalMixin",
+    "render.RenderItemFrameMixin",
+    "world.biome.BiomeDecoratorMixin",
+    "world.biome.BiomeDesertMixin",
+    "world.biome.BiomeSnowMixin",
+    "world.structure.ComponentVillagePathGenMixin"
   ],
   "injectors": {
     "defaultRequire": 1

@@ -10,10 +10,20 @@
 	"description": "",
 	"authors": ["FlyBird"],
 	"entrypoints": {
+		"preLaunch": [
+			"com.github.FlyBird.FutureMITE.EarlyRiser"
+		],
 		"main": ["com.github.FlyBird.FutureMITE.FutureMITEStart"]
 	},
 	"mixins": [
 		"FutureMITE.mixins.json"
 	],
+	"custom": {
+		"loom:injected_interfaces": {
+			"net/minecraft/RenderBlocks": [
+				"com/github/FlyBird/FutureMITE/api/IRenderBlock"
+			]
+		}
+	},
 	"accessWidener": "FutureMITE.accesswidener"
 }

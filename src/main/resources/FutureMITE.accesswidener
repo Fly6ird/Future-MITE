@@ -1,3 +1,23 @@
 accessWidener v2 named
 
 extendable method net/minecraft/Entity writeToNBTOptional (Lnet/minecraft/NBTTagCompound;)Z
+accessible field net/minecraft/ItemRenderer renderBlocksInstance Lnet/minecraft/RenderBlocks;
+accessible field net/minecraft/RenderItem itemRenderBlocks Lnet/minecraft/RenderBlocks;
+
+accessible method net/minecraft/EnumDirection isUpOrDown ()Z
+accessible method net/minecraft/EnumDirection isEastOrWest ()Z
+accessible method net/minecraft/EnumDirection isNorthOrSouth ()Z
+
+accessible method net/minecraft/Block setHardness (F)Lnet/minecraft/Block;
+accessible method net/minecraft/Block setStepSound (Lnet/minecraft/StepSound;)Lnet/minecraft/Block;
+accessible method net/minecraft/Block setLightValue (F)Lnet/minecraft/Block;
+
+accessible field net/minecraft/Minecraft renderEngine Lnet/minecraft/TextureManager;
+extendable class net/minecraft/BlockDoor
+
+accessible method net/minecraft/Item setPotionEffect (Ljava/lang/String;)Lnet/minecraft/Item;
+
+accessible field net/minecraft/NBTTagCompound tagMap Ljava/util/Map;
+accessible method net/minecraft/NBTTagCompound createCrashReport (Ljava/lang/String;ILjava/lang/ClassCastException;)Lnet/minecraft/CrashReport;
+accessible field net/minecraft/NBTTagList tagType B
+accessible method net/minecraft/NBTTagCompound getTagMap (Lnet/minecraft/NBTTagCompound;)Ljava/util/Map;

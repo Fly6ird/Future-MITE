@@ -1,5 +1,6 @@
 package com.github.FlyBird.FutureMITE.network.packets;
 
+import com.github.FlyBird.FutureMITE.network.FutureMITENetWork;
 import moddedmite.rustedironcore.network.Packet;
 import moddedmite.rustedironcore.network.PacketByteBuf;
 import net.minecraft.*;
@@ -61,11 +62,12 @@ public class C2SBoatMove implements Packet {
                 vehicle.setPositionAndRotation(vehicle.posX - 1, vehicle.posY, vehicle.posZ - 1, vehicle.rotationYaw, vehicle.rotationPitch);
                 //ctx.getServerHandler().sendPacket(new S18PacketEntityTeleport(vehicle));
                 //playerEntity.sendPacket(new Packet34EntityTeleport(vehicle));
-                ((ServerPlayer)entityPlayer).playerNetServerHandler.sendPacketToPlayer(new Packet34EntityTeleport(vehicle));
+                entityPlayer.getWorldServer().getEntityTracker().sendPacketToAllPlayersTrackingEntity(vehicle,new Packet34EntityTeleport(vehicle));
+                //((ServerPlayer)entityPlayer).playerNetServerHandler.sendPacketToPlayer(n);
                 return ;
             }
             vehicle.setPositionAndRotation(this.x, this.y, this.z, this.yaw, this.pitch);
-            ((ServerPlayer)entityPlayer).playerNetServerHandler.sendPacketToPlayer(new Packet34EntityTeleport(vehicle));
+            entityPlayer.getWorldServer().getEntityTracker().sendPacketToAllPlayersTrackingEntity(vehicle,new Packet34EntityTeleport(vehicle));
         }
     }
 

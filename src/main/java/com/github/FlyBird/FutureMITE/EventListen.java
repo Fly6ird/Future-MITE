@@ -1,15 +1,13 @@
 package com.github.FlyBird.FutureMITE;
 
 import com.github.FlyBird.FutureMITE.blocks.Blocks;
-import com.github.FlyBird.FutureMITE.entities.EntityNewBoat;
-import com.github.FlyBird.FutureMITE.entities.EntityNewBoatSeat;
-import com.github.FlyBird.FutureMITE.entities.EntityNewBoatWithChest;
+import com.github.FlyBird.FutureMITE.entities.*;
 import com.github.FlyBird.FutureMITE.items.Items;
-import com.github.FlyBird.FutureMITE.render.entity.ChestBoatRenderer;
-import com.github.FlyBird.FutureMITE.render.entity.NewBoatRenderer;
+import com.github.FlyBird.FutureMITE.render.RenderGrindstoneTileEntity;
+import com.github.FlyBird.FutureMITE.render.entity.*;
+import com.github.FlyBird.FutureMITE.tileentities.TileEntityBarrel;
+import com.github.FlyBird.FutureMITE.tileentities.TileEntityGrindstone;
 import com.google.common.eventbus.Subscribe;
-import net.minecraft.ChatMessageComponent;
-import net.minecraft.EntityPlayer;
 import net.xiaoyu233.fml.reload.event.*;
 import net.xiaoyu233.fml.reload.utils.IdUtil;
 
@@ -20,6 +18,7 @@ public class EventListen {
         //物品被注册事件
         Items.registerItems(event);
         Blocks.registerItemBlocks(event);
+        Blocks.furnaceRecipe();
     }
 
     @Subscribe
@@ -140,21 +139,14 @@ public class EventListen {
 
     @Subscribe
     public void handleChatCommand(HandleChatCommandEvent event) {
-        String par2Str = event.getCommand();
-        EntityPlayer player = event.getPlayer();
-        if (par2Str.startsWith("hello")) {    //当玩家输入 /Hello
-            EntityNewBoat test=new EntityNewBoat(event.getWorld());
-            test.setPosition(player.posX,player.posY,player.posZ);
-            event.getWorld().spawnEntityInWorld(test);
 
-        }
     }
 
     @Subscribe
     public void onEntityRegister(EntityRegisterEvent event) {
-/*        event.register(EntityRabbit.class, BetterMiteStart.MOD_ID, "EntityRabbit", getNextEntityID(),10051392,7555121);
-        event.register(EntityEndermite.class, BetterMiteStart.MOD_ID, "EntityEndermite", getNextEntityID(),1447446,7237230);
-        event.register(EntityArmourStand.class, BetterMiteStart.MOD_ID,"EntityArmourStand", getNextEntityID());*/
+        event.register(EntityRabbit.class,FutureMITEStart.MOD_ID, "Rabbit", getNextEntityID(),10051392,7555121);
+        event.register(EntityEndermite.class,FutureMITEStart.MOD_ID, "Endermite", getNextEntityID(),1447446,7237230);
+        event.register(EntityArmourStand.class, FutureMITEStart.MOD_ID,"ArmourStand", getNextEntityID());
 
         event.register(EntityNewBoat.class, FutureMITEStart.MOD_ID, "NewBoat", getNextEntityID());
         event.register(EntityNewBoatSeat.class, FutureMITEStart.MOD_ID, "NewBoatSeat", getNextEntityID());
@@ -164,15 +156,25 @@ public class EventListen {
     @Subscribe
     public void onEntityRendererRegistry(EntityRendererRegistryEvent event)
     {
-   /*     event.register(EntityRabbit.class,new RabbitRenderer());
+        event.register(EntityRabbit.class,new RabbitRenderer());
         event.register(EntityArmourStand.class,new ArmourStandRenderer());
-        event.register(EntityEndermite.class,new EndermiteRenderer());*/
+        event.register(EntityEndermite.class,new EndermiteRenderer());
 
         event.register(EntityNewBoat.class,new NewBoatRenderer());
         //event.register(EntityNewBoatSeat.class,new NewBoatRenderer());
         event.register(EntityNewBoatWithChest.class,new ChestBoatRenderer());
     }
+    @Subscribe
+    public void onTileEntityRendererRegister(TileEntityRendererRegisterEvent event) {
+        event.register(TileEntityGrindstone.class, new RenderGrindstoneTileEntity());
+    }
 
+    @Subscribe
+    public void onTileEntityRegister(TileEntityRegisterEvent event) {
+        //注册方块实体的地方
+        event.register(TileEntityBarrel.class, "Barrel");
+        event.register(TileEntityGrindstone.class, "Grindstone");
+    }
     public static int getNextEntityID() {
         return IdUtil.getNextEntityID();
     }
