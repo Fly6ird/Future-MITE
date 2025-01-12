@@ -48,6 +48,11 @@ public class EntityRabbit extends EntityLivestock {
 		return (RabbitJumpHelper) super.getJumpHelper();
 	}
 
+	@Override
+	public int getExperienceValue() {
+		return 0;
+	}
+
 	public void setMoveType(EnumMoveType type) {
 		moveType = type;
 	}

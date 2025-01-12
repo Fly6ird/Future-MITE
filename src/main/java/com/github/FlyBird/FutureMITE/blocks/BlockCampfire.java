@@ -5,17 +5,19 @@ package com.github.FlyBird.FutureMITE.blocks;
 import com.github.FlyBird.FutureMITE.misc.DamageSourceExtend;
 import com.github.FlyBird.FutureMITE.misc.EnumParticles;
 import com.github.FlyBird.FutureMITE.render.RenderTypes;
+import com.github.FlyBird.FutureMITE.tileentities.TileEntityCampfire;
 import net.minecraft.*;
 
 import java.util.Objects;
 import java.util.Random;
 
-public class BlockCampfire extends Block {
+public class BlockCampfire extends BlockContainer {
 
     private Icon BlockCampfireIcon;
     private Icon ItemCampfireIcon;
     private Icon campFire_FireIcon;
     private Icon campFire_LogLitIcon;
+
     public static final DamageSource CAMPFIRE_DAMAGE = (new DamageSourceExtend("CampFire"));
 
     public static Icon[] bigSmokeIcon = new Icon[12];
@@ -138,5 +140,33 @@ public class BlockCampfire extends Block {
 
     }
 
+
+    @Override
+    public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, EnumFace face, float dx, float dy, float dz) {
+        TileEntityCampfire tile = (TileEntityCampfire)world.getBlockTileEntity(x, y, z);
+        if (tile == null) {
+            return false;
+        }
+
+        ItemStack heldItemStack = player.getHeldItemStack();
+        if (heldItemStack !=null&&tile.isNeedItemStack(heldItemStack)) {
+            if(tile.joinCookQueue(heldItemStack))
+            {
+                if(world.isRemote)
+                {
+                    player.swingArm();
+                } else {
+                    --heldItemStack.stackSize;
+                    //并且告诉客户端，要渲染东西了
+                }
+            }
+        }
+        return true;
+    }
+
+    @Override
+    public TileEntity createNewTileEntity(World world) {
+        return new TileEntityCampfire(this);
+    }
 }
 

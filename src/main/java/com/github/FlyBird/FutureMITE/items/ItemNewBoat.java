@@ -39,8 +39,8 @@ public class ItemNewBoat extends Item {
 
     @Override
     public boolean onItemRightClick(EntityPlayer player, float partial_tick, boolean ctrl_is_down) {
-        World world=player.worldObj;
-        ItemStack itemStack=player.getHeldItemStack();
+        World world = player.worldObj;
+        ItemStack itemStack = player.getHeldItemStack();
         float f = 1.0F;
         float f1 = player.prevRotationPitch + (player.rotationPitch - player.prevRotationPitch) * f;
         float f2 = player.prevRotationYaw + (player.rotationYaw - player.prevRotationYaw) * f;

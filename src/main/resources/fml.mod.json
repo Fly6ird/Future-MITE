@@ -8,7 +8,7 @@
 	"environment": "*",
 	"name": "FutureMITE",
 	"description": "",
-	"authors": ["FlyBird"],
+	"authors": ["FlyBird","mgdcm","AndrePraca"],
 	"entrypoints": {
 		"preLaunch": [
 			"com.github.FlyBird.FutureMITE.EarlyRiser"

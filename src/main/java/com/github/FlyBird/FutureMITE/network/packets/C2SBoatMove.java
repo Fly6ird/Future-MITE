@@ -20,7 +20,7 @@ public class C2SBoatMove implements Packet {
         this(packetByteBuf.readInt(),packetByteBuf.readDouble(),packetByteBuf.readDouble(),packetByteBuf.readDouble(),packetByteBuf.readFloat(),packetByteBuf.readFloat());
     }
 
-    public  C2SBoatMove(int id,double x,double y,double z,float yaw,float pitch) {
+    public C2SBoatMove(int id,double x,double y,double z,float yaw,float pitch) {
         this.entityId = id;
         this.x=x;
         this.y=y;

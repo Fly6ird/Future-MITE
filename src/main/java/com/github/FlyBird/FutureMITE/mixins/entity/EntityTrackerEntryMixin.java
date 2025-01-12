@@ -14,6 +14,7 @@ public abstract class EntityTrackerEntryMixin {
     @Shadow
     public Entity myEntity;
 
+    //因为原方法代码垃圾，导致EntityLiving判断根本加载不进去
     @Inject(method = "getPacketForThisEntity", at = @At("HEAD"), cancellable = true)
     private void getPacketForThisEntity(CallbackInfoReturnable<Packet> cbi) {
         // 保持最初的isDead判断
