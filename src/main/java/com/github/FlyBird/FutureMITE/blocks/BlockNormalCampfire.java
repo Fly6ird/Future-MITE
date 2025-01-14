@@ -1,9 +1,10 @@
 package com.github.FlyBird.FutureMITE.blocks;
 
 import com.github.FlyBird.FutureMITE.render.RenderTypes;
+import com.github.FlyBird.FutureMITE.tileentities.TileEntityCampfire;
 import net.minecraft.*;
 
-public class BlockNormalCampfire extends Block {
+public class BlockNormalCampfire extends BlockContainer {
     private Icon BlockCampfireIcon;
 
     protected BlockNormalCampfire(int par1) {
@@ -23,6 +24,32 @@ public class BlockNormalCampfire extends Block {
             return this.dropBlockAsEntityItem(info, new ItemStack(Item.coal,2,1));
         }
         return 0;
+    }
+
+    @Override
+    public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, EnumFace face, float dx, float dy, float dz) {
+        ItemStack stack=player.getHeldItemStack();
+        TileEntityCampfire tile = (TileEntityCampfire)world.getBlockTileEntity(x, y, z);
+        if(tile!=null&&tile.getBurnTime()>0) {
+            if (stack.getItem() instanceof ItemFlintAndSteel) {
+                TileEntityCampfire.updateCampfireBlockState(true, world, x, y, z);
+                if (player.onClient()) {
+                    player.swingArm();
+                } else {
+                    world.playSoundAtEntity(player, "fire.ignite", 1.0F, world.rand.nextFloat() * 0.4F + 0.8F);
+                    player.tryDamageHeldItem(DamageSource.generic, 1);
+                }
+            } else if (stack.getItem() instanceof ItemFireball) {
+                TileEntityCampfire.updateCampfireBlockState(true, world, x, y, z);
+                if (player.onClient()) {
+                    player.swingArm();
+                } else {
+                    world.playSoundAtBlock(x, y, z, "fire.ignite", 1.0F, world.rand.nextFloat() * 0.4F + 0.8F);
+                    --stack.stackSize;
+                }
+            }
+        }
+        return true;
     }
 
     //设置为false必须不能弄物品栏标签
@@ -65,5 +92,10 @@ public class BlockNormalCampfire extends Block {
             metadata |= 8;
         }
         return metadata;
+    }
+
+    @Override
+    public TileEntity createNewTileEntity(World world) {
+        return new TileEntityCampfire(this);
     }
 }

@@ -246,25 +246,15 @@ public class BlockBarrel extends BlockDirectionalWithTileEntity{
     @Override
     public EnumDirection getDirectionFacing(int metadata) {
         int direction = metadata & 7;
-        if (direction == 0) {
-            return EnumDirection.DOWN;
-        }
-        if (direction == 1) {
-            return EnumDirection.UP;
-        }
-        if (direction == 2) {
-            return EnumDirection.NORTH;
-        }
-        if (direction == 3) {
-            return EnumDirection.SOUTH;
-        }
-        if (direction == 4) {
-            return EnumDirection.WEST;
-        }
-        if (direction == 5) {
-            return EnumDirection.EAST;
-        }
-        return null;
+        return switch (direction) {
+            case 0 -> EnumDirection.DOWN;
+            case 1 -> EnumDirection.UP;
+            case 2 -> EnumDirection.NORTH;
+            case 3 -> EnumDirection.SOUTH;
+            case 4 -> EnumDirection.WEST;
+            case 5 -> EnumDirection.EAST;
+            default -> null;
+        };
     }
     @Override
     public int getMetadataForDirectionFacing(int metadata, EnumDirection direction) {

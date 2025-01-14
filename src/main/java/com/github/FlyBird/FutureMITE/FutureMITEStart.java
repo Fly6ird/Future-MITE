@@ -10,8 +10,8 @@ public class FutureMITEStart implements ModInitializer {
     public static final String MOD_ID="FutureMITE";
     @Override
     public void onInitialize() {   //相当于main函数，万物起源
-        MITEEvents.MITE_EVENT_BUS.register(new EventListen());//注册一个事件监听类
-        FutureMITENetWork.init();
         FutureMITEEventRIC.register();
+        FutureMITENetWork.init();
+        MITEEvents.MITE_EVENT_BUS.register(new EventListener());//注册一个事件监听类
     }
 }

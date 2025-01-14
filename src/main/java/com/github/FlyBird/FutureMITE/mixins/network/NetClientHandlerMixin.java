@@ -1,21 +1,22 @@
 package com.github.FlyBird.FutureMITE.mixins.network;
 
 
-import com.github.FlyBird.FutureMITE.entities.EntityNewBoat;
-import com.github.FlyBird.FutureMITE.entities.EntityNewBoatSeat;
-import com.github.FlyBird.FutureMITE.entities.EntityNewBoatWithChest;
+import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
+import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import com.llamalad7.mixinextras.sugar.Local;
 import net.minecraft.*;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
-import org.spongepowered.asm.mixin.injection.Inject;
-import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin({NetClientHandler.class})
 public abstract class NetClientHandlerMixin extends NetHandler {
   @Shadow
   private WorldClient worldClient;
+
+  @Shadow
+  private Minecraft mc;
+
 
 /*  @Inject(method = "handleVehicleSpawn", at = @At(value = "FIELD", target = "Lnet/minecraft/Packet23VehicleSpawn;type:I", ordinal = 0), cancellable = true)
   private void handleVehicleSpawn(Packet23VehicleSpawn par1Packet23VehicleSpawn, CallbackInfo ci,@Local(ordinal = 0) double x,@Local(ordinal = 1) double y,@Local(ordinal = 2) double z) {

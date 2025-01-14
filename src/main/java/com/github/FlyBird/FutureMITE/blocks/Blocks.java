@@ -56,9 +56,9 @@ public class Blocks extends Block {
     public static final Block jungleDoor=new BlockNewDoor(getNextBlockID(),EnumWoodType.JUNGLE);
     public static final Block spruceDoor=new BlockNewDoor(getNextBlockID(), EnumWoodType.SPRUCE);
 
-    public static final Block birchTrapDoor=(new BlockTrapDoors(getNextBlockID(), EnumWoodType.BIRCH));
-    public static final Block jungleTrapDoor=(new BlockTrapDoors(getNextBlockID(), EnumWoodType.JUNGLE));
-    public static final Block spruceTrapDoor=(new BlockTrapDoors(getNextBlockID(), EnumWoodType.SPRUCE));
+    public static final Block birchTrapDoor=(new BlockModTrapDoor(getNextBlockID(), EnumWoodType.BIRCH));
+    public static final Block jungleTrapDoor=(new BlockModTrapDoor(getNextBlockID(), EnumWoodType.JUNGLE));
+    public static final Block spruceTrapDoor=(new BlockModTrapDoor(getNextBlockID(), EnumWoodType.SPRUCE));
 
     public static final Block seaLantern =new BlockSeaLantern(getNextBlockID());
     public static final PrismarineBlocks prismarineBlock=new PrismarineBlocks(getNextBlockID());

@@ -55,7 +55,7 @@ tile.birch_trapdoor.name=Birch Trap Door
 tile.jungle_trapdoor.name=Jungle Trap Door
 tile.spruce_trapdoor.name=Spruce Trap Door
 
-entity.EntityRabbit.name=Rabbit
+entity.Rabbit.name=Rabbit
 item.rabbitCooked.name=Rabbit Cooked
 item.rabbitFoot.name=Rabbit Foot
 item.rabbitHide.name=Rabbit Hide
@@ -81,6 +81,8 @@ item.wooden_armorstand.name=Wooden Armor Stand
 
 tile.barrel.name=Barrel
 container.barrel=Barrel
+
+item.woodChips.name=Wood Chips
 
 death.attack.sweetBerryBush=%1$s was poked to death by a sweet berry bush
 death.attack.sweetBerryBush.player=%1$s was poked to death by a sweet berry bush whilst trying to escape %2$s

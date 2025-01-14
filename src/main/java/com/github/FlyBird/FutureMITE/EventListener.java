@@ -3,15 +3,17 @@ package com.github.FlyBird.FutureMITE;
 import com.github.FlyBird.FutureMITE.blocks.Blocks;
 import com.github.FlyBird.FutureMITE.entities.*;
 import com.github.FlyBird.FutureMITE.items.Items;
+import com.github.FlyBird.FutureMITE.render.RenderCampfireTileEntity;
 import com.github.FlyBird.FutureMITE.render.RenderGrindstoneTileEntity;
 import com.github.FlyBird.FutureMITE.render.entity.*;
 import com.github.FlyBird.FutureMITE.tileentities.TileEntityBarrel;
+import com.github.FlyBird.FutureMITE.tileentities.TileEntityCampfire;
 import com.github.FlyBird.FutureMITE.tileentities.TileEntityGrindstone;
 import com.google.common.eventbus.Subscribe;
 import net.xiaoyu233.fml.reload.event.*;
 import net.xiaoyu233.fml.reload.utils.IdUtil;
 
-public class EventListen {
+public class EventListener {
 
     @Subscribe
     public void onItemRegister(ItemRegistryEvent event) {
@@ -167,6 +169,7 @@ public class EventListen {
     @Subscribe
     public void onTileEntityRendererRegister(TileEntityRendererRegisterEvent event) {
         event.register(TileEntityGrindstone.class, new RenderGrindstoneTileEntity());
+        event.register(TileEntityCampfire.class, new RenderCampfireTileEntity());
     }
 
     @Subscribe
@@ -174,6 +177,7 @@ public class EventListen {
         //注册方块实体的地方
         event.register(TileEntityBarrel.class, "Barrel");
         event.register(TileEntityGrindstone.class, "Grindstone");
+        event.register(TileEntityCampfire.class, "Campfire");
     }
     public static int getNextEntityID() {
         return IdUtil.getNextEntityID();

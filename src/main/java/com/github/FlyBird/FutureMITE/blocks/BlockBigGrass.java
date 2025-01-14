@@ -135,6 +135,7 @@ public class BlockBigGrass extends BlockPlant {
     public boolean dropsAsSelfWhenTrampled(Entity entity) {
         return false;
     }
+
     public void onBlockAdded(World world, int x, int y, int z) {
         super.onBlockAdded(world, x, y, z);
         if (world.getBlockId(x, y - 1, z) == dirt.blockID) {

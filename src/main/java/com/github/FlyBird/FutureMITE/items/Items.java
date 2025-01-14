@@ -39,6 +39,7 @@ public class Items extends Item {
     //海晶砂粒
     public static final Item prismarineCrystals = (new Items(getNextItemID(), Material.diamond, "prismarine_crystals")).setCraftingDifficultyAsComponent(100.0F).setUnlocalizedName("prismarineCrystals").setCreativeTab(CreativeTabs.tabMaterials);
 
+    public static final Item woodChips=(new ItemWoodChips(getNextItemID(),Material.wood,"wood_chips")).setUnlocalizedName("woodChips").setCreativeTab(CreativeTabs.tabMaterials);
     protected Items(int id, Material material, String texture) {
         super(id,material,texture);
     }

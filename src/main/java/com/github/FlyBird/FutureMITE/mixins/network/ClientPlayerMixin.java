@@ -10,7 +10,7 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 
 @Mixin({ClientPlayer.class})
-public class ClientPlayerMixin extends AbstractClientPlayer implements IFutureMITEPlayer {
+public abstract class ClientPlayerMixin extends AbstractClientPlayer implements IFutureMITEPlayer {
     @Shadow
     protected Minecraft mc;
 
@@ -23,23 +23,6 @@ public class ClientPlayerMixin extends AbstractClientPlayer implements IFutureMI
         this.mc.displayGuiScreen(new GuiGrindStone(this, x, y, z, slots));
     }
 
-    @Override
-    public INetworkManager getNetManager() {
-        return null;
-    }
 
-    @Override
-    public void sendChatToPlayer(ChatMessageComponent chatMessageComponent) {
 
-    }
-
-    @Override
-    public boolean canCommandSenderUseCommand(int i, String string) {
-        return false;
-    }
-
-    @Override
-    public ChunkCoordinates getPlayerCoordinates() {
-        return null;
-    }
 }

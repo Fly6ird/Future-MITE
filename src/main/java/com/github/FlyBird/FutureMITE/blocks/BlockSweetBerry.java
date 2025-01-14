@@ -14,7 +14,7 @@ public class BlockSweetBerry extends BlockGrowingPlant{
         super(par1);
         //  small  0.1875   0.0     0.1875    0.8125    0.5   0.8125
         // big     0.0625   0.0    0.0625   0.9375  1.0  0.9375
-        this.setBlockBounds(0.25, 0.0, 0.25, 0.75, 0.4375, 0.75,false);
+        //this.setBlockBounds(0.25, 0.0, 0.25, 0.75, 0.4375, 0.75,false);
         this.setStepSound(stepSoundSweetBerryBush);
         this.setUnlocalizedName("sweetBerryBush");
     }

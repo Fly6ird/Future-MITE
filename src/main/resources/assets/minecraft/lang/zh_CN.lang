@@ -55,7 +55,7 @@ tile.birch_trapdoor.name=白桦活板门
 tile.jungle_trapdoor.name=丛林活板门
 tile.spruce_trapdoor.name=云杉活板门
 
-entity.EntityRabbit.name=兔子
+entity.Rabbit.name=兔子
 item.rabbitCooked.name=熟兔肉
 item.rabbitFoot.name=兔脚
 item.rabbitHide.name=兔皮
@@ -81,6 +81,8 @@ item.wooden_armorstand.name=盔甲架
 
 tile.barrel.name=木桶
 container.barrel=木桶
+
+item.woodChips.name=木屑
 
 death.attack.sweetBerryBush=%1$s 被甜浆果丛刺死了
 death.attack.sweetBerryBush.player=%1$s 在试图逃离 %2$s 时被甜浆果丛刺死了

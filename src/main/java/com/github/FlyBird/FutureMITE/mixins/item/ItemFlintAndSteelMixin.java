@@ -12,7 +12,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin({ItemFlintAndSteel.class})
 public class ItemFlintAndSteelMixin extends Item {
-  @Inject(method = {"onItemRightClick"}, at = {@At(value = "INVOKE", target = "Lnet/minecraft/RaycastCollision;getBlockHit()Lnet/minecraft/Block;")})
+/*  @Inject(method = {"onItemRightClick"}, at = {@At(value = "INVOKE", target = "Lnet/minecraft/RaycastCollision;getBlockHit()Lnet/minecraft/Block;")})
   private void activateCampfire(EntityPlayer player, float partial_tick, boolean ctrl_is_down, CallbackInfoReturnable<Boolean> cir, @Local RaycastCollision rc) {
     if (rc.getBlockHit() instanceof BlockNormalCampfire) {
       int metadata=rc.world.getBlockMetadata(rc.block_hit_x,  rc.block_hit_y, rc.block_hit_z);
@@ -24,5 +24,5 @@ public class ItemFlintAndSteelMixin extends Item {
         player.tryDamageHeldItem(DamageSource.generic, 1);
       } 
     } 
-  }
+  }*/
 }
