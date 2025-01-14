@@ -3,6 +3,7 @@ package com.github.FlyBird.FutureMITE.items;
 import com.github.FlyBird.FutureMITE.FutureMITEStart;
 import com.github.FlyBird.FutureMITE.blocks.Blocks;
 import com.github.FlyBird.FutureMITE.entities.EntityNewBoat;
+import com.github.FlyBird.FutureMITE.items.register.RecipesFurnaceExtend;
 import com.github.FlyBird.FutureMITE.misc.EnumWoodType;
 import net.minecraft.*;
 import net.xiaoyu233.fml.reload.event.ItemRegistryEvent;
@@ -28,6 +29,7 @@ public class Items extends Item {
 
     public static final ItemMeat rabbitRaw= (ItemMeat)(new ItemMeat(getNextItemID(), 3, 3, false, false, "rabbit_raw")).setUnlocalizedName("rabbitRaw");
     public static final ItemMeat rabbitCooked= (ItemMeat)(new ItemMeat(getNextItemID(), 6, 6, false, false, "rabbit_cooked")).setUnlocalizedName("rabbitCooked");
+
     public static final Item rabbitHide = (new Items(getNextItemID(), Material.leather, "rabbit_hide")).setCraftingDifficultyAsComponent(100.0F).setUnlocalizedName("rabbitHide").setCreativeTab(CreativeTabs.tabMaterials);
     public static final Item rabbitFoot = (new Items(getNextItemID(), Material.blaze, "rabbit_foot")).setCraftingDifficultyAsComponent(25.0F).setUnlocalizedName("rabbitFoot").setPotionEffect(PotionHelper.blazePowderEffect).setCreativeTab(CreativeTabs.tabBrewing);
     public static final Item bowlRabbitStew = (new ItemBowl(getNextItemID(), Material.beef_stew, "rabbit_stew")).setFoodValue(12, 14, true, false, true).setPlantProduct().setUnlocalizedName("rabbit_stew");
@@ -53,6 +55,7 @@ public class Items extends Item {
     }
 
     public static void registerRecipes(RecipeRegistryEvent register) {
+        RecipesFurnaceExtend.registerFurnaceRecipes();
         register.registerShapedRecipe(new ItemStack(armourStand, 1), true, new Object[] {"AAA"," A ","ABA",Character.valueOf('A'),new ItemStack(Item.stick,1),Character.valueOf('B'),new ItemStack(Block.stoneSingleSlab,1)});
 
         register.registerShapedRecipe(new ItemStack(birchDoor, 1), true, new Object[]{"AA ", "AA ", "AA ", Character.valueOf('A'), new ItemStack((Block.planks), 1, 2)});

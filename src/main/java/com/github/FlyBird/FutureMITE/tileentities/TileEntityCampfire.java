@@ -136,8 +136,11 @@ public class TileEntityCampfire extends TileEntity {
 
     public ItemStack getCookFood(ItemStack food){
         if(food.getItem() instanceof ItemMeat)
-            if(!((ItemMeat) food.getItem()).is_cooked)
-                return new ItemStack(FurnaceRecipes.smelting().getSmeltingResult(food,1).itemID,1);
+            if(!((ItemMeat) food.getItem()).is_cooked){
+                ItemStack stackSmeltingResult=FurnaceRecipes.smelting().getSmeltingResult(food,1);
+                if(stackSmeltingResult!=null)
+                    return new ItemStack(stackSmeltingResult.itemID,1);
+            }
         return null;
     }
 
