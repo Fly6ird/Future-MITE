@@ -72,8 +72,10 @@ public class TileEntityCampfire extends TileEntity {
     public void popItems()
     {
         for (int slot = 0; slot < 4; ++slot) {
-            if(burnItemStacks[slot]!=null)
+            if(burnItemStacks[slot]!=null){
                 popItem(burnItemStacks[slot], getWorldObj(), xCoord, yCoord, zCoord);
+                burnItemStacks[slot]=null;
+            }
         }
     }
 
@@ -93,8 +95,15 @@ public class TileEntityCampfire extends TileEntity {
         }
     }
 
-    public void addBurnTime(int tick){
+    public boolean addBurnTime(int tick){
+        if(burnTime>=6000)
+            return false;
+        else if(burnTime+tick>=6000) {
+            this.burnTime = 6000;
+            return true;
+        }
         this.burnTime+=tick;
+        return true;
     }
 
     public int getBurnTime(){

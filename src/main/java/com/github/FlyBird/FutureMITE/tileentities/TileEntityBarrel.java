@@ -136,8 +136,10 @@ public class TileEntityBarrel extends TileEntity implements IInventory {
         if (this.numUsingPlayers > 0 && this.lidAngle == 0.0F) {
             double var8 = this.xCoord + 0.5D;
             double var11 = this.zCoord + 0.5D;
-            this.worldObj.setBlockMetadataWithNotify(this.xCoord,this.yCoord,this.zCoord,BitHelper.flipBit(this.getBlockMetadata(), 8),2);
+            if(!this.worldObj.isRemote)
+                this.worldObj.setBlockMetadataWithNotify(this.xCoord,this.yCoord,this.zCoord,BitHelper.flipBit(this.getBlockMetadata(), 8),2);
             this.worldObj.playSoundEffect(var8, this.yCoord + 0.5D, var11, "block.barrel.open", 0.5F, this.worldObj.rand.nextFloat() * 0.1F + 0.9F);
+
         }
         if ((this.numUsingPlayers == 0 && this.lidAngle > 0.0F) || (this.numUsingPlayers > 0 && this.lidAngle < 1.0F)) {
             float var9 = this.lidAngle;
@@ -152,8 +154,8 @@ public class TileEntityBarrel extends TileEntity implements IInventory {
             if (this.lidAngle < var10 && var9 >= var10) {
                 double var11 = this.xCoord + 0.5D;
                 double var6 = this.zCoord + 0.5D;
-
-                this.worldObj.setBlockMetadataWithNotify(this.xCoord,this.yCoord,this.zCoord,BitHelper.flipBit(this.getBlockMetadata(), 8),2);
+                if(!this.worldObj.isRemote)
+                    this.worldObj.setBlockMetadataWithNotify(this.xCoord,this.yCoord,this.zCoord,BitHelper.flipBit(this.getBlockMetadata(), 8),2);
                 this.worldObj.playSoundEffect(var11, this.yCoord + 0.5D, var6, "block.barrel.close", 0.5F, this.worldObj.rand.nextFloat() * 0.1F + 0.9F);
             }
             if (this.lidAngle < 0.0F)

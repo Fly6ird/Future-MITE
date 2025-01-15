@@ -171,7 +171,7 @@ public class BlockCampfire extends BlockContainer {
         if (tile == null) {
             return false;
         }
-        if (heldItemStack !=null&&tile.getCookFood(heldItemStack)!=null) {
+        if (tile.getCookFood(heldItemStack) != null) {
             ItemStack queueItemStack=new ItemStack(heldItemStack.itemID,1);
             if(tile.joinCookQueue(queueItemStack))
             {
@@ -188,8 +188,7 @@ public class BlockCampfire extends BlockContainer {
             if (world.isRemote) {
                 player.swingArm();
             } else {
-                tile.addBurnTime(heldItemStack.getItem().getBurnTime(heldItemStack));
-                if (!player.capabilities.isCreativeMode)
+                if (!player.capabilities.isCreativeMode&&tile.addBurnTime(heldItemStack.getItem().getBurnTime(heldItemStack)))
                     --heldItemStack.stackSize;
             }
         }

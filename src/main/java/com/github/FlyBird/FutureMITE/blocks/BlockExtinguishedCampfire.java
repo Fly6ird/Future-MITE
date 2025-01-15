@@ -4,10 +4,10 @@ import com.github.FlyBird.FutureMITE.render.RenderTypes;
 import com.github.FlyBird.FutureMITE.tileentities.TileEntityCampfire;
 import net.minecraft.*;
 
-public class BlockNormalCampfire extends BlockContainer {
+public class BlockExtinguishedCampfire extends BlockContainer {
     private Icon BlockCampfireIcon;
 
-    protected BlockNormalCampfire(int par1) {
+    protected BlockExtinguishedCampfire(int par1) {
         super(par1, Material.wood, new BlockConstants().setNotAlwaysLegal().setNeverHidesAdjacentFaces());
         this.setHardness(0.5f);
         this.setBlockBoundsForAllThreads(0.0, 0.0, 0.0, 1.0, 0.4375, 1.0);
@@ -47,6 +47,13 @@ public class BlockNormalCampfire extends BlockContainer {
                     world.playSoundAtBlock(x, y, z, "fire.ignite", 1.0F, world.rand.nextFloat() * 0.4F + 0.8F);
                     --stack.stackSize;
                 }
+            }
+        }else if(stack.getItem().getBurnTime(stack)>0&&stack.getItem().getHeatLevel(stack)<3) {
+            if (world.isRemote) {
+                player.swingArm();
+            } else {
+                if (!player.capabilities.isCreativeMode&&tile.addBurnTime(stack.getItem().getBurnTime(stack)))
+                    --stack.stackSize;
             }
         }
         return true;

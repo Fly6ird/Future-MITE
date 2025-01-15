@@ -9,14 +9,11 @@ import static com.github.FlyBird.FutureMITE.blocks.Blocks.stepSoundWood;
 
 
 public class BlockBarrel extends BlockDirectionalWithTileEntity{
-
-
     private final Random random = new Random();
     private Icon bottomIcon;
     private Icon sideIcon;
     private Icon topIcon;
     private Icon topOpenIcon;
-
     public BlockBarrel(int par1, Material par2) {
         super(par1, par2, new BlockConstants());
         setMaxStackSize(1);
@@ -29,6 +26,7 @@ public class BlockBarrel extends BlockDirectionalWithTileEntity{
     public boolean isActivated(int metadata) {
         return ((metadata & 0x8) != 0);
      }
+
 
     @Override
     public boolean updateTick(World world, int x, int y, int z, Random rand) {

@@ -29,7 +29,7 @@ public class Blocks extends Block {
 
     public static final Block campfire=new BlockCampfire(getNextBlockID(),1.0f).setLightValue(0.6f);
     public static final Block soulCampfire=new BlockCampfire(getNextBlockID(),2.0f).setLightValue(0.6666f);
-    public static final Block normalCampfire=new BlockNormalCampfire(getNextBlockID());
+    public static final Block normalCampfire=new BlockExtinguishedCampfire(getNextBlockID());
 
     public static final Block dirtPath = new BlockDirtPath(getNextBlockID());
 
