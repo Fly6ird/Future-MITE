@@ -23,6 +23,6 @@ public class ChunkProviderServerMixin {
 
     @Inject(method = "populate",at= @At(value = "INVOKE", target = "Lnet/minecraft/IChunkProvider;populate(Lnet/minecraft/IChunkProvider;II)V"))
     public void populate(IChunkProvider par1IChunkProvider, int par2, int par3, CallbackInfo ci) {
-        GameRegistry.generateWorld(par2, par3, worldObj, currentChunkProvider, par1IChunkProvider);
+        //GameRegistry.generateWorld(par2, par3, worldObj, currentChunkProvider, par1IChunkProvider);
     }
 }

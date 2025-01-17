@@ -18,7 +18,7 @@ public class FutureMITEStart implements ModInitializer {
 
         //GameRegistry.registerWorldGenerator(new FutureMITEWorldGenerator(), 0);
 
-        //OceanMonument.makeMap();
+
         MITEEvents.MITE_EVENT_BUS.register(new EventListener());//注册一个事件监听类
     }
 }

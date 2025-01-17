@@ -12,5 +12,6 @@ public class EarlyRiser implements PreLaunchEntrypoint {
 
         EnumExtends.PARTICLE.addEnum("soul_fire_flame");
         EnumExtends.PARTICLE.addEnum("big_smoke");
+
     }
 }

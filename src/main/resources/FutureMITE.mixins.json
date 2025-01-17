@@ -24,8 +24,10 @@
     "render.RenderBlocksMixin",
     "render.RenderGlobalMixin",
     "render.RenderItemFrameMixin",
+    "world.ChunkProviderServerMixin",
     "world.biome.BiomeDecoratorMixin",
     "world.biome.BiomeDesertMixin",
+    "world.biome.BiomeGenBaseMixin",
     "world.biome.BiomeSnowMixin",
     "world.structure.ComponentVillagePathGenMixin"
   ],

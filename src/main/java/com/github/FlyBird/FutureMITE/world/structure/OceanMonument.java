@@ -5,10 +5,7 @@ import com.github.FlyBird.FutureMITE.FutureMITEStart;
 import com.github.FlyBird.FutureMITE.blocks.Blocks;
 import com.github.FlyBird.FutureMITE.world.WorldCoord;
 import com.github.FlyBird.FutureMITE.world.biome.ModBiomes;
-import net.minecraft.BiomeGenBase;
-import net.minecraft.Block;
-import net.minecraft.Material;
-import net.minecraft.World;
+import net.minecraft.*;
 
 import java.io.*;
 import java.util.*;
@@ -17,31 +14,39 @@ import java.util.Map.Entry;
 public class OceanMonument {
 
 	private static final List<BiomeGenBase> validBiomes = Arrays.asList(BiomeGenBase.ocean, ModBiomes.deepOcean, BiomeGenBase.river, BiomeGenBase.frozenOcean, BiomeGenBase.frozenRiver);
-	private static final Map<WorldCoord, Integer> map = new HashMap<WorldCoord, Integer>();
+	private static final Map<WorldCoord, Integer> map = new HashMap<>();
 
 	public static void makeMap() {
 		try {
 			InputStream is = FutureMITEStart.class.getResourceAsStream("/assets/ocean_monument.txt");
-			BufferedReader br = new BufferedReader(new InputStreamReader(is));
+            BufferedReader br = null;
+            if (is != null) {
+                br = new BufferedReader(new InputStreamReader(is));
+            }
 
-			String s;
-			while ((s = br.readLine()) != null) {
-				String[] data = s.split("-");
-				data[0] = data[0].trim();
-				data[0] = data[0].substring(1, data[0].length() - 1);
+            String s;
+            if (br != null) {
+                while ((s = br.readLine()) != null) {
+                    String[] data = s.split("-");
+                    data[0] = data[0].trim();
+                    data[0] = data[0].substring(1, data[0].length() - 1);
 
-				data[1] = data[1].trim();
+                    data[1] = data[1].trim();
 
-				String[] coords = data[0].split(",");
+                    String[] coords = data[0].split(",");
 
-				WorldCoord key = new WorldCoord(Integer.parseInt(coords[0].trim()), Integer.parseInt(coords[1].trim()), Integer.parseInt(coords[2].trim()));
-				int value = Integer.parseInt(data[1]);
+                    WorldCoord key = new WorldCoord(Integer.parseInt(coords[0].trim()), Integer.parseInt(coords[1].trim()), Integer.parseInt(coords[2].trim()));
+                    int value = Integer.parseInt(data[1]);
 
-				map.put(key, value);
-			}
+                    map.put(key, value);
+                }
+				is.close();
+            }
 
-			br.close();
-		} catch (IOException e) {
+            if (br != null) {
+                br.close();
+            }
+        } catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
@@ -103,20 +108,24 @@ public class OceanMonument {
 		for (; y >= 0; y--) {
 			generatePillarSection(world, x, y, z, block, meta);
 			for (int i = 0; i < 4; i++)
-				for (int k = 0; k < 4; k++)
-					if (world.getBlock(x + i, y, z).blockMaterial != Material.water && y > 3) {
+				for (int k = 0; k < 4; k++) {
+					Block block1=world.getBlock(x + i, y, z);
+					if (block1!=null&&block1.blockMaterial != Material.water && y > 3) {
 						generatePillarSection(world, x, y - 1, z, block, meta);
 						generatePillarSection(world, x, y - 2, z, block, meta);
 						return;
 					}
+				}
 		}
 	}
 
 	private static void generatePillarSection(World world, int x, int y, int z, Block block, int meta) {
 		for (int i = 0; i < 4; i++)
-			for (int k = 0; k < 4; k++)
-				if (world.getBlock(x + i, y, z).getBlockHardness(meta) > 0)
+			for (int k = 0; k < 4; k++) {
+				Block block1=world.getBlock(x + i, y, z);
+				if (block1!=null&&block1.getBlockHardness(meta) > 0)
 					world.setBlock(x + i, y, z + k, block.blockID, meta, 2);
+			}
 	}
 
 	public static void generateFile(World world, int x, int y, int z, String path) {
@@ -156,7 +165,7 @@ public class OceanMonument {
 	}
 
 	public static boolean canSpawnAt(World worldObj, int chunkX, int chunkZ) {
-		int spacing = 32;
+		int spacing = 7;
 		int separation = 5;
 		int xx = chunkX;
 		int zz = chunkZ;
@@ -172,11 +181,15 @@ public class OceanMonument {
 		Random random = worldObj.setRandomSeed(i1, j1, 10387313);
 		i1 *= spacing;
 		j1 *= spacing;
-		i1 += (random.nextInt(spacing - separation) + random.nextInt(spacing - separation)) / 2;
-		j1 += (random.nextInt(spacing - separation) + random.nextInt(spacing - separation)) / 2;
+		int range = spacing - separation;
+		if (range <= 0) {
+			range = 1;  // 设置一个最小的合法值，避免 nextInt(0) 或 nextInt(负数)
+		}
+		i1 += (random.nextInt(range) + random.nextInt(range)) / 2;
+		j1 += (random.nextInt(range) + random.nextInt(range)) / 2;
 
 		if (xx == i1 && zz == j1) {
-			if (worldObj.getWorldChunkManager().getBiomeGenAt(xx * 16 + 8, zz * 16 + 8) != ModBiomes.deepOcean)
+			if (worldObj.getWorldChunkManager().getBiomeGenAt(xx * 16 + 8, zz * 16 + 8) != BiomeGenBase.ocean)
 				return false;
 			return worldObj.getWorldChunkManager().areBiomesViable(xx * 16 + 8, zz * 16 + 8, 29, validBiomes);
 		}

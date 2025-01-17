@@ -33,14 +33,14 @@ public class WorldGeneratorPlant extends WorldGenerator {
           if(block.blockID==Blocks.sweetBerryBush.blockID&&this.block.canOccurAt(par1World, set_x, set_y, set_z, 6))
           {
                 par1World.setBlock(set_x, set_y, set_z, block.blockID, BlockSweetBerry.setBerryStage(0, par2Random.nextInt(3)), 2);
-            System.out.print("barries :" + set_x + ","+set_y +","+ set_z);
+            //System.out.print("barries :" + set_x + ","+set_y +","+ set_z);
           }
           if (par1World.isAirBlock(set_x, set_y, set_z) && this.block.canOccurAt(par1World, set_x, set_y, set_z, 1)) {
             if(block.blockID==Blocks.bigGrass.blockID)
             {
               par1World.setBlock(set_x, set_y+1, set_z, block.blockID, 0, 2);
               par1World.setBlock(set_x, set_y, set_z, block.blockID, 1, 2);
-              System.out.print("tallgrass :" + set_x + ","+set_y +","+ set_z);
+              //System.out.print("tallgrass :" + set_x + ","+set_y +","+ set_z);
             }
           }
           if (par1World.isAirBlock(set_x, set_y, set_z) && this.block.canOccurAt(par1World, set_x, set_y, set_z, 3)) {
@@ -49,14 +49,14 @@ public class WorldGeneratorPlant extends WorldGenerator {
               if(var6%25!=0)continue;
               par1World.setBlock(set_x, set_y+1, set_z, block.blockID, 2, 2);
               par1World.setBlock(set_x, set_y, set_z, block.blockID, 3, 2);
-              System.out.print("tallfern :" + set_x + ","+set_y +","+ set_z);
+              //System.out.print("tallfern :" + set_x + ","+set_y +","+ set_z);
             }
           }
           if (par1World.isAirBlock(set_x, set_y, set_z) && this.block.canOccurAt(par1World, set_x, set_y, set_z, 2)) {
             if(block.blockID==Blocks.tallGrass.blockID)
             {
               par1World.setBlock(set_x, set_y, set_z, block.blockID, 2, 2);
-              System.out.print("fern :" + set_x + ","+set_y +","+ set_z);
+              //System.out.print("fern :" + set_x + ","+set_y +","+ set_z);
             }
           }
         }

@@ -13,7 +13,6 @@
 package com.github.FlyBird.FutureMITE.common;
 
 import com.github.FlyBird.FutureMITE.api.IWorldGenerator;
-import com.google.common.base.Objects;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
@@ -22,10 +21,6 @@ import com.google.common.primitives.Ints;
 import net.minecraft.IChunkProvider;
 import net.minecraft.World;
 
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
 import java.util.*;
 
 public class GameRegistry
@@ -92,91 +87,4 @@ public class GameRegistry
         });
         sortedGeneratorList = ImmutableList.copyOf(list);
     }
-
-
-
-    public static final class UniqueIdentifier
-    {
-        public final String modId;
-        public final String name;
-        UniqueIdentifier(String modId, String name)
-        {
-            this.modId = modId;
-            this.name = name;
-        }
-
-        public UniqueIdentifier(String string)
-        {
-            String[] parts = string.split(":");
-            this.modId = parts[0];
-            this.name = parts[1];
-        }
-
-        @Override
-        public boolean equals(Object obj)
-        {
-            if (obj == null) return false;
-            if (obj.getClass() != this.getClass()) return false;
-            final UniqueIdentifier other = (UniqueIdentifier) obj;
-            return Objects.equal(modId, other.modId) && Objects.equal(name, other.name);
-        }
-
-        @Override
-        public int hashCode()
-        {
-            return Objects.hashCode(modId, name);
-        }
-
-        @Override
-        public String toString()
-        {
-            return String.format("%s:%s", modId, name);
-        }
-    }
-
-    /**
-     * This will cause runtime injection of public static final fields to occur at various points
-     * where mod blocks and items <em>could</em> be subject to change. This allows for dynamic
-     * substitution to occur.
-     *
-     */
-    @Retention(RetentionPolicy.RUNTIME)
-    @Target({ElementType.TYPE, ElementType.FIELD})
-    public @interface ObjectHolder {
-        /**
-         * If used on a class, this represents a modid only.
-         * If used on a field, it represents a name, which can be abbreviated or complete.
-         * Abbreviated names derive their modid from an enclosing ObjectHolder at the class level.
-         *
-         * @return either a modid or a name based on the rules above
-         */
-        String value();
-    }
-
-    @Retention(RetentionPolicy.RUNTIME)
-    @Target(ElementType.FIELD)
-    public @interface ItemStackHolder
-    {
-        /**
-         * The registry name of the item being looked up.
-         * @return The registry name
-         */
-        public String value();
-
-        /**
-         * The metadata or damage value for the itemstack, defaults to 0.
-         * @return the metadata value
-         */
-        public int meta() default 0;
-
-        /**
-         * The string serialized nbt value for the itemstack. Defaults to empty for no nbt.
-         *
-         * @return a nbt string
-         */
-        public String nbt() default "";
-    }
-
-
-
 }

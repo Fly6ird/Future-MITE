@@ -13,13 +13,24 @@ public class BiomeGenerateListener implements IBiomeGenerateListener {
     @Override
     public int onLayerHills(GenLayer genLayer, int original) {
         if (original == BiomeGenBase.ocean.biomeID) {
-            return switch ((int) (genLayer.chunkSeed % 2L)) {
-                case 0 -> ModBiomes.deepOcean.biomeID;
-                default -> BiomeGenBase.ocean.biomeID;
-            };
+            return ModBiomes.deepOcean.biomeID;
+        }
+        return original;
+    }
+    // here the minecraft transform some plain into ice plain
+    public int onLayerAddSnow(GenLayer genLayer, int original) {
+        if (original == BiomeGenBase.ocean.biomeID) {
+            return ModBiomes.deepOcean.biomeID;
         }
         return original;
     }
 
+    // here the minecraft transform some ice plain into frozen ocean
+    public int onLayerAddIsland(GenLayer genLayer, int original) {
+        if (original == BiomeGenBase.ocean.biomeID) {
+            return ModBiomes.deepOcean.biomeID;
+        }
+        return original;
+    }
 
 }
