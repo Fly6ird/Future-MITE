@@ -1,7 +1,8 @@
 package com.github.FlyBird.FutureMITE.events.listener;
 
-import com.github.FlyBird.FutureMITE.blocks.BlockStrippedLog;
-import com.github.FlyBird.FutureMITE.blocks.BlockStrippedWood;
+import com.github.FlyBird.FutureMITE.blocks.BlockModLog;
+
+
 import moddedmite.rustedironcore.api.event.listener.IBarbecueListener;
 import net.minecraft.BlockLog;
 import net.minecraft.Item;
@@ -11,7 +12,7 @@ public class BarbecueListener implements IBarbecueListener {
     @Override
     public ItemStack getCookResult(ItemStack input) {
         Item item = input.getItem();
-        if (item.isBlock() && (item.getAsItemBlock().getBlock() instanceof BlockStrippedLog||item.getAsItemBlock().getBlock() instanceof BlockStrippedWood)) {
+        if (item.isBlock() && (item.getAsItemBlock().getBlock() instanceof BlockModLog)) {
             return new ItemStack(Item.coal, input.stackSize, 1);
         }
         return null;

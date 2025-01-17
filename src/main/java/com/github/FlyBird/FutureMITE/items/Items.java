@@ -23,9 +23,9 @@ public class Items extends Item {
 
     public static final Item sweetBerry = new ItemSweetBerry(getNextItemID(), 1, 1, false, true, Blocks.sweetBerryBush.blockID, "sweet_berries").setUnlocalizedName("sweetberries");
 
-    public static final Item birchDoor = new ItemNewDoor(getNextItemID(), EnumWoodType.BIRCH);
-    public static final Item jungleDoor = new ItemNewDoor(getNextItemID(),EnumWoodType.JUNGLE);
-    public static final Item spruceDoor = new ItemNewDoor(getNextItemID(),EnumWoodType.SPRUCE);
+    public static final ItemModDoor birchDoor = new ItemModDoor(getNextItemID(), Blocks.birchDoor,"birch");
+    public static final ItemModDoor jungleDoor = new ItemModDoor(getNextItemID(), Blocks.jungleDoor,"jungle");
+    public static final ItemModDoor spruceDoor = new ItemModDoor(getNextItemID(), Blocks.spruceDoor,"spruce");
 
     public static final ItemMeat rabbitRaw= (ItemMeat)(new ItemMeat(getNextItemID(), 3, 3, false, false, "rabbit_raw")).setUnlocalizedName("rabbitRaw");
     public static final ItemMeat rabbitCooked= (ItemMeat)(new ItemMeat(getNextItemID(), 6, 6, false, false, "rabbit_cooked")).setUnlocalizedName("rabbitCooked");
@@ -46,55 +46,27 @@ public class Items extends Item {
         super(id,material,texture);
     }
     public static void registerItems(ItemRegistryEvent event) {
-        event.register(FutureMITEStart.NameSpaceCompact,"doors/birch_door", birchDoor);
-        event.register(FutureMITEStart.NameSpaceCompact,"doors/jungle_door", jungleDoor);
-        event.register(FutureMITEStart.NameSpaceCompact,"doors/spruce_door", spruceDoor);
-        jungleDoor.setUnlocalizedName("jungledoor");
-        birchDoor.setUnlocalizedName("birchdoor");
-        spruceDoor.setUnlocalizedName("sprucedoor");
+
     }
 
     public static void registerRecipes(RecipeRegistryEvent register) {
         RecipesFurnaceExtend.registerFurnaceRecipes();
         register.registerShapedRecipe(new ItemStack(armourStand, 1), true, new Object[] {"AAA"," A ","ABA",Character.valueOf('A'),new ItemStack(Item.stick,1),Character.valueOf('B'),new ItemStack(Block.stoneSingleSlab,1)});
 
-        register.registerShapedRecipe(new ItemStack(birchDoor, 1), true, new Object[]{"AA ", "AA ", "AA ", Character.valueOf('A'), new ItemStack((Block.planks), 1, 2)});
-        register.registerShapedRecipe(new ItemStack(birchDoor, 1), true, new Object[] {" AA"," AA"," AA",Character.valueOf('A'),new ItemStack((Block.planks),1,2)});
-        register.registerShapedRecipe(new ItemStack(jungleDoor, 1), true, new Object[] {"AA ","AA ","AA ",Character.valueOf('A'),new ItemStack((Block.planks),1,3)});
-        register.registerShapedRecipe(new ItemStack(jungleDoor, 1), true, new Object[] {" AA"," AA"," AA",Character.valueOf('A'),new ItemStack((Block.planks),1,3)});
-        register.registerShapedRecipe(new ItemStack(spruceDoor, 1), true, new Object[] {"AA ","AA ","AA ",Character.valueOf('A'),new ItemStack((Block.planks),1,1)});
-        register.registerShapedRecipe(new ItemStack(spruceDoor, 1), true, new Object[] {" AA"," AA"," AA",Character.valueOf('A'),new ItemStack((Block.planks),1,1)});
-
+        birchDoor.registerRecipeWithVanilla(register,1);
+        jungleDoor.registerRecipeWithVanilla(register,2);
+        spruceDoor.registerRecipeWithVanilla(register,3);
+        rabbitCooked.is_cooked=true;
         register.registerShapelessRecipe(new ItemStack(bowlRabbitStew,1,0), true, new ItemStack(rabbitCooked),new ItemStack(carrot),new ItemStack(potato),new ItemStack(Block.mushroomRed),new ItemStack(bowlWater));
         register.registerShapelessRecipe(new ItemStack(bowlRabbitStew,1,0), true, new ItemStack(rabbitCooked),new ItemStack(carrot),new ItemStack(potato),new ItemStack(Block.mushroomBrown),new ItemStack(bowlWater));
         register.registerShapedRecipe(new ItemStack(leather,1),true,new Object[] {"AA","AA", 'A',new ItemStack(rabbitHide,1)});
 
-        registerBoatRecipes(register,oakBoat);
-        registerBoatRecipes(register,birchBoat);
-        registerBoatRecipes(register,jungleBoat);
-        registerBoatRecipes(register,spruceBoat);
-        registerBoatRecipes(register,oakChestBoat);
-        registerBoatRecipes(register,birchChestBoat);
-        registerBoatRecipes(register,jungleChestBoat);
-        registerBoatRecipes(register,spruceChestBoat);
-    }
-
-    public static void  registerBoatRecipes(RecipeRegistryEvent register,ItemNewBoat itemNewboat) {
-        //ItemNewBoat.BoatInfo boatInfo = ItemNewBoat.BOAT_INFO.get(itemNewboat.type);
-        if (!itemNewboat.isChest)
-            register.registerShapedRecipe(new ItemStack(itemNewboat, 1), true, new Object[]{"B B", "A A", "AAA", Character.valueOf('A'), itemNewboat.boatinfo.getPlank(), Character.valueOf('B'), new ItemStack(Item.shovelWood, 1)});
-        else {
-            ItemNewBoat.BoatInfo boatInfo = ItemNewBoat.BOAT_INFO.get(itemNewboat.name);//获取没有箱子的对应Boatinfo  以便为了获取没有箱子的船
-            register.registerShapedRecipe(new ItemStack(itemNewboat, 1), true, new Object[]{"A  ", "B  ", "   ", Character.valueOf('A'), new ItemStack(Block.chest), Character.valueOf('B'), boatInfo.getBoatItem()});
-            register.registerShapedRecipe(new ItemStack(itemNewboat, 1), true, new Object[]{" A ", " B ", "   ", Character.valueOf('A'), new ItemStack(Block.chest), Character.valueOf('B'), boatInfo.getBoatItem()});
-            register.registerShapedRecipe(new ItemStack(itemNewboat, 1), true, new Object[]{"  A", "  B", "   ", Character.valueOf('A'), new ItemStack(Block.chest), Character.valueOf('B'), boatInfo.getBoatItem()});
-            register.registerShapedRecipe(new ItemStack(itemNewboat, 1), true, new Object[]{"   ", "A  ", "B  ", Character.valueOf('A'), new ItemStack(Block.chest), Character.valueOf('B'), boatInfo.getBoatItem()});
-            register.registerShapedRecipe(new ItemStack(itemNewboat, 1), true, new Object[]{"   ", " A ", " B ", Character.valueOf('A'), new ItemStack(Block.chest), Character.valueOf('B'), boatInfo.getBoatItem()});
-            register.registerShapedRecipe(new ItemStack(itemNewboat, 1), true, new Object[]{"   ", "  A", "  B", Character.valueOf('A'), new ItemStack(Block.chest), Character.valueOf('B'), boatInfo.getBoatItem()});
-
-            register.registerShapedRecipe(new ItemStack(itemNewboat, 1), true, new Object[]{"B B", "ACA", "AAA", Character.valueOf('A'), itemNewboat.boatinfo.getPlank(), Character.valueOf('B'), new ItemStack(Item.shovelWood, 1), Character.valueOf('C'),new ItemStack(Block.chest)});
+        for (ItemNewBoat itemNewBoat: new ItemNewBoat[]{oakBoat,birchBoat,jungleBoat,spruceBoat,oakChestBoat,birchChestBoat,jungleChestBoat,spruceChestBoat}){
+            itemNewBoat.registerBoatRecipes(register);
         }
     }
+
+
 
     public static int getNextItemID() {
         return IdUtil.getNextItemID();
