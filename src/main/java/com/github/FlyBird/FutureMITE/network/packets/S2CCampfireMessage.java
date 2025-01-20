@@ -6,8 +6,8 @@ import net.minecraft.EntityPlayer;
 import net.minecraft.ResourceLocation;
 
 public class S2CCampfireMessage implements Packet {
-    private int[] itemID=new int[4];
-    private int[] itemBurnTime=new int[4];
+    private int[] itemID = new int[4];
+    private int[] itemBurnTime = new int[4];
 
     @Override
     public void write(PacketByteBuf packetByteBuf) {

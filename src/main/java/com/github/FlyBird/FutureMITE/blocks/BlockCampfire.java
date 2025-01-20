@@ -1,7 +1,6 @@
 package com.github.FlyBird.FutureMITE.blocks;
 
 
-
 import com.github.FlyBird.FutureMITE.misc.DamageSourceExtend;
 import com.github.FlyBird.FutureMITE.misc.EnumParticles;
 import com.github.FlyBird.FutureMITE.render.RenderTypes;
@@ -28,26 +27,27 @@ public class BlockCampfire extends BlockContainer {
         this.setBlockBoundsForAllThreads(0.0, 0.0, 0.0, 1.0, 0.4375, 1.0);
         this.setHardness(2.0f);
         this.setStepSound(soundWoodFootstep);
-        this.damage=damage;
+        this.damage = damage;
         setCreativeTab(CreativeTabs.tabDecorations);
     }
 
     @Override
     public int dropBlockAsEntityItem(BlockBreakInfo info) {
         if ((info.wasHarvestedByPlayer() || info.wasSelfDropped() || info.wasNotLegal())) {
-            return this.dropBlockAsEntityItem(info, new ItemStack(Item.coal,2,1));
+            return this.dropBlockAsEntityItem(info, new ItemStack(Item.coal, 2, 1));
         }
         return 0;
     }
 
-    private int FireTime=0;
+    private int FireTime = 0;
+
     @Override
     public void onEntityCollidedWithBlock(World par1World, int par2, int par3, int par4, Entity par5Entity) {
         if (par1World.isWorldServer()) {
             if (par5Entity instanceof EntityLivingBase) {
                 this.FireTime++;
-                if(FireTime>>4!=0) {
-                    FireTime=0;
+                if (FireTime >> 4 != 0) {
+                    FireTime = 0;
                     par5Entity.attackEntityFrom(new Damage(CAMPFIRE_DAMAGE, damage));
                 }
             }
@@ -113,14 +113,14 @@ public class BlockCampfire extends BlockContainer {
     }
 
     public void breakBlock(World world, int x, int y, int z, int blockid, int metadata) {
-        if (!world.isRemote)
-        {
+        if (!world.isRemote) {
             TileEntity tile = world.getBlockTileEntity(x, y, z);
             if (tile instanceof TileEntityCampfire)
                 ((TileEntityCampfire) tile).popItems();
         }
         super.breakBlock(world, x, y, z, blockid, metadata);
     }
+
     @Override
     public void randomDisplayTick(World par1World, int x, int y, int z, Random par5Random) {
         float var9;
@@ -132,18 +132,18 @@ public class BlockCampfire extends BlockContainer {
         }
 
         for (var6 = 0; var6 < 4; ++var6) {
-            var7 = (float) x +0.5f+ par5Random.nextFloat() * 0.1f;
+            var7 = (float) x + 0.5f + par5Random.nextFloat() * 0.1f;
             var8 = (float) y + par5Random.nextFloat();//随机返回一个0—1.0的浮点
-            var9 = (float) z +0.5f;
+            var9 = (float) z + 0.5f;
             par1World.spawnParticle(EnumParticles.largerSmoke, x, y, z, 0.0, 0.0, 0.0);
             par1World.spawnParticle(EnumParticle.smoke, var7, var8, var9, 0.0, 0.0, 0.0);
         }
 
-        if (par5Random.nextInt(5) == 0&& Objects.equals(this.getTextureName(), "campfire")) {
+        if (par5Random.nextInt(5) == 0 && Objects.equals(this.getTextureName(), "campfire")) {
             for (int i = 0; i < par5Random.nextInt(1) + 1; ++i) {
-                double var21 = (float)x + par5Random.nextFloat();
-                double var22 = (double)y + this.maxY[Minecraft.getThreadIndex()];
-                double var23 = (float)z + par5Random.nextFloat();
+                double var21 = (float) x + par5Random.nextFloat();
+                double var22 = (double) y + this.maxY[Minecraft.getThreadIndex()];
+                double var23 = (float) z + par5Random.nextFloat();
                 par1World.spawnParticle(EnumParticle.lava, var21, var22, var23, 0.0, 0.0, 0.0);
             }
         }
@@ -153,8 +153,7 @@ public class BlockCampfire extends BlockContainer {
     @Override
     public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, EnumFace face, float dx, float dy, float dz) {
         ItemStack heldItemStack = player.getHeldItemStack();
-        if(heldItemStack.getItem() instanceof ItemShovel)
-        {
+        if (heldItemStack.getItem() instanceof ItemShovel) {
             if (player.onClient()) {
                 player.swingArm();
                 Minecraft.theMinecraft.playerController.setUseButtonDelayOverride(200);
@@ -162,33 +161,30 @@ public class BlockCampfire extends BlockContainer {
                 //Auxiliary sound    1004灭火声音
                 world.playAuxSFXAtEntity(null, 1004, x, y, z, 0);
                 player.tryDamageHeldItem(DamageSource.generic, 2);
-                TileEntityCampfire.updateCampfireBlockState(false,world,x,y,z);
+                TileEntityCampfire.updateCampfireBlockState(false, world, x, y, z);
             }
             return true;
         }
 
-        TileEntityCampfire tile = (TileEntityCampfire)world.getBlockTileEntity(x, y, z);
+        TileEntityCampfire tile = (TileEntityCampfire) world.getBlockTileEntity(x, y, z);
         if (tile == null) {
             return false;
         }
         if (tile.getCookFood(heldItemStack) != null) {
-            ItemStack queueItemStack=new ItemStack(heldItemStack.itemID,1);
-            if(tile.joinCookQueue(queueItemStack))
-            {
-                if(world.isRemote)
-                {
+            ItemStack queueItemStack = new ItemStack(heldItemStack.itemID, 1);
+            if (tile.joinCookQueue(queueItemStack)) {
+                if (world.isRemote) {
                     player.swingArm();
                 } else {
-                    if(!player.capabilities.isCreativeMode)
+                    if (!player.capabilities.isCreativeMode)
                         --heldItemStack.stackSize;
                 }
             }
-        }
-        else if(heldItemStack.getItem().getBurnTime(heldItemStack)>0&&heldItemStack.getItem().getHeatLevel(heldItemStack)<3) {
+        } else if (heldItemStack.getItem().getBurnTime(heldItemStack) > 0 && heldItemStack.getItem().getHeatLevel(heldItemStack) < 3) {
             if (world.isRemote) {
                 player.swingArm();
             } else {
-                if (!player.capabilities.isCreativeMode&&tile.addBurnTime(heldItemStack.getItem().getBurnTime(heldItemStack)))
+                if (!player.capabilities.isCreativeMode && tile.addBurnTime(heldItemStack.getItem().getBurnTime(heldItemStack)))
                     --heldItemStack.stackSize;
             }
         }

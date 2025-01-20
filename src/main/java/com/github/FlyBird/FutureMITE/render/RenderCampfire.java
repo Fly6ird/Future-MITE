@@ -1,82 +1,81 @@
 package com.github.FlyBird.FutureMITE.render;
 
 
-
 import com.github.FlyBird.FutureMITE.blocks.BlockCampfire;
 import net.minecraft.IBlockAccess;
 import net.minecraft.Icon;
 import net.minecraft.Tessellator;
 
 public class RenderCampfire {
-    public static RenderCampfire instance=new RenderCampfire();
-    public void DrawRenderCampfire(BlockCampfire par1Block, int metadata, int x, int y, int z, IBlockAccess blockAccess)
-    {
+    public static RenderCampfire instance = new RenderCampfire();
+
+    public void DrawRenderCampfire(BlockCampfire par1Block, int metadata, int x, int y, int z, IBlockAccess blockAccess) {
         Tessellator tessellator = Tessellator.instance;
         tessellator.setBrightness(par1Block.getMixedBrightnessForBlock(blockAccess, x, y, z));
         tessellator.setColorOpaque_F(1.0f, 1.0f, 1.0f);
 
-        Icon picture =par1Block.getIcon(2,0);//获取营火贴图
+        Icon picture = par1Block.getIcon(2, 0);//获取营火贴图
 
         Icon firePicture = par1Block.getFireIcon(0);
         Icon fireLitPicture = par1Block.getFireIcon(1);//灼烧
 
-        double fireMinU=firePicture.getMinU();
-        double fireMinV=firePicture.getMinV();
-        double fireMaxU=firePicture.getMaxU();
-        double fireMaxV=firePicture.getMaxV();
+        double fireMinU = firePicture.getMinU();
+        double fireMinV = firePicture.getMinV();
+        double fireMaxU = firePicture.getMaxU();
+        double fireMaxV = firePicture.getMaxV();
 
-        tessellator.addVertexWithUV(x,y,z,fireMaxU,fireMaxV);
-        tessellator.addVertexWithUV(x,y+1,z,fireMaxU,fireMinV);
-        tessellator.addVertexWithUV(x+1,y+1,z+1,fireMinU,fireMinV);
-        tessellator.addVertexWithUV(x+1,y,z+1,fireMinU,fireMaxV);
+        tessellator.addVertexWithUV(x, y, z, fireMaxU, fireMaxV);
+        tessellator.addVertexWithUV(x, y + 1, z, fireMaxU, fireMinV);
+        tessellator.addVertexWithUV(x + 1, y + 1, z + 1, fireMinU, fireMinV);
+        tessellator.addVertexWithUV(x + 1, y, z + 1, fireMinU, fireMaxV);
 
-        tessellator.addVertexWithUV(x+1,y,z+1,fireMinU,fireMaxV);
-        tessellator.addVertexWithUV(x+1,y+1,z+1,fireMinU,fireMinV);
-        tessellator.addVertexWithUV(x,y+1,z,fireMaxU,fireMinV);
-        tessellator.addVertexWithUV(x,y,z,fireMaxU,fireMaxV);
+        tessellator.addVertexWithUV(x + 1, y, z + 1, fireMinU, fireMaxV);
+        tessellator.addVertexWithUV(x + 1, y + 1, z + 1, fireMinU, fireMinV);
+        tessellator.addVertexWithUV(x, y + 1, z, fireMaxU, fireMinV);
+        tessellator.addVertexWithUV(x, y, z, fireMaxU, fireMaxV);
 
-        tessellator.addVertexWithUV(x+1,y,z,fireMinU,fireMaxV);
-        tessellator.addVertexWithUV(x+1,y+1,z,fireMinU,fireMinV);
-        tessellator.addVertexWithUV(x,y+1,z+1,fireMaxU,fireMinV);
-        tessellator.addVertexWithUV(x,y,z+1,fireMaxU,fireMaxV);
+        tessellator.addVertexWithUV(x + 1, y, z, fireMinU, fireMaxV);
+        tessellator.addVertexWithUV(x + 1, y + 1, z, fireMinU, fireMinV);
+        tessellator.addVertexWithUV(x, y + 1, z + 1, fireMaxU, fireMinV);
+        tessellator.addVertexWithUV(x, y, z + 1, fireMaxU, fireMaxV);
 
-        tessellator.addVertexWithUV(x,y,z+1,fireMaxU,fireMaxV);
-        tessellator.addVertexWithUV(x,y+1,z+1,fireMaxU,fireMinV);
-        tessellator.addVertexWithUV(x+1,y+1,z,fireMinU,fireMinV);
-        tessellator.addVertexWithUV(x+1,y,z,fireMinU,fireMaxV);
+        tessellator.addVertexWithUV(x, y, z + 1, fireMaxU, fireMaxV);
+        tessellator.addVertexWithUV(x, y + 1, z + 1, fireMaxU, fireMinV);
+        tessellator.addVertexWithUV(x + 1, y + 1, z, fireMinU, fireMinV);
+        tessellator.addVertexWithUV(x + 1, y, z, fireMinU, fireMaxV);
 
         //木头边的UV图
-        double WoodSideMinU=picture.getInterpolatedU(0);
-        double WoodSideMinV=picture.getInterpolatedV(0);
-        double WoodSideMaxU=picture.getInterpolatedU(16);
-        double WoodSideMaxV=picture.getInterpolatedV(4);
+        double WoodSideMinU = picture.getInterpolatedU(0);
+        double WoodSideMinV = picture.getInterpolatedV(0);
+        double WoodSideMaxU = picture.getInterpolatedU(16);
+        double WoodSideMaxV = picture.getInterpolatedV(4);
 
         //木头正面的UV图
-        double WoodFaceMinU=picture.getInterpolatedU(0);
-        double WoodFaceMinV=picture.getInterpolatedV(4);
-        double WoodFaceMaxU=picture.getInterpolatedU(4);
-        double WoodFaceMaxV=picture.getInterpolatedV(8);
+        double WoodFaceMinU = picture.getInterpolatedU(0);
+        double WoodFaceMinV = picture.getInterpolatedV(4);
+        double WoodFaceMaxU = picture.getInterpolatedU(4);
+        double WoodFaceMaxV = picture.getInterpolatedV(8);
 
         //石头 侧面纹理
-        double BaseSideMinU=picture.getInterpolatedU(0);
-        double BaseSideMinV=picture.getInterpolatedV(15);
-        double BaseSideMaxU=picture.getInterpolatedU(6);
-        double BaseSideMaxV=picture.getInterpolatedV(16);
+        double BaseSideMinU = picture.getInterpolatedU(0);
+        double BaseSideMinV = picture.getInterpolatedV(15);
+        double BaseSideMaxU = picture.getInterpolatedU(6);
+        double BaseSideMaxV = picture.getInterpolatedV(16);
 
         //石头 底面纹理
-        double StoneBaseMinU=picture.getInterpolatedU(0);
-        double StoneBaseMinV=picture.getInterpolatedV(10);
-        double StoneMaxU=picture.getInterpolatedU(16);
-        double StoneBaseMaxV=picture.getInterpolatedV(16);
+        double StoneBaseMinU = picture.getInterpolatedU(0);
+        double StoneBaseMinV = picture.getInterpolatedV(10);
+        double StoneMaxU = picture.getInterpolatedU(16);
+        double StoneBaseMaxV = picture.getInterpolatedV(16);
 
-        double length_offset=0.25;
-        double Set_x=x+0.0625;
-        double Set_y=y;
-        double Set_z=z;
+        double length_offset = 0.25;
+        double Set_x = x + 0.0625;
+        double Set_y = y;
+        double Set_z = z;
 
-        int direction=metadata&0xC;
+        int direction = metadata & 0xC;
 
-        if(direction==4||direction==0) {
+        if (direction == 4 || direction == 0) {
 //绘制右支柱木头
             tessellator.addVertexWithUV(Set_x + length_offset, Set_y, Set_z, WoodSideMaxU, WoodSideMaxV);   //底面
             tessellator.addVertexWithUV(Set_x + length_offset, Set_y, Set_z + 1, WoodSideMinU, WoodSideMaxV);
@@ -99,19 +98,19 @@ public class RenderCampfire {
             tessellator.addVertexWithUV(Set_x, Set_y + length_offset, Set_z, WoodSideMaxU, WoodSideMaxV);
 
             //侧面灼烧
-            WoodSideMinU=fireLitPicture.getInterpolatedU(0);
-            WoodSideMinV=fireLitPicture.getInterpolatedV(4);
-            WoodSideMaxU=fireLitPicture.getInterpolatedU(16);
-            WoodSideMaxV=fireLitPicture.getInterpolatedV(8);
+            WoodSideMinU = fireLitPicture.getInterpolatedU(0);
+            WoodSideMinV = fireLitPicture.getInterpolatedV(4);
+            WoodSideMaxU = fireLitPicture.getInterpolatedU(16);
+            WoodSideMaxV = fireLitPicture.getInterpolatedV(8);
             Set_x = Set_x + length_offset;
             tessellator.addVertexWithUV(Set_x, Set_y + length_offset, Set_z, WoodSideMaxU, WoodSideMaxV);//侧面 左边
             tessellator.addVertexWithUV(Set_x, Set_y + length_offset, Set_z + 1, WoodSideMinU, WoodSideMaxV);
             tessellator.addVertexWithUV(Set_x, Set_y, Set_z + 1, WoodSideMinU, WoodSideMinV);
             tessellator.addVertexWithUV(Set_x, Set_y, Set_z, WoodSideMaxU, WoodSideMinV);
-            WoodSideMinU=picture.getInterpolatedU(0);
-            WoodSideMinV=picture.getInterpolatedV(0);
-            WoodSideMaxU=picture.getInterpolatedU(16);
-            WoodSideMaxV=picture.getInterpolatedV(4);
+            WoodSideMinU = picture.getInterpolatedU(0);
+            WoodSideMinV = picture.getInterpolatedV(0);
+            WoodSideMaxU = picture.getInterpolatedU(16);
+            WoodSideMaxV = picture.getInterpolatedV(4);
 
             Set_x = Set_x - length_offset;
             tessellator.addVertexWithUV(Set_x, Set_y + length_offset, Set_z, WoodSideMaxU, WoodSideMinV);//侧面 最上面
@@ -138,18 +137,18 @@ public class RenderCampfire {
             tessellator.addVertexWithUV(Set_x, Set_y, Set_z + 1, WoodFaceMaxU, WoodFaceMaxV);
 
             //侧面灼烧
-            WoodSideMinU=fireLitPicture.getInterpolatedU(0);
-            WoodSideMinV=fireLitPicture.getInterpolatedV(4);
-            WoodSideMaxU=fireLitPicture.getInterpolatedU(16);
-            WoodSideMaxV=fireLitPicture.getInterpolatedV(8);
+            WoodSideMinU = fireLitPicture.getInterpolatedU(0);
+            WoodSideMinV = fireLitPicture.getInterpolatedV(4);
+            WoodSideMaxU = fireLitPicture.getInterpolatedU(16);
+            WoodSideMaxV = fireLitPicture.getInterpolatedV(8);
             tessellator.addVertexWithUV(Set_x, Set_y, Set_z, WoodSideMaxU, WoodSideMinV);//侧面 右边
             tessellator.addVertexWithUV(Set_x, Set_y, Set_z + 1, WoodSideMinU, WoodSideMinV);
             tessellator.addVertexWithUV(Set_x, Set_y + length_offset, Set_z + 1, WoodSideMinU, WoodSideMaxV);
             tessellator.addVertexWithUV(Set_x, Set_y + length_offset, Set_z, WoodSideMaxU, WoodSideMaxV);
-            WoodSideMinU=picture.getInterpolatedU(0);
-            WoodSideMinV=picture.getInterpolatedV(0);
-            WoodSideMaxU=picture.getInterpolatedU(16);
-            WoodSideMaxV=picture.getInterpolatedV(4);
+            WoodSideMinU = picture.getInterpolatedU(0);
+            WoodSideMinV = picture.getInterpolatedV(0);
+            WoodSideMaxU = picture.getInterpolatedU(16);
+            WoodSideMaxV = picture.getInterpolatedV(4);
 
             Set_x = Set_x + length_offset;
             tessellator.addVertexWithUV(Set_x, Set_y + length_offset, Set_z, WoodSideMaxU, WoodSideMaxV);//侧面 左边
@@ -172,10 +171,10 @@ public class RenderCampfire {
             tessellator.addVertexWithUV(Set_x, Set_y, Set_z + 1, StoneBaseMinU, StoneBaseMinV);
             tessellator.addVertexWithUV(Set_x, Set_y, Set_z, StoneMaxU, StoneBaseMinV);
 
-            StoneBaseMinU=fireLitPicture.getInterpolatedU(0);
-            StoneBaseMinV=fireLitPicture.getInterpolatedV(8);
-            StoneMaxU=fireLitPicture.getInterpolatedU(16);
-            StoneBaseMaxV=fireLitPicture.getInterpolatedV(14);
+            StoneBaseMinU = fireLitPicture.getInterpolatedU(0);
+            StoneBaseMinV = fireLitPicture.getInterpolatedV(8);
+            StoneMaxU = fireLitPicture.getInterpolatedU(16);
+            StoneBaseMaxV = fireLitPicture.getInterpolatedV(14);
 
             tessellator.addVertexWithUV(Set_x, Set_y + 0.0625, Set_z, StoneMaxU, StoneBaseMinV);
             tessellator.addVertexWithUV(Set_x, Set_y + 0.0625, Set_z + 1, StoneBaseMinU, StoneBaseMinV);
@@ -199,18 +198,18 @@ public class RenderCampfire {
             length_offset = 0.25;
 
             //侧面灼烧
-            WoodSideMinU=fireLitPicture.getInterpolatedU(0);
-            WoodSideMinV=fireLitPicture.getInterpolatedV(0);
-            WoodSideMaxU=fireLitPicture.getInterpolatedU(16);
-            WoodSideMaxV=fireLitPicture.getInterpolatedV(4);
+            WoodSideMinU = fireLitPicture.getInterpolatedU(0);
+            WoodSideMinV = fireLitPicture.getInterpolatedV(0);
+            WoodSideMaxU = fireLitPicture.getInterpolatedU(16);
+            WoodSideMaxV = fireLitPicture.getInterpolatedV(4);
             tessellator.addVertexWithUV(Set_x, Set_y, Set_z, WoodSideMaxU, WoodSideMaxV);
             tessellator.addVertexWithUV(Set_x, Set_y + length_offset, Set_z, WoodSideMaxU, WoodSideMinV);
             tessellator.addVertexWithUV(Set_x + 1, Set_y + length_offset, Set_z, WoodSideMinU, WoodSideMinV);
             tessellator.addVertexWithUV(Set_x + 1, Set_y, Set_z, WoodSideMinU, WoodSideMaxV);
-            WoodSideMinU=picture.getInterpolatedU(0);
-            WoodSideMinV=picture.getInterpolatedV(0);
-            WoodSideMaxU=picture.getInterpolatedU(16);
-            WoodSideMaxV=picture.getInterpolatedV(4);
+            WoodSideMinU = picture.getInterpolatedU(0);
+            WoodSideMinV = picture.getInterpolatedV(0);
+            WoodSideMaxU = picture.getInterpolatedU(16);
+            WoodSideMaxV = picture.getInterpolatedV(4);
 
             tessellator.addVertexWithUV(Set_x + 1, Set_y, Set_z + length_offset, WoodSideMinU, WoodSideMaxV);
             tessellator.addVertexWithUV(Set_x + 1, Set_y + length_offset, Set_z + length_offset, WoodSideMinU, WoodSideMinV);
@@ -218,18 +217,18 @@ public class RenderCampfire {
             tessellator.addVertexWithUV(Set_x, Set_y, Set_z + length_offset, WoodSideMaxU, WoodSideMaxV);
 
             //侧面灼烧
-            WoodSideMinU=fireLitPicture.getInterpolatedU(0);
-            WoodSideMinV=fireLitPicture.getInterpolatedV(4);
-            WoodSideMaxU=fireLitPicture.getInterpolatedU(16);
-            WoodSideMaxV=fireLitPicture.getInterpolatedV(8);
+            WoodSideMinU = fireLitPicture.getInterpolatedU(0);
+            WoodSideMinV = fireLitPicture.getInterpolatedV(4);
+            WoodSideMaxU = fireLitPicture.getInterpolatedU(16);
+            WoodSideMaxV = fireLitPicture.getInterpolatedV(8);
             tessellator.addVertexWithUV(Set_x + 1, Set_y, Set_z, WoodSideMinU, WoodSideMaxV);
             tessellator.addVertexWithUV(Set_x + 1, Set_y, Set_z + length_offset, WoodSideMinU, WoodSideMinV);
             tessellator.addVertexWithUV(Set_x, Set_y, Set_z + length_offset, WoodSideMaxU, WoodSideMinV);
             tessellator.addVertexWithUV(Set_x, Set_y, Set_z, WoodSideMaxU, WoodSideMaxV);
-            WoodSideMinU=picture.getInterpolatedU(0);
-            WoodSideMinV=picture.getInterpolatedV(0);
-            WoodSideMaxU=picture.getInterpolatedU(16);
-            WoodSideMaxV=picture.getInterpolatedV(4);
+            WoodSideMinU = picture.getInterpolatedU(0);
+            WoodSideMinV = picture.getInterpolatedV(0);
+            WoodSideMaxU = picture.getInterpolatedU(16);
+            WoodSideMaxV = picture.getInterpolatedV(4);
 
             tessellator.addVertexWithUV(Set_x, Set_y + length_offset, Set_z, WoodSideMaxU, WoodSideMaxV);
             tessellator.addVertexWithUV(Set_x, Set_y + length_offset, Set_z + length_offset, WoodSideMaxU, WoodSideMinV);
@@ -254,32 +253,32 @@ public class RenderCampfire {
             tessellator.addVertexWithUV(Set_x + 1, Set_y, Set_z, WoodSideMinU, WoodSideMaxV);
 
             //侧面灼烧
-            WoodSideMinU=fireLitPicture.getInterpolatedU(0);
-            WoodSideMinV=fireLitPicture.getInterpolatedV(0);
-            WoodSideMaxU=fireLitPicture.getInterpolatedU(16);
-            WoodSideMaxV=fireLitPicture.getInterpolatedV(4);
+            WoodSideMinU = fireLitPicture.getInterpolatedU(0);
+            WoodSideMinV = fireLitPicture.getInterpolatedV(0);
+            WoodSideMaxU = fireLitPicture.getInterpolatedU(16);
+            WoodSideMaxV = fireLitPicture.getInterpolatedV(4);
             tessellator.addVertexWithUV(Set_x + 1, Set_y, Set_z + length_offset, WoodSideMinU, WoodSideMaxV);
             tessellator.addVertexWithUV(Set_x + 1, Set_y + length_offset, Set_z + length_offset, WoodSideMinU, WoodSideMinV);
             tessellator.addVertexWithUV(Set_x, Set_y + length_offset, Set_z + length_offset, WoodSideMaxU, WoodSideMinV);
             tessellator.addVertexWithUV(Set_x, Set_y, Set_z + length_offset, WoodSideMaxU, WoodSideMaxV);
-            WoodSideMinU=picture.getInterpolatedU(0);
-            WoodSideMinV=picture.getInterpolatedV(0);
-            WoodSideMaxU=picture.getInterpolatedU(16);
-            WoodSideMaxV=picture.getInterpolatedV(4);
+            WoodSideMinU = picture.getInterpolatedU(0);
+            WoodSideMinV = picture.getInterpolatedV(0);
+            WoodSideMaxU = picture.getInterpolatedU(16);
+            WoodSideMaxV = picture.getInterpolatedV(4);
 
             //侧面灼烧
-            WoodSideMinU=fireLitPicture.getInterpolatedU(0);
-            WoodSideMinV=fireLitPicture.getInterpolatedV(4);
-            WoodSideMaxU=fireLitPicture.getInterpolatedU(16);
-            WoodSideMaxV=fireLitPicture.getInterpolatedV(8);
+            WoodSideMinU = fireLitPicture.getInterpolatedU(0);
+            WoodSideMinV = fireLitPicture.getInterpolatedV(4);
+            WoodSideMaxU = fireLitPicture.getInterpolatedU(16);
+            WoodSideMaxV = fireLitPicture.getInterpolatedV(8);
             tessellator.addVertexWithUV(Set_x + 1, Set_y, Set_z, WoodSideMinU, WoodSideMaxV);
             tessellator.addVertexWithUV(Set_x + 1, Set_y, Set_z + length_offset, WoodSideMinU, WoodSideMinV);
             tessellator.addVertexWithUV(Set_x, Set_y, Set_z + length_offset, WoodSideMaxU, WoodSideMinV);
             tessellator.addVertexWithUV(Set_x, Set_y, Set_z, WoodSideMaxU, WoodSideMaxV);
-            WoodSideMinU=picture.getInterpolatedU(0);
-            WoodSideMinV=picture.getInterpolatedV(0);
-            WoodSideMaxU=picture.getInterpolatedU(16);
-            WoodSideMaxV=picture.getInterpolatedV(4);
+            WoodSideMinU = picture.getInterpolatedU(0);
+            WoodSideMinV = picture.getInterpolatedV(0);
+            WoodSideMaxU = picture.getInterpolatedU(16);
+            WoodSideMaxV = picture.getInterpolatedV(4);
 
             tessellator.addVertexWithUV(Set_x, Set_y + length_offset, Set_z, WoodSideMaxU, WoodSideMaxV);
             tessellator.addVertexWithUV(Set_x, Set_y + length_offset, Set_z + length_offset, WoodSideMaxU, WoodSideMinV);
@@ -296,60 +295,59 @@ public class RenderCampfire {
             tessellator.addVertexWithUV(Set_x + 1, Set_y, Set_z + length_offset, WoodFaceMaxU, WoodFaceMaxV);
             tessellator.addVertexWithUV(Set_x + 1, Set_y, Set_z, WoodFaceMinU, WoodFaceMaxV);
         }
-        if(direction==8)
-        {
-            Set_x=z+0.0625;
-            Set_y=y;
-            Set_z=x;
+        if (direction == 8) {
+            Set_x = z + 0.0625;
+            Set_y = y;
+            Set_z = x;
 
             tessellator.addVertexWithUV(Set_z, Set_y, Set_x, WoodSideMaxU, WoodSideMinV);
-            tessellator.addVertexWithUV(Set_z+1, Set_y, Set_x, WoodSideMinU, WoodSideMinV);
-            tessellator.addVertexWithUV(Set_z+1, Set_y, Set_x + length_offset, WoodSideMinU, WoodSideMaxV);
+            tessellator.addVertexWithUV(Set_z + 1, Set_y, Set_x, WoodSideMinU, WoodSideMinV);
+            tessellator.addVertexWithUV(Set_z + 1, Set_y, Set_x + length_offset, WoodSideMinU, WoodSideMaxV);
             tessellator.addVertexWithUV(Set_z, Set_y, Set_x + length_offset, WoodSideMaxU, WoodSideMaxV);
 
 
-            tessellator.addVertexWithUV(Set_z , Set_y, Set_x+ length_offset, WoodFaceMinU, WoodFaceMaxV);
+            tessellator.addVertexWithUV(Set_z, Set_y, Set_x + length_offset, WoodFaceMinU, WoodFaceMaxV);
             tessellator.addVertexWithUV(Set_z, Set_y + length_offset, Set_x + length_offset, WoodFaceMinU, WoodFaceMinV);
             tessellator.addVertexWithUV(Set_z, Set_y + length_offset, Set_x, WoodFaceMaxU, WoodFaceMinV);
             tessellator.addVertexWithUV(Set_z, Set_y, Set_x, WoodFaceMaxU, WoodFaceMaxV);//木头正面
 
-            tessellator.addVertexWithUV(Set_z+1, Set_y, Set_x, WoodFaceMaxU, WoodFaceMaxV);
-            tessellator.addVertexWithUV(Set_z+1, Set_y + length_offset, Set_x, WoodFaceMaxU, WoodFaceMinV);
+            tessellator.addVertexWithUV(Set_z + 1, Set_y, Set_x, WoodFaceMaxU, WoodFaceMaxV);
+            tessellator.addVertexWithUV(Set_z + 1, Set_y + length_offset, Set_x, WoodFaceMaxU, WoodFaceMinV);
             tessellator.addVertexWithUV(Set_z + 1, Set_y + length_offset, Set_x + length_offset, WoodFaceMinU, WoodFaceMinV);
             tessellator.addVertexWithUV(Set_z + 1, Set_y, Set_x + length_offset, WoodFaceMinU, WoodFaceMaxV);//木头另外一边正面
 
             tessellator.addVertexWithUV(Set_z, Set_y + length_offset, Set_x, WoodSideMaxU, WoodSideMaxV);
-            tessellator.addVertexWithUV(Set_z+1, Set_y + length_offset, Set_x, WoodSideMinU, WoodSideMaxV);
-            tessellator.addVertexWithUV(Set_z+1, Set_y, Set_x, WoodSideMinU, WoodSideMinV);
+            tessellator.addVertexWithUV(Set_z + 1, Set_y + length_offset, Set_x, WoodSideMinU, WoodSideMaxV);
+            tessellator.addVertexWithUV(Set_z + 1, Set_y, Set_x, WoodSideMinU, WoodSideMinV);
             tessellator.addVertexWithUV(Set_z, Set_y, Set_x, WoodSideMaxU, WoodSideMinV);//侧面 右边
 
             //侧面灼烧
-            WoodSideMinU=fireLitPicture.getInterpolatedU(0);
-            WoodSideMinV=fireLitPicture.getInterpolatedV(4);
-            WoodSideMaxU=fireLitPicture.getInterpolatedU(16);
-            WoodSideMaxV=fireLitPicture.getInterpolatedV(8);
+            WoodSideMinU = fireLitPicture.getInterpolatedU(0);
+            WoodSideMinV = fireLitPicture.getInterpolatedV(4);
+            WoodSideMaxU = fireLitPicture.getInterpolatedU(16);
+            WoodSideMaxV = fireLitPicture.getInterpolatedV(8);
             Set_x = Set_x + length_offset;
             tessellator.addVertexWithUV(Set_z, Set_y, Set_x, WoodSideMaxU, WoodSideMinV);
-            tessellator.addVertexWithUV(Set_z+1, Set_y, Set_x, WoodSideMinU, WoodSideMinV);
-            tessellator.addVertexWithUV(Set_z+1, Set_y + length_offset, Set_x, WoodSideMinU, WoodSideMaxV);
+            tessellator.addVertexWithUV(Set_z + 1, Set_y, Set_x, WoodSideMinU, WoodSideMinV);
+            tessellator.addVertexWithUV(Set_z + 1, Set_y + length_offset, Set_x, WoodSideMinU, WoodSideMaxV);
             tessellator.addVertexWithUV(Set_z, Set_y + length_offset, Set_x, WoodSideMaxU, WoodSideMaxV);//侧面 左边
-            WoodSideMinU=picture.getInterpolatedU(0);
-            WoodSideMinV=picture.getInterpolatedV(0);
-            WoodSideMaxU=picture.getInterpolatedU(16);
-            WoodSideMaxV=picture.getInterpolatedV(4);
+            WoodSideMinU = picture.getInterpolatedU(0);
+            WoodSideMinV = picture.getInterpolatedV(0);
+            WoodSideMaxU = picture.getInterpolatedU(16);
+            WoodSideMaxV = picture.getInterpolatedV(4);
 
 
             Set_x = Set_x - length_offset;
-            tessellator.addVertexWithUV(Set_z , Set_y + length_offset, Set_x + length_offset, WoodSideMaxU, WoodSideMaxV);
-            tessellator.addVertexWithUV(Set_z+1, Set_y + length_offset, Set_x + length_offset, WoodSideMinU, WoodSideMaxV);
-            tessellator.addVertexWithUV(Set_z+1, Set_y + length_offset, Set_x, WoodSideMinU, WoodSideMinV);
+            tessellator.addVertexWithUV(Set_z, Set_y + length_offset, Set_x + length_offset, WoodSideMaxU, WoodSideMaxV);
+            tessellator.addVertexWithUV(Set_z + 1, Set_y + length_offset, Set_x + length_offset, WoodSideMinU, WoodSideMaxV);
+            tessellator.addVertexWithUV(Set_z + 1, Set_y + length_offset, Set_x, WoodSideMinU, WoodSideMinV);
             tessellator.addVertexWithUV(Set_z, Set_y + length_offset, Set_x, WoodSideMaxU, WoodSideMinV);//侧面 最上面
 
 //绘制左支柱木头
             Set_x = z + 1.0 - length_offset - 0.0625;
             tessellator.addVertexWithUV(Set_z, Set_y, Set_x, WoodSideMaxU, WoodSideMinV);
-            tessellator.addVertexWithUV(Set_z+1, Set_y, Set_x, WoodSideMinU, WoodSideMinV);
-            tessellator.addVertexWithUV(Set_z+1, Set_y, Set_x + length_offset, WoodSideMinU, WoodSideMaxV);
+            tessellator.addVertexWithUV(Set_z + 1, Set_y, Set_x, WoodSideMinU, WoodSideMinV);
+            tessellator.addVertexWithUV(Set_z + 1, Set_y, Set_x + length_offset, WoodSideMinU, WoodSideMaxV);
             tessellator.addVertexWithUV(Set_z, Set_y, Set_x + length_offset, WoodSideMaxU, WoodSideMaxV);
 
             tessellator.addVertexWithUV(Set_z, Set_y, Set_x + length_offset, WoodFaceMinU, WoodFaceMaxV);
@@ -357,56 +355,55 @@ public class RenderCampfire {
             tessellator.addVertexWithUV(Set_z, Set_y + length_offset, Set_x, WoodFaceMaxU, WoodFaceMinV);
             tessellator.addVertexWithUV(Set_z, Set_y, Set_x, WoodFaceMaxU, WoodFaceMaxV);//木头正面
 
-            tessellator.addVertexWithUV(Set_z+1, Set_y, Set_x, WoodFaceMaxU, WoodFaceMaxV);
-            tessellator.addVertexWithUV(Set_z+1, Set_y + length_offset, Set_x, WoodFaceMaxU, WoodFaceMinV);
-            tessellator.addVertexWithUV(Set_z+1, Set_y + length_offset, Set_x + length_offset, WoodFaceMinU, WoodFaceMinV);
-            tessellator.addVertexWithUV(Set_z+1, Set_y, Set_x + length_offset, WoodFaceMinU, WoodFaceMaxV);//木头另外一边正面
+            tessellator.addVertexWithUV(Set_z + 1, Set_y, Set_x, WoodFaceMaxU, WoodFaceMaxV);
+            tessellator.addVertexWithUV(Set_z + 1, Set_y + length_offset, Set_x, WoodFaceMaxU, WoodFaceMinV);
+            tessellator.addVertexWithUV(Set_z + 1, Set_y + length_offset, Set_x + length_offset, WoodFaceMinU, WoodFaceMinV);
+            tessellator.addVertexWithUV(Set_z + 1, Set_y, Set_x + length_offset, WoodFaceMinU, WoodFaceMaxV);//木头另外一边正面
 
             //侧面灼烧
-            WoodSideMinU=fireLitPicture.getInterpolatedU(0);
-            WoodSideMinV=fireLitPicture.getInterpolatedV(4);
-            WoodSideMaxU=fireLitPicture.getInterpolatedU(16);
-            WoodSideMaxV=fireLitPicture.getInterpolatedV(8);
+            WoodSideMinU = fireLitPicture.getInterpolatedU(0);
+            WoodSideMinV = fireLitPicture.getInterpolatedV(4);
+            WoodSideMaxU = fireLitPicture.getInterpolatedU(16);
+            WoodSideMaxV = fireLitPicture.getInterpolatedV(8);
             tessellator.addVertexWithUV(Set_z, Set_y + length_offset, Set_x, WoodSideMaxU, WoodSideMaxV);
-            tessellator.addVertexWithUV(Set_z+1, Set_y + length_offset, Set_x, WoodSideMinU, WoodSideMaxV);
-            tessellator.addVertexWithUV(Set_z+1, Set_y, Set_x, WoodSideMinU, WoodSideMinV);
+            tessellator.addVertexWithUV(Set_z + 1, Set_y + length_offset, Set_x, WoodSideMinU, WoodSideMaxV);
+            tessellator.addVertexWithUV(Set_z + 1, Set_y, Set_x, WoodSideMinU, WoodSideMinV);
             tessellator.addVertexWithUV(Set_z, Set_y, Set_x, WoodSideMaxU, WoodSideMinV);//侧面 右边
-            WoodSideMinU=picture.getInterpolatedU(0);
-            WoodSideMinV=picture.getInterpolatedV(0);
-            WoodSideMaxU=picture.getInterpolatedU(16);
-            WoodSideMaxV=picture.getInterpolatedV(4);
+            WoodSideMinU = picture.getInterpolatedU(0);
+            WoodSideMinV = picture.getInterpolatedV(0);
+            WoodSideMaxU = picture.getInterpolatedU(16);
+            WoodSideMaxV = picture.getInterpolatedV(4);
 
             Set_x = Set_x + length_offset;
             tessellator.addVertexWithUV(Set_z, Set_y, Set_x, WoodSideMaxU, WoodSideMinV);
-            tessellator.addVertexWithUV(Set_z+1, Set_y, Set_x, WoodSideMinU, WoodSideMinV);
-            tessellator.addVertexWithUV(Set_z+1, Set_y + length_offset, Set_x, WoodSideMinU, WoodSideMaxV);
+            tessellator.addVertexWithUV(Set_z + 1, Set_y, Set_x, WoodSideMinU, WoodSideMinV);
+            tessellator.addVertexWithUV(Set_z + 1, Set_y + length_offset, Set_x, WoodSideMinU, WoodSideMaxV);
             tessellator.addVertexWithUV(Set_z, Set_y + length_offset, Set_x, WoodSideMaxU, WoodSideMaxV);//侧面 左边
 
 
             Set_x = Set_x - length_offset;
             tessellator.addVertexWithUV(Set_z, Set_y + length_offset, Set_x + length_offset, WoodSideMaxU, WoodSideMaxV);
-            tessellator.addVertexWithUV(Set_z+1, Set_y + length_offset, Set_x + length_offset, WoodSideMinU, WoodSideMaxV);
-            tessellator.addVertexWithUV(Set_z+1, Set_y + length_offset, Set_x , WoodSideMinU, WoodSideMinV);
+            tessellator.addVertexWithUV(Set_z + 1, Set_y + length_offset, Set_x + length_offset, WoodSideMinU, WoodSideMaxV);
+            tessellator.addVertexWithUV(Set_z + 1, Set_y + length_offset, Set_x, WoodSideMinU, WoodSideMinV);
             tessellator.addVertexWithUV(Set_z, Set_y + length_offset, Set_x, WoodSideMaxU, WoodSideMinV);//侧面 最上面
-
 
 
 //石头的绘制
             Set_x = z + length_offset + 0.0625;
             length_offset = 0.375;
             tessellator.addVertexWithUV(Set_z, Set_y, Set_x, StoneMaxU, StoneBaseMinV);
-            tessellator.addVertexWithUV(Set_z+1, Set_y, Set_x, StoneBaseMinU, StoneBaseMinV);
+            tessellator.addVertexWithUV(Set_z + 1, Set_y, Set_x, StoneBaseMinU, StoneBaseMinV);
             tessellator.addVertexWithUV(Set_z + 1, Set_y, Set_x + length_offset, StoneBaseMinU, StoneBaseMaxV);
             tessellator.addVertexWithUV(Set_z, Set_y, Set_x + length_offset, StoneMaxU, StoneBaseMaxV);
 
-            StoneBaseMinU=fireLitPicture.getInterpolatedU(0);
-            StoneBaseMinV=fireLitPicture.getInterpolatedV(8);
-            StoneMaxU=fireLitPicture.getInterpolatedU(16);
-            StoneBaseMaxV=fireLitPicture.getInterpolatedV(14);
+            StoneBaseMinU = fireLitPicture.getInterpolatedU(0);
+            StoneBaseMinV = fireLitPicture.getInterpolatedV(8);
+            StoneMaxU = fireLitPicture.getInterpolatedU(16);
+            StoneBaseMaxV = fireLitPicture.getInterpolatedV(14);
 
             tessellator.addVertexWithUV(Set_z, Set_y + 0.0625, Set_x + length_offset, StoneMaxU, StoneBaseMaxV);
-            tessellator.addVertexWithUV(Set_z+1, Set_y + 0.0625, Set_x + length_offset, StoneBaseMinU, StoneBaseMaxV);
-            tessellator.addVertexWithUV(Set_z+1, Set_y + 0.0625, Set_x, StoneBaseMinU, StoneBaseMinV);
+            tessellator.addVertexWithUV(Set_z + 1, Set_y + 0.0625, Set_x + length_offset, StoneBaseMinU, StoneBaseMaxV);
+            tessellator.addVertexWithUV(Set_z + 1, Set_y + 0.0625, Set_x, StoneBaseMinU, StoneBaseMinV);
             tessellator.addVertexWithUV(Set_z, Set_y + 0.0625, Set_x, StoneMaxU, StoneBaseMinV);
 
             tessellator.addVertexWithUV(Set_z, Set_y, Set_x + length_offset, BaseSideMinU, BaseSideMaxV);
@@ -414,10 +411,10 @@ public class RenderCampfire {
             tessellator.addVertexWithUV(Set_z, Set_y + 0.0625, Set_x, BaseSideMaxU, BaseSideMinV);
             tessellator.addVertexWithUV(Set_z, Set_y, Set_x, BaseSideMaxU, BaseSideMaxV);
 
-            tessellator.addVertexWithUV(Set_z+1, Set_y, Set_x, BaseSideMaxU, BaseSideMaxV);
-            tessellator.addVertexWithUV(Set_z+1, Set_y + 0.0625, Set_x, BaseSideMaxU, BaseSideMinV);
-            tessellator.addVertexWithUV(Set_z+1, Set_y + 0.0625, Set_x + length_offset, BaseSideMinU, BaseSideMinV);
-            tessellator.addVertexWithUV(Set_z+1, Set_y, Set_x + length_offset, BaseSideMinU, BaseSideMaxV);
+            tessellator.addVertexWithUV(Set_z + 1, Set_y, Set_x, BaseSideMaxU, BaseSideMaxV);
+            tessellator.addVertexWithUV(Set_z + 1, Set_y + 0.0625, Set_x, BaseSideMaxU, BaseSideMinV);
+            tessellator.addVertexWithUV(Set_z + 1, Set_y + 0.0625, Set_x + length_offset, BaseSideMinU, BaseSideMinV);
+            tessellator.addVertexWithUV(Set_z + 1, Set_y, Set_x + length_offset, BaseSideMinU, BaseSideMaxV);
 
 
 //上方木头一支
@@ -426,18 +423,18 @@ public class RenderCampfire {
             Set_z = x + 0.0625;
             length_offset = 0.25;
             //侧面灼烧
-            WoodSideMinU=fireLitPicture.getInterpolatedU(0);
-            WoodSideMinV=fireLitPicture.getInterpolatedV(0);
-            WoodSideMaxU=fireLitPicture.getInterpolatedU(16);
-            WoodSideMaxV=fireLitPicture.getInterpolatedV(4);
+            WoodSideMinU = fireLitPicture.getInterpolatedU(0);
+            WoodSideMinV = fireLitPicture.getInterpolatedV(0);
+            WoodSideMaxU = fireLitPicture.getInterpolatedU(16);
+            WoodSideMaxV = fireLitPicture.getInterpolatedV(4);
             tessellator.addVertexWithUV(Set_z, Set_y, Set_x + 1, WoodSideMinU, WoodSideMaxV);
             tessellator.addVertexWithUV(Set_z, Set_y + length_offset, Set_x + 1, WoodSideMinU, WoodSideMinV);
             tessellator.addVertexWithUV(Set_z, Set_y + length_offset, Set_x, WoodSideMaxU, WoodSideMinV);
             tessellator.addVertexWithUV(Set_z, Set_y, Set_x, WoodSideMaxU, WoodSideMaxV);
-            WoodSideMinU=picture.getInterpolatedU(0);
-            WoodSideMinV=picture.getInterpolatedV(0);
-            WoodSideMaxU=picture.getInterpolatedU(16);
-            WoodSideMaxV=picture.getInterpolatedV(4);
+            WoodSideMinU = picture.getInterpolatedU(0);
+            WoodSideMinV = picture.getInterpolatedV(0);
+            WoodSideMaxU = picture.getInterpolatedU(16);
+            WoodSideMaxV = picture.getInterpolatedV(4);
 
             tessellator.addVertexWithUV(Set_z + length_offset, Set_y, Set_x, WoodSideMaxU, WoodSideMaxV);
             tessellator.addVertexWithUV(Set_z + length_offset, Set_y + length_offset, Set_x, WoodSideMaxU, WoodSideMinV);
@@ -445,32 +442,32 @@ public class RenderCampfire {
             tessellator.addVertexWithUV(Set_z + length_offset, Set_y, Set_x + 1, WoodSideMinU, WoodSideMaxV);
 
             //侧面灼烧
-            WoodSideMinU=fireLitPicture.getInterpolatedU(0);
-            WoodSideMinV=fireLitPicture.getInterpolatedV(4);
-            WoodSideMaxU=fireLitPicture.getInterpolatedU(16);
-            WoodSideMaxV=fireLitPicture.getInterpolatedV(8);
+            WoodSideMinU = fireLitPicture.getInterpolatedU(0);
+            WoodSideMinV = fireLitPicture.getInterpolatedV(4);
+            WoodSideMaxU = fireLitPicture.getInterpolatedU(16);
+            WoodSideMaxV = fireLitPicture.getInterpolatedV(8);
             tessellator.addVertexWithUV(Set_z, Set_y, Set_x, WoodSideMaxU, WoodSideMaxV);
-            tessellator.addVertexWithUV(Set_z+length_offset, Set_y, Set_x, WoodSideMaxU, WoodSideMinV);
-            tessellator.addVertexWithUV(Set_z+length_offset, Set_y, Set_x+1, WoodSideMinU, WoodSideMinV);
-            tessellator.addVertexWithUV(Set_z, Set_y, Set_x+1, WoodSideMinU, WoodSideMaxV);
-            WoodSideMinU=picture.getInterpolatedU(0);
-            WoodSideMinV=picture.getInterpolatedV(0);
-            WoodSideMaxU=picture.getInterpolatedU(16);
-            WoodSideMaxV=picture.getInterpolatedV(4);
+            tessellator.addVertexWithUV(Set_z + length_offset, Set_y, Set_x, WoodSideMaxU, WoodSideMinV);
+            tessellator.addVertexWithUV(Set_z + length_offset, Set_y, Set_x + 1, WoodSideMinU, WoodSideMinV);
+            tessellator.addVertexWithUV(Set_z, Set_y, Set_x + 1, WoodSideMinU, WoodSideMaxV);
+            WoodSideMinU = picture.getInterpolatedU(0);
+            WoodSideMinV = picture.getInterpolatedV(0);
+            WoodSideMaxU = picture.getInterpolatedU(16);
+            WoodSideMaxV = picture.getInterpolatedV(4);
 
             tessellator.addVertexWithUV(Set_z, Set_y + length_offset, Set_x + 1, WoodSideMinU, WoodSideMaxV);
-            tessellator.addVertexWithUV(Set_z+length_offset, Set_y + length_offset, Set_x + 1, WoodSideMinU, WoodSideMinV);
-            tessellator.addVertexWithUV(Set_z+length_offset, Set_y + length_offset, Set_x, WoodSideMaxU, WoodSideMinV);
+            tessellator.addVertexWithUV(Set_z + length_offset, Set_y + length_offset, Set_x + 1, WoodSideMinU, WoodSideMinV);
+            tessellator.addVertexWithUV(Set_z + length_offset, Set_y + length_offset, Set_x, WoodSideMaxU, WoodSideMinV);
             tessellator.addVertexWithUV(Set_z, Set_y + length_offset, Set_x, WoodSideMaxU, WoodSideMaxV);
 
             tessellator.addVertexWithUV(Set_z, Set_y + length_offset, Set_x, WoodFaceMinU, WoodFaceMinV);
-            tessellator.addVertexWithUV(Set_z+length_offset, Set_y + length_offset, Set_x, WoodFaceMaxU, WoodFaceMinV);
-            tessellator.addVertexWithUV(Set_z+length_offset, Set_y, Set_x, WoodFaceMaxU, WoodFaceMaxV);
+            tessellator.addVertexWithUV(Set_z + length_offset, Set_y + length_offset, Set_x, WoodFaceMaxU, WoodFaceMinV);
+            tessellator.addVertexWithUV(Set_z + length_offset, Set_y, Set_x, WoodFaceMaxU, WoodFaceMaxV);
             tessellator.addVertexWithUV(Set_z, Set_y, Set_x, WoodFaceMinU, WoodFaceMaxV);
 
             tessellator.addVertexWithUV(Set_z, Set_y, Set_x + 1, WoodFaceMinU, WoodFaceMaxV);
-            tessellator.addVertexWithUV(Set_z+length_offset, Set_y, Set_x + 1, WoodFaceMaxU, WoodFaceMaxV);
-            tessellator.addVertexWithUV(Set_z+length_offset, Set_y + length_offset, Set_x + 1, WoodFaceMaxU, WoodFaceMinV);
+            tessellator.addVertexWithUV(Set_z + length_offset, Set_y, Set_x + 1, WoodFaceMaxU, WoodFaceMaxV);
+            tessellator.addVertexWithUV(Set_z + length_offset, Set_y + length_offset, Set_x + 1, WoodFaceMaxU, WoodFaceMinV);
             tessellator.addVertexWithUV(Set_z, Set_y + length_offset, Set_x + 1, WoodFaceMinU, WoodFaceMinV);
 
 //上方木头一支
@@ -481,47 +478,47 @@ public class RenderCampfire {
             tessellator.addVertexWithUV(Set_z, Set_y, Set_x, WoodSideMaxU, WoodSideMaxV);
 
             //侧面灼烧
-            WoodSideMinU=fireLitPicture.getInterpolatedU(0);
-            WoodSideMinV=fireLitPicture.getInterpolatedV(0);
-            WoodSideMaxU=fireLitPicture.getInterpolatedU(16);
-            WoodSideMaxV=fireLitPicture.getInterpolatedV(4);
+            WoodSideMinU = fireLitPicture.getInterpolatedU(0);
+            WoodSideMinV = fireLitPicture.getInterpolatedV(0);
+            WoodSideMaxU = fireLitPicture.getInterpolatedU(16);
+            WoodSideMaxV = fireLitPicture.getInterpolatedV(4);
             tessellator.addVertexWithUV(Set_z + length_offset, Set_y, Set_x, WoodSideMaxU, WoodSideMaxV);
             tessellator.addVertexWithUV(Set_z + length_offset, Set_y + length_offset, Set_x, WoodSideMaxU, WoodSideMinV);
-            tessellator.addVertexWithUV(Set_z + length_offset, Set_y + length_offset, Set_x+1, WoodSideMinU, WoodSideMinV);
-            tessellator.addVertexWithUV(Set_z + length_offset, Set_y, Set_x+1, WoodSideMinU, WoodSideMaxV);
-            WoodSideMinU=picture.getInterpolatedU(0);
-            WoodSideMinV=picture.getInterpolatedV(0);
-            WoodSideMaxU=picture.getInterpolatedU(16);
-            WoodSideMaxV=picture.getInterpolatedV(4);
+            tessellator.addVertexWithUV(Set_z + length_offset, Set_y + length_offset, Set_x + 1, WoodSideMinU, WoodSideMinV);
+            tessellator.addVertexWithUV(Set_z + length_offset, Set_y, Set_x + 1, WoodSideMinU, WoodSideMaxV);
+            WoodSideMinU = picture.getInterpolatedU(0);
+            WoodSideMinV = picture.getInterpolatedV(0);
+            WoodSideMaxU = picture.getInterpolatedU(16);
+            WoodSideMaxV = picture.getInterpolatedV(4);
 
             //侧面灼烧
-            WoodSideMinU=fireLitPicture.getInterpolatedU(0);
-            WoodSideMinV=fireLitPicture.getInterpolatedV(4);
-            WoodSideMaxU=fireLitPicture.getInterpolatedU(16);
-            WoodSideMaxV=fireLitPicture.getInterpolatedV(8);
+            WoodSideMinU = fireLitPicture.getInterpolatedU(0);
+            WoodSideMinV = fireLitPicture.getInterpolatedV(4);
+            WoodSideMaxU = fireLitPicture.getInterpolatedU(16);
+            WoodSideMaxV = fireLitPicture.getInterpolatedV(8);
             tessellator.addVertexWithUV(Set_z, Set_y, Set_x, WoodSideMaxU, WoodSideMaxV);
-            tessellator.addVertexWithUV(Set_z+length_offset, Set_y, Set_x, WoodSideMaxU, WoodSideMinV);
-            tessellator.addVertexWithUV(Set_z+length_offset, Set_y, Set_x + 1, WoodSideMinU, WoodSideMinV);
+            tessellator.addVertexWithUV(Set_z + length_offset, Set_y, Set_x, WoodSideMaxU, WoodSideMinV);
+            tessellator.addVertexWithUV(Set_z + length_offset, Set_y, Set_x + 1, WoodSideMinU, WoodSideMinV);
             tessellator.addVertexWithUV(Set_z, Set_y, Set_x + 1, WoodSideMinU, WoodSideMaxV);
-            WoodSideMinU=picture.getInterpolatedU(0);
-            WoodSideMinV=picture.getInterpolatedV(0);
-            WoodSideMaxU=picture.getInterpolatedU(16);
-            WoodSideMaxV=picture.getInterpolatedV(4);
+            WoodSideMinU = picture.getInterpolatedU(0);
+            WoodSideMinV = picture.getInterpolatedV(0);
+            WoodSideMaxU = picture.getInterpolatedU(16);
+            WoodSideMaxV = picture.getInterpolatedV(4);
 
             tessellator.addVertexWithUV(Set_z, Set_y + length_offset, Set_x + 1, WoodSideMinU, WoodSideMaxV);
-            tessellator.addVertexWithUV(Set_z+length_offset ,Set_y + length_offset, Set_x + 1, WoodSideMinU, WoodSideMinV);
-            tessellator.addVertexWithUV(Set_z+length_offset, Set_y + length_offset, Set_x, WoodSideMaxU, WoodSideMinV);
+            tessellator.addVertexWithUV(Set_z + length_offset, Set_y + length_offset, Set_x + 1, WoodSideMinU, WoodSideMinV);
+            tessellator.addVertexWithUV(Set_z + length_offset, Set_y + length_offset, Set_x, WoodSideMaxU, WoodSideMinV);
             tessellator.addVertexWithUV(Set_z, Set_y + length_offset, Set_x, WoodSideMaxU, WoodSideMaxV);
 
             tessellator.addVertexWithUV(Set_z, Set_y + length_offset, Set_x, WoodFaceMinU, WoodFaceMinV);
-            tessellator.addVertexWithUV(Set_z+length_offset, Set_y + length_offset, Set_x, WoodFaceMaxU, WoodFaceMinV);
-            tessellator.addVertexWithUV(Set_z+length_offset, Set_y, Set_x, WoodFaceMaxU, WoodFaceMaxV);
+            tessellator.addVertexWithUV(Set_z + length_offset, Set_y + length_offset, Set_x, WoodFaceMaxU, WoodFaceMinV);
+            tessellator.addVertexWithUV(Set_z + length_offset, Set_y, Set_x, WoodFaceMaxU, WoodFaceMaxV);
             tessellator.addVertexWithUV(Set_z, Set_y, Set_x, WoodFaceMinU, WoodFaceMaxV);
 
 
             tessellator.addVertexWithUV(Set_z, Set_y, Set_x + 1, WoodFaceMinU, WoodFaceMaxV);
-            tessellator.addVertexWithUV(Set_z+length_offset, Set_y, Set_x + 1, WoodFaceMaxU, WoodFaceMaxV);
-            tessellator.addVertexWithUV(Set_z+length_offset, Set_y + length_offset, Set_x + 1, WoodFaceMaxU, WoodFaceMinV);
+            tessellator.addVertexWithUV(Set_z + length_offset, Set_y, Set_x + 1, WoodFaceMaxU, WoodFaceMaxV);
+            tessellator.addVertexWithUV(Set_z + length_offset, Set_y + length_offset, Set_x + 1, WoodFaceMaxU, WoodFaceMinV);
             tessellator.addVertexWithUV(Set_z, Set_y + length_offset, Set_x + 1, WoodFaceMinU, WoodFaceMinV);
 
         }

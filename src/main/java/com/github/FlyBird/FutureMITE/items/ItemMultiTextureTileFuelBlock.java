@@ -6,9 +6,10 @@ import net.minecraft.ItemStack;
 
 public class ItemMultiTextureTileFuelBlock extends ItemMultiTextureTile {
     protected int burnTime;
+
     public ItemMultiTextureTileFuelBlock(Block block, String[] names, int burnTime) {
         super(block, names);
-        this.burnTime=burnTime;
+        this.burnTime = burnTime;
     }
 
     @Override

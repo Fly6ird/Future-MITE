@@ -7,7 +7,7 @@ import com.github.FlyBird.FutureMITE.tileentities.TileEntityGrindstone;
 import net.minecraft.*;
 
 
-public class BlockGrindstone extends Block implements ITileEntityProvider{
+public class BlockGrindstone extends Block implements ITileEntityProvider {
     private Icon GrindStone;
 
     protected BlockGrindstone(int par1) {
@@ -20,7 +20,7 @@ public class BlockGrindstone extends Block implements ITileEntityProvider{
 
     @Override
     public void registerIcons(IconRegister par1IconRegister) {
-        this.GrindStone = par1IconRegister.registerIcon( "grindstone");
+        this.GrindStone = par1IconRegister.registerIcon("grindstone");
 
     }
 
@@ -44,8 +44,8 @@ public class BlockGrindstone extends Block implements ITileEntityProvider{
         if (!world.isAirOrPassableBlock(x, y + 1, z, false))
             return false;
         if (player.onServer()) {
-            TileEntityGrindstone tile_entity = (TileEntityGrindstone)world.getBlockTileEntity(x, y, z);
-            if (tile_entity != null ) {
+            TileEntityGrindstone tile_entity = (TileEntityGrindstone) world.getBlockTileEntity(x, y, z);
+            if (tile_entity != null) {
                 ((IFutureMITEPlayer) player).futureMITE$displayGUIGrindstone(x, y, z, tile_entity.getSlots());
             } else {
                 return false;

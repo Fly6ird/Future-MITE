@@ -12,7 +12,7 @@ public class GrindStoneSlots extends InventoryBasic {
 
     private ContainerGrindStone containerGrindStone;
 
-    private final Slot[] input=new Slot[2];
+    private final Slot[] input = new Slot[2];
 
     private final Slot output;
 
@@ -38,18 +38,18 @@ public class GrindStoneSlots extends InventoryBasic {
         super("GrindStone", true, 2);
         //par3 为槽的数量
         if (iInventory instanceof TileEntityGrindstone) {
-            this.tileEntityGrindStone = (TileEntityGrindstone)iInventory;
+            this.tileEntityGrindStone = (TileEntityGrindstone) iInventory;
         } else {
             this.tileEntityGrindStone = null;
         }
         this.input[0] = new Slot(iInventory, getInputIndex(0), 49, 19) {
             public boolean isItemValid(ItemStack par1ItemStack) {
-                return (par1ItemStack.getItem() instanceof ItemEnchantedBook || par1ItemStack.isItemEnchanted()||par1ItemStack.isItemDamaged());
+                return (par1ItemStack.getItem() instanceof ItemEnchantedBook || par1ItemStack.isItemEnchanted() || par1ItemStack.isItemDamaged());
             }
         };
         this.input[1] = new Slot(iInventory, getInputIndex(1), 49, 40) {
             public boolean isItemValid(ItemStack par1ItemStack) {
-                return (par1ItemStack.getItem() instanceof ItemEnchantedBook || par1ItemStack.isItemEnchanted()||par1ItemStack.isItemDamaged());
+                return (par1ItemStack.getItem() instanceof ItemEnchantedBook || par1ItemStack.isItemEnchanted() || par1ItemStack.isItemDamaged());
             }
         };
 
@@ -61,12 +61,12 @@ public class GrindStoneSlots extends InventoryBasic {
             @Override
             public void onPickupFromSlot(EntityPlayer par1EntityPlayer, ItemStack par2ItemStack) {
                 //0为失败  1武器修复  2武器袪魔  3附魔书袪魔
-                if(GrindStoneSlots.this.containerGrindStone.getOutSlotCondition()!=0){
+                if (GrindStoneSlots.this.containerGrindStone.getOutSlotCondition() != 0) {
                     GrindStoneSlots.this.input[0].putStack(null);
                     GrindStoneSlots.this.input[1].putStack(null);
-                    if(GrindStoneSlots.this.containerGrindStone.getOutSlotCondition()==2)
+                    if (GrindStoneSlots.this.containerGrindStone.getOutSlotCondition() == 2)
                         par1EntityPlayer.addExperience(-200);
-                    if(GrindStoneSlots.this.containerGrindStone.getOutSlotCondition()==3)
+                    if (GrindStoneSlots.this.containerGrindStone.getOutSlotCondition() == 3)
                         par1EntityPlayer.addExperience(50);
                 }
 

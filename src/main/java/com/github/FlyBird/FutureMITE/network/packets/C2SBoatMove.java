@@ -16,17 +16,17 @@ public class C2SBoatMove implements Packet {
     public float yaw;
     public float pitch;
 
-    public C2SBoatMove(PacketByteBuf packetByteBuf){
-        this(packetByteBuf.readInt(),packetByteBuf.readDouble(),packetByteBuf.readDouble(),packetByteBuf.readDouble(),packetByteBuf.readFloat(),packetByteBuf.readFloat());
+    public C2SBoatMove(PacketByteBuf packetByteBuf) {
+        this(packetByteBuf.readInt(), packetByteBuf.readDouble(), packetByteBuf.readDouble(), packetByteBuf.readDouble(), packetByteBuf.readFloat(), packetByteBuf.readFloat());
     }
 
-    public C2SBoatMove(int id,double x,double y,double z,float yaw,float pitch) {
+    public C2SBoatMove(int id, double x, double y, double z, float yaw, float pitch) {
         this.entityId = id;
-        this.x=x;
-        this.y=y;
-        this.z=z;
-        this.yaw=yaw;
-        this.pitch=pitch;
+        this.x = x;
+        this.y = y;
+        this.z = z;
+        this.yaw = yaw;
+        this.pitch = pitch;
     }
 
     @Override
@@ -47,9 +47,9 @@ public class C2SBoatMove implements Packet {
             Entity vehicle = vehWorld.getEntityByID(this.entityId);
             if (vehicle == null)
                 return;
-            if (vehicle.riddenByEntity !=entityPlayer) {
+            if (vehicle.riddenByEntity != entityPlayer) {
                 /* Only take position updates from the riding player */
-                return ;
+                return;
             }
             double expectedDelta = vehicle.motionX * vehicle.motionX + vehicle.motionY * vehicle.motionY + vehicle.motionZ * vehicle.motionZ;
             double deltaX = this.x - vehicle.posX;
@@ -62,12 +62,12 @@ public class C2SBoatMove implements Packet {
                 vehicle.setPositionAndRotation(vehicle.posX - 1, vehicle.posY, vehicle.posZ - 1, vehicle.rotationYaw, vehicle.rotationPitch);
                 //ctx.getServerHandler().sendPacket(new S18PacketEntityTeleport(vehicle));
                 //playerEntity.sendPacket(new Packet34EntityTeleport(vehicle));
-                entityPlayer.getWorldServer().getEntityTracker().sendPacketToAllPlayersTrackingEntity(vehicle,new Packet34EntityTeleport(vehicle));
+                entityPlayer.getWorldServer().getEntityTracker().sendPacketToAllPlayersTrackingEntity(vehicle, new Packet34EntityTeleport(vehicle));
                 //((ServerPlayer)entityPlayer).playerNetServerHandler.sendPacketToPlayer(n);
-                return ;
+                return;
             }
             vehicle.setPositionAndRotation(this.x, this.y, this.z, this.yaw, this.pitch);
-            entityPlayer.getWorldServer().getEntityTracker().sendPacketToAllPlayersTrackingEntity(vehicle,new Packet34EntityTeleport(vehicle));
+            entityPlayer.getWorldServer().getEntityTracker().sendPacketToAllPlayersTrackingEntity(vehicle, new Packet34EntityTeleport(vehicle));
         }
     }
 

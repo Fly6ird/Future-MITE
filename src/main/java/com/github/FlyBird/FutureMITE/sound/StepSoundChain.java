@@ -7,22 +7,23 @@ public class StepSoundChain extends StepSound {
         super(string, volume, pitch);
     }
 
-    private float volume=0.5f;
+    private float volume = 0.5f;
+
     @Override
     public String getBreakSound() {
-        volume=0.5f;
+        volume = 0.5f;
         return "block.chain.break";
     }
 
     @Override
     public String getPlaceSound() {
-        volume=0.5f;
+        volume = 0.5f;
         return "block.chain.break";
     }
 
     @Override
     public String getStepSound() {
-        volume=1.0f;
+        volume = 1.0f;
         return "block.chain.step";
     }
 

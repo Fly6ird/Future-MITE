@@ -7,23 +7,24 @@ public class StepSoundLantern extends StepSound {
         super(string, volume, pitch);
     }
 
-    private float volume=1.0f;
-    private float pitch=1.0f;
+    private float volume = 1.0f;
+    private float pitch = 1.0f;
+
     @Override
     public String getBreakSound() {
-        pitch=1.0f;
+        pitch = 1.0f;
         return "block.lantern.break";
     }
 
     @Override
     public String getPlaceSound() {
-        pitch=1.1f;
+        pitch = 1.1f;
         return "block.lantern.place";
     }
 
     @Override
     public String getStepSound() {
-        pitch=1.0f;
+        pitch = 1.0f;
         return "block.lantern.break";
     }
 

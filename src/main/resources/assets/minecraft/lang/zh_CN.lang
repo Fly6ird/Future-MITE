@@ -58,6 +58,15 @@ tile.planks.dark_oak.name=深色橡木板
 tile.slab.dark_oak.name=深色橡木台阶
 tile.stairs.dark_oak.name=深色橡木楼梯
 
+tile.planks.cherry.name=樱花木板
+tile.slab.cherry.name=樱花木台阶
+tile.stairs.cherry.name=樱花木楼梯
+tile.log.cherry_log.name=樱花原木
+tile.log.stripped_cherry_log.name=去皮樱花原木
+tile.log.stripped_cherry_wood.name=去皮樱花
+tile.trapdoors.cherry.name=樱花活扳门
+item.doors.cherry.name=樱花门
+
 tile.iron_chain.name=铁锁链
 tile.copper_chain.name=铜锁链
 tile.silver_chain.name=银锁链
@@ -99,18 +108,21 @@ tile.log.stripped_dark_oak_log.name=去皮深色橡树原木
 tile.log.dark_oak_wood.name=深色橡木
 tile.log.stripped_dark_oak_wood.name=去皮深色橡木
 
-item.boats.oak.name=橡木船
-item.chest_boats.oak.name=橡木运输船
-item.boats.birch.name=桦木船
-item.chest_boats.birch.name=桦木运输船
-item.boats.jungle.name=从林木船
-item.chest_boats.jungle.name=从林木运输船
-item.boats.spruce.name=云杉木船
-item.chest_boats.spruce.name=云杉木运输船
-item.boats.acacia.name=金合欢木船
-item.chest_boats.acacia.name=金合欢木运输船
-item.boats.dark_oak.name=深色橡木船
-item.chest_boats.dark_oak.name=深色橡木运输船
+item.oak_boat.name=橡木船
+item.oak_chest_boat.name=橡木运输船
+item.birch_boat.name=桦木船
+item.birch_chest_boat.name=桦木运输船
+item.jungle_boat.name=从林木船
+item.jungle_chest_boat.name=从林木运输船
+item.spruce_boat.name=云杉木船
+item.spruce_chest_boat.name=云杉木运输船
+item.acacia_boat.name=金合欢木船
+item.acacia_chest_boat.name=金合欢木运输船
+item.dark_oak_boat.name=深色橡木船
+item.dark_oak_chest_boat.name=深色橡木运输船
+item.cherry_boat.name=樱花木船
+item.cherry_chest_boat.name=樱花木运输船
+
 
 tile.fences.oak.name=橡木栅栏
 tile.fence_gates.oak.name=橡木栅栏门
@@ -196,5 +208,7 @@ tile.trapdoors.dark_oak.name=深色橡木活板门
 
 leaves.acacia.name=金合欢树叶
 leaves.dark_oak.name=深色橡木树叶
+leaves.cherry.name=樱花树叶
 
 item.woodChips.name=木屑
+

@@ -7,23 +7,24 @@ public class StepSoundSweetBerryBush extends StepSound {
         super(string, volume, pitch);
     }
 
-    private float volume=0.8f;
-    private float pitch=1.0f;
+    private float volume = 0.8f;
+    private float pitch = 1.0f;
+
     @Override
     public String getBreakSound() {
-        volume=0.8f;
+        volume = 0.8f;
         return "block.sweet_berry_bush.break";
     }
 
     @Override
     public String getPlaceSound() {
-        pitch=1.1f;
+        pitch = 1.1f;
         return "block.sweet_berry_bush.place";
     }
 
     @Override
     public String getStepSound() {
-        pitch=1.0f;
+        pitch = 1.0f;
         return "step.grass";
     }
 

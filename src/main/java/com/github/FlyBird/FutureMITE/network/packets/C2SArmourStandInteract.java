@@ -13,11 +13,11 @@ public class C2SArmourStandInteract implements Packet {
     private int standID;
     private Vec3 hitPos;
 
-    public C2SArmourStandInteract(PacketByteBuf packetByteBuf){
-        this(packetByteBuf.readInt(),packetByteBuf.readDouble(),packetByteBuf.readDouble(),packetByteBuf.readDouble());
+    public C2SArmourStandInteract(PacketByteBuf packetByteBuf) {
+        this(packetByteBuf.readInt(), packetByteBuf.readDouble(), packetByteBuf.readDouble(), packetByteBuf.readDouble());
     }
 
-    public  C2SArmourStandInteract(int id,double x,double y,double z) {
+    public C2SArmourStandInteract(int id, double x, double y, double z) {
         this.standID = id;
         hitPos = Vec3.createVectorHelper(x, y, z);
     }

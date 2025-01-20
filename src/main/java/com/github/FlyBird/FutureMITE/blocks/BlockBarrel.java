@@ -8,12 +8,13 @@ import java.util.Random;
 import static com.github.FlyBird.FutureMITE.blocks.Blocks.stepSoundWood;
 
 
-public class BlockBarrel extends BlockDirectionalWithTileEntity{
+public class BlockBarrel extends BlockDirectionalWithTileEntity {
     private final Random random = new Random();
     private Icon bottomIcon;
     private Icon sideIcon;
     private Icon topIcon;
     private Icon topOpenIcon;
+
     public BlockBarrel(int par1, Material par2) {
         super(par1, par2, new BlockConstants());
         setMaxStackSize(1);
@@ -25,7 +26,7 @@ public class BlockBarrel extends BlockDirectionalWithTileEntity{
 
     public boolean isActivated(int metadata) {
         return ((metadata & 0x8) != 0);
-     }
+    }
 
 
     @Override
@@ -38,7 +39,7 @@ public class BlockBarrel extends BlockDirectionalWithTileEntity{
         if (super.onNeighborBlockChange(world, x, y, z, neighbor_block_id)) {
             return true;
         } else {
-            TileEntityBarrel chest_entity = (TileEntityBarrel)world.getBlockTileEntity(x, y, z);
+            TileEntityBarrel chest_entity = (TileEntityBarrel) world.getBlockTileEntity(x, y, z);
             if (chest_entity != null) {
                 chest_entity.updateContainingBlockInfo();
                 return true;
@@ -50,37 +51,37 @@ public class BlockBarrel extends BlockDirectionalWithTileEntity{
 
     @Override
     public void breakBlock(World par1World, int par2, int par3, int par4, int par5, int par6) {
-        TileEntityBarrel var7 = (TileEntityBarrel)par1World.getBlockTileEntity(par2, par3, par4);
+        TileEntityBarrel var7 = (TileEntityBarrel) par1World.getBlockTileEntity(par2, par3, par4);
         if (var7 != null) {
-            for(int var8 = 0; var8 < var7.getSizeInventory(); ++var8) {
+            for (int var8 = 0; var8 < var7.getSizeInventory(); ++var8) {
                 ItemStack var9 = var7.getStackInSlot(var8);
                 if (var9 != null) {
                     float var10 = this.random.nextFloat() * 0.8F + 0.1F;
                     float var11 = this.random.nextFloat() * 0.8F + 0.1F;
 
                     EntityItem var14;
-                    for(float var12 = this.random.nextFloat() * 0.8F + 0.1F; var9.stackSize > 0; par1World.spawnEntityInWorld(var14)) {
+                    for (float var12 = this.random.nextFloat() * 0.8F + 0.1F; var9.stackSize > 0; par1World.spawnEntityInWorld(var14)) {
                         int var13 = this.random.nextInt(21) + 10;
                         if (var13 > var9.stackSize) {
                             var13 = var9.stackSize;
                         }
 
                         var9.stackSize -= var13;
-                        var14 = new EntityItem(par1World, (float)par2 + var10, (float)par3 + var11, (float)par4 + var12, new ItemStack(var9.itemID, var13, var9.getItemSubtype()));
+                        var14 = new EntityItem(par1World, (float) par2 + var10, (float) par3 + var11, (float) par4 + var12, new ItemStack(var9.itemID, var13, var9.getItemSubtype()));
                         if (var9.isItemDamaged()) {
                             var14.getEntityItem().setItemDamage(var9.getItemDamage());
                         }
 
                         float var15 = 0.05F;
-                        var14.motionX = (float)this.random.nextGaussian() * var15;
-                        var14.motionY = (float)this.random.nextGaussian() * var15 + 0.2F;
-                        var14.motionZ = (float)this.random.nextGaussian() * var15;
+                        var14.motionX = (float) this.random.nextGaussian() * var15;
+                        var14.motionY = (float) this.random.nextGaussian() * var15 + 0.2F;
+                        var14.motionZ = (float) this.random.nextGaussian() * var15;
                         if (var9.getItem().hasQuality()) {
                             var14.getEntityItem().setQuality(var9.getQuality());
                         }
 
                         if (var9.hasTagCompound()) {
-                            var14.getEntityItem().setTagCompound((NBTTagCompound)var9.getTagCompound().copy());
+                            var14.getEntityItem().setTagCompound((NBTTagCompound) var9.getTagCompound().copy());
                         }
                     }
                 }
@@ -93,9 +94,8 @@ public class BlockBarrel extends BlockDirectionalWithTileEntity{
     }
 
 
-
     public boolean canOpenChest(EntityLivingBase entity_living_base) {
-        return  !entity_living_base.hasCurse(Curse.cannot_open_chests, true);
+        return !entity_living_base.hasCurse(Curse.cannot_open_chests, true);
     }
 
     @Override
@@ -116,7 +116,7 @@ public class BlockBarrel extends BlockDirectionalWithTileEntity{
 
 
     public IInventory getInventory(World par1World, int par2, int par3, int par4) {
-        TileEntityBarrel tileEntityBarrel = (TileEntityBarrel)par1World.getBlockTileEntity(par2, par3, par4);
+        TileEntityBarrel tileEntityBarrel = (TileEntityBarrel) par1World.getBlockTileEntity(par2, par3, par4);
         if (tileEntityBarrel == null)
             return null;
         if (isOcelotBlockingChest(par1World, par2, par3, par4))
@@ -138,7 +138,7 @@ public class BlockBarrel extends BlockDirectionalWithTileEntity{
     public int isProvidingWeakPower(IBlockAccess par1IBlockAccess, int par2, int par3, int par4, int par5) {
         if (!canProvidePower())
             return 0;
-        int var6 = ((TileEntityBarrel)par1IBlockAccess.getBlockTileEntity(par2, par3, par4)).numUsingPlayers;
+        int var6 = ((TileEntityBarrel) par1IBlockAccess.getBlockTileEntity(par2, par3, par4)).numUsingPlayers;
         return MathHelper.clamp_int(var6, 0, 15);
     }
 
@@ -174,39 +174,39 @@ public class BlockBarrel extends BlockDirectionalWithTileEntity{
     public Icon getIcon(int side, int metadate) {
         int Direction = metadate & 7;
         //面向北方     左边为5    右边为4    面前为2  面后为5   下面为0
-        if(Direction == 0||Direction == 1)   //Y轴(垂直)方向
+        if (Direction == 0 || Direction == 1)   //Y轴(垂直)方向
         {
-            if(side == 0)
+            if (side == 0)
                 return this.bottomIcon;
-            if(side == 1)
-                return isActivated(metadate) ?this.topOpenIcon :this.topIcon;
+            if (side == 1)
+                return isActivated(metadate) ? this.topOpenIcon : this.topIcon;
         }
-        if(Direction==2)//朝北
+        if (Direction == 2)//朝北
         {
-            if(side==2)
-                return isActivated(metadate)?this.topOpenIcon :this.topIcon;
-            if(side==3)
-                return this.bottomIcon;
-        }
-        if(Direction==3)//朝南
-        {
-            if(side==3)
-                return isActivated(metadate) ?this.topOpenIcon :this.topIcon;
-            if(side==2)
+            if (side == 2)
+                return isActivated(metadate) ? this.topOpenIcon : this.topIcon;
+            if (side == 3)
                 return this.bottomIcon;
         }
-        if(Direction==4)//西
+        if (Direction == 3)//朝南
         {
-            if(side==4)
-                return isActivated(metadate) ?this.topOpenIcon :this.topIcon;
-            if(side==5)
+            if (side == 3)
+                return isActivated(metadate) ? this.topOpenIcon : this.topIcon;
+            if (side == 2)
                 return this.bottomIcon;
         }
-        if(Direction==5)//东
+        if (Direction == 4)//西
         {
-            if(side==5)
-                return isActivated(metadate)?this.topOpenIcon :this.topIcon;
-            if(side==4)
+            if (side == 4)
+                return isActivated(metadate) ? this.topOpenIcon : this.topIcon;
+            if (side == 5)
+                return this.bottomIcon;
+        }
+        if (Direction == 5)//东
+        {
+            if (side == 5)
+                return isActivated(metadate) ? this.topOpenIcon : this.topIcon;
+            if (side == 4)
                 return this.bottomIcon;
         }
         return this.sideIcon;
@@ -214,10 +214,10 @@ public class BlockBarrel extends BlockDirectionalWithTileEntity{
 
     @Override
     public void registerIcons(IconRegister par1IconRegister) {
-        this.bottomIcon = par1IconRegister.registerIcon( "barrel_bottom");
-        this.sideIcon = par1IconRegister.registerIcon( "barrel_side");
-        this.topIcon = par1IconRegister.registerIcon( "barrel_top");
-        this.topOpenIcon =par1IconRegister.registerIcon( "barrel_top_open");
+        this.bottomIcon = par1IconRegister.registerIcon("barrel_bottom");
+        this.sideIcon = par1IconRegister.registerIcon("barrel_side");
+        this.topIcon = par1IconRegister.registerIcon("barrel_top");
+        this.topOpenIcon = par1IconRegister.registerIcon("barrel_top_open");
     }
 
     @Override
@@ -254,6 +254,7 @@ public class BlockBarrel extends BlockDirectionalWithTileEntity{
             default -> null;
         };
     }
+
     @Override
     public int getMetadataForDirectionFacing(int metadata, EnumDirection direction) {
         return this.getItemSubtype(metadata) | (direction.isUpOrDown() ? 0 : (direction.isEastOrWest() ? 4 : (direction.isNorthOrSouth() ? 8 : -1)));

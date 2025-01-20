@@ -70,11 +70,14 @@ public class GuiGrindStone extends GuiContainer implements ICrafting {
         drawTexturedModalRect(var4, var5, 0, 0, this.xSize, this.ySize);
     }
 
-    public void sendContainerAndContentsToPlayer(Container container, List list) {}
+    public void sendContainerAndContentsToPlayer(Container container, List list) {
+    }
 
-    public void sendSlotContents(Container container, int i, ItemStack itemStack) {}
+    public void sendSlotContents(Container container, int i, ItemStack itemStack) {
+    }
 
-    public void sendProgressBarUpdate(Container container, int i, int i1) {}
+    public void sendProgressBarUpdate(Container container, int i, int i1) {
+    }
 
 /*    public void setEnchantInfo(int exp) {
         this.tileEntityTest.setEXP(exp);

@@ -4,6 +4,7 @@ import net.minecraft.*;
 
 public class ItemSweetBerry extends ItemFood {
     private final int cropId;
+
     public ItemSweetBerry(int id, int satiation, int nutrition, boolean has_protein, boolean has_phytonutrients, int crop_block_id, String texture) {
         super(id, Material.seed, satiation, nutrition, has_protein, false, has_phytonutrients, texture);
         this.cropId = crop_block_id;
@@ -11,8 +12,7 @@ public class ItemSweetBerry extends ItemFood {
         this.setFoodValue(satiation, nutrition, 1000, has_protein, false, has_phytonutrients);
     }
 
-    private boolean isSoilBlock(int blockID)
-    {
+    private boolean isSoilBlock(int blockID) {
         return blockID == Block.dirt.blockID || blockID == Block.grass.blockID;
     }
 

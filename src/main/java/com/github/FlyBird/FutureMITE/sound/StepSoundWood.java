@@ -3,13 +3,13 @@ package com.github.FlyBird.FutureMITE.sound;
 import net.minecraft.StepSound;
 
 
-
 public class StepSoundWood extends StepSound {
     public StepSoundWood(String string, float volume, float pitch) {
         super(string, volume, pitch);
     }
 
-    private final float volume=1.0f;
+    private final float volume = 1.0f;
+
     @Override
     public String getBreakSound() {
 

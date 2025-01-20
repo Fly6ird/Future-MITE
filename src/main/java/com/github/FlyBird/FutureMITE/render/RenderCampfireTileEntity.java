@@ -14,34 +14,33 @@ public class RenderCampfireTileEntity extends TileEntitySpecialRenderer {
     private static final double EDGE = 0.125;
     private static final double SMOKE_OFFSET = 0.15625;
     private static final double SMOKE_Y_OFFSET = 0.06;
-    private static final double[][] RENDER_POSITION_ITEM = new double[][] {
-            { BASE_X_OFFSET, BASE_Y_OFFSET, BASE_Z_OFFSET + EDGE - ACROSS },
-            { BASE_X_OFFSET - EDGE, BASE_Y_OFFSET, BASE_Z_OFFSET },
-            { BASE_X_OFFSET - ACROSS, BASE_Y_OFFSET, BASE_Z_OFFSET - EDGE },
-            { BASE_X_OFFSET + EDGE - ACROSS, BASE_Y_OFFSET, BASE_Z_OFFSET - ACROSS } };
-    private static final double[][] RENDER_POSITION_SMOKE = new double[][] {
-            { BASE_X_OFFSET - SMOKE_OFFSET, BASE_Y_OFFSET + SMOKE_Y_OFFSET, BASE_Z_OFFSET + EDGE - ACROSS },
-            { BASE_X_OFFSET - EDGE, BASE_Y_OFFSET + SMOKE_Y_OFFSET, BASE_Z_OFFSET - SMOKE_OFFSET },
-            { BASE_X_OFFSET - ACROSS + SMOKE_OFFSET, BASE_Y_OFFSET + SMOKE_Y_OFFSET, BASE_Z_OFFSET - EDGE },
-            { BASE_X_OFFSET + EDGE - ACROSS, BASE_Y_OFFSET + SMOKE_Y_OFFSET, BASE_Z_OFFSET - ACROSS + SMOKE_OFFSET } };
-    private static final int[][] RENDER_SLOT_MAPPING = new int[][] {
-            { 3, 0, 1, 2 },
-            { 1, 2, 3, 0 },
-            { 2, 3, 0, 1 },
-            { 0, 1, 2, 3 } };
+    private static final double[][] RENDER_POSITION_ITEM = new double[][]{
+            {BASE_X_OFFSET, BASE_Y_OFFSET, BASE_Z_OFFSET + EDGE - ACROSS},
+            {BASE_X_OFFSET - EDGE, BASE_Y_OFFSET, BASE_Z_OFFSET},
+            {BASE_X_OFFSET - ACROSS, BASE_Y_OFFSET, BASE_Z_OFFSET - EDGE},
+            {BASE_X_OFFSET + EDGE - ACROSS, BASE_Y_OFFSET, BASE_Z_OFFSET - ACROSS}};
+    private static final double[][] RENDER_POSITION_SMOKE = new double[][]{
+            {BASE_X_OFFSET - SMOKE_OFFSET, BASE_Y_OFFSET + SMOKE_Y_OFFSET, BASE_Z_OFFSET + EDGE - ACROSS},
+            {BASE_X_OFFSET - EDGE, BASE_Y_OFFSET + SMOKE_Y_OFFSET, BASE_Z_OFFSET - SMOKE_OFFSET},
+            {BASE_X_OFFSET - ACROSS + SMOKE_OFFSET, BASE_Y_OFFSET + SMOKE_Y_OFFSET, BASE_Z_OFFSET - EDGE},
+            {BASE_X_OFFSET + EDGE - ACROSS, BASE_Y_OFFSET + SMOKE_Y_OFFSET, BASE_Z_OFFSET - ACROSS + SMOKE_OFFSET}};
+    private static final int[][] RENDER_SLOT_MAPPING = new int[][]{
+            {3, 0, 1, 2},
+            {1, 2, 3, 0},
+            {2, 3, 0, 1},
+            {0, 1, 2, 3}};
+
     @Override
     public void renderTileEntityAt(TileEntity tileEntity, double x, double y, double z, float scale) {
-        if(tileEntity instanceof TileEntityCampfire)
-        {
-            ItemStack[] burnItemStacks=((TileEntityCampfire) tileEntity).getBurnItemStacks();
+        if (tileEntity instanceof TileEntityCampfire) {
+            ItemStack[] burnItemStacks = ((TileEntityCampfire) tileEntity).getBurnItemStacks();
             for (int i = 0; i < burnItemStacks.length; i++) {
-                if(burnItemStacks[i]!=null)
-                {
-                    ItemStack stack=burnItemStacks[i];
-                    if(invRender[i]==null){
+                if (burnItemStacks[i] != null) {
+                    ItemStack stack = burnItemStacks[i];
+                    if (invRender[i] == null) {
                         invRender[i] = new EntityItem(tileEntity.getWorldObj());
                         invRender[i].hoverStart = 0.0F;
-                    }else
+                    } else
                         invRender[i].setWorld(tileEntity.getWorldObj());
 
                     invRender[i].setEntityItemStack(stack);
@@ -61,13 +60,10 @@ public class RenderCampfireTileEntity extends TileEntitySpecialRenderer {
                     double[] position = getRenderPositionFromRenderSlot(i, false);
                     GL11.glTranslated(x + position[0], y + position[1], z + position[2]);
 
-                    if (rendersAsBlock)
-                    {
+                    if (rendersAsBlock) {
                         GL11.glRotatef(i * -90, 0, 1, 0);
                         GL11.glTranslated(-0.125, -0.01625, 0.0);
-                    }
-                    else
-                    {
+                    } else {
                         GL11.glRotatef(180, 0, 1, 1);
                         GL11.glRotatef(i * -90, 0, 0, 1);
                         GL11.glRotatef(270, 0, 0, 1);
@@ -86,8 +82,7 @@ public class RenderCampfireTileEntity extends TileEntitySpecialRenderer {
         }
     }
 
-    public static double[] getRenderPositionFromRenderSlot(int renderslot, boolean smoke)
-    {
+    public static double[] getRenderPositionFromRenderSlot(int renderslot, boolean smoke) {
         return (smoke ? RENDER_POSITION_SMOKE : RENDER_POSITION_ITEM)[Math.abs(renderslot) % 4];
     }
 }

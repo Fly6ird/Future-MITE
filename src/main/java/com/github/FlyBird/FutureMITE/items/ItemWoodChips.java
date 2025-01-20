@@ -6,7 +6,7 @@ import net.minecraft.Material;
 
 public class ItemWoodChips extends Item implements IFuelItem {
     protected ItemWoodChips(int id, Material material, String texture) {
-        super(id,material,texture);
+        super(id, material, texture);
     }
 
     @Override

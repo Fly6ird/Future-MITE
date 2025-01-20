@@ -8,7 +8,6 @@ import moddedmite.rustedironcore.network.PacketByteBuf;
 import net.minecraft.*;
 
 
-
 public class S2COpenWindow implements Packet {
     public int windowId;
     public String windowTitle;

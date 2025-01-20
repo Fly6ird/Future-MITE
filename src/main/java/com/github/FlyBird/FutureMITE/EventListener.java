@@ -146,9 +146,9 @@ public class EventListener {
 
     @Subscribe
     public void onEntityRegister(EntityRegisterEvent event) {
-        event.register(EntityRabbit.class,FutureMITEStart.MOD_ID, "Rabbit", getNextEntityID(),10051392,7555121);
-        event.register(EntityEndermite.class,FutureMITEStart.MOD_ID, "Endermite", getNextEntityID(),1447446,7237230);
-        event.register(EntityArmourStand.class, FutureMITEStart.MOD_ID,"ArmourStand", getNextEntityID());
+        event.register(EntityRabbit.class, FutureMITEStart.MOD_ID, "Rabbit", getNextEntityID(), 10051392, 7555121);
+        event.register(EntityEndermite.class, FutureMITEStart.MOD_ID, "Endermite", getNextEntityID(), 1447446, 7237230);
+        event.register(EntityArmourStand.class, FutureMITEStart.MOD_ID, "ArmourStand", getNextEntityID());
 
         event.register(EntityNewBoat.class, FutureMITEStart.MOD_ID, "NewBoat", getNextEntityID());
         event.register(EntityNewBoatSeat.class, FutureMITEStart.MOD_ID, "NewBoatSeat", getNextEntityID());
@@ -156,16 +156,16 @@ public class EventListener {
     }
 
     @Subscribe
-    public void onEntityRendererRegistry(EntityRendererRegistryEvent event)
-    {
-        event.register(EntityRabbit.class,new RabbitRenderer());
-        event.register(EntityArmourStand.class,new ArmourStandRenderer());
-        event.register(EntityEndermite.class,new EndermiteRenderer());
+    public void onEntityRendererRegistry(EntityRendererRegistryEvent event) {
+        event.register(EntityRabbit.class, new RabbitRenderer());
+        event.register(EntityArmourStand.class, new ArmourStandRenderer());
+        event.register(EntityEndermite.class, new EndermiteRenderer());
 
-        event.register(EntityNewBoat.class,new NewBoatRenderer());
+        event.register(EntityNewBoat.class, new NewBoatRenderer());
         //event.register(EntityNewBoatSeat.class,new NewBoatRenderer());
-        event.register(EntityNewBoatWithChest.class,new ChestBoatRenderer());
+        event.register(EntityNewBoatWithChest.class, new ChestBoatRenderer());
     }
+
     @Subscribe
     public void onTileEntityRendererRegister(TileEntityRendererRegisterEvent event) {
         event.register(TileEntityGrindstone.class, new RenderGrindstoneTileEntity());
@@ -179,6 +179,7 @@ public class EventListener {
         event.register(TileEntityGrindstone.class, "Grindstone");
         event.register(TileEntityCampfire.class, "Campfire");
     }
+
     public static int getNextEntityID() {
         return IdUtil.getNextEntityID();
     }

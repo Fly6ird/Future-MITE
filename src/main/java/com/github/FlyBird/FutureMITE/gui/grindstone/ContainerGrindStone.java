@@ -1,7 +1,6 @@
 package com.github.FlyBird.FutureMITE.gui.grindstone;
 
 
-
 import com.github.FlyBird.FutureMITE.blocks.BlockGrindstone;
 import com.github.FlyBird.FutureMITE.tileentities.TileEntityGrindstone;
 import net.minecraft.*;
@@ -32,7 +31,7 @@ public class ContainerGrindStone extends Container {
         this.blockX = x;
         this.blockY = y;
         this.blockZ = z;
-        this.outSlotCondition =0;
+        this.outSlotCondition = 0;
         slots.initSlots(this);//先把自己的槽位加入
         this.slots = slots;
         if (!(player.getWorld()).isRemote) {
@@ -62,7 +61,7 @@ public class ContainerGrindStone extends Container {
                 if (!mergeItemStack(itemstack1, this.slots.getSize(), this.inventorySlots.size(), false))       //尝试在 3-39寻找可以迁移的物品槽
                     return null;        //没能成功放入的话
             }//如果是附魔书  或者工具 或者装备
-            else if (itemstack1.getItem() instanceof ItemEnchantedBook||itemstack1.getItem() instanceof ItemTool||itemstack1.getItem() instanceof ItemArmor) {
+            else if (itemstack1.getItem() instanceof ItemEnchantedBook || itemstack1.getItem() instanceof ItemTool || itemstack1.getItem() instanceof ItemArmor) {
                 if (!mergeItemStack(itemstack1, this.slots.getInputIndex(0), this.slots.getInputIndex(1) + 1, false))   //试着能不能迁移到第一个格子和第二个格子
                     return null;
             }
@@ -82,7 +81,7 @@ public class ContainerGrindStone extends Container {
     public List<ItemStack> getInventory() {
         List<ItemStack> nonnulllist = new ArrayList<>();
         for (Object o : this.inventorySlots)
-            nonnulllist.add(((Slot)o).getStack());
+            nonnulllist.add(((Slot) o).getStack());
         return nonnulllist;
     }
 
@@ -94,7 +93,7 @@ public class ContainerGrindStone extends Container {
 
     void updateInfo() {
         //if (!this.world.isRemote)
-           // this.player.sendPacket( new S2CBarrelInfo(this.tileEntityTest.getEXP()));
+        // this.player.sendPacket( new S2CBarrelInfo(this.tileEntityTest.getEXP()));
     }
 
     public boolean canInteractWith(EntityPlayer player) {
@@ -104,64 +103,63 @@ public class ContainerGrindStone extends Container {
     }
 
     //0为失败   1为修复武器    2武器袪魔  3为附魔书袪魔
-    public int getOutSlotCondition() {return this.outSlotCondition;}
+    public int getOutSlotCondition() {
+        return this.outSlotCondition;
+    }
+
     //用来显示预览
     public void updateOutput() {
         ItemStack item_stack_in_first_slot = this.slots.getInPutStack(0);
         ItemStack item_stack_in_second_slot = this.slots.getInPutStack(1);
-        ItemStack item_stack_in_out_slot=null;
+        ItemStack item_stack_in_out_slot = null;
         //如果两个槽位都是空的，输出槽位不显示任何东西
 
-        if (item_stack_in_first_slot == null&&item_stack_in_second_slot == null) {
-            outSlotCondition =0;
+        if (item_stack_in_first_slot == null && item_stack_in_second_slot == null) {
+            outSlotCondition = 0;
             this.slots.getOutPut().putStack(null);
         }
-        if (item_stack_in_first_slot != null&&item_stack_in_second_slot != null) {//修复物品
-            boolean is_repairing_by_combination=ItemStack.areItemStacksEqual(item_stack_in_first_slot, item_stack_in_second_slot, true, false, true, true);
-            if(is_repairing_by_combination)
-            {
-                if(item_stack_in_first_slot.isItemDamaged() && item_stack_in_second_slot.isItemDamaged())
-                {
-                    if(item_stack_in_first_slot.isItemEnchanted()&&item_stack_in_second_slot.isItemEnchanted())
-                        outSlotCondition =0;
+        if (item_stack_in_first_slot != null && item_stack_in_second_slot != null) {//修复物品
+            boolean is_repairing_by_combination = ItemStack.areItemStacksEqual(item_stack_in_first_slot, item_stack_in_second_slot, true, false, true, true);
+            if (is_repairing_by_combination) {
+                if (item_stack_in_first_slot.isItemDamaged() && item_stack_in_second_slot.isItemDamaged()) {
+                    if (item_stack_in_first_slot.isItemEnchanted() && item_stack_in_second_slot.isItemEnchanted())
+                        outSlotCondition = 0;
                     else {
-                        outSlotCondition =1;
-                        if(item_stack_in_first_slot.isItemEnchanted())
-                            item_stack_in_out_slot=item_stack_in_first_slot.copy();
-                        else if(item_stack_in_second_slot.isItemEnchanted())
-                            item_stack_in_out_slot=item_stack_in_second_slot.copy();
+                        outSlotCondition = 1;
+                        if (item_stack_in_first_slot.isItemEnchanted())
+                            item_stack_in_out_slot = item_stack_in_first_slot.copy();
+                        else if (item_stack_in_second_slot.isItemEnchanted())
+                            item_stack_in_out_slot = item_stack_in_second_slot.copy();
                         else
-                            item_stack_in_out_slot=item_stack_in_second_slot.copy();
+                            item_stack_in_out_slot = item_stack_in_second_slot.copy();
                         item_stack_in_out_slot.setItemDamage(CraftingManager.getResultingDurabilityFromCombiningItems(item_stack_in_first_slot, item_stack_in_second_slot));
                     }
                 }
-            }
-            else
-                outSlotCondition =0;
-        }
-        else {//单纯袪魔
+            } else
+                outSlotCondition = 0;
+        } else {//单纯袪魔
             if (item_stack_in_first_slot != null) {
-                if(item_stack_in_first_slot.isItemEnchanted()) {
+                if (item_stack_in_first_slot.isItemEnchanted()) {
                     outSlotCondition = 2;
                     item_stack_in_out_slot = item_stack_in_first_slot.copy();
                     item_stack_in_out_slot.clearEnchantTagList();
                 }
-                if(item_stack_in_first_slot.getItem() instanceof ItemEnchantedBook)
-                {
+                if (item_stack_in_first_slot.getItem() instanceof ItemEnchantedBook) {
                     outSlotCondition = 3;
-                    item_stack_in_out_slot = new ItemStack(Item.book,1);;
+                    item_stack_in_out_slot = new ItemStack(Item.book, 1);
+                    ;
                 }
             }
             if (item_stack_in_second_slot != null) {
-                if(item_stack_in_second_slot.isItemEnchanted()) {
+                if (item_stack_in_second_slot.isItemEnchanted()) {
                     outSlotCondition = 2;
                     item_stack_in_out_slot = item_stack_in_second_slot.copy();
                     item_stack_in_out_slot.clearEnchantTagList();
                 }
-                if(item_stack_in_second_slot.getItem() instanceof ItemEnchantedBook)
-                {
+                if (item_stack_in_second_slot.getItem() instanceof ItemEnchantedBook) {
                     outSlotCondition = 3;
-                    item_stack_in_out_slot = new ItemStack(Item.book,1);;
+                    item_stack_in_out_slot = new ItemStack(Item.book, 1);
+                    ;
                 }
             }
 

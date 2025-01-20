@@ -16,6 +16,7 @@ public class BlockChain extends Block {
         this.setStepSound(stepSoundChain);
         setCreativeTab(CreativeTabs.tabDecorations);
     }
+
     @Override
     public boolean isStandardFormCube(boolean[] is_standard_form_cube, int metadata) {
         return false;
@@ -27,13 +28,13 @@ public class BlockChain extends Block {
     @Override
     public void registerIcons(IconRegister par1IconRegister) {
         this.chain = par1IconRegister.registerIcon(this.getTextureName());//blocks
-        this.itemChain = par1IconRegister.registerIcon( "item/"+this.getTextureName());
+        this.itemChain = par1IconRegister.registerIcon("item/" + this.getTextureName());
     }
 
 
     @Override
     public Icon getIcon(int side, int metadata) {
-        if(side==1)
+        if (side == 1)
             return itemChain;
         return this.chain;
     }
@@ -56,13 +57,13 @@ public class BlockChain extends Block {
 
     @Override
     public void setBlockBoundsBasedOnStateAndNeighbors(IBlockAccess par1IBlockAccess, int x, int y, int z) {
-        int meta=par1IBlockAccess.getBlockMetadata(x,y,z);
-        if(meta==8)
-            this.setBlockBounds(0.40625, 0.40625, 0.0, 0.59375, 0.59375, 1.0,false);
-        if(meta==4)
-            this.setBlockBounds(0, 0.40625, 0.40625, 1, 0.59375, 0.59375,false);
-        if(meta==0)
-            this.setBlockBounds(0.40625, 0.0, 0.40625, 0.59375, 1.0, 0.59375,false);
+        int meta = par1IBlockAccess.getBlockMetadata(x, y, z);
+        if (meta == 8)
+            this.setBlockBounds(0.40625, 0.40625, 0.0, 0.59375, 0.59375, 1.0, false);
+        if (meta == 4)
+            this.setBlockBounds(0, 0.40625, 0.40625, 1, 0.59375, 0.59375, false);
+        if (meta == 0)
+            this.setBlockBounds(0.40625, 0.0, 0.40625, 0.59375, 1.0, 0.59375, false);
     }
 
     @Override
@@ -80,7 +81,7 @@ public class BlockChain extends Block {
 
     @Override
     public void onFallenUpon(World par1World, int x, int y, int z, Entity par5Entity, float par6) {
-        if(!par1World.isRemote)
+        if (!par1World.isRemote)
             par1World.playSoundAtBlock(x, y, z, this.stepSound.getStepSound(), (this.stepSound.getVolume() + 1.0F) / 2.0F, this.stepSound.getPitch() * 0.8F);
     }
 }

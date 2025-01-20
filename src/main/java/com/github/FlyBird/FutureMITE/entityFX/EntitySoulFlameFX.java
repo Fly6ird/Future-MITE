@@ -11,9 +11,9 @@ public class EntitySoulFlameFX extends EntityFX {
 
     public EntitySoulFlameFX(World world, double d, double e, double f, double g, double h, double i) {
         super(world, d, e, f, g, h, i);
-        this.motionX = this.motionX * (double)0.01f + g;
-        this.motionY = this.motionY * (double)0.01f + h;
-        this.motionZ = this.motionZ * (double)0.01f + i;
+        this.motionX = this.motionX * (double) 0.01f + g;
+        this.motionY = this.motionY * (double) 0.01f + h;
+        this.motionZ = this.motionZ * (double) 0.01f + i;
 
         d += (this.rand.nextFloat() - this.rand.nextFloat()) * 0.05f;
         e += (this.rand.nextFloat() - this.rand.nextFloat()) * 0.05f;
@@ -23,7 +23,7 @@ public class EntitySoulFlameFX extends EntityFX {
         this.particleBlue = 1.0f;
         this.particleGreen = 1.0f;
         this.particleRed = 1.0f;
-        this.particleMaxAge = (int)(8.0 / (Math.random() * 0.8 + 0.2)) + 4;
+        this.particleMaxAge = (int) (8.0 / (Math.random() * 0.8 + 0.2)) + 4;
         this.noClip = true;
         this.setParticleIcon(BlockSoulTorch.soulFlame);
     }
@@ -35,14 +35,14 @@ public class EntitySoulFlameFX extends EntityFX {
 
     @Override
     public void renderParticle(Tessellator tessellator, float f, float g, float h, float i, float j, float k) {
-        float f2 = ((float)this.particleAge + f) / (float)this.particleMaxAge;
+        float f2 = ((float) this.particleAge + f) / (float) this.particleMaxAge;
         this.particleScale = this.flameScale * (1.0f - f2 * f2 * 0.5f);
         super.renderParticle(tessellator, f, g, h, i, j, k);
     }
 
     @Override
     public int getBrightnessForRender(float f) {
-        float f2 = ((float)this.particleAge + f) / (float)this.particleMaxAge;
+        float f2 = ((float) this.particleAge + f) / (float) this.particleMaxAge;
         if (f2 < 0.0f) {
             f2 = 0.0f;
         }
@@ -52,7 +52,7 @@ public class EntitySoulFlameFX extends EntityFX {
         int n = super.getBrightnessForRender(f);
         int n2 = n & 0xFF;
         int n3 = n >> 16 & 0xFF;
-        if ((n2 += (int)(f2 * 15.0f * 16.0f)) > 240) {
+        if ((n2 += (int) (f2 * 15.0f * 16.0f)) > 240) {
             n2 = 240;
         }
         return n2 | n3 << 16;
@@ -60,7 +60,7 @@ public class EntitySoulFlameFX extends EntityFX {
 
     @Override
     public float getBrightness(float f) {
-        float f2 = ((float)this.particleAge + f) / (float)this.particleMaxAge;
+        float f2 = ((float) this.particleAge + f) / (float) this.particleMaxAge;
         if (f2 < 0.0f) {
             f2 = 0.0f;
         }

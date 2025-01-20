@@ -6,14 +6,17 @@ import net.minecraft.IconRegister;
 
 public class BlockModWoodPlanks extends BlockWood {
     public final String id;
-    public BlockModWoodPlanks(int par1,String id) {
+
+    public BlockModWoodPlanks(int par1, String id) {
         super(par1);
-        this.id=id;
+        this.id = id;
         this.setResistance(5.0F);
         this.setStepSound(soundWoodFootstep);
         this.setUnlocalizedName("planks");
     }
+
     protected Icon icon;
+
     public boolean isValidMetadata(int metadata) {
         return metadata == 0;
     }
@@ -23,7 +26,7 @@ public class BlockModWoodPlanks extends BlockWood {
     }
 
     public void registerIcons(IconRegister par1IconRegister) {
-        this.icon=par1IconRegister.registerIcon("planks/"+this.id);
+        this.icon = par1IconRegister.registerIcon("planks/" + this.id);
     }
 
     public Icon getIcon(int side, int metadata) {

@@ -58,6 +58,15 @@ tile.planks.dark_oak.name=Dark_Oak Planks
 tile.slab.dark_oak.name=Dark_Oak Slab
 tile.stairs.dark_oak.name=Dark_Oak Stairs
 
+tile.planks.cherry.name=Cherry Planks
+tile.slab.cherry.name=Cherry Slab
+tile.stairs.cherry.name=Cherry Stairs
+tile.log.cherry_log.name=Cherry Log
+tile.log.stripped_cherry_log.name=Stripped Cherry Log
+tile.log.stripped_cherry_wood.name=Stripped Cherry Wood
+tile.trapdoors.cherry.name=Cherry TrapDoor
+item.doors.cherry.name=Cherry Door
+
 tile.iron_chain.name=Iron Chain
 tile.copper_chain.name=Copper Chain
 tile.silver_chain.name=Silver Chain
@@ -99,18 +108,20 @@ tile.log.stripped_dark_oak_log.name=Stripped Dark Oak Log
 tile.log.dark_oak_wood.name=Dark Oak Wood 
 tile.log.stripped_dark_oak_wood.name=Stripped Dark Oak Wood 
 
-item.boats.oak.name=Oak Boat
-item.chest_boats.oak.name=Oak Chest Boat
-item.boats.birch.name=Birch Boat
-item.chest_boats.birch.name=Birch Chest Boat
-item.boats.jungle.name=Jungle Boat
-item.chest_boats.jungle.name=Jungle Chest Boat
-item.boats.spruce.name=Spruce Boat
-item.chest_boats.spruce.name=Spruce Chest Boat
-item.boats.acacia.name=Acacia Boat
-item.chest_boats.acacia.name=Acacia Chest Boat
-item.boats.dark_oak.name=Dark_Oak Boat
-item.chest_boats.dark_oak.name=Dark_Oak Chest Boat
+item.oak_boat.name=Oak Boat
+item.oak_chest_boat.name=Oak Chest Boat
+item.birch_boat.name=Birch Boat
+item.birch_chest_boat.name=Birch Chest Boat
+item.jungle_boat.name=Jungle Boat
+item.jungle_chest_boat.name=Jungle Chest Boat
+item.spruce_boat.name=Spruce Boat
+item.spruce_chest_boat.name=Spruce Chest Boat
+item.acacia_boat.name=Acacia Boat
+item.acacia_chest_boat.name=Acacia Chest Boat
+item.dark_oak_boat.name=Dark_Oak Boat
+item.dark_oak_chest_boat.name=Dark_Oak Chest Boat
+item.cherry_boat.name=Cherry Boat
+item.cherry_chest_boat.name=Cherry Chest Boat
 
 tile.fences.oak.name=Oak Fence
 tile.fence_gates.oak.name=Oak Fence Gate
@@ -196,5 +207,5 @@ tile.trapdoors.dark_oak.name=Dark Oak Trapdoor
 
 leaves.acacia.name=Acacia Leaves
 leaves.dark_oak.name=Dark Oak Leaves
-
+leaves.cherry.name=Cherry Leaves
 item.woodChips.name=Wood Chips

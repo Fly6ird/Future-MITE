@@ -7,6 +7,7 @@
   "mixins": [
     "block.BlockMixin",
     "block.BlockSpongeMixin",
+    "block.BlockTorchMixin",
     "block.BlockWallMixin",
     "block.canBePlacedOnBlockMixin",
     "entity.EntityEnderPearlMixin",
@@ -16,6 +17,7 @@
     "entity.SpawnerAnimalsMixin",
     "item.ItemAxeMixin",
     "item.ItemFlintAndSteelMixin",
+    "item.ItemScytheMixin",
     "item.ItemShovelMixin",
     "network.ClientPlayerMixin",
     "network.NetClientHandlerMixin",

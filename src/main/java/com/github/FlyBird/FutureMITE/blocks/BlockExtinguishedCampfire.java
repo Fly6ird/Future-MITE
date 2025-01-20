@@ -15,22 +15,22 @@ public class BlockExtinguishedCampfire extends BlockContainer {
 
     @Override
     public void registerIcons(IconRegister par1IconRegister) {
-        this.BlockCampfireIcon = par1IconRegister.registerIcon( "campfire_log");
+        this.BlockCampfireIcon = par1IconRegister.registerIcon("campfire_log");
     }
 
     @Override
     public int dropBlockAsEntityItem(BlockBreakInfo info) {
         if ((info.wasHarvestedByPlayer() || info.wasSelfDropped() || info.wasNotLegal())) {
-            return this.dropBlockAsEntityItem(info, new ItemStack(Item.coal,2,1));
+            return this.dropBlockAsEntityItem(info, new ItemStack(Item.coal, 2, 1));
         }
         return 0;
     }
 
     @Override
     public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, EnumFace face, float dx, float dy, float dz) {
-        ItemStack stack=player.getHeldItemStack();
-        TileEntityCampfire tile = (TileEntityCampfire)world.getBlockTileEntity(x, y, z);
-        if(tile!=null&&tile.getBurnTime()>0) {
+        ItemStack stack = player.getHeldItemStack();
+        TileEntityCampfire tile = (TileEntityCampfire) world.getBlockTileEntity(x, y, z);
+        if (tile != null && tile.getBurnTime() > 0) {
             if (stack.getItem() instanceof ItemFlintAndSteel) {
                 TileEntityCampfire.updateCampfireBlockState(true, world, x, y, z);
                 if (player.onClient()) {
@@ -48,11 +48,11 @@ public class BlockExtinguishedCampfire extends BlockContainer {
                     --stack.stackSize;
                 }
             }
-        }else if(stack.getItem().getBurnTime(stack)>0&&stack.getItem().getHeatLevel(stack)<3) {
+        } else if (stack.getItem().getBurnTime(stack) > 0 && stack.getItem().getHeatLevel(stack) < 3) {
             if (world.isRemote) {
                 player.swingArm();
             } else {
-                if (!player.capabilities.isCreativeMode&&tile.addBurnTime(stack.getItem().getBurnTime(stack)))
+                if (!player.capabilities.isCreativeMode && tile.addBurnTime(stack.getItem().getBurnTime(stack)))
                     --stack.stackSize;
             }
         }

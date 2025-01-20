@@ -23,8 +23,7 @@ import net.minecraft.World;
 
 import java.util.*;
 
-public class GameRegistry
-{
+public class GameRegistry {
     private static Set<IWorldGenerator> worldGenerators = Sets.newHashSet();
     private static Map<IWorldGenerator, Integer> worldGeneratorIndex = Maps.newHashMap();
     private static List<IWorldGenerator> sortedGeneratorList;
@@ -32,16 +31,14 @@ public class GameRegistry
     /**
      * Register a world generator - something that inserts new block types into the world
      *
-     * @param generator the generator
+     * @param generator           the generator
      * @param modGenerationWeight a weight to assign to this generator. Heavy weights tend to sink to the bottom of
-     * list of world generators (i.e. they run later)
+     *                            list of world generators (i.e. they run later)
      */
-    public static void registerWorldGenerator(IWorldGenerator generator, int modGenerationWeight)
-    {
+    public static void registerWorldGenerator(IWorldGenerator generator, int modGenerationWeight) {
         worldGenerators.add(generator);
         worldGeneratorIndex.put(generator, modGenerationWeight);
-        if (sortedGeneratorList != null)
-        {
+        if (sortedGeneratorList != null) {
             sortedGeneratorList = null;
         }
     }
@@ -56,10 +53,8 @@ public class GameRegistry
      * @param chunkGenerator
      * @param chunkProvider
      */
-    public static void generateWorld(int chunkX, int chunkZ, World world, IChunkProvider chunkGenerator, IChunkProvider chunkProvider)
-    {
-        if (sortedGeneratorList == null)
-        {
+    public static void generateWorld(int chunkX, int chunkZ, World world, IChunkProvider chunkGenerator, IChunkProvider chunkProvider) {
+        if (sortedGeneratorList == null) {
             computeSortedGeneratorList();
         }
         long worldSeed = world.getSeed();
@@ -68,20 +63,17 @@ public class GameRegistry
         long zSeed = fmlRandom.nextLong() >> 2 + 1L;
         long chunkSeed = (xSeed * chunkX + zSeed * chunkZ) ^ worldSeed;
 
-        for (IWorldGenerator generator : sortedGeneratorList)
-        {
+        for (IWorldGenerator generator : sortedGeneratorList) {
             fmlRandom.setSeed(chunkSeed);
             generator.generate(fmlRandom, chunkX, chunkZ, world, chunkGenerator, chunkProvider);
         }
     }
 
-    private static void computeSortedGeneratorList()
-    {
+    private static void computeSortedGeneratorList() {
         ArrayList<IWorldGenerator> list = Lists.newArrayList(worldGenerators);
         Collections.sort(list, new Comparator<IWorldGenerator>() {
             @Override
-            public int compare(IWorldGenerator o1, IWorldGenerator o2)
-            {
+            public int compare(IWorldGenerator o1, IWorldGenerator o2) {
                 return Ints.compare(worldGeneratorIndex.get(o1), worldGeneratorIndex.get(o2));
             }
         });

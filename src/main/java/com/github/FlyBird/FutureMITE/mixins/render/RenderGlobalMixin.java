@@ -28,6 +28,7 @@ public class RenderGlobalMixin {
     {
         Blocks.acacia.Leaves.setGraphicsLevel(this.mc.gameSettings.isFancyGraphicsEnabled());
         Blocks.darkOak.Leaves.setGraphicsLevel(this.mc.gameSettings.isFancyGraphicsEnabled());
+        Blocks.cherry.Leaves.setGraphicsLevel(this.mc.gameSettings.isFancyGraphicsEnabled());
     }
 
 @Inject(method ="doSpawnParticle",at=@At(value = "RETURN",ordinal = 3))

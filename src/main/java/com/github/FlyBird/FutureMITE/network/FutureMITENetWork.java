@@ -16,6 +16,7 @@ public class FutureMITENetWork {
     public static final ResourceLocation BoatMoveC2S = new ResourceLocation(FutureMITEStart.NameSpaceCompact, "BoatMoveC2S");
     public static final ResourceLocation OpenWindow = new ResourceLocation(FutureMITEStart.NameSpaceCompact, "OpenWindow");
     public static final ResourceLocation ArmourStandInteractC2S = new ResourceLocation(FutureMITEStart.NameSpaceCompact, "ArmourStandInteractC2S");
+
     public static void sendToClient(ServerPlayer player, Packet packet) {
         Network.sendToClient(player, packet);
     }

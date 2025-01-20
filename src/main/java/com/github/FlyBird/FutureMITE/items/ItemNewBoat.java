@@ -24,27 +24,27 @@ public class ItemNewBoat extends Item {
     public final BoatInfo boatinfo;
 
     public ItemNewBoat(int id, EntityNewBoat.Type type, boolean isChest) {
-        super(id,Material.wood,type.getName() + (isChest ? "_chest_boat" : "_boat"));
+        super(id, Material.wood, type.getName() + (isChest ? "_chest_boat" : "_boat"));
         //super(type.getName() + (isChest ? "_chest_boat" : "_boat"));
         this.type = type;
         this.name = type.getName();
         this.setUnlocalizedName(type.getName() + (isChest ? "_chest_boat" : "_boat"));
         this.isChest = isChest;
-        BOAT_INFO.put( type.getName().toLowerCase() + (isChest ? "_chest" : ""),
+        BOAT_INFO.put(type.getName().toLowerCase() + (isChest ? "_chest" : ""),
                 new BoatInfo(new ItemStack(this), () -> Item.getItem(Block.planks), type.ordinal(), false));
-        boatinfo=new BoatInfo(new ItemStack(this), () -> Item.getItem(Block.planks), type.ordinal(), false);
+        boatinfo = new BoatInfo(new ItemStack(this), () -> Item.getItem(Block.planks), type.ordinal(), false);
         setMaxStackSize(1);
         setCreativeTab(CreativeTabs.tabTransport);
     }
 
-    public void  registerBoatRecipes(RecipeRegistryEvent register) {
+    public void registerBoatRecipes(RecipeRegistryEvent register) {
         //ItemNewBoat.BoatInfo boatInfo = ItemNewBoat.BOAT_INFO.get(itemNewboat.type);
         if (!this.isChest)
             register.registerShapedRecipe(new ItemStack(this, 1), true, new Object[]{"B B", "A A", "AAA", Character.valueOf('A'), this.boatinfo.getPlank(), Character.valueOf('B'), new ItemStack(Item.shovelWood, 1)});
         else {
             ItemNewBoat.BoatInfo boatInfo = ItemNewBoat.BOAT_INFO.get(this.name);//获取没有箱子的对应Boatinfo  以便为了获取没有箱子的船
             register.registerShapedRecipe(new ItemStack(this, 1), true, new Object[]{"A", "B", Character.valueOf('A'), new ItemStack(Block.chest), Character.valueOf('B'), boatInfo.getBoatItem()});
-            register.registerShapedRecipe(new ItemStack(this, 1), true, new Object[]{"B B", "ACA", "AAA", Character.valueOf('A'), this.boatinfo.getPlank(), Character.valueOf('B'), new ItemStack(Item.shovelWood, 1), Character.valueOf('C'),new ItemStack(Block.chest)});
+            register.registerShapedRecipe(new ItemStack(this, 1), true, new Object[]{"B B", "ACA", "AAA", Character.valueOf('A'), this.boatinfo.getPlank(), Character.valueOf('B'), new ItemStack(Item.shovelWood, 1), Character.valueOf('C'), new ItemStack(Block.chest)});
         }
     }
 
@@ -113,21 +113,21 @@ public class ItemNewBoat extends Item {
                 entityboat = new EntityNewBoat(world);
             }
             boolean isWater;
-            if(world.isAirBlock(i,j,k))
-                isWater=false;
+            if (world.isAirBlock(i, j, k))
+                isWater = false;
             else
                 isWater = world.getBlock(i, j, k).blockMaterial == Material.water;
 
             entityboat.setPositionAndRotation(movingobjectposition.position_hit.xCoord, movingobjectposition.position_hit.yCoord + (isWater ? -0.12 : 0), movingobjectposition.position_hit.zCoord, player.rotationYaw, 0);
             entityboat.motionX = entityboat.motionY = entityboat.motionZ = 0;
-            entityboat.setBoatType( name);
+            entityboat.setBoatType(name);
             if (itemStack.hasDisplayName()) {
                 entityboat.setBoatName(itemStack.getDisplayName());
             }
 
             if (!world.getCollidingBoundingBoxes(entityboat, entityboat.boundingBox.expand(-0.1D, -0.1D, -0.1D)).isEmpty()) {
                 return false;
-            }else {
+            } else {
                 if (!world.isRemote) {
                     world.spawnEntityInWorld(entityboat);
                     if (!player.capabilities.isCreativeMode) {
@@ -137,11 +137,10 @@ public class ItemNewBoat extends Item {
                 }
                 return true;
             }
-        }else{
+        } else {
             return true;
         }
     }
-
 
 
     public ItemStack onItemRightClick(ItemStack itemStack, World world, EntityPlayer player) {
@@ -207,7 +206,7 @@ public class ItemNewBoat extends Item {
             boolean isWater = world.getBlock(i, j, k).blockMaterial == Material.water;
             entityboat.setPositionAndRotation(movingobjectposition.position_hit.xCoord, movingobjectposition.position_hit.yCoord + (isWater ? -0.12 : 0), movingobjectposition.position_hit.zCoord, player.rotationYaw, 0);
             entityboat.motionX = entityboat.motionY = entityboat.motionZ = 0;
-            entityboat.setBoatType( name);
+            entityboat.setBoatType(name);
             if (itemStack.hasDisplayName()) {
                 entityboat.setBoatName(itemStack.getDisplayName());
             }

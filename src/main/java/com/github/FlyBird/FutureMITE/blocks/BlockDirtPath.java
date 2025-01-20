@@ -2,7 +2,7 @@ package com.github.FlyBird.FutureMITE.blocks;
 
 import net.minecraft.*;
 
-public class BlockDirtPath extends BlockUnderminable{
+public class BlockDirtPath extends BlockUnderminable {
 
     private Icon dirtpath_side;
     private Icon dirtpath_top;
@@ -28,8 +28,8 @@ public class BlockDirtPath extends BlockUnderminable{
 
     @Override
     public boolean isLegalAt(World world, int x, int y, int z, int metadata) {
-        Block block_above =  world.getBlockWithRefreshedBounds(x, y + 1, z);
-        return block_above == null|| block_above.getBlockBoundsMinY(Minecraft.getThreadIndex()) > 0.0;
+        Block block_above = world.getBlockWithRefreshedBounds(x, y + 1, z);
+        return block_above == null || block_above.getBlockBoundsMinY(Minecraft.getThreadIndex()) > 0.0;
 
     }
 
@@ -55,9 +55,9 @@ public class BlockDirtPath extends BlockUnderminable{
 
     @Override
     public void registerIcons(IconRegister par1IconRegister) {
-        this.dirtpath_top=par1IconRegister.registerIcon( "dirt_path_top");
-        this.dirtpath_side=par1IconRegister.registerIcon( "dirt_path_side");
-        this.dirt_buttom=par1IconRegister.registerIcon( "dirt");
+        this.dirtpath_top = par1IconRegister.registerIcon("dirt_path_top");
+        this.dirtpath_side = par1IconRegister.registerIcon("dirt_path_side");
+        this.dirt_buttom = par1IconRegister.registerIcon("dirt");
     }
 
     @Override

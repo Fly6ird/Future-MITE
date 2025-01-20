@@ -20,12 +20,13 @@ public class ItemModLeaves extends ItemBlock {
         int var3 = par1ItemStack.getItemSubtype();
         return (var3 & 1) == 1 ? ColorizerFoliage.getFoliageColorPine() : ((var3 & 2) == 2 ? ColorizerFoliage.getFoliageColorBirch() : ColorizerFoliage.getFoliageColorBasic());
     }
+
     @Override
     public String getUnlocalizedName(ItemStack par1ItemStack) {
         if (par1ItemStack == null) {
             return super.getUnlocalizedName();
         } else {
-            return "leaves" + "." + ((BlockModLeaves)this.getBlock()).id;
+            return "leaves" + "." + ((BlockModLeaves) this.getBlock()).id;
         }
     }
 }

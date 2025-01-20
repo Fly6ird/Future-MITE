@@ -12,13 +12,13 @@ public class ItemBigGrass extends ItemColored {
     }
 
     public Icon getIconFromSubtype(int par1) {
-        return this.getBlock().getIcon(0, (par1&2));
+        return this.getBlock().getIcon(0, (par1 & 2));
     }
 
 
     public String getUnlocalizedName(ItemStack par1ItemStack) {
-        if(par1ItemStack!=null)
-            return "tile."+((par1ItemStack.getItemSubtype()&3)>>1==0?"tall_grass":"large_fern");
+        if (par1ItemStack != null)
+            return "tile." + ((par1ItemStack.getItemSubtype() & 3) >> 1 == 0 ? "tall_grass" : "large_fern");
         return "";
     }
 }

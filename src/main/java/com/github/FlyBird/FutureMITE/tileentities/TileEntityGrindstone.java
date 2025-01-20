@@ -8,11 +8,11 @@ import net.minecraft.*;
 import java.util.Arrays;
 
 public class TileEntityGrindstone extends TileEntity implements ISidedInventory {
-    private static final int[] slots_top = new int[] { 0 };
+    private static final int[] slots_top = new int[]{0};
 
-    private static final int[] slots_bottom = new int[] { 1 };
+    private static final int[] slots_bottom = new int[]{1};
 
-    private static final int[] slots_sides = new int[] { 1 };
+    private static final int[] slots_sides = new int[]{1};
 
     private final GrindStoneSlots slots = new GrindStoneSlots(this);
 
@@ -58,8 +58,8 @@ public class TileEntityGrindstone extends TileEntity implements ISidedInventory 
     public void updateEntity() {
         this.slots.updateInfo();
         if (!(getWorldObj()).isRemote) {
-            ItemStack[] inputStack = {this.slots.getInPutStack(0),this.slots.getInPutStack(1)};
-            if (inputStack[0] != null||inputStack[1] != null)
+            ItemStack[] inputStack = {this.slots.getInPutStack(0), this.slots.getInPutStack(1)};
+            if (inputStack[0] != null || inputStack[1] != null)
                 input(inputStack);
             ItemStack outputStack = this.slots.getOutPutStack();
             if (outputStack != null)
