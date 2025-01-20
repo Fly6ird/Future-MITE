@@ -12,19 +12,19 @@ public class StepSoundChain extends StepSound {
     @Override
     public String getBreakSound() {
         volume = 0.5f;
-        return "block.chain.break";
+        return "futuremite:block.chain.break";
     }
 
     @Override
     public String getPlaceSound() {
         volume = 0.5f;
-        return "block.chain.break";
+        return "futuremite:block.chain.break";
     }
 
     @Override
     public String getStepSound() {
         volume = 1.0f;
-        return "block.chain.step";
+        return "futuremite:block.chain.step";
     }
 
     @Override

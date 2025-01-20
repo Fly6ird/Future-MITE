@@ -262,7 +262,7 @@ public class BlockModLeaves extends BlockLeavesBase {
     }
 
     public void registerIcons(IconRegister par1IconRegister) {
-        this.iconLeaves=par1IconRegister.registerIcon("leaves/"+id);
+        this.iconLeaves=par1IconRegister.registerIcon("futuremite:leaves/"+id);
 
     }
 

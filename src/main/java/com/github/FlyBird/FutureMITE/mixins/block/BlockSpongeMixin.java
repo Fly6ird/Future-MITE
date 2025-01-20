@@ -55,7 +55,7 @@ public class BlockSpongeMixin extends Block {
 
     @Override
     public void registerIcons(IconRegister par1IconRegister) {
-        this.wetBlockIcon=par1IconRegister.registerIcon(this.getTextureName()+"_wet");
+        this.wetBlockIcon=par1IconRegister.registerIcon("futuremite:"+this.getTextureName()+"_wet");
         super.registerIcons(par1IconRegister);
     }
 

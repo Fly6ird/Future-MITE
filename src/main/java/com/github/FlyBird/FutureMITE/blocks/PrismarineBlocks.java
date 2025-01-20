@@ -39,9 +39,9 @@ public class PrismarineBlocks extends Block implements IBlockWithSubtypes {
     }
 
     public void registerIcons(IconRegister par1IconRegister) {
-        this.prismarine[0] = par1IconRegister.registerIcon("prismarine_rough");
-        this.prismarine[1] = par1IconRegister.registerIcon("prismarine_bricks");
-        this.prismarine[2] = par1IconRegister.registerIcon("prismarine_dark");
+        this.prismarine[0] = par1IconRegister.registerIcon("futuremite:prismarine_rough");
+        this.prismarine[1] = par1IconRegister.registerIcon("futuremite:prismarine_bricks");
+        this.prismarine[2] = par1IconRegister.registerIcon("futuremite:prismarine_dark");
         this.subtypes.setIcons(this.prismarine);
     }
 

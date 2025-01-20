@@ -13,13 +13,13 @@ public class StepSoundSweetBerryBush extends StepSound {
     @Override
     public String getBreakSound() {
         volume = 0.8f;
-        return "block.sweet_berry_bush.break";
+        return "futuremite:block.sweet_berry_bush.break";
     }
 
     @Override
     public String getPlaceSound() {
         pitch = 1.1f;
-        return "block.sweet_berry_bush.place";
+        return "futuremite:block.sweet_berry_bush.place";
     }
 
     @Override

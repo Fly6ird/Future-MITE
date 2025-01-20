@@ -7,7 +7,7 @@ import net.minecraft.*;
 
 public class ArmourStandRenderer extends RenderBiped {
 
-	private static final ResourceLocation TEXTURE_ARMOUR_STAND = new ResourceLocation("textures/entity/armorstand/wood.png");
+	private static final ResourceLocation TEXTURE_ARMOUR_STAND = new ResourceLocation("futuremite:textures/entity/armorstand/wood.png");
 
 	public ArmourStandRenderer() {
 		super(new ModelArmorStand(), 0.0F);

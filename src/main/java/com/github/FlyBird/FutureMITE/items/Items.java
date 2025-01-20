@@ -33,21 +33,21 @@ public class Items extends Item {
     public static final ItemModDoor jungleDoor = new ItemModDoor(getNextItemID(), Blocks.jungleDoor, "jungle");
     public static final ItemModDoor spruceDoor = new ItemModDoor(getNextItemID(), Blocks.spruceDoor, "spruce");
 
-    public static final ItemMeat rabbitRaw = (ItemMeat) (new ItemMeat(getNextItemID(), 3, 3, false, false, "rabbit_raw")).setUnlocalizedName("rabbitRaw");
-    public static final ItemMeat rabbitCooked = (ItemMeat) (new ItemMeat(getNextItemID(), 6, 6, false, false, "rabbit_cooked")).setUnlocalizedName("rabbitCooked");
+    public static final ItemMeat rabbitRaw = (ItemMeat) (new ItemMeat(getNextItemID(), 3, 3, false, false, "futuremite:rabbit_raw")).setUnlocalizedName("rabbitRaw");
+    public static final ItemMeat rabbitCooked = (ItemMeat) (new ItemMeat(getNextItemID(), 6, 6, false, false, "futuremite:rabbit_cooked")).setUnlocalizedName("rabbitCooked");
 
-    public static final Item rabbitHide = (new Items(getNextItemID(), Material.leather, "rabbit_hide")).setCraftingDifficultyAsComponent(100.0F).setUnlocalizedName("rabbitHide").setCreativeTab(CreativeTabs.tabMaterials);
-    public static final Item rabbitFoot = (new Items(getNextItemID(), Material.blaze, "rabbit_foot")).setCraftingDifficultyAsComponent(25.0F).setUnlocalizedName("rabbitFoot").setPotionEffect(PotionHelper.blazePowderEffect).setCreativeTab(CreativeTabs.tabBrewing);
-    public static final Item bowlRabbitStew = (new ItemBowl(getNextItemID(), Material.beef_stew, "rabbit_stew")).setFoodValue(12, 14, true, false, true).setPlantProduct().setUnlocalizedName("rabbit_stew");
+    public static final Item rabbitHide = (new Items(getNextItemID(), Material.leather, "futuremite:rabbit_hide")).setCraftingDifficultyAsComponent(100.0F).setUnlocalizedName("rabbitHide").setCreativeTab(CreativeTabs.tabMaterials);
+    public static final Item rabbitFoot = (new Items(getNextItemID(), Material.blaze, "futuremite:rabbit_foot")).setCraftingDifficultyAsComponent(25.0F).setUnlocalizedName("rabbitFoot").setPotionEffect(PotionHelper.blazePowderEffect).setCreativeTab(CreativeTabs.tabBrewing);
+    public static final Item bowlRabbitStew = (new ItemBowl(getNextItemID(), Material.beef_stew, "futuremite:rabbit_stew")).setFoodValue(12, 14, true, false, true).setPlantProduct().setUnlocalizedName("rabbit_stew");
 
-    public static final ItemArmourStand armourStand = new ItemArmourStand(getNextItemID(), Material.wood, "wooden_armorstand");
+    public static final ItemArmourStand armourStand = new ItemArmourStand(getNextItemID(), Material.wood, "futuremite:wooden_armorstand");
 
     //海晶碎片
-    public static final Item prismarineShard = (new Items(getNextItemID(), Material.diamond, "prismarine_shard")).setCraftingDifficultyAsComponent(100.0F).setUnlocalizedName("prismarineShard").setCreativeTab(CreativeTabs.tabMaterials);
+    public static final Item prismarineShard = (new Items(getNextItemID(), Material.diamond, "futuremite:prismarine_shard")).setCraftingDifficultyAsComponent(100.0F).setUnlocalizedName("prismarineShard").setCreativeTab(CreativeTabs.tabMaterials);
     //海晶砂粒
-    public static final Item prismarineCrystals = (new Items(getNextItemID(), Material.diamond, "prismarine_crystals")).setCraftingDifficultyAsComponent(100.0F).setUnlocalizedName("prismarineCrystals").setCreativeTab(CreativeTabs.tabMaterials);
+    public static final Item prismarineCrystals = (new Items(getNextItemID(), Material.diamond, "futuremite:prismarine_crystals")).setCraftingDifficultyAsComponent(100.0F).setUnlocalizedName("prismarineCrystals").setCreativeTab(CreativeTabs.tabMaterials);
 
-    public static final Item woodChips = (new ItemWoodChips(getNextItemID(), Material.wood, "wood_chips")).setUnlocalizedName("woodChips").setCreativeTab(CreativeTabs.tabMaterials);
+    public static final Item woodChips = (new ItemWoodChips(getNextItemID(), Material.wood, "futuremite:wood_chips")).setUnlocalizedName("woodChips").setCreativeTab(CreativeTabs.tabMaterials);
 
     protected Items(int id, Material material, String texture) {
         super(id, material, texture);

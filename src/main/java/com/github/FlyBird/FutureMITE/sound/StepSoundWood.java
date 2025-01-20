@@ -13,17 +13,17 @@ public class StepSoundWood extends StepSound {
     @Override
     public String getBreakSound() {
 
-        return "dig.newwood";
+        return "futuremite:dig.newwood";
     }
 
     @Override
     public String getPlaceSound() {
-        return "dig.newwood";
+        return "futuremite:dig.newwood";
     }
 
     @Override
     public String getStepSound() {
-        return "step.newwood";
+        return "futuremite:step.newwood";
     }
 
     @Override

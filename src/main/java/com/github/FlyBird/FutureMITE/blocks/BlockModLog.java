@@ -80,10 +80,10 @@ public class BlockModLog extends BlockLog {
     }
 
     public void registerIcons(IconRegister par1IconRegister) {
-        this.side_icon = par1IconRegister.registerIcon("log/" + this.getTextureName() + "_side");
-        this.stripped_side_icon = par1IconRegister.registerIcon("log/stripped_" + this.getTextureName() + "_side");
-        this.end_icon = par1IconRegister.registerIcon("log/" + this.getTextureName() + "_top");
-        this.stripped_end_icon = par1IconRegister.registerIcon("log/stripped_" + this.getTextureName() + "_top");
+        this.side_icon = par1IconRegister.registerIcon("futuremite:log/" + this.getTextureName() + "_side");
+        this.stripped_side_icon = par1IconRegister.registerIcon("futuremite:log/stripped_" + this.getTextureName() + "_side");
+        this.end_icon = par1IconRegister.registerIcon("futuremite:log/" + this.getTextureName() + "_top");
+        this.stripped_end_icon = par1IconRegister.registerIcon("futuremite:log/stripped_" + this.getTextureName() + "_top");
     }
 
     public int dropBlockAsEntityItem(BlockBreakInfo info) {

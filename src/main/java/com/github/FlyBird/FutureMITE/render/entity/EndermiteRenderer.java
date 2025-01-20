@@ -8,7 +8,7 @@ import net.minecraft.ResourceLocation;
 
 public class EndermiteRenderer extends RenderLiving {
 
-	private static final ResourceLocation texture = new ResourceLocation("textures/entity/endermite.png");
+	private static final ResourceLocation texture = new ResourceLocation("futuremite:textures/entity/endermite.png");
 
 	public EndermiteRenderer() {
 		super(new ModelEndermite(), 0.3F);

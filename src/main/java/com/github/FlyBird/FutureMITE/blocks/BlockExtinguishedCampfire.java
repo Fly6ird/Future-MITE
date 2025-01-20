@@ -15,7 +15,7 @@ public class BlockExtinguishedCampfire extends BlockContainer {
 
     @Override
     public void registerIcons(IconRegister par1IconRegister) {
-        this.BlockCampfireIcon = par1IconRegister.registerIcon("campfire_log");
+        this.BlockCampfireIcon = par1IconRegister.registerIcon("futuremite:campfire_log");
     }
 
     @Override

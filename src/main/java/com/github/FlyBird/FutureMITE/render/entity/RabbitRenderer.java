@@ -7,13 +7,13 @@ import org.lwjgl.opengl.GL11;
 
 public class RabbitRenderer extends RenderLiving {
 
-	private static final ResourceLocation BROWN = new ResourceLocation("textures/entity/rabbit/brown.png");
-	private static final ResourceLocation WHITE = new ResourceLocation("textures/entity/rabbit/white.png");
-	private static final ResourceLocation BLACK = new ResourceLocation("textures/entity/rabbit/black.png");
-	private static final ResourceLocation GOLD = new ResourceLocation("textures/entity/rabbit/gold.png");
-	private static final ResourceLocation SALT = new ResourceLocation("textures/entity/rabbit/salt.png");
+	private static final ResourceLocation BROWN = new ResourceLocation("futuremite:textures/entity/rabbit/brown.png");
+	private static final ResourceLocation WHITE = new ResourceLocation("futuremite:textures/entity/rabbit/white.png");
+	private static final ResourceLocation BLACK = new ResourceLocation("futuremite:textures/entity/rabbit/black.png");
+	private static final ResourceLocation GOLD = new ResourceLocation("futuremite:textures/entity/rabbit/gold.png");
+	private static final ResourceLocation SALT = new ResourceLocation("futuremite:textures/entity/rabbit/salt.png");
 	private static final ResourceLocation WHITE_SPLOTCHED = new ResourceLocation("textures/entity/rabbit/white_splotched.png");
-	private static final ResourceLocation TOAST = new ResourceLocation("textures/entity/rabbit/toast.png");
+	private static final ResourceLocation TOAST = new ResourceLocation("futuremite:textures/entity/rabbit/toast.png");
 
 	public RabbitRenderer() {
 		super(new ModelRabbit(), 0.3F);

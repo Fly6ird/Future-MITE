@@ -37,8 +37,8 @@ public class BlockWoodWorkBench extends BlockWorkbench {
     }
 
     public void registerIcons(IconRegister par1IconRegister) {
-        this.icon_flint_top = par1IconRegister.registerIcon("crafting_table/flint/top");
-        this.icon_obsidian_top = par1IconRegister.registerIcon("crafting_table/obsidian/top");
+        this.icon_flint_top = par1IconRegister.registerIcon("futuremite:crafting_table/flint/top");
+        this.icon_obsidian_top = par1IconRegister.registerIcon("futuremite:crafting_table/obsidian/top");
     }
 
     @Override

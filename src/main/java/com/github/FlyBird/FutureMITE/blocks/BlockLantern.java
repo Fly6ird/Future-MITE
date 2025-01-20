@@ -87,8 +87,8 @@ public class BlockLantern extends Block {
 
     @Override
     public void registerIcons(IconRegister par1IconRegister) {
-        this.blocklantern = par1IconRegister.registerIcon(this.getTextureName());
-        this.itemlantern = par1IconRegister.registerIcon("item/" + this.getTextureName());
+        this.blocklantern = par1IconRegister.registerIcon("futuremite:"+this.getTextureName());
+        this.itemlantern = par1IconRegister.registerIcon("futuremite:item/" + this.getTextureName());
     }
 
     @Override

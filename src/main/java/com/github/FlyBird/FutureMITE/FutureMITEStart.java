@@ -6,17 +6,18 @@ import com.github.FlyBird.FutureMITE.network.FutureMITENetWork;
 import com.github.FlyBird.FutureMITE.world.FutureMITEWorldGenerator;
 import com.github.FlyBird.FutureMITE.world.structure.OceanMonument;
 import net.fabricmc.api.ModInitializer;
+import net.xiaoyu233.fml.ModResourceManager;
 import net.xiaoyu233.fml.reload.event.MITEEvents;
 
 public class FutureMITEStart implements ModInitializer {
     public static final String NameSpaceCompact = "FutureMITE";
-    public static final String MOD_ID = "FutureMITE";
+    public static final String MOD_ID = "futuremite";
 
     @Override
     public void onInitialize() {   //相当于main函数，万物起源
         FutureMITEEventRIC.register();
         FutureMITENetWork.init();
-
+        ModResourceManager.addResourcePackDomain(MOD_ID);
         //GameRegistry.registerWorldGenerator(new FutureMITEWorldGenerator(), 0);
 
 

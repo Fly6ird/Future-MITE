@@ -14,7 +14,7 @@ public class ItemModDoor extends ItemDoor {
 
     public ItemModDoor(int par1, Block doorBlock, String id) {
         this(par1, doorBlock, (BlockModWoodPlanks) null);
-        this.setTextureName("doors/" + id);
+        this.setTextureName("futuremite:doors/" + id);
         this.setUnlocalizedName("doors." + id);
     }
 
@@ -23,7 +23,7 @@ public class ItemModDoor extends ItemDoor {
         DoorBlock = doorBlock;
         Planks = planks;
         if (Planks != null) {
-            this.setTextureName("doors/" + Planks.id);
+            this.setTextureName("futuremite:doors/" + Planks.id);
             this.setUnlocalizedName("doors." + Planks.id);
         }
     }

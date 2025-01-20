@@ -26,7 +26,7 @@ public class BlockModWoodPlanks extends BlockWood {
     }
 
     public void registerIcons(IconRegister par1IconRegister) {
-        this.icon = par1IconRegister.registerIcon("planks/" + this.id);
+        this.icon = par1IconRegister.registerIcon("futuremite:planks/" + this.id);
     }
 
     public Icon getIcon(int side, int metadata) {

@@ -32,7 +32,7 @@ public class TreeHelper {
         this.Stairs = (new BlockModStairs(getNextBlockID(), this.Planks, 0));
         this.SingleSlab = (new BlockModWoodSlab(getNextBlockID(), this.Planks, 0, id));
         this.DoubleSlab = (new BlockDoubleSlab(getNextBlockID(), this.SingleSlab));
-        this.Door = (new BlockModDoor(getNextBlockID())).setTextureName("doors/" + id).setUnlocalizedName(id + "_door");
+        this.Door = (new BlockModDoor(getNextBlockID())).setTextureName("futuremite:doors/" + id).setUnlocalizedName(id + "_door");
         this.ItemDoor = (new ItemModDoor(getNextItemID(), Door, Planks));
         ((BlockModDoor)this.Door).setDoorItem(this.ItemDoor);
         this.TrapDoor = (new BlockModTrapDoor(getNextBlockID(), id, Planks));

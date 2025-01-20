@@ -108,10 +108,10 @@ public class Blocks extends Block {
     //注册方块物品事件
     public static void registerItemBlocks(ItemRegistryEvent registryEvent) {
         new ItemMultiTextureTile(prismarineBlock, prismarineBlock.getNames());
-        registryEvent.registerItemBlock(FutureMITEStart.NameSpaceCompact, "barrel", barrel);
+        registryEvent.registerItemBlock(FutureMITEStart.NameSpaceCompact,  barrel);
 
-        registryEvent.registerItemBlock(FutureMITEStart.NameSpaceCompact, "sea_lantern", seaLantern);
-        registryEvent.registerItemBlock(FutureMITEStart.NameSpaceCompact, "grindstone", grindStone);
+        registryEvent.registerItemBlock(FutureMITEStart.NameSpaceCompact, "futuremite:sea_lantern", seaLantern);
+        registryEvent.registerItemBlock(FutureMITEStart.NameSpaceCompact, grindStone);
 
         registryEvent.registerItemBlock(FutureMITEStart.NameSpaceCompact, "iron_chain", ironChain);
         registryEvent.registerItemBlock(FutureMITEStart.NameSpaceCompact, "ancient_chain", ancientChain);
@@ -125,7 +125,7 @@ public class Blocks extends Block {
         registryEvent.registerItemBlock(FutureMITEStart.NameSpaceCompact, "soul_campfire", soulCampfire);
         registryEvent.registerItemBlock(FutureMITEStart.NameSpaceCompact, "normalCampfire", normalCampfire);
 
-        registryEvent.registerItemBlock(FutureMITEStart.NameSpaceCompact, "soul_torch", soulTorch);
+        registryEvent.registerItemBlock(FutureMITEStart.NameSpaceCompact, "futuremite:soul_torch", soulTorch);
         registryEvent.registerItemBlock(FutureMITEStart.NameSpaceCompact, "dirtPath", dirtPath);
 
 
@@ -137,10 +137,10 @@ public class Blocks extends Block {
         registryEvent.registerItemBlock(FutureMITEStart.NameSpaceCompact, "silver_lantern", silverLantern);
         registryEvent.registerItemBlock(FutureMITEStart.NameSpaceCompact, "mithril_lantern", mithrilLantern);
 
-        registryEvent.registerItemBlock(FutureMITEStart.NameSpaceCompact, "end_stone_bricks", endStoneBrick);
+        registryEvent.registerItemBlock(FutureMITEStart.NameSpaceCompact, "futuremite:end_stone_bricks", endStoneBrick);
         registryEvent.registerItemBlock(FutureMITEStart.NameSpaceCompact, "stonebrick", stoneBrickWall);
         registryEvent.registerItemBlock(FutureMITEStart.NameSpaceCompact, "brick", BrickWall);
-        registryEvent.registerItemBlock(FutureMITEStart.NameSpaceCompact, "end_stone_bricks", endStoneBrickWall);
+        registryEvent.registerItemBlock(FutureMITEStart.NameSpaceCompact, "futuremite:end_stone_bricks", endStoneBrickWall);
 
         stoneBrickWall.setUnlocalizedName("stonebrickWall");
         BrickWall.setUnlocalizedName("brickWall");

@@ -56,13 +56,13 @@ public class BlockCampfire extends BlockContainer {
 
     @Override
     public void registerIcons(IconRegister par1IconRegister) {
-        this.campFire_FireIcon = par1IconRegister.registerIcon("campfire/" + this.getTextureName() + "_fire");
-        this.BlockCampfireIcon = par1IconRegister.registerIcon("campfire_log");
-        this.campFire_LogLitIcon = par1IconRegister.registerIcon("campfire/" + this.getTextureName() + "_log_lit");
-        this.ItemCampfireIcon = par1IconRegister.registerIcon("item/" + this.getTextureName());
+        this.campFire_FireIcon = par1IconRegister.registerIcon("futuremite:campfire/" + this.getTextureName() + "_fire");
+        this.BlockCampfireIcon = par1IconRegister.registerIcon("futuremite:campfire_log");
+        this.campFire_LogLitIcon = par1IconRegister.registerIcon("futuremite:campfire/" + this.getTextureName() + "_log_lit");
+        this.ItemCampfireIcon = par1IconRegister.registerIcon("futuremite:item/" + this.getTextureName());
 
         for (int i = 0; i < 12; i++) {
-            bigSmokeIcon[i] = par1IconRegister.registerIcon("particle/big_smoke_" + i);
+            bigSmokeIcon[i] = par1IconRegister.registerIcon("futuremite:particle/big_smoke_" + i);
         }
     }
 

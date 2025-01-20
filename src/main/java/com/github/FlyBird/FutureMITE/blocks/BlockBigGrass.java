@@ -115,11 +115,11 @@ public class BlockBigGrass extends BlockPlant {
 
         for (int var2 = 0; var2 < this.iconArray.length; ++var2) {
             this.iconArray[var2] = switch (grassTypes[var2]) {
-                case "BigGrassTop" -> par1IconRegister.registerIcon("tall_grass/top");
-                case "BigGrassBottom" -> par1IconRegister.registerIcon("tall_grass/bottom");
-                case "BigFernTop" -> par1IconRegister.registerIcon("tall_fern/top");
-                case "BigFernBottom" -> par1IconRegister.registerIcon("tall_fern/bottom");
-                default -> par1IconRegister.registerIcon("deadbush");
+                case "BigGrassTop" -> par1IconRegister.registerIcon("futuremite:tall_grass/top");
+                case "BigGrassBottom" -> par1IconRegister.registerIcon("futuremite:tall_grass/bottom");
+                case "BigFernTop" -> par1IconRegister.registerIcon("futuremite:tall_fern/top");
+                case "BigFernBottom" -> par1IconRegister.registerIcon("futuremite:tall_fern/bottom");
+                default -> par1IconRegister.registerIcon("futuremite:deadbush");
             };
         }
 

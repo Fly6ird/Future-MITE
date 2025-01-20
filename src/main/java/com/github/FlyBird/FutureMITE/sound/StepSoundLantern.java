@@ -13,19 +13,19 @@ public class StepSoundLantern extends StepSound {
     @Override
     public String getBreakSound() {
         pitch = 1.0f;
-        return "block.lantern.break";
+        return "futuremite:block.lantern.break";
     }
 
     @Override
     public String getPlaceSound() {
         pitch = 1.1f;
-        return "block.lantern.place";
+        return "futuremite:block.lantern.place";
     }
 
     @Override
     public String getStepSound() {
         pitch = 1.0f;
-        return "block.lantern.break";
+        return "futuremite:block.lantern.break";
     }
 
     @Override

@@ -214,10 +214,10 @@ public class BlockBarrel extends BlockDirectionalWithTileEntity {
 
     @Override
     public void registerIcons(IconRegister par1IconRegister) {
-        this.bottomIcon = par1IconRegister.registerIcon("barrel_bottom");
-        this.sideIcon = par1IconRegister.registerIcon("barrel_side");
-        this.topIcon = par1IconRegister.registerIcon("barrel_top");
-        this.topOpenIcon = par1IconRegister.registerIcon("barrel_top_open");
+        this.bottomIcon = par1IconRegister.registerIcon("futuremite:barrel_bottom");
+        this.sideIcon = par1IconRegister.registerIcon("futuremite:barrel_side");
+        this.topIcon = par1IconRegister.registerIcon("futuremite:barrel_top");
+        this.topOpenIcon = par1IconRegister.registerIcon("futuremite:barrel_top_open");
     }
 
     @Override

@@ -12,7 +12,7 @@ public class BlockSeaLantern extends Block {
         setHardness(0.3F);
         this.setLightValue(1.0F);
         setStepSound(soundGlassFootstep);
-        setTextureName("sea_lantern");
+        setTextureName("futuremite:sea_lantern");
         setUnlocalizedName("sea_lantern");
         setCreativeTab(CreativeTabs.tabDecorations);
     }

@@ -13,7 +13,7 @@ import org.lwjgl.opengl.GL11;
 
 public class NewBoatRenderer extends Render {
 
-	private static final ResourceLocation DEFAULT_TEXTURE = new ResourceLocation("textures/entity/boat/oak.png"); //If the resource location is null for some reason
+	private static final ResourceLocation DEFAULT_TEXTURE = new ResourceLocation("futuremite:textures/entity/boat/oak.png"); //If the resource location is null for some reason
 
 	public NewBoatRenderer() {
 		super();

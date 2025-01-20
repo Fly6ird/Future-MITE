@@ -13,13 +13,13 @@ public class BlockModDoor extends BlockDoor {
     public BlockModDoor(int blockID, String id) {
         this(blockID);
         this.setUnlocalizedName("doors." + id);
-        this.setTextureName("doors/" + id);
+        this.setTextureName("futuremite:doors/" + id);
     }
 
     public BlockModDoor(int blockID, String id,Item item) {
         this(blockID);
         this.setUnlocalizedName("doors." + id);
-        this.setTextureName("doors/" + id);
+        this.setTextureName("futuremite:doors/" + id);
         this.itemdoor=item;
     }
 

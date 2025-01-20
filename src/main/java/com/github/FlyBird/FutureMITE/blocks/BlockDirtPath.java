@@ -55,9 +55,9 @@ public class BlockDirtPath extends BlockUnderminable {
 
     @Override
     public void registerIcons(IconRegister par1IconRegister) {
-        this.dirtpath_top = par1IconRegister.registerIcon("dirt_path_top");
-        this.dirtpath_side = par1IconRegister.registerIcon("dirt_path_side");
-        this.dirt_buttom = par1IconRegister.registerIcon("dirt");
+        this.dirtpath_top = par1IconRegister.registerIcon("futuremite:dirt_path_top");
+        this.dirtpath_side = par1IconRegister.registerIcon("futuremite:dirt_path_side");
+        this.dirt_buttom = par1IconRegister.registerIcon("futuremite:dirt");
     }
 
     @Override

@@ -47,6 +47,6 @@ public class BlockSoulTorch extends BlockTorch {
     @Override
     public void registerIcons(IconRegister par1IconRegister) {
         super.registerIcons(par1IconRegister);
-        soulFlame = par1IconRegister.registerIcon("particle/soul_fire_flame");
+        soulFlame = par1IconRegister.registerIcon("futuremite:particle/soul_fire_flame");
     }
 }

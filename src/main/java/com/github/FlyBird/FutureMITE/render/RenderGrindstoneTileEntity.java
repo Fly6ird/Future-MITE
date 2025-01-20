@@ -7,7 +7,7 @@ import org.lwjgl.opengl.GL11;
 
 public class RenderGrindstoneTileEntity extends TileEntitySpecialRenderer {
     private final ModelGrindstone modelGrindstone = new ModelGrindstone();
-    public static final ResourceLocation texturePath = new ResourceLocation("textures/blocks/grindstone.png");
+    public static final ResourceLocation texturePath = new ResourceLocation("futuremite:textures/blocks/grindstone.png");
 
     @Override
     public void renderTileEntityAt(TileEntity tileEntity, double d, double e, double f, float g) {

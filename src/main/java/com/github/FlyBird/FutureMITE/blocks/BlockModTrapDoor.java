@@ -16,7 +16,7 @@ public class BlockModTrapDoor extends BlockTrapDoor {
         super(par1, Material.wood);
         this.Planks = planks;
         this.setUnlocalizedName("trapdoors." + id);
-        this.setTextureName("trapdoors/" + id);
+        this.setTextureName("futuremite:trapdoors/" + id);
     }
 
     public void registerRecipeWithVanilla(RecipeRegistryEvent register, int i) {

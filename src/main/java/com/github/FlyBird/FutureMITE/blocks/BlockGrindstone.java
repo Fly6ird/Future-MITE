@@ -20,7 +20,7 @@ public class BlockGrindstone extends Block implements ITileEntityProvider {
 
     @Override
     public void registerIcons(IconRegister par1IconRegister) {
-        this.GrindStone = par1IconRegister.registerIcon("grindstone");
+        this.GrindStone = par1IconRegister.registerIcon("futuremite:grindstone");
 
     }
 

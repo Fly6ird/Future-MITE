@@ -77,7 +77,7 @@ public class BlockSweetBerry extends BlockGrowingPlant {
     @Override
     public void registerIcons(IconRegister par1IconRegister) {
         for (int i = 0; i < sweetBerry_Icon.length; i++) {
-            sweetBerry_Icon[i] = par1IconRegister.registerIcon("sweet_berry_bush/stage" + i);
+            sweetBerry_Icon[i] = par1IconRegister.registerIcon("futuremite:sweet_berry_bush/stage" + i);
         }
     }
 

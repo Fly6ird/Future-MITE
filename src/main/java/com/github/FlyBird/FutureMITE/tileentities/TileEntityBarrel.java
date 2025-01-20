@@ -155,9 +155,9 @@ public class TileEntityBarrel extends TileEntity implements IInventory {
 
             // 播放对应的音效
             if (this.numUsingPlayers > 0) {
-                this.worldObj.playSoundEffect(var8, this.yCoord + 0.5D, var11, "block.barrel.open", 0.5F, this.worldObj.rand.nextFloat() * 0.1F + 0.9F);
+                this.worldObj.playSoundEffect(var8, this.yCoord + 0.5D, var11, "futuremite:block.barrel.open", 0.5F, this.worldObj.rand.nextFloat() * 0.1F + 0.9F);
             } else {
-                this.worldObj.playSoundEffect(var8, this.yCoord + 0.5D, var11, "block.barrel.close", 0.5F, this.worldObj.rand.nextFloat() * 0.1F + 0.9F);
+                this.worldObj.playSoundEffect(var8, this.yCoord + 0.5D, var11, "futuremite:block.barrel.close", 0.5F, this.worldObj.rand.nextFloat() * 0.1F + 0.9F);
             }
         }
     }
