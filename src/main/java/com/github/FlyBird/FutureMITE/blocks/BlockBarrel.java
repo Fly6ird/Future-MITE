@@ -17,10 +17,11 @@ public class BlockBarrel extends BlockDirectionalWithTileEntity {
 
     public BlockBarrel(int par1, Material par2) {
         super(par1, par2, new BlockConstants());
-        setMaxStackSize(1);
-        setHardness(BlockHardness.workbench);
-        setCreativeTab(CreativeTabs.tabDecorations);
+        this.setMaxStackSize(1);
+        this.setHardness(BlockHardness.workbench);
+        this.setCreativeTab(CreativeTabs.tabDecorations);
         this.setStepSound(stepSoundWood);
+        this.setUnlocalizedName("barrel");
         setTickRandomly(true);
     }
 

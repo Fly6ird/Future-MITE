@@ -276,12 +276,12 @@ public class EntityArmourStand extends EntityLiving {
 
     @Override
     protected String getDeathSound() {
-        return "entity.armorstand.break";
+        return "futuremite:entity.armorstand.break";
     }
 
     @Override
     protected String getHurtSound() {
-        return "entity.armorstand.hit";
+        return "futuremite:entity.armorstand.hit";
     }
 
     @Override
@@ -328,7 +328,7 @@ public class EntityArmourStand extends EntityLiving {
 
                         if (i - punchCooldown > 5L && !flag) {
                             punchCooldown = i;
-                            playSound("entity.armorstand.hit", 1.0f, 1.0f);
+                            playSound("futuremite:entity.armorstand.hit", 1.0f, 1.0f);
                         } else {
                             dropBlock();
                             playParticles();
@@ -345,7 +345,7 @@ public class EntityArmourStand extends EntityLiving {
 
     private void playParticles() {
         if (worldObj instanceof WorldServer)
-            playSound("entity.armorstand.break", 1.0f, 1.0f);
+            playSound("futuremite:entity.armorstand.break", 1.0f, 1.0f);
         // if (worldObj instanceof WorldServer)
         // ((WorldServer) worldObj).spawnParticle(EnumParticleTypes.BLOCK_DUST, posX, posY + height / 1.5D, posZ, 10, (double) (width / 4.0F), (double) (height / 4.0F), (double) (width / 4.0F), 0.05D, new int[] { Block.getStateId(Blocks.planks.getDefaultState()) });
     }

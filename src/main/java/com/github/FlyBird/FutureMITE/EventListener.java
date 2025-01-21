@@ -10,6 +10,7 @@ import com.github.FlyBird.FutureMITE.tileentities.TileEntityBarrel;
 import com.github.FlyBird.FutureMITE.tileentities.TileEntityCampfire;
 import com.github.FlyBird.FutureMITE.tileentities.TileEntityGrindstone;
 import com.google.common.eventbus.Subscribe;
+import net.minecraft.ResourceLocation;
 import net.xiaoyu233.fml.reload.event.*;
 import net.xiaoyu233.fml.reload.utils.IdUtil;
 
@@ -36,106 +37,63 @@ public class EventListener {
 
     }
 
+    public static  final ResourceLocation barrelOpen=new ResourceLocation("futuremite","block.barrel.open");
+    public static  final ResourceLocation barrelClose=new ResourceLocation("futuremite","block.barrel.close");
+
+    public static  final ResourceLocation chainBreak=new ResourceLocation("futuremite","block.chain.break");
+    public static  final ResourceLocation chainStep=new ResourceLocation("futuremite","block.chain.step");
+
+    public static  final ResourceLocation newWoodDig = new ResourceLocation("futuremite","dig.newwood");
+    public static  final ResourceLocation newWoodStep = new ResourceLocation("futuremite","step.newwood");
+
+    public static  final ResourceLocation lanternBreak=new ResourceLocation("futuremite","block.lantern.break");
+    public static  final ResourceLocation lanternPlace=new ResourceLocation("futuremite","block.lantern.place");
+
+    public static  final ResourceLocation sweetBerryBushBreak=new ResourceLocation("futuremite","block.sweet_berry_bush.break");
+    public static  final ResourceLocation sweetBerryBushPlace=new ResourceLocation("futuremite","block.sweet_berry_bush.place");
+    public static  final ResourceLocation sweetBerryBushPick=new ResourceLocation("futuremite","item.sweet_berries.pick_from_bush");
+
+    public static  final ResourceLocation rabbitBunnyMurder=new ResourceLocation("futuremite","mob.rabbit.bunnymurder");
+    public static  final ResourceLocation rabbitHop=new ResourceLocation("futuremite","mob.rabbit.hop");
+    public static  final ResourceLocation rabbitHurt=new ResourceLocation("futuremite","mob.rabbit.hurt");
+    public static  final ResourceLocation rabbitIdle=new ResourceLocation("futuremite","mob.rabbit.Idle");
+
+    public static  final ResourceLocation campfireCrackle=new ResourceLocation("futuremite","block.campfire.crackle");
+    public static  final ResourceLocation boatPaddleLand=new ResourceLocation("futuremite","entity.boat.paddle_land");
+    public static  final ResourceLocation boatPaddleWater=new ResourceLocation("futuremite","entity.boat.paddle_water");
+
+    public static  final ResourceLocation armorStandBreak=new ResourceLocation("futuremite","entity.armorstand.break");
+    public static  final ResourceLocation armorStandHit=new ResourceLocation("futuremite","entity.armorstand.hit");
     @Subscribe
     public void onSoundsRegister(SoundsRegisterEvent event) {
-        event.register("futuremite:"+"sound/block/barrel/open1.ogg");
-        event.register("futuremite:"+"sound/block/barrel/open2.ogg");
-        event.register("futuremite:"+"sound/block/barrel/close.ogg");
+        event.registerSound(barrelOpen,2);
+        event.registerSound(barrelClose);
 
-        event.register("futuremite:"+"sound/block/chain/break1.ogg");
-        event.register("futuremite:"+"sound/block/chain/break2.ogg");
-        event.register("futuremite:"+"sound/block/chain/break3.ogg");
-        event.register("futuremite:"+"sound/block/chain/break4.ogg");
-        event.register("futuremite:"+"sound/block/chain/step1.ogg");
-        event.register("futuremite:"+"sound/block/chain/step2.ogg");
-        event.register("futuremite:"+"sound/block/chain/step3.ogg");
-        event.register("futuremite:"+"sound/block/chain/step4.ogg");
-        event.register("futuremite:"+"sound/block/chain/step5.ogg");
-        event.register("futuremite:"+"sound/block/chain/step6.ogg");
+        event.registerSound(chainBreak,4);
+        event.registerSound(chainStep,6);
 
-        event.register("futuremite:"+"sound/dig/newwood1.ogg");
-        event.register("futuremite:"+"sound/dig/newwood2.ogg");
-        event.register("futuremite:"+"sound/dig/newwood3.ogg");
-        event.register("futuremite:"+"sound/dig/newwood4.ogg");
-        event.register("futuremite:"+"sound/step/newwood1.ogg");
-        event.register("futuremite:"+"sound/step/newwood2.ogg");
-        event.register("futuremite:"+"sound/step/newwood3.ogg");
-        event.register("futuremite:"+"sound/step/newwood4.ogg");
-        event.register("futuremite:"+"sound/step/newwood5.ogg");
-        event.register("futuremite:"+"sound/step/newwood6.ogg");
+        event.registerSound(newWoodDig,4);
+        event.registerSound(newWoodStep,6);
 
-        event.register("futuremite:"+"sound/block/lantern/break1.ogg");
-        event.register("futuremite:"+"sound/block/lantern/break2.ogg");
-        event.register("futuremite:"+"sound/block/lantern/break3.ogg");
-        event.register("futuremite:"+"sound/block/lantern/break4.ogg");
-        event.register("futuremite:"+"sound/block/lantern/break5.ogg");
-        event.register("futuremite:"+"sound/block/lantern/break6.ogg");
-        event.register("futuremite:"+"sound/block/lantern/place1.ogg");
-        event.register("futuremite:"+"sound/block/lantern/place2.ogg");
-        event.register("futuremite:"+"sound/block/lantern/place3.ogg");
-        event.register("futuremite:"+"sound/block/lantern/place4.ogg");
-        event.register("futuremite:"+"sound/block/lantern/place5.ogg");
-        event.register("futuremite:"+"sound/block/lantern/place6.ogg");
+        event.registerSound(lanternBreak,6);
+        event.registerSound(lanternPlace,6);
 
-        event.register("futuremite:"+"sound/block/sweet_berry_bush/break1.ogg");
-        event.register("futuremite:"+"sound/block/sweet_berry_bush/break2.ogg");
-        event.register("futuremite:"+"sound/block/sweet_berry_bush/break3.ogg");
-        event.register("futuremite:"+"sound/block/sweet_berry_bush/break4.ogg");
-        event.register("futuremite:"+"sound/block/sweet_berry_bush/place1.ogg");
-        event.register("futuremite:"+"sound/block/sweet_berry_bush/place2.ogg");
-        event.register("futuremite:"+"sound/block/sweet_berry_bush/place3.ogg");
-        event.register("futuremite:"+"sound/block/sweet_berry_bush/place4.ogg");
-        event.register("futuremite:"+"sound/block/sweet_berry_bush/place5.ogg");
-        event.register("futuremite:"+"sound/block/sweet_berry_bush/place6.ogg");
+        event.registerSound(sweetBerryBushBreak,4);
+        event.registerSound(sweetBerryBushPlace,6);
+        event.registerSound(sweetBerryBushPick,2);
 
-        event.register("futuremite:"+"sound/item/sweet_berries/pick_from_bush1.ogg");
-        event.register("futuremite:"+"sound/item/sweet_berries/pick_from_bush2.ogg");
+        event.registerSound(rabbitBunnyMurder);
+        event.registerSound(rabbitHop,4);
+        event.registerSound(rabbitHurt,4);
+        event.registerSound(rabbitIdle,4);
 
-        event.register("futuremite:"+"sound/mob/rabbit/bunnymurder.ogg");
-        event.register("futuremite:"+"sound/mob/rabbit/hop1.ogg");
-        event.register("futuremite:"+"sound/mob/rabbit/hop2.ogg");
-        event.register("futuremite:"+"sound/mob/rabbit/hop3.ogg");
-        event.register("futuremite:"+"sound/mob/rabbit/hop4.ogg");
-        event.register("futuremite:"+"sound/mob/rabbit/hurt1.ogg");
-        event.register("futuremite:"+"sound/mob/rabbit/hurt2.ogg");
-        event.register("futuremite:"+"sound/mob/rabbit/hurt3.ogg");
-        event.register("futuremite:"+"sound/mob/rabbit/hurt4.ogg");
-        event.register("futuremite:"+"sound/mob/rabbit/idle4.ogg");
-        event.register("futuremite:"+"sound/mob/rabbit/idle2.ogg");
-        event.register("futuremite:"+"sound/mob/rabbit/idle3.ogg");
-        event.register("futuremite:"+"sound/mob/rabbit/idle4.ogg");
+        event.registerSound(campfireCrackle,6);
 
-        event.register("futuremite:"+"sound/block/campfire/crackle1.ogg");
-        event.register("futuremite:"+"sound/block/campfire/crackle2.ogg");
-        event.register("futuremite:"+"sound/block/campfire/crackle3.ogg");
-        event.register("futuremite:"+"sound/block/campfire/crackle4.ogg");
-        event.register("futuremite:"+"sound/block/campfire/crackle5.ogg");
-        event.register("futuremite:"+"sound/block/campfire/crackle6.ogg");
+        event.registerSound(boatPaddleLand,6);
+        event.registerSound(boatPaddleWater,8);
 
-        event.register("futuremite:"+"sound/entity/boat/paddle_land1.ogg");
-        event.register("futuremite:"+"sound/entity/boat/paddle_land2.ogg");
-        event.register("futuremite:"+"sound/entity/boat/paddle_land3.ogg");
-        event.register("futuremite:"+"sound/entity/boat/paddle_land4.ogg");
-        event.register("futuremite:"+"sound/entity/boat/paddle_land5.ogg");
-        event.register("futuremite:"+"sound/entity/boat/paddle_land6.ogg");
-
-        event.register("futuremite:"+"sound/entity/boat/paddle_water1.ogg");
-        event.register("futuremite:"+"sound/entity/boat/paddle_water3.ogg");
-        event.register("futuremite:"+"sound/entity/boat/paddle_water4.ogg");
-        event.register("futuremite:"+"sound/entity/boat/paddle_water5.ogg");
-        event.register("futuremite:"+"sound/entity/boat/paddle_water6.ogg");
-        event.register("futuremite:"+"sound/entity/boat/paddle_water7.ogg");
-        event.register("futuremite:"+"sound/entity/boat/paddle_water8.ogg");
-
-        event.register("futuremite:"+"sound/entity/armorstand/break1.ogg");
-        event.register("futuremite:"+"sound/entity/armorstand/break2.ogg");
-        event.register("futuremite:"+"sound/entity/armorstand/break3.ogg");
-        event.register("futuremite:"+"sound/entity/armorstand/break4.ogg");
-
-        event.register("futuremite:"+"sound/entity/armorstand/hit1.ogg");
-        event.register("futuremite:"+"sound/entity/armorstand/hit2.ogg");
-        event.register("futuremite:"+"sound/entity/armorstand/hit3.ogg");
-        event.register("futuremite:"+"sound/entity/armorstand/hit4.ogg");
+        event.registerSound(armorStandBreak,4);
+        event.registerSound(armorStandHit,4);
     }
 
     @Subscribe

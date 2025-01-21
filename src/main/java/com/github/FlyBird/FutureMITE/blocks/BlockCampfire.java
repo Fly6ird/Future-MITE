@@ -128,7 +128,7 @@ public class BlockCampfire extends BlockContainer {
         float var7;
         int var6;
         if (par5Random.nextInt(10) == 0) {
-            par1World.playSound((float) x + 0.5f, (float) y + 0.5f, (float) z + 0.5f, "block.campfire.crackle", 1.0f + par5Random.nextFloat(), par5Random.nextFloat() * 0.7f + 0.3f, false);
+            par1World.playSound((float) x + 0.5f, (float) y + 0.5f, (float) z + 0.5f, "futuremite:block.campfire.crackle", 1.0f + par5Random.nextFloat(), par5Random.nextFloat() * 0.7f + 0.3f, false);
         }
 
         for (var6 = 0; var6 < 4; ++var6) {

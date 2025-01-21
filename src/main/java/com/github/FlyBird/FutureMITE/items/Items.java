@@ -27,7 +27,7 @@ public class Items extends Item {
     public static final ItemNewBoat darkOakChestBoat = new ItemNewBoat(getNextItemID(), EntityNewBoat.Type.DARK_OAK, true);
     public static final ItemNewBoat acaciaChestBoat = new ItemNewBoat(getNextItemID(), EntityNewBoat.Type.ACACIA, true);
 
-    public static final Item sweetBerry = new ItemSweetBerry(getNextItemID(), 1, 1, false, true, Blocks.sweetBerryBush.blockID, "sweet_berries").setUnlocalizedName("sweetberries");
+    public static final Item sweetBerry = new ItemSweetBerry(getNextItemID(), 1, 1, false, true, Blocks.sweetBerryBush.blockID, "futuremite:sweet_berries").setUnlocalizedName("sweetberries");
 
     public static final ItemModDoor birchDoor = new ItemModDoor(getNextItemID(), Blocks.birchDoor, "birch");
     public static final ItemModDoor jungleDoor = new ItemModDoor(getNextItemID(), Blocks.jungleDoor, "jungle");
@@ -54,7 +54,11 @@ public class Items extends Item {
     }
 
     public static void registerItems(ItemRegistryEvent event) {
-
+        event.register(FutureMITEStart.NameSpaceCompact,"futuremite:rabbit_raw",rabbitRaw);
+        event.register(FutureMITEStart.NameSpaceCompact,"futuremite:rabbit_cooked",rabbitCooked);
+        event.register(FutureMITEStart.NameSpaceCompact,"futuremite:rabbit_hide",rabbitHide);
+        event.register(FutureMITEStart.NameSpaceCompact,"futuremite:rabbit_foot",rabbitFoot);
+        event.register(FutureMITEStart.NameSpaceCompact,"futuremite:rabbit_stew",bowlRabbitStew);
     }
 
     public static void registerRecipes(RecipeRegistryEvent register) {
