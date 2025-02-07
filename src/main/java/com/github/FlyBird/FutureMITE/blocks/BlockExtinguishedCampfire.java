@@ -15,7 +15,7 @@ public class BlockExtinguishedCampfire extends BlockContainer {
 
     @Override
     public void registerIcons(IconRegister par1IconRegister) {
-        this.ItemCampfireIcon = par1IconRegister.registerIcon("futuremite:item/campfire" );
+        this.ItemCampfireIcon = par1IconRegister.registerIcon("futuremite:item/campfire_base" );
         this.BlockCampfireIcon = par1IconRegister.registerIcon("futuremite:campfire_log");
     }
 
@@ -53,7 +53,7 @@ public class BlockExtinguishedCampfire extends BlockContainer {
             if (world.isRemote) {
                 player.swingArm();
             } else {
-                if (!player.capabilities.isCreativeMode && tile.addBurnTime(stack.getItem().getBurnTime(stack)))
+                if (tile != null && !player.capabilities.isCreativeMode && tile.addBurnTime(stack.getItem().getBurnTime(stack)))
                     --stack.stackSize;
             }
         }

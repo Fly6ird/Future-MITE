@@ -5,6 +5,7 @@
   "target": "DEFAULT",
   "minVersion": "0.8.3",
   "mixins": [
+    "CommandHandlerMixin",
     "MinecraftMixin",
     "RaycastPoliciesMixin",
     "block.BlockMixin",
@@ -31,6 +32,7 @@
     "render.RenderGlobalMixin",
     "render.RenderItemFrameMixin",
     "world.ChunkProviderServerMixin",
+    "world.MapGenVillageMixin",
     "world.biome.BiomeDecoratorMixin",
     "world.biome.BiomeDesertMixin",
     "world.biome.BiomeGenBaseMixin",

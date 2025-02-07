@@ -2,7 +2,6 @@ package com.github.FlyBird.FutureMITE.blocks;
 
 import com.github.FlyBird.FutureMITE.FutureMITEStart;
 import com.github.FlyBird.FutureMITE.items.ItemBigGrass;
-import com.github.FlyBird.FutureMITE.items.ItemMultiTextureTileFuelBlock;
 import com.github.FlyBird.FutureMITE.items.Items;
 import com.github.FlyBird.FutureMITE.sound.*;
 import com.github.FlyBird.FutureMITE.world.gen.WorldGenBigCherryTree;
@@ -21,7 +20,7 @@ public class Blocks extends Block {
     public static final StepSound stepSoundSlime = new StepSoundSliem("slime", 1.0f, 1.0f);
 
     public static final Block grindStone = new BlockGrindstone(getNextBlockID());
-    public static final Block bigGrass = new BlockBigGrass(getNextBlockID(),"bigGrass").setHardness(0.02F).setCushioning(0.2F).setStepSound(soundGrassFootstep);
+    public static final Block bigGrass = new BlockBigGrass(getNextBlockID(), "bigGrass").setHardness(0.02F).setCushioning(0.2F).setStepSound(soundGrassFootstep);
     public static final Block sweetBerryBush = new BlockSweetBerry(getNextBlockID());
 
     public static final Block ironChain = new BlockChain(getNextBlockID(), Material.iron);
@@ -56,7 +55,7 @@ public class Blocks extends Block {
     public static final Block stoneBrickWall = new BlockWallExtend(getNextBlockID(), Block.stoneBrick);
     public static final Block BrickWall = new BlockWallExtend(getNextBlockID(), Block.brick);
 
-    public static final Block barrel = new BlockBarrel(getNextBlockID(), Material.wood,"barrel");
+    public static final Block barrel = new BlockBarrel(getNextBlockID(), Material.wood, "barrel");
 
 /*
     public static final Block birchDoor = new BlockModDoor(getNextBlockID(),"birch",Items.birchDoor);
@@ -64,9 +63,9 @@ public class Blocks extends Block {
     public static final Block spruceDoor = new BlockModDoor(getNextBlockID(),"spruce",Items.spruceDoor);
 */
 
-    public static final DoorBlock birchDoor=new DoorBlock(getNextBlockID(),Material.wood,()->Items.birchDoor);
-    public static final DoorBlock jungleDoor=new DoorBlock(getNextBlockID(),Material.wood,()->Items.jungleDoor);
-    public static final DoorBlock spruceDoor=new DoorBlock(getNextBlockID(),Material.wood,()->Items.spruceDoor);
+    public static final DoorBlock birchDoor = new DoorBlock(getNextBlockID(), Material.wood, () -> Items.birchDoor);
+    public static final DoorBlock jungleDoor = new DoorBlock(getNextBlockID(), Material.wood, () -> Items.jungleDoor);
+    public static final DoorBlock spruceDoor = new DoorBlock(getNextBlockID(), Material.wood, () -> Items.spruceDoor);
 
     public static final BlockWoodFenceExtend spruceFence = (new BlockWoodFenceExtend(getNextBlockID(), 1));
     public static final BlockWoodFenceExtend birchFence = (new BlockWoodFenceExtend(getNextBlockID(), 2));
@@ -75,10 +74,10 @@ public class Blocks extends Block {
     public static final BlockFenceGateExtend birchFenceGate = new BlockFenceGateExtend(getNextBlockID(), 2);
     public static final BlockFenceGateExtend jungleFenceGate = new BlockFenceGateExtend(getNextBlockID(), 3);
 
-/*    public static final BlockModLog birchLog = new BlockModLog(getNextBlockID(), "birch").setIsVanilla();
-    public static final BlockModLog jungleLog = new BlockModLog(getNextBlockID(), "jungle").setIsVanilla();
-    public static final BlockModLog oakLog = new BlockModLog(getNextBlockID(), "oak").setIsVanilla();
-    public static final BlockModLog spruceLog = new BlockModLog(getNextBlockID(), "spruce").setIsVanilla();*/
+    /*    public static final BlockModLog birchLog = new BlockModLog(getNextBlockID(), "birch").setIsVanilla();
+        public static final BlockModLog jungleLog = new BlockModLog(getNextBlockID(), "jungle").setIsVanilla();
+        public static final BlockModLog oakLog = new BlockModLog(getNextBlockID(), "oak").setIsVanilla();
+        public static final BlockModLog spruceLog = new BlockModLog(getNextBlockID(), "spruce").setIsVanilla();*/
     public static final TreeHelper acacia = new TreeHelper("acacia");
     public static final TreeHelper darkOak = new TreeHelper("dark_oak");
     public static final TreeHelper cherry = new TreeHelper("cherry").Sapling.setSmallTreeGenerator(new WorldGenCherryTrees(true)).Sapling.setLargeTreeGenerator(new WorldGenBigCherryTree(true));
@@ -124,9 +123,9 @@ public class Blocks extends Block {
 
     //注册方块物品事件
     public static void registerItemBlocks(ItemRegistryEvent registryEvent) {
-        registryEvent.registerItemBlock(FutureMITEStart.NameSpaceCompact,  barrel);
-        registryEvent.registerItemBlock(FutureMITEStart.NameSpaceCompact,  bigGrass);
-        registryEvent.registerItemBlock(FutureMITEStart.NameSpaceCompact,  prismarineBlock);
+        registryEvent.registerItemBlock(FutureMITEStart.NameSpaceCompact, barrel);
+        registryEvent.registerItemBlock(FutureMITEStart.NameSpaceCompact, bigGrass);
+        registryEvent.registerItemBlock(FutureMITEStart.NameSpaceCompact, prismarineBlock);
 
         new ItemMultiTextureTile(prismarineBlock, prismarineBlock.getNames());
         registryEvent.registerItemBlock(FutureMITEStart.NameSpaceCompact, "futuremite:sea_lantern", seaLantern);
@@ -175,9 +174,9 @@ public class Blocks extends Block {
         registryEvent.registerItemBlock(FutureMITEStart.NameSpaceCompact, endStoneBrickWall);
         registryEvent.registerItemBlock(FutureMITEStart.NameSpaceCompact, stoneBrickWall);
         registryEvent.registerItemBlock(FutureMITEStart.NameSpaceCompact, BrickWall);
-        registryEvent.registerItemBlock(FutureMITEStart.NameSpaceCompact, "futuremite:doors/birch","birch",birchDoor);
-        registryEvent.registerItemBlock(FutureMITEStart.NameSpaceCompact, "futuremite:doors/jungle","jungle",jungleDoor);
-        registryEvent.registerItemBlock(FutureMITEStart.NameSpaceCompact, "futuremite:doors/spruce","spruce",spruceDoor);
+        registryEvent.registerItemBlock(FutureMITEStart.NameSpaceCompact, "futuremite:doors/birch", "birch", birchDoor);
+        registryEvent.registerItemBlock(FutureMITEStart.NameSpaceCompact, "futuremite:doors/jungle", "jungle", jungleDoor);
+        registryEvent.registerItemBlock(FutureMITEStart.NameSpaceCompact, "futuremite:doors/spruce", "spruce", spruceDoor);
         registryEvent.registerItemBlock(FutureMITEStart.NameSpaceCompact, spruceFence);
         registryEvent.registerItemBlock(FutureMITEStart.NameSpaceCompact, birchFence);
         registryEvent.registerItemBlock(FutureMITEStart.NameSpaceCompact, jungleFence);
@@ -192,14 +191,14 @@ public class Blocks extends Block {
         registryEvent.registerItemBlock(FutureMITEStart.NameSpaceCompact, jungleTrapDoor);
         registryEvent.registerItemBlock(FutureMITEStart.NameSpaceCompact, spruceTrapDoor);
 
-        registryEvent.registerItemBlock(FutureMITEStart.NameSpaceCompact, "stripped_birch","log.birch_log", strippedBirch);
-        registryEvent.registerItemBlock(FutureMITEStart.NameSpaceCompact, "stripped_jungle", "log.jungle_log",strippedJungle);
-        registryEvent.registerItemBlock(FutureMITEStart.NameSpaceCompact, "stripped_oak","log.oak_log" ,strippedOak);
-        registryEvent.registerItemBlock(FutureMITEStart.NameSpaceCompact, "stripped_spruce","log.spruce_log", strippedSpruce);
-        registryEvent.registerItemBlock(FutureMITEStart.NameSpaceCompact, "futuremite:log/stripped_birch_side","log.stripped_birch_wood", strippedBirchWood);
-        registryEvent.registerItemBlock(FutureMITEStart.NameSpaceCompact, "futuremite:log/stripped_jungle_side", "log.stripped_jungle_wood",strippedJungleWood);
-        registryEvent.registerItemBlock(FutureMITEStart.NameSpaceCompact, "futuremite:log/stripped_oak_side","log.stripped_oak_wood" ,strippedOakWood);
-        registryEvent.registerItemBlock(FutureMITEStart.NameSpaceCompact, "futuremite:log/stripped_spruce_side", "log.stripped_spruce_wood",strippedSpruceWood);
+        registryEvent.registerItemBlock(FutureMITEStart.NameSpaceCompact, "stripped_birch", "log.birch_log", strippedBirch);
+        registryEvent.registerItemBlock(FutureMITEStart.NameSpaceCompact, "stripped_jungle", "log.jungle_log", strippedJungle);
+        registryEvent.registerItemBlock(FutureMITEStart.NameSpaceCompact, "stripped_oak", "log.oak_log", strippedOak);
+        registryEvent.registerItemBlock(FutureMITEStart.NameSpaceCompact, "stripped_spruce", "log.spruce_log", strippedSpruce);
+        registryEvent.registerItemBlock(FutureMITEStart.NameSpaceCompact, "futuremite:log/stripped_birch_side", "log.stripped_birch_wood", strippedBirchWood);
+        registryEvent.registerItemBlock(FutureMITEStart.NameSpaceCompact, "futuremite:log/stripped_jungle_side", "log.stripped_jungle_wood", strippedJungleWood);
+        registryEvent.registerItemBlock(FutureMITEStart.NameSpaceCompact, "futuremite:log/stripped_oak_side", "log.stripped_oak_wood", strippedOakWood);
+        registryEvent.registerItemBlock(FutureMITEStart.NameSpaceCompact, "futuremite:log/stripped_spruce_side", "log.stripped_spruce_wood", strippedSpruceWood);
 
 
         acacia.registerItemBlocks(registryEvent);
@@ -300,11 +299,11 @@ public class Blocks extends Block {
         register.registerShapedRecipe(new ItemStack(strippedOakWood, 3), true, "AA ", "AA ", "   ", 'A', Item.getItem(strippedOak));
         register.registerShapedRecipe(new ItemStack(strippedOakWood, 3), true, " AA", " AA", "   ", 'A', Item.getItem(strippedOak));
         register.registerShapedRecipe(new ItemStack(strippedOakWood, 3), true, "   ", "AA ", "AA ", 'A', Item.getItem(strippedOak));
-        register.registerShapedRecipe(new ItemStack(strippedOakWood, 3), true, new Object[] { "   ", " AA", " AA", 'A', Item.getItem(strippedOak) });
-        register.registerShapedRecipe(new ItemStack(strippedSpruceWood, 3), true, new Object[] { "AA ", "AA ", "   ", 'A', Item.getItem(strippedSpruce) });
+        register.registerShapedRecipe(new ItemStack(strippedOakWood, 3), true, new Object[]{"   ", " AA", " AA", 'A', Item.getItem(strippedOak)});
+        register.registerShapedRecipe(new ItemStack(strippedSpruceWood, 3), true, new Object[]{"AA ", "AA ", "   ", 'A', Item.getItem(strippedSpruce)});
         register.registerShapedRecipe(new ItemStack(strippedSpruceWood, 3), true, " AA", " AA", "   ", 'A', Item.getItem(strippedSpruce));
-        register.registerShapedRecipe(new ItemStack(strippedSpruceWood, 3), true, new Object[] { "   ", "AA ", "AA ", 'A', Item.getItem(strippedSpruce) });
-        register.registerShapedRecipe(new ItemStack(strippedSpruceWood, 3), true, new Object[] { "   ", " AA", " AA", 'A', Item.getItem(strippedSpruce) });
+        register.registerShapedRecipe(new ItemStack(strippedSpruceWood, 3), true, new Object[]{"   ", "AA ", "AA ", 'A', Item.getItem(strippedSpruce)});
+        register.registerShapedRecipe(new ItemStack(strippedSpruceWood, 3), true, new Object[]{"   ", " AA", " AA", 'A', Item.getItem(strippedSpruce)});
 
        /* register.registerShapedRecipe(new ItemStack(oakLog, 3, 2), true, new Object[]{"AA", "AA", Character.valueOf('A'), new ItemStack(wood, 1, 0)});
         register.registerShapedRecipe(new ItemStack(spruceLog, 3, 2), true, new Object[]{"AA", "AA", Character.valueOf('A'), new ItemStack(wood, 1, 1)});
