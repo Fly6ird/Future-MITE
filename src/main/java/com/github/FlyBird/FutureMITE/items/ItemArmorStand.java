@@ -1,6 +1,6 @@
 package com.github.FlyBird.FutureMITE.items;
 
-import com.github.FlyBird.FutureMITE.entities.EntityArmourStand;
+import com.github.FlyBird.FutureMITE.entities.EntityArmorStand;
 import com.github.FlyBird.FutureMITE.entities.Rotations;
 import com.github.FlyBird.FutureMITE.misc.NBTTagCompoundExtend;
 import net.minecraft.*;
@@ -9,9 +9,9 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
 
-public class ItemArmourStand extends Item {
+public class ItemArmorStand extends Item {
 
-    public ItemArmourStand(int id, Material material, String texture) {
+    public ItemArmorStand(int id, Material material, String texture) {
         super(id, material, texture);
         setMaxStackSize(16);
         //setTextureName("wooden_armorstand");
@@ -62,7 +62,7 @@ public class ItemArmourStand extends Item {
         if (!world.isRemote) {
             world.setBlockToAir(x, y, z);
             world.setBlockToAir(x, y + 1, z);
-            EntityArmourStand stand = new EntityArmourStand(world, d0 + 0.5D, d1, d2 + 0.5D);
+            EntityArmorStand stand = new EntityArmorStand(world, d0 + 0.5D, d1, d2 + 0.5D);
             float f3 = MathHelper.floor_float((MathHelper.wrapAngleTo180_float(player.rotationYaw - 180.0F) + 22.5F) / 45.0F) * 45.0F;
             stand.setLocationAndAngles(d0 + 0.5D, d1, d2 + 0.5D, f3, 0.0F);
             applyRandomRotations(stand, world.rand);
@@ -144,7 +144,7 @@ public class ItemArmourStand extends Item {
 		}
 	}*/
 
-    private void applyRandomRotations(EntityArmourStand armorStand, Random rand) {
+    private void applyRandomRotations(EntityArmorStand armorStand, Random rand) {
         Rotations rotations = armorStand.getHeadRotation();
         float f = rand.nextFloat() * 5.0F;
         float f1 = rand.nextFloat() * 20.0F - 10.0F;

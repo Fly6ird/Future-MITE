@@ -9,7 +9,7 @@ import java.util.List;
 
 
 public class GuiGrindStone extends GuiContainer implements ICrafting {
-    private static final ResourceLocation ENCHANT_RESERVER_TEXTURE = new ResourceLocation("textures/gui/container/grindstone.png");
+    private static final ResourceLocation ENCHANT_RESERVER_TEXTURE = new ResourceLocation("futuremite:textures/gui/container/grindstone.png");
 
     private final ContainerGrindStone containerGrindStone;
 

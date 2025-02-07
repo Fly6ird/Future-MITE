@@ -11,7 +11,7 @@ public class EntityBigSmokeFX extends EntityFX {
 
     static {
         for (int i = 0; i < TEXTURE_COUNT; i++) {
-            TEXTURES[i] = new ResourceLocation("textures/particle/big_smoke_" + i + ".png");
+            TEXTURES[i] = new ResourceLocation("futuremite:textures/particle/big_smoke_" + i + ".png");
         }
     }
 

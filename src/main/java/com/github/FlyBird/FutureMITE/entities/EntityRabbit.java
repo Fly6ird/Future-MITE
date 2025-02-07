@@ -208,22 +208,22 @@ public class EntityRabbit extends EntityLivestock {
     }
 
     protected String getJumpingSound() {
-        return "mob.rabbit.hop";
+        return "futuremite:mob.rabbit.hop";
     }
 
     @Override
     protected String getLivingSound() {
-        return "mob.rabbit.idle";
+        return "futuremite:mob.rabbit.idle";
     }
 
     @Override
     protected String getHurtSound() {
-        return "mob.rabbit.hurt";
+        return "futuremite:mob.rabbit.hurt";
     }
 
     @Override
     protected String getDeathSound() {
-        return "mob.rabbit.bunnymurder";
+        return "futuremite:mob.rabbit.bunnymurder";
     }
 
     @Override

@@ -1,6 +1,6 @@
 package com.github.FlyBird.FutureMITE.events.listener;
 
-import com.github.FlyBird.FutureMITE.entities.EntityArmourStand;
+import com.github.FlyBird.FutureMITE.entities.EntityArmorStand;
 import com.github.FlyBird.FutureMITE.entities.EntityNewBoat;
 import com.github.FlyBird.FutureMITE.entities.EntityNewBoatSeat;
 import com.github.FlyBird.FutureMITE.entities.EntityNewBoatWithChest;
@@ -18,7 +18,7 @@ public class EntityTrackerRegistry implements Consumer<EntityTrackerRegisterEven
         event.registerEntityTracker(entity -> entity instanceof EntityNewBoat, 80, 3, true);
         event.registerEntityTracker(entity -> entity instanceof EntityNewBoatWithChest, 80, 3, true);
         event.registerEntityTracker(entity -> entity instanceof EntityNewBoatSeat, 80, 3, true);
-        event.registerEntityTracker(entity -> entity instanceof EntityArmourStand, 64, 5, true);
+        event.registerEntityTracker(entity -> entity instanceof EntityArmorStand, 64, 5, true);
 
         event.registerEntityPacket(entity -> entity instanceof EntityNewBoat, transform(EntityNewBoat::new));
         event.registerEntityPacket(entity -> entity instanceof EntityNewBoatWithChest, transform(EntityNewBoatWithChest::new));

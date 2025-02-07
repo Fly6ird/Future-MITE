@@ -5,6 +5,8 @@
   "target": "DEFAULT",
   "minVersion": "0.8.3",
   "mixins": [
+    "MinecraftMixin",
+    "RaycastPoliciesMixin",
     "block.BlockMixin",
     "block.BlockSpongeMixin",
     "block.BlockTorchMixin",
@@ -16,6 +18,8 @@
     "entity.EntityTrackerEntryMixin",
     "entity.SpawnerAnimalsMixin",
     "item.ItemAxeMixin",
+    "item.ItemBlockMixin",
+    "item.ItemDyeMixin",
     "item.ItemFlintAndSteelMixin",
     "item.ItemScytheMixin",
     "item.ItemShovelMixin",

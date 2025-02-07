@@ -10,9 +10,10 @@ public class BlockBigGrass extends BlockPlant {
     private static final String[] grassTypes = new String[]{"BigGrassTop", "BigGrassBottom", "BigFernTop", "BigFernBottom"};
     private Icon[] iconArray;
 
-    protected BlockBigGrass(int id) {
+    protected BlockBigGrass(int id,String name) {
         super(id, Material.vine);
         float size = 0.4F;
+        this.setUnlocalizedName(name);
         this.setBlockBoundsForAllThreads((double) (0.5F - size), 0.0, (double) (0.5F - size), (double) (0.5F + size), 0.800000011920929, (double) (0.5F + size));
     }
 

@@ -33,8 +33,6 @@ public class NewBoatRenderer extends Render {
 		this.setupRotation(entity, entityYaw, partialTicks);
 		this.bindEntityTexture(entity);
 
-
-
 		(entity.isRaft() ? modelRaft : modelBoat).render(entity, partialTicks, 0.0F, -0.1F, 0.0F, 0.0F, 0.0625F);
 		GL11.glScalef(-1.0F, -1.0F, 1.0F);
 		this.renderExtraBoatContents(entity, partialTicks);

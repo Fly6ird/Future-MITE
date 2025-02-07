@@ -16,8 +16,6 @@ public class TileEntityCampfire extends TileEntity {
 
     }
 
-    ;
-
     public TileEntityCampfire(Block block) {
         this.setBlock(block);
     }
@@ -46,7 +44,7 @@ public class TileEntityCampfire extends TileEntity {
 
     public static void updateCampfireBlockState(boolean isBurned, World par1World, int x, int y, int z) {
         int meta = par1World.getBlockMetadata(x, y, z);
-        TileEntity var6 = par1World.getBlockTileEntity(x, y, z);
+        TileEntity tileEntity = par1World.getBlockTileEntity(x, y, z);
 
         if (isBurned) {
             par1World.setBlock(x, y, z, Blocks.campfire.blockID, meta, 3);
@@ -54,10 +52,9 @@ public class TileEntityCampfire extends TileEntity {
             par1World.setBlock(x, y, z, Blocks.normalCampfire.blockID, meta, 3);
         }
 
-
-        if (var6 != null) {
-            var6.validate();
-            par1World.setBlockTileEntity(x, y, z, var6);
+        if (tileEntity != null) {
+            tileEntity.validate();
+            par1World.setBlockTileEntity(x, y, z, tileEntity);
         }
     }
 
@@ -78,12 +75,30 @@ public class TileEntityCampfire extends TileEntity {
             EntityItem entityitem = new EntityItem(world, x + RAND.nextDouble() * 0.75 + 0.125, y + RAND.nextDouble() * 0.375 + 0.5,
                     z + RAND.nextDouble() * 0.75 + 0.125, stack);
 
+            EntityXPOrb entityXPOrb;
+            if (stack.getItem() instanceof ItemMeat) {
+                if (((ItemMeat) stack.getItem()).is_cooked) {
+                    entityXPOrb = new EntityXPOrb(world, x + RAND.nextDouble() * 0.75 + 0.125, y + RAND.nextDouble() * 0.375 + 0.5,
+                            z + RAND.nextDouble() * 0.75 + 0.125, stack.getExperienceReward());
+
+                    entityXPOrb.motionX = RAND.nextGaussian() * 0.05;
+                    entityXPOrb.motionY = RAND.nextGaussian() * 0.05 + 0.2;
+                    entityXPOrb.motionZ = RAND.nextGaussian() * 0.05;
+
+                    if (!world.isRemote) {
+                        world.spawnEntityInWorld(entityXPOrb);
+                    }
+                }
+            }
+
             entityitem.motionX = RAND.nextGaussian() * 0.05;
             entityitem.motionY = RAND.nextGaussian() * 0.05 + 0.2;
             entityitem.motionZ = RAND.nextGaussian() * 0.05;
 
-            if (!world.isRemote)
+            if (!world.isRemote) {
                 world.spawnEntityInWorld(entityitem);
+            }
+
         }
     }
 
@@ -119,12 +134,6 @@ public class TileEntityCampfire extends TileEntity {
             }
         }
         return false;
-    }
-
-    public boolean isNeedItemStack(ItemStack itemStack) {
-        return itemStack.itemID == Item.beefRaw.itemID || itemStack.itemID == Item.chickenRaw.itemID || itemStack.itemID == Item.porkRaw.itemID
-                || itemStack.itemID == Item.fishRaw.itemID || itemStack.itemID == Item.fishLargeRaw.itemID || itemStack.itemID == Item.wormRaw.itemID
-                || itemStack.itemID == Item.lambchopRaw.itemID;
     }
 
     //来同步服务端和客户都消息的

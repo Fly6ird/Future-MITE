@@ -6,7 +6,7 @@ import net.minecraft.*;
 
 public class BlockExtinguishedCampfire extends BlockContainer {
     private Icon BlockCampfireIcon;
-
+    private Icon ItemCampfireIcon;
     protected BlockExtinguishedCampfire(int par1) {
         super(par1, Material.wood, new BlockConstants().setNotAlwaysLegal().setNeverHidesAdjacentFaces());
         this.setHardness(0.5f);
@@ -15,6 +15,7 @@ public class BlockExtinguishedCampfire extends BlockContainer {
 
     @Override
     public void registerIcons(IconRegister par1IconRegister) {
+        this.ItemCampfireIcon = par1IconRegister.registerIcon("futuremite:item/campfire" );
         this.BlockCampfireIcon = par1IconRegister.registerIcon("futuremite:campfire_log");
     }
 
@@ -67,6 +68,8 @@ public class BlockExtinguishedCampfire extends BlockContainer {
 
     @Override
     public Icon getIcon(int side, int metadata) {
+        if(side==1)
+            return ItemCampfireIcon;
         return this.BlockCampfireIcon;
     }
 
@@ -99,6 +102,15 @@ public class BlockExtinguishedCampfire extends BlockContainer {
             metadata |= 8;
         }
         return metadata;
+    }
+
+    public void breakBlock(World world, int x, int y, int z, int blockid, int metadata) {
+        if (!world.isRemote) {
+            TileEntity tile = world.getBlockTileEntity(x, y, z);
+            if (tile instanceof TileEntityCampfire)
+                ((TileEntityCampfire) tile).popItems();
+        }
+        super.breakBlock(world, x, y, z, blockid, metadata);
     }
 
     @Override

@@ -3,12 +3,12 @@ package com.github.FlyBird.FutureMITE.entities;
 import com.github.FlyBird.FutureMITE.items.Items;
 import com.github.FlyBird.FutureMITE.misc.NBTTagCompoundExtend;
 import com.github.FlyBird.FutureMITE.network.FutureMITENetWork;
-import com.github.FlyBird.FutureMITE.network.packets.C2SArmourStandInteract;
+import com.github.FlyBird.FutureMITE.network.packets.C2SArmorStandInteract;
 import net.minecraft.*;
 
 import java.util.List;
 
-public class EntityArmourStand extends EntityLiving {
+public class EntityArmorStand extends EntityLiving {
     private static final Rotations DEFAULT_HEAD_ROTATION = new Rotations(0.0F, 0.0F, 0.0F);
     private static final Rotations DEFAULT_BODY_ROTATION = new Rotations(0.0F, 0.0F, 0.0F);
     private static final Rotations DEFAULT_LEFTARM_ROTATION = new Rotations(-10.0F, 0.0F, -10.0F);
@@ -24,7 +24,7 @@ public class EntityArmourStand extends EntityLiving {
     private Rotations leftLegRotation;
     private Rotations rightLegRotation;
 
-    public EntityArmourStand(World world) {
+    public EntityArmorStand(World world) {
         super(world);
         headRotation = DEFAULT_HEAD_ROTATION;
         bodyRotation = DEFAULT_BODY_ROTATION;
@@ -36,7 +36,7 @@ public class EntityArmourStand extends EntityLiving {
         setSize(0.5F, 1.975F);
     }
 
-    public EntityArmourStand(World world, double posX, double posY, double posZ) {
+    public EntityArmorStand(World world, double posX, double posY, double posZ) {
         this(world);
         setPosition(posX, posY, posZ);
     }
@@ -193,7 +193,7 @@ public class EntityArmourStand extends EntityLiving {
     public boolean onEntityRightClicked(EntityPlayer player, ItemStack item_stack) {
         if (worldObj.isRemote) {
             RaycastCollision hit = Minecraft.getMinecraft().objectMouseOver;
-            FutureMITENetWork.sendToServer(new C2SArmourStandInteract(this.hashCode(), hit.position_hit.xCoord - this.posX, hit.position_hit.yCoord - this.posY, hit.position_hit.zCoord - this.posZ));
+            FutureMITENetWork.sendToServer(new C2SArmorStandInteract(this.hashCode(), hit.position_hit.xCoord - this.posX, hit.position_hit.yCoord - this.posY, hit.position_hit.zCoord - this.posZ));
             return true;
         }
         return false;
@@ -362,7 +362,7 @@ public class EntityArmourStand extends EntityLiving {
     }
 
     private void dropBlock() {
-        this.dropItemStack(new ItemStack(Items.armourStand), 0.0F);
+        this.dropItemStack(new ItemStack(Items.armorStand), 0.0F);
         dropequipment();
     }
 

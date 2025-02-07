@@ -17,6 +17,8 @@ public class CherryBlossomGroveBiome extends BiomeGenBase {
     protected CherryBlossomGroveBiome(int par1) {
         super(par1);
 
+        this.theBiomeDecorator.treesPerChunk=8;
+
         this.worldGenCherryForest = new WorldGenCherryForest(false);
         this.worldGenBigCherryTree = new WorldGenBigCherryTree(false);
         this.worldGenCherryTrees=new WorldGenCherryTrees(false);

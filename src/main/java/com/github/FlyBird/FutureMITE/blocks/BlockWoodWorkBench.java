@@ -1,3 +1,4 @@
+/*
 package com.github.FlyBird.FutureMITE.blocks;
 
 import net.minecraft.*;
@@ -58,3 +59,4 @@ public class BlockWoodWorkBench extends BlockWorkbench {
         return metadata & 7;
     }
 }
+*/

@@ -15,6 +15,7 @@ public class ChestBoatRenderer extends NewBoatRenderer {
 	public ChestBoatRenderer() {
 		chest.setBlock(Blocks.chest);
 	}
+
 	@Override
 	protected void renderExtraBoatContents(EntityNewBoat boat, float partialTicks) {
 		if (boat instanceof EntityNewBoatWithChest) {

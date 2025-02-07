@@ -4,6 +4,7 @@ import com.github.FlyBird.FutureMITE.blocks.Blocks;
 import com.github.FlyBird.FutureMITE.tileentities.TileEntityCampfire;
 import net.minecraft.*;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Unique;
 
 
 @Mixin({ItemShovel.class})
@@ -14,6 +15,7 @@ public abstract class ItemShovelMixin extends ItemTool {
     }
 
 
+    @Unique
     private static boolean tryTillSoil(World world, int x, int y, int z, EnumFace face, EntityPlayer player, ItemStack item_stack) {
         if (!player.canPlayerEdit(x, y, z, item_stack)) {
             return false;

@@ -1,16 +1,33 @@
+/*
 package com.github.FlyBird.FutureMITE.blocks;
 
 import net.minecraft.*;
 
-public class BlockModLog extends BlockLog {
+public class BlockModLog  extends BlockRotatedPillar implements IBlockWithSubtypes {
+    private BlockSubtypes subtypes;
+
+    public String[] getTextures() {
+        return this.subtypes.getTextures();
+    }
+
     protected BlockModLog(int par1) {
-        super(par1);
+        super(par1, Material.wood);
+        this.modifyMinHarvestLevel(1);
+        this.setHardness(BlockHardness.log);
+        this.setCreativeTab(CreativeTabs.tabBlock);
+
         this.setUnlocalizedName("log");
         this.id = this.getTextureName();
     }
 
-    protected BlockModLog(int par1, String id) {
-        super(par1);
+    protected BlockModLog(int par1, String id,boolean isVanilla) {
+        super(par1, Material.wood);
+        this.modifyMinHarvestLevel(1);
+        this.setHardness(BlockHardness.log);
+        this.setCreativeTab(CreativeTabs.tabBlock);
+
+        if(isVanilla)
+            subtypes = new BlockSubtypes(new String[]{"oak", "spruce", "birch", "jungle"});
         this.setTextureName(id);
         this.setUnlocalizedName("log");
         this.id = id;
@@ -94,3 +111,4 @@ public class BlockModLog extends BlockLog {
         return "log";
     }
 }
+*/

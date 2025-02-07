@@ -51,6 +51,7 @@ tile.prismarine_block.dark.name=暗海晶石
 item.prismarineShard.name=海晶碎片
 item.prismarineCrystals.name=海晶沙粒
 
+tile.acacia_sapling.name=金合欢书迷奥
 tile.planks.acacia.name=金合欢木板
 tile.slab.acacia.name=金合欢木台阶
 tile.stairs.acacia.name=金合欢木楼梯
@@ -58,14 +59,16 @@ tile.planks.dark_oak.name=深色橡木板
 tile.slab.dark_oak.name=深色橡木台阶
 tile.stairs.dark_oak.name=深色橡木楼梯
 
+tile.cherry_sapling.name=樱花树苗
 tile.planks.cherry.name=樱花木板
 tile.slab.cherry.name=樱花木台阶
 tile.stairs.cherry.name=樱花木楼梯
 tile.log.cherry_log.name=樱花原木
+tile.log.cherry_wood.name=樱花木
 tile.log.stripped_cherry_log.name=去皮樱花原木
 tile.log.stripped_cherry_wood.name=去皮樱花
 tile.trapdoors.cherry.name=樱花活扳门
-item.doors.cherry.name=樱花门
+item.doors.cherry.name=樱花木门
 
 tile.iron_chain.name=铁锁链
 tile.copper_chain.name=铜锁链
@@ -206,9 +209,12 @@ tile.trapdoors.spruce.name=云杉木活板门
 tile.trapdoors.acacia.name=金合欢木活板门
 tile.trapdoors.dark_oak.name=深色橡木活板门
 
-leaves.acacia.name=金合欢树叶
-leaves.dark_oak.name=深色橡木树叶
-leaves.cherry.name=樱花树叶
+tile.leaves.acacia.name=金合欢树叶
+tile.leaves.dark_oak.name=深色橡木树叶
+tile.leaves.cherry.name=樱花树叶
 
 item.woodChips.name=木屑
 
+tile.normalCampfire.name=熄灭的营火
+
+campfire.burntime=燃烧时间

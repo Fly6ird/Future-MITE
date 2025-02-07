@@ -1,7 +1,7 @@
 package com.github.FlyBird.FutureMITE.network;
 
 import com.github.FlyBird.FutureMITE.FutureMITEStart;
-import com.github.FlyBird.FutureMITE.network.packets.C2SArmourStandInteract;
+import com.github.FlyBird.FutureMITE.network.packets.C2SArmorStandInteract;
 import com.github.FlyBird.FutureMITE.network.packets.C2SBoatMove;
 import com.github.FlyBird.FutureMITE.network.packets.S2COpenWindow;
 import moddedmite.rustedironcore.network.Network;
@@ -15,7 +15,7 @@ import net.xiaoyu233.fml.FishModLoader;
 public class FutureMITENetWork {
     public static final ResourceLocation BoatMoveC2S = new ResourceLocation(FutureMITEStart.NameSpaceCompact, "BoatMoveC2S");
     public static final ResourceLocation OpenWindow = new ResourceLocation(FutureMITEStart.NameSpaceCompact, "OpenWindow");
-    public static final ResourceLocation ArmourStandInteractC2S = new ResourceLocation(FutureMITEStart.NameSpaceCompact, "ArmourStandInteractC2S");
+    public static final ResourceLocation ArmorStandInteractC2S = new ResourceLocation(FutureMITEStart.NameSpaceCompact, "ArmorStandInteractC2S");
 
     public static void sendToClient(ServerPlayer player, Packet packet) {
         Network.sendToClient(player, packet);
@@ -38,6 +38,6 @@ public class FutureMITENetWork {
 
     private static void initServer() {
         PacketReader.registerServerPacketReader(BoatMoveC2S, C2SBoatMove::new);
-        PacketReader.registerServerPacketReader(ArmourStandInteractC2S, C2SArmourStandInteract::new);
+        PacketReader.registerServerPacketReader(ArmorStandInteractC2S, C2SArmorStandInteract::new);
     }
 }

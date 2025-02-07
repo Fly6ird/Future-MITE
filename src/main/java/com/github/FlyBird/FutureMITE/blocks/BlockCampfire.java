@@ -19,7 +19,6 @@ public class BlockCampfire extends BlockContainer {
 
     public static final DamageSource CAMPFIRE_DAMAGE = (new DamageSourceExtend("CampFire"));
 
-    public static Icon[] bigSmokeIcon = new Icon[12];
     private final float damage;
 
     protected BlockCampfire(int par1, float damage) {
@@ -61,9 +60,6 @@ public class BlockCampfire extends BlockContainer {
         this.campFire_LogLitIcon = par1IconRegister.registerIcon("futuremite:campfire/" + this.getTextureName() + "_log_lit");
         this.ItemCampfireIcon = par1IconRegister.registerIcon("futuremite:item/" + this.getTextureName());
 
-        for (int i = 0; i < 12; i++) {
-            bigSmokeIcon[i] = par1IconRegister.registerIcon("futuremite:particle/big_smoke_" + i);
-        }
     }
 
     public Icon getFireIcon(int index) {

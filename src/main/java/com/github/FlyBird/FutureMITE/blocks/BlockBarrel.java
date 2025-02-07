@@ -15,13 +15,13 @@ public class BlockBarrel extends BlockDirectionalWithTileEntity {
     private Icon topIcon;
     private Icon topOpenIcon;
 
-    public BlockBarrel(int par1, Material par2) {
+    public BlockBarrel(int par1, Material par2,String name) {
         super(par1, par2, new BlockConstants());
         this.setMaxStackSize(1);
         this.setHardness(BlockHardness.workbench);
         this.setCreativeTab(CreativeTabs.tabDecorations);
         this.setStepSound(stepSoundWood);
-        this.setUnlocalizedName("barrel");
+        this.setUnlocalizedName(name);
         setTickRandomly(true);
     }
 

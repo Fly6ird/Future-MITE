@@ -1,6 +1,7 @@
 package com.github.FlyBird.FutureMITE;
 
 import com.github.FlyBird.FutureMITE.blocks.Blocks;
+import com.github.FlyBird.FutureMITE.blocks.TreeHelper;
 import com.github.FlyBird.FutureMITE.entities.*;
 import com.github.FlyBird.FutureMITE.items.Items;
 import com.github.FlyBird.FutureMITE.render.RenderCampfireTileEntity;
@@ -37,63 +38,64 @@ public class EventListener {
 
     }
 
-    public static  final ResourceLocation barrelOpen=new ResourceLocation("futuremite","block.barrel.open");
-    public static  final ResourceLocation barrelClose=new ResourceLocation("futuremite","block.barrel.close");
+    public static final ResourceLocation barrelOpen = new ResourceLocation("futuremite", "block.barrel.open");
+    public static final ResourceLocation barrelClose = new ResourceLocation("futuremite", "block.barrel.close");
 
-    public static  final ResourceLocation chainBreak=new ResourceLocation("futuremite","block.chain.break");
-    public static  final ResourceLocation chainStep=new ResourceLocation("futuremite","block.chain.step");
+    public static final ResourceLocation chainBreak = new ResourceLocation("futuremite", "block.chain.break");
+    public static final ResourceLocation chainStep = new ResourceLocation("futuremite", "block.chain.step");
 
-    public static  final ResourceLocation newWoodDig = new ResourceLocation("futuremite","dig.newwood");
-    public static  final ResourceLocation newWoodStep = new ResourceLocation("futuremite","step.newwood");
+    public static final ResourceLocation newWoodDig = new ResourceLocation("futuremite", "dig.newwood");
+    public static final ResourceLocation newWoodStep = new ResourceLocation("futuremite", "step.newwood");
 
-    public static  final ResourceLocation lanternBreak=new ResourceLocation("futuremite","block.lantern.break");
-    public static  final ResourceLocation lanternPlace=new ResourceLocation("futuremite","block.lantern.place");
+    public static final ResourceLocation lanternBreak = new ResourceLocation("futuremite", "block.lantern.break");
+    public static final ResourceLocation lanternPlace = new ResourceLocation("futuremite", "block.lantern.place");
 
-    public static  final ResourceLocation sweetBerryBushBreak=new ResourceLocation("futuremite","block.sweet_berry_bush.break");
-    public static  final ResourceLocation sweetBerryBushPlace=new ResourceLocation("futuremite","block.sweet_berry_bush.place");
-    public static  final ResourceLocation sweetBerryBushPick=new ResourceLocation("futuremite","item.sweet_berries.pick_from_bush");
+    public static final ResourceLocation sweetBerryBushBreak = new ResourceLocation("futuremite", "block.sweet_berry_bush.break");
+    public static final ResourceLocation sweetBerryBushPlace = new ResourceLocation("futuremite", "block.sweet_berry_bush.place");
+    public static final ResourceLocation sweetBerryBushPick = new ResourceLocation("futuremite", "item.sweet_berries.pick_from_bush");
 
-    public static  final ResourceLocation rabbitBunnyMurder=new ResourceLocation("futuremite","mob.rabbit.bunnymurder");
-    public static  final ResourceLocation rabbitHop=new ResourceLocation("futuremite","mob.rabbit.hop");
-    public static  final ResourceLocation rabbitHurt=new ResourceLocation("futuremite","mob.rabbit.hurt");
-    public static  final ResourceLocation rabbitIdle=new ResourceLocation("futuremite","mob.rabbit.Idle");
+    public static final ResourceLocation rabbitBunnyMurder = new ResourceLocation("futuremite", "mob.rabbit.bunnymurder");
+    public static final ResourceLocation rabbitHop = new ResourceLocation("futuremite", "mob.rabbit.hop");
+    public static final ResourceLocation rabbitHurt = new ResourceLocation("futuremite", "mob.rabbit.hurt");
+    public static final ResourceLocation rabbitIdle = new ResourceLocation("futuremite", "mob.rabbit.Idle");
 
-    public static  final ResourceLocation campfireCrackle=new ResourceLocation("futuremite","block.campfire.crackle");
-    public static  final ResourceLocation boatPaddleLand=new ResourceLocation("futuremite","entity.boat.paddle_land");
-    public static  final ResourceLocation boatPaddleWater=new ResourceLocation("futuremite","entity.boat.paddle_water");
+    public static final ResourceLocation campfireCrackle = new ResourceLocation("futuremite", "block.campfire.crackle");
+    public static final ResourceLocation boatPaddleLand = new ResourceLocation("futuremite", "entity.boat.paddle_land");
+    public static final ResourceLocation boatPaddleWater = new ResourceLocation("futuremite", "entity.boat.paddle_water");
 
-    public static  final ResourceLocation armorStandBreak=new ResourceLocation("futuremite","entity.armorstand.break");
-    public static  final ResourceLocation armorStandHit=new ResourceLocation("futuremite","entity.armorstand.hit");
+    public static final ResourceLocation armorStandBreak = new ResourceLocation("futuremite", "entity.armorstand.break");
+    public static final ResourceLocation armorStandHit = new ResourceLocation("futuremite", "entity.armorstand.hit");
+
     @Subscribe
     public void onSoundsRegister(SoundsRegisterEvent event) {
-        event.registerSound(barrelOpen,2);
+        event.registerSound(barrelOpen, 2);
         event.registerSound(barrelClose);
 
-        event.registerSound(chainBreak,4);
-        event.registerSound(chainStep,6);
+        event.registerSound(chainBreak, 4);
+        event.registerSound(chainStep, 6);
 
-        event.registerSound(newWoodDig,4);
-        event.registerSound(newWoodStep,6);
+        event.registerSound(newWoodDig, 4);
+        event.registerSound(newWoodStep, 6);
 
-        event.registerSound(lanternBreak,6);
-        event.registerSound(lanternPlace,6);
+        event.registerSound(lanternBreak, 6);
+        event.registerSound(lanternPlace, 6);
 
-        event.registerSound(sweetBerryBushBreak,4);
-        event.registerSound(sweetBerryBushPlace,6);
-        event.registerSound(sweetBerryBushPick,2);
+        event.registerSound(sweetBerryBushBreak, 4);
+        event.registerSound(sweetBerryBushPlace, 6);
+        event.registerSound(sweetBerryBushPick, 2);
 
         event.registerSound(rabbitBunnyMurder);
-        event.registerSound(rabbitHop,4);
-        event.registerSound(rabbitHurt,4);
-        event.registerSound(rabbitIdle,4);
+        event.registerSound(rabbitHop, 4);
+        event.registerSound(rabbitHurt, 4);
+        event.registerSound(rabbitIdle, 4);
 
-        event.registerSound(campfireCrackle,6);
+        event.registerSound(campfireCrackle, 6);
 
-        event.registerSound(boatPaddleLand,6);
-        event.registerSound(boatPaddleWater,8);
+        event.registerSound(boatPaddleLand, 6);
+        event.registerSound(boatPaddleWater, 8);
 
-        event.registerSound(armorStandBreak,4);
-        event.registerSound(armorStandHit,4);
+        event.registerSound(armorStandBreak, 4);
+        event.registerSound(armorStandHit, 4);
     }
 
     @Subscribe
@@ -105,7 +107,7 @@ public class EventListener {
     public void onEntityRegister(EntityRegisterEvent event) {
         event.register(EntityRabbit.class, FutureMITEStart.MOD_ID, "Rabbit", getNextEntityID(), 10051392, 7555121);
         event.register(EntityEndermite.class, FutureMITEStart.MOD_ID, "Endermite", getNextEntityID(), 1447446, 7237230);
-        event.register(EntityArmourStand.class, FutureMITEStart.MOD_ID, "ArmourStand", getNextEntityID());
+        event.register(EntityArmorStand.class, FutureMITEStart.MOD_ID, "ArmorStand", getNextEntityID());
 
         event.register(EntityNewBoat.class, FutureMITEStart.MOD_ID, "NewBoat", getNextEntityID());
         event.register(EntityNewBoatSeat.class, FutureMITEStart.MOD_ID, "NewBoatSeat", getNextEntityID());
@@ -115,7 +117,7 @@ public class EventListener {
     @Subscribe
     public void onEntityRendererRegistry(EntityRendererRegistryEvent event) {
         event.register(EntityRabbit.class, new RabbitRenderer());
-        event.register(EntityArmourStand.class, new ArmourStandRenderer());
+        event.register(EntityArmorStand.class, new ArmorStandRenderer());
         event.register(EntityEndermite.class, new EndermiteRenderer());
 
         event.register(EntityNewBoat.class, new NewBoatRenderer());

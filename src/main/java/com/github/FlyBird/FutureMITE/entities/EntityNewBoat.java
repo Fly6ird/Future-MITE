@@ -105,7 +105,7 @@ public class EntityNewBoat extends Entity {
         // ET FUTURUM START
         this.dataWatcher.addObject(DATA_ID_OLD_TYPE, 0);
         this.dataWatcher.addObject(DATA_ID_TYPE, "oak");
-        this.dataWatcher.addObject(DATA_ID_RESOURCELOCATION, "textures/entity/boat/oak.png");
+        this.dataWatcher.addObject(DATA_ID_RESOURCELOCATION, "futuremite:textures/entity/boat/oak.png");
         this.dataWatcher.addObject(DATA_ID_RAFT, (byte) 0);
         for (int i = 0; i < DATA_ID_PADDLE.length; ++i) {
             dataWatcher.addObject(DATA_ID_PADDLE[i], (byte) 0);
@@ -1098,7 +1098,7 @@ public class EntityNewBoat extends Entity {
             getDataWatcher().updateObject(DATA_ID_TYPE, "oak");
         }
         getDataWatcher().updateObject(DATA_ID_RAFT, boatInfo.isRaft() ? (byte) 1 : (byte) 0);
-        getDataWatcher().updateObject(DATA_ID_RESOURCELOCATION, "textures/entity/boat/" + getBoatType() + ".png");
+        getDataWatcher().updateObject(DATA_ID_RESOURCELOCATION, "futuremite:textures/entity/boat/" + getBoatType() + ".png");
     }
 
     public String getBoatType() {

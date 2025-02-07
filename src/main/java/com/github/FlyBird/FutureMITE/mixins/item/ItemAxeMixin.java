@@ -1,7 +1,6 @@
 package com.github.FlyBird.FutureMITE.mixins.item;
 
 
-import com.github.FlyBird.FutureMITE.blocks.BlockModLog;
 import com.github.FlyBird.FutureMITE.blocks.Blocks;
 import com.github.FlyBird.FutureMITE.items.Items;
 import net.minecraft.*;
@@ -28,38 +27,33 @@ public abstract class ItemAxeMixin extends ItemTool {
         Block block = world.getBlock(x, y, z);
         int meta = block.getBlockSubtype(world.getBlockMetadata(x, y, z));
         int direction = world.getBlockMetadata(x, y, z);
-        System.out.println("Direction:"+direction);
 
-        if (block != Block.wood&&!(block instanceof BlockModLog)||meta>4) {
+        if (block != Block.wood) {
             return false;
         }
         if (player.onClient()) {
             player.swingArm();
             Minecraft.theMinecraft.playerController.setUseButtonDelayOverride(200);
-        }
-        else {
+        } else {
+            if (meta == 0)
+                world.setBlock(x, y, z, Blocks.strippedOak.blockID, direction, 2);
+            if (meta == 1)
+                world.setBlock(x, y, z, Blocks.strippedSpruce.blockID,direction,2);
+            if (meta == 2)
+                world.setBlock(x, y, z, Blocks.strippedBirch.blockID,direction,2);
+            if (meta == 3)
+                world.setBlock(x, y, z, Blocks.strippedJungle.blockID,direction,2);
+            world.setBlockMetadataWithNotify(x, y, z, 1, 2);
+
             world.playSoundAtBlock(x, y, z, Block.wood.stepSound.getStepSound(), (Block.wood.stepSound.getVolume() + 1.0f) / 2.0f, Block.wood.stepSound.getPitch() * 0.8f);
-            player.tryDamageHeldItem(DamageSource.generic, 16);
+            player.tryDamageHeldItem(DamageSource.generic, 10);
             player.addHungerServerSide(world.getBlockHardness(x, y, z) / 2.0f * EnchantmentHelper.getEnduranceModifier(player));
             dropWoodChips(world,x,y,z);
-            if(block == Block.wood){
-                if (meta == 0)
-                    world.setBlock(x, y, z, Blocks.oakLog.blockID,direction,2);
-                if (meta == 1)
-                    world.setBlock(x, y, z, Blocks.spruceLog.blockID,direction,2);
-                if (meta == 2)
-                    world.setBlock(x, y, z, Blocks.birchLog.blockID,direction,2);
-                if (meta == 3)
-                    world.setBlock(x, y, z, Blocks.jungleLog.blockID,direction,2);
-                world.setBlockMetadataWithNotify(x, y, z, 1, 2);
-            }
-            else if(block instanceof BlockModLog &&(meta&1)==0){
-                world.setBlockMetadataWithNotify(x, y, z, world.getBlockMetadata(x, y, z) + 1, 2);
-            }
 
         }
         return true;
     }
+    @Unique
     private static void dropWoodChips(World world, int x, int y, int z) {
         Random rand = new Random();
 

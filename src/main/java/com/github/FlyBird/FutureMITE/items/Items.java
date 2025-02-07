@@ -4,7 +4,6 @@ import com.github.FlyBird.FutureMITE.FutureMITEStart;
 import com.github.FlyBird.FutureMITE.blocks.Blocks;
 import com.github.FlyBird.FutureMITE.entities.EntityNewBoat;
 import com.github.FlyBird.FutureMITE.items.register.RecipesFurnaceExtend;
-import com.github.FlyBird.FutureMITE.misc.EnumWoodType;
 import net.minecraft.*;
 import net.xiaoyu233.fml.reload.event.ItemRegistryEvent;
 import net.xiaoyu233.fml.reload.event.RecipeRegistryEvent;
@@ -27,7 +26,7 @@ public class Items extends Item {
     public static final ItemNewBoat darkOakChestBoat = new ItemNewBoat(getNextItemID(), EntityNewBoat.Type.DARK_OAK, true);
     public static final ItemNewBoat acaciaChestBoat = new ItemNewBoat(getNextItemID(), EntityNewBoat.Type.ACACIA, true);
 
-    public static final Item sweetBerry = new ItemSweetBerry(getNextItemID(), 1, 1, false, true, Blocks.sweetBerryBush.blockID, "futuremite:sweet_berries").setUnlocalizedName("sweetberries");
+    public static final Item sweetBerry = new ItemSweetBerry(getNextItemID(), 1, 1, false, true, Blocks.sweetBerryBush.blockID, "futuremite:food/sweet_berries").setUnlocalizedName("sweetberries");
 
     public static final ItemModDoor birchDoor = new ItemModDoor(getNextItemID(), Blocks.birchDoor, "birch");
     public static final ItemModDoor jungleDoor = new ItemModDoor(getNextItemID(), Blocks.jungleDoor, "jungle");
@@ -38,9 +37,9 @@ public class Items extends Item {
 
     public static final Item rabbitHide = (new Items(getNextItemID(), Material.leather, "futuremite:rabbit_hide")).setCraftingDifficultyAsComponent(100.0F).setUnlocalizedName("rabbitHide").setCreativeTab(CreativeTabs.tabMaterials);
     public static final Item rabbitFoot = (new Items(getNextItemID(), Material.blaze, "futuremite:rabbit_foot")).setCraftingDifficultyAsComponent(25.0F).setUnlocalizedName("rabbitFoot").setPotionEffect(PotionHelper.blazePowderEffect).setCreativeTab(CreativeTabs.tabBrewing);
-    public static final Item bowlRabbitStew = (new ItemBowl(getNextItemID(), Material.beef_stew, "futuremite:rabbit_stew")).setFoodValue(12, 14, true, false, true).setPlantProduct().setUnlocalizedName("rabbit_stew");
+    public static final Item bowlRabbitStew = (new ItemBowl(getNextItemID(), Material.beef_stew, "futuremite:bowls/rabbit_stew")).setFoodValue(12, 14, true, false, true).setPlantProduct().setUnlocalizedName("rabbit_stew");
 
-    public static final ItemArmourStand armourStand = new ItemArmourStand(getNextItemID(), Material.wood, "futuremite:wooden_armorstand");
+    public static final ItemArmorStand armorStand = new ItemArmorStand(getNextItemID(), Material.wood, "futuremite:wooden_armorstand");
 
     //海晶碎片
     public static final Item prismarineShard = (new Items(getNextItemID(), Material.diamond, "futuremite:prismarine_shard")).setCraftingDifficultyAsComponent(100.0F).setUnlocalizedName("prismarineShard").setCreativeTab(CreativeTabs.tabMaterials);
@@ -54,16 +53,46 @@ public class Items extends Item {
     }
 
     public static void registerItems(ItemRegistryEvent event) {
-        event.register(FutureMITEStart.NameSpaceCompact,"futuremite:rabbit_raw",rabbitRaw);
-        event.register(FutureMITEStart.NameSpaceCompact,"futuremite:rabbit_cooked",rabbitCooked);
-        event.register(FutureMITEStart.NameSpaceCompact,"futuremite:rabbit_hide",rabbitHide);
-        event.register(FutureMITEStart.NameSpaceCompact,"futuremite:rabbit_foot",rabbitFoot);
-        event.register(FutureMITEStart.NameSpaceCompact,"futuremite:rabbit_stew",bowlRabbitStew);
+        event.register(FutureMITEStart.NameSpaceCompact,"futuremite:rabbit_raw","rabbitRaw",rabbitRaw);
+        event.register(FutureMITEStart.NameSpaceCompact,"futuremite:rabbit_cooked","rabbitCooked",rabbitCooked);
+        event.register(FutureMITEStart.NameSpaceCompact,"futuremite:rabbit_hide","rabbitHide",rabbitHide);
+        event.register(FutureMITEStart.NameSpaceCompact,"futuremite:rabbit_foot","rabbitFoot",rabbitFoot);
+        event.register(FutureMITEStart.NameSpaceCompact,"futuremite:bowls/rabbit_stew","rabbit_stew",bowlRabbitStew);
+        event.register(FutureMITEStart.NameSpaceCompact,"futuremite:food/sweet_berries","sweetberries",sweetBerry);
+
+        // 注册未注册的物品
+        event.register(FutureMITEStart.NameSpaceCompact, oakBoat);
+        event.register(FutureMITEStart.NameSpaceCompact, birchBoat);
+        event.register(FutureMITEStart.NameSpaceCompact, jungleBoat);
+        event.register(FutureMITEStart.NameSpaceCompact, spruceBoat);
+        event.register(FutureMITEStart.NameSpaceCompact, cherryBoat);
+        event.register(FutureMITEStart.NameSpaceCompact, darkOakBoat);
+        event.register(FutureMITEStart.NameSpaceCompact, acaciaBoat);
+
+        event.register(FutureMITEStart.NameSpaceCompact, oakChestBoat);
+        event.register(FutureMITEStart.NameSpaceCompact, birchChestBoat);
+        event.register(FutureMITEStart.NameSpaceCompact, jungleChestBoat);
+        event.register(FutureMITEStart.NameSpaceCompact, spruceChestBoat);
+        event.register(FutureMITEStart.NameSpaceCompact, cherryChestBoat);
+        event.register(FutureMITEStart.NameSpaceCompact, darkOakChestBoat);
+        event.register(FutureMITEStart.NameSpaceCompact, acaciaChestBoat);
+
+        event.register(FutureMITEStart.NameSpaceCompact, birchDoor);
+        event.register(FutureMITEStart.NameSpaceCompact, jungleDoor);
+        event.register(FutureMITEStart.NameSpaceCompact, spruceDoor);
+
+        event.register(FutureMITEStart.NameSpaceCompact, prismarineShard);
+        event.register(FutureMITEStart.NameSpaceCompact, prismarineCrystals);
+
+        event.register(FutureMITEStart.NameSpaceCompact, woodChips);
+
+        event.register(FutureMITEStart.NameSpaceCompact, armorStand);
+
     }
 
     public static void registerRecipes(RecipeRegistryEvent register) {
         RecipesFurnaceExtend.registerFurnaceRecipes();
-        register.registerShapedRecipe(new ItemStack(armourStand, 1), true, new Object[]{"AAA", " A ", "ABA", Character.valueOf('A'), new ItemStack(Item.stick, 1), Character.valueOf('B'), new ItemStack(Block.stoneSingleSlab, 1)});
+        register.registerShapedRecipe(new ItemStack(armorStand, 1), true, new Object[]{"AAA", " A ", "ABA", Character.valueOf('A'), new ItemStack(Item.stick, 1), Character.valueOf('B'), new ItemStack(Block.stoneSingleSlab, 1)});
 
         birchDoor.registerRecipeWithVanilla(register, 1);
         jungleDoor.registerRecipeWithVanilla(register, 2);

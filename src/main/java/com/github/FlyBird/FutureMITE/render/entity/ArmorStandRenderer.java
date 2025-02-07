@@ -5,11 +5,11 @@ import com.github.FlyBird.FutureMITE.models.ModelArmorStand;
 import com.github.FlyBird.FutureMITE.models.ModelArmorStandArmor;
 import net.minecraft.*;
 
-public class ArmourStandRenderer extends RenderBiped {
+public class ArmorStandRenderer extends RenderBiped {
 
 	private static final ResourceLocation TEXTURE_ARMOUR_STAND = new ResourceLocation("futuremite:textures/entity/armorstand/wood.png");
 
-	public ArmourStandRenderer() {
+	public ArmorStandRenderer() {
 		super(new ModelArmorStand(), 0.0F);
 		modelBipedMain = (ModelBiped) mainModel;
 		field_82423_g = new ModelArmorStandArmor(1.0F);

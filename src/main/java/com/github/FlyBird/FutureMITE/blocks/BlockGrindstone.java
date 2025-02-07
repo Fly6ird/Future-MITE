@@ -15,7 +15,7 @@ public class BlockGrindstone extends Block implements ITileEntityProvider {
         this.setBlockBoundsForAllThreads(0.125, 0.0, 0.125, 0.875, 1.0, 0.875);
         this.setHardness(2.0F);
         this.setResistance(6.0F);
-        setCreativeTab(CreativeTabs.tabDecorations);
+        this.setCreativeTab(CreativeTabs.tabDecorations);
     }
 
     @Override
