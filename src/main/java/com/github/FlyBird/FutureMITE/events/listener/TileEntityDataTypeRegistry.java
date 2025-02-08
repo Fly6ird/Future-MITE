@@ -7,8 +7,10 @@ import moddedmite.rustedironcore.api.event.events.TileEntityDataTypeRegisterEven
 import java.util.function.Consumer;
 
 public class TileEntityDataTypeRegistry implements Consumer<TileEntityDataTypeRegisterEvent> {
+    public static int CAMPFIRE;
+
     @Override
     public void accept(TileEntityDataTypeRegisterEvent tileEntityDataTypeRegisterEvent) {
-        tileEntityDataTypeRegisterEvent.register(TileEntityCampfire.class);
+        CAMPFIRE = tileEntityDataTypeRegisterEvent.register(TileEntityCampfire.class);
     }
 }
