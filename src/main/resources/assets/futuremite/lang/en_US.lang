@@ -208,9 +208,9 @@ tile.trapdoors.spruce.name=Spruce Trapdoor
 tile.trapdoors.acacia.name=Acacia Trapdoor
 tile.trapdoors.dark_oak.name=Dark Oak Trapdoor
 
-tile.leaves.acacia.name=Acacia Leaves
-tile.leaves.dark_oak.name=Dark Oak Leaves
-tile.leaves.cherry.name=Cherry Leaves
+leaves.acacia.name=Acacia Leaves
+leaves.dark_oak.name=Dark Oak Leaves
+leaves.cherry.name=Cherry Leaves
 item.woodChips.name=Wood Chips
 
 tile.normalCampfire.name=Extinguished Campfire

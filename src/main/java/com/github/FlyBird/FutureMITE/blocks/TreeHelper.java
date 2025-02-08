@@ -29,11 +29,11 @@ public class TreeHelper {
         this.id = id;
         this.Log = new BlockStrippedLog(getNextBlockID(), id);
         this.Planks = new BlockModWoodPlanks(getNextBlockID(), id);
-        this.Leaves = new BlockModLeaves(getNextBlockID(), id);
         this.Stairs = (new BlockModStairs(getNextBlockID(), this.Planks, 0));
         this.SingleSlab = (new BlockModWoodSlab(getNextBlockID(), this.Planks, 0, id));
         this.DoubleSlab = (new BlockDoubleSlab(getNextBlockID(), this.SingleSlab));
         this.TrapDoor = (new BlockModTrapDoor(getNextBlockID(), id, Planks));
+        this.Leaves = new BlockModLeaves(getNextBlockID(), id,this);
     }
 
     public void registerRecipes(RecipeRegistryEvent register) {

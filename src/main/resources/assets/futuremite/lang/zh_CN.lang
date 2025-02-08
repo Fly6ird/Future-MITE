@@ -209,9 +209,9 @@ tile.trapdoors.spruce.name=云杉木活板门
 tile.trapdoors.acacia.name=金合欢木活板门
 tile.trapdoors.dark_oak.name=深色橡木活板门
 
-tile.leaves.acacia.name=金合欢树叶
-tile.leaves.dark_oak.name=深色橡木树叶
-tile.leaves.cherry.name=樱花树叶
+leaves.acacia.name=金合欢树叶
+leaves.dark_oak.name=深色橡木树叶
+leaves.cherry.name=樱花树叶
 
 item.woodChips.name=木屑
 

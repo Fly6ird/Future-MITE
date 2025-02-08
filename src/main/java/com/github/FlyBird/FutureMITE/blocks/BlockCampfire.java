@@ -149,39 +149,41 @@ public class BlockCampfire extends BlockContainer {
     @Override
     public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, EnumFace face, float dx, float dy, float dz) {
         ItemStack heldItemStack = player.getHeldItemStack();
-        if (heldItemStack.getItem() instanceof ItemShovel) {
-            if (player.onClient()) {
-                player.swingArm();
-                Minecraft.theMinecraft.playerController.setUseButtonDelayOverride(200);
-            } else {
-                //Auxiliary sound    1004灭火声音
-                world.playAuxSFXAtEntity(null, 1004, x, y, z, 0);
-                player.tryDamageHeldItem(DamageSource.generic, 2);
-                TileEntityCampfire.updateCampfireBlockState(false, world, x, y, z);
+        if(heldItemStack!=null) {
+            if (heldItemStack.getItem() instanceof ItemShovel) {
+                if (player.onClient()) {
+                    player.swingArm();
+                    Minecraft.theMinecraft.playerController.setUseButtonDelayOverride(200);
+                } else {
+                    //Auxiliary sound    1004灭火声音
+                    world.playAuxSFXAtEntity(null, 1004, x, y, z, 0);
+                    player.tryDamageHeldItem(DamageSource.generic, 2);
+                    TileEntityCampfire.updateCampfireBlockState(false, world, x, y, z);
+                }
+                return true;
             }
-            return true;
-        }
 
-        TileEntityCampfire tile = (TileEntityCampfire) world.getBlockTileEntity(x, y, z);
-        if (tile == null) {
-            return false;
-        }
-        if (tile.getCookFood(heldItemStack) != null) {
-            ItemStack queueItemStack = new ItemStack(heldItemStack.itemID, 1);
-            if (tile.joinCookQueue(queueItemStack)) {
+            TileEntityCampfire tile = (TileEntityCampfire) world.getBlockTileEntity(x, y, z);
+            if (tile == null) {
+                return false;
+            }
+            if (tile.getCookFood(heldItemStack) != null) {
+                ItemStack queueItemStack = new ItemStack(heldItemStack.itemID, 1);
+                if (tile.joinCookQueue(queueItemStack)) {
+                    if (world.isRemote) {
+                        player.swingArm();
+                    } else {
+                        if (!player.capabilities.isCreativeMode)
+                            --heldItemStack.stackSize;
+                    }
+                }
+            } else if (heldItemStack.getItem().getBurnTime(heldItemStack) > 0 && heldItemStack.getItem().getHeatLevel(heldItemStack) < 3) {
                 if (world.isRemote) {
                     player.swingArm();
                 } else {
-                    if (!player.capabilities.isCreativeMode)
+                    if (!player.capabilities.isCreativeMode && tile.addBurnTime(heldItemStack.getItem().getBurnTime(heldItemStack)))
                         --heldItemStack.stackSize;
                 }
-            }
-        } else if (heldItemStack.getItem().getBurnTime(heldItemStack) > 0 && heldItemStack.getItem().getHeatLevel(heldItemStack) < 3) {
-            if (world.isRemote) {
-                player.swingArm();
-            } else {
-                if (!player.capabilities.isCreativeMode && tile.addBurnTime(heldItemStack.getItem().getBurnTime(heldItemStack)))
-                    --heldItemStack.stackSize;
             }
         }
         return true;

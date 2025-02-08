@@ -31,30 +31,32 @@ public class BlockExtinguishedCampfire extends BlockContainer {
     public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, EnumFace face, float dx, float dy, float dz) {
         ItemStack stack = player.getHeldItemStack();
         TileEntityCampfire tile = (TileEntityCampfire) world.getBlockTileEntity(x, y, z);
-        if (tile != null && tile.getBurnTime() > 0) {
-            if (stack.getItem() instanceof ItemFlintAndSteel) {
-                TileEntityCampfire.updateCampfireBlockState(true, world, x, y, z);
-                if (player.onClient()) {
+        if(stack!=null) {
+            if (tile != null && tile.getBurnTime() > 0) {
+                if (stack.getItem() instanceof ItemFlintAndSteel) {
+                    TileEntityCampfire.updateCampfireBlockState(true, world, x, y, z);
+                    if (player.onClient()) {
+                        player.swingArm();
+                    } else {
+                        world.playSoundAtEntity(player, "fire.ignite", 1.0F, world.rand.nextFloat() * 0.4F + 0.8F);
+                        player.tryDamageHeldItem(DamageSource.generic, 1);
+                    }
+                } else if (stack.getItem() instanceof ItemFireball) {
+                    TileEntityCampfire.updateCampfireBlockState(true, world, x, y, z);
+                    if (player.onClient()) {
+                        player.swingArm();
+                    } else {
+                        world.playSoundAtBlock(x, y, z, "fire.ignite", 1.0F, world.rand.nextFloat() * 0.4F + 0.8F);
+                        --stack.stackSize;
+                    }
+                }
+            } else if (stack.getItem().getBurnTime(stack) > 0 && stack.getItem().getHeatLevel(stack) < 3) {
+                if (world.isRemote) {
                     player.swingArm();
                 } else {
-                    world.playSoundAtEntity(player, "fire.ignite", 1.0F, world.rand.nextFloat() * 0.4F + 0.8F);
-                    player.tryDamageHeldItem(DamageSource.generic, 1);
+                    if (tile != null && !player.capabilities.isCreativeMode && tile.addBurnTime(stack.getItem().getBurnTime(stack)))
+                        --stack.stackSize;
                 }
-            } else if (stack.getItem() instanceof ItemFireball) {
-                TileEntityCampfire.updateCampfireBlockState(true, world, x, y, z);
-                if (player.onClient()) {
-                    player.swingArm();
-                } else {
-                    world.playSoundAtBlock(x, y, z, "fire.ignite", 1.0F, world.rand.nextFloat() * 0.4F + 0.8F);
-                    --stack.stackSize;
-                }
-            }
-        } else if (stack.getItem().getBurnTime(stack) > 0 && stack.getItem().getHeatLevel(stack) < 3) {
-            if (world.isRemote) {
-                player.swingArm();
-            } else {
-                if (tile != null && !player.capabilities.isCreativeMode && tile.addBurnTime(stack.getItem().getBurnTime(stack)))
-                    --stack.stackSize;
             }
         }
         return true;

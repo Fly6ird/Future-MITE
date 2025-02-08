@@ -97,7 +97,7 @@ public class WorldGenBigCherryTree extends WorldGenerator {
         }
     }
 
-    void genTreeLayer(int par1, int par2, int par3, float par4, byte par5, int par6) {
+    void genTreeLayer(int par1, int par2, int par3, float par4, byte par5, int blockID) {
         int var7 = (int)((double)par4 + 0.618);
         byte var8 = otherCoordPairs[par5];
         byte var9 = otherCoordPairs[par5 + 3];
@@ -126,7 +126,7 @@ public class WorldGenBigCherryTree extends WorldGenerator {
                         if (var14 != 0 && var14 != Block.leaves.blockID) {
                             ++var13;
                         } else {
-                            this.setBlockAndMetadata(this.worldObj, var11[0], var11[1], var11[2], par6, 0);
+                            this.setBlockAndMetadata(this.worldObj, var11[0], var11[1], var11[2], blockID, 0);
                             ++var13;
                         }
                     }

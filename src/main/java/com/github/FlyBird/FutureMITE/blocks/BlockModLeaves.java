@@ -15,13 +15,10 @@ public class BlockModLeaves extends BlockLeavesBase {
     private int iconType;
     private Icon iconLeaves;
     int[] adjacentTreeBlocks;
-    public static final int OAK = 0;
-    public static final int SPRUCE = 1;
-    public static final int BIRCH = 2;
-    public static final int JUNGLE = 3;
+    private TreeHelper treeHelper;
     public final String id;
 
-    public BlockModLeaves(int par1, String id) {
+    public BlockModLeaves(int par1, String id,TreeHelper treeHelper) {
         super(par1, Material.tree_leaves, false);
         this.id = id;
         this.setTickRandomly(true);
@@ -29,6 +26,7 @@ public class BlockModLeaves extends BlockLeavesBase {
         this.setCreativeTab(CreativeTabs.tabDecorations);
         this.setUnlocalizedName(id);
         this.setCushioning(0.8F);
+        this.treeHelper=treeHelper;
     }
 
 
@@ -72,10 +70,10 @@ public class BlockModLeaves extends BlockLeavesBase {
         }
     }
 
-    public boolean updateTick(World par1World, int par2, int par3, int par4, Random par5Random) {
-        int var6 = par1World.getBlockMetadata(par2, par3, par4);
+    public boolean updateTick(World par1World, int x, int y, int z, Random par5Random) {
+        int meta = par1World.getBlockMetadata(x, y, z);
         int subtype;
-        if ((var6 & 8) != 0 && (var6 & 4) == 0) {
+        if ((meta & 8) != 0 && (meta & 4) == 0) {
             byte var7 = 4;
             subtype = var7 + 1;
             byte var9 = 32;
@@ -86,7 +84,7 @@ public class BlockModLeaves extends BlockLeavesBase {
             }
 
             int var12;
-            if (par1World.checkChunksExist(par2 - subtype, par3 - subtype, par4 - subtype, par2 + subtype, par3 + subtype, par4 + subtype)) {
+            if (par1World.checkChunksExist(x - subtype, y - subtype, z - subtype, x + subtype, y + subtype, z + subtype)) {
                 int var13;
                 int var14;
                 int var15;
@@ -99,7 +97,7 @@ public class BlockModLeaves extends BlockLeavesBase {
                         var13_plus_var11_minus_1_times_var10 = (var13 + var11) * var9;
 
                         for (var14 = -var7; var14 <= var7; ++var14) {
-                            var15 = par1World.getBlockId(par2 + var12, par3 + var13, par4 + var14);
+                            var15 = par1World.getBlockId(x + var12, y + var13, z + var14);
                             if (var15 == Block.wood.blockID) {
                                 this.adjacentTreeBlocks[var12_plus_var11_times_var10_plus_var11 + var13_plus_var11_minus_1_times_var10 + var14] = 0;
                             } else if (var15 == Block.leaves.blockID) {
@@ -162,29 +160,29 @@ public class BlockModLeaves extends BlockLeavesBase {
 
             var12 = this.adjacentTreeBlocks[var11 * var10 + var11 * var9 + var11];
             if (var12 >= 0) {
-                par1World.setBlockMetadataWithNotify(par2, par3, par4, var6 & -9, 4);
+                par1World.setBlockMetadataWithNotify(x, y, z, meta & -9, 4);
                 return true;
             } else {
-                this.removeLeaves(par1World, par2, par3, par4);
+                this.removeLeaves(par1World, x, y, z);
                 return true;
             }
         } else {
-            if (RNG.chance_in_100[++RNG.random_number_index + (int) par1World.total_time & 32767] && !wasPlaced(var6) && (!par1World.getAsWorldServer().fast_forwarding || RNG.chance_in_32[++RNG.random_number_index & 32767]) && par5Random.nextInt(500) == 0) {
-                if (par1World.getBiomeGenForCoords(par2, par4).isSwampBiome() && par5Random.nextInt(2) == 0) {
+            if (RNG.chance_in_100[++RNG.random_number_index + (int) par1World.total_time & 32767] && !wasPlaced(meta) && (!par1World.getAsWorldServer().fast_forwarding || RNG.chance_in_32[++RNG.random_number_index & 32767]) && par5Random.nextInt(500) == 0) {
+                if (par1World.getBiomeGenForCoords(x, z).isSwampBiome() && par5Random.nextInt(2) == 0) {
                     return false;
                 }
 
                 Item item = Item.stick;
-                subtype = this.getBlockSubtype(var6);
+                subtype = this.getBlockSubtype(meta);
                 if (subtype == 0) {
                     if (par5Random.nextInt(3) > 0) {
-                        item = par1World.getBiomeGenForCoords(par2, par4).isJungleBiome() ? Item.orange : Item.appleRed;
+                        item = par1World.getBiomeGenForCoords(x, z).isJungleBiome() ? Item.orange : Item.appleRed;
                     }
                 } else if (subtype == 3 && par5Random.nextInt(3) > 0) {
                     item = Item.banana;
                 }
 
-                this.dropBlockAsEntityItem((new BlockBreakInfo(par1World, par2, par3, par4)).setWindfall(), (Item) item);
+                this.dropBlockAsEntityItem((new BlockBreakInfo(par1World, x, y, z)).setWindfall(), (Item) item);
             }
 
             return false;
@@ -223,16 +221,17 @@ public class BlockModLeaves extends BlockLeavesBase {
         } else {
             int leaf_kind = this.getBlockSubtype(info.getMetadata());
             int num_drops;
-            if ((num_drops = this.dropBlockAsEntityItem(info, Block.sapling.blockID, leaf_kind, 1, 0.01F)) > 0) {
+            if ((num_drops = this.dropBlockAsEntityItem(info, this.treeHelper.Sapling.blockID, leaf_kind, 1, 0.01F)) > 0) {
                 return num_drops;
             } else if ((num_drops = this.dropBlockAsEntityItem(info, Item.stick.itemID, 0, 1, 0.05F)) > 0) {
                 return num_drops;
-            } else if (leaf_kind == 0) {
+            }/* else if (leaf_kind == 0) {
                 return this.dropBlockAsEntityItem(info, info.getBiome().isJungleBiome() ? Item.orange.itemID : Item.appleRed.itemID, 0, 1, 0.005F);
             } else {
                 return leaf_kind == 3 ? this.dropBlockAsEntityItem(info, Item.banana.itemID, 0, 1, 0.005F) : 0;
-            }
+            }*/
         }
+        return 0;
     }
 
     public String getMetadataNotes() {

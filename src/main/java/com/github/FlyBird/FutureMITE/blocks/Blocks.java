@@ -80,7 +80,7 @@ public class Blocks extends Block {
         public static final BlockModLog spruceLog = new BlockModLog(getNextBlockID(), "spruce").setIsVanilla();*/
     public static final TreeHelper acacia = new TreeHelper("acacia");
     public static final TreeHelper darkOak = new TreeHelper("dark_oak");
-    public static final TreeHelper cherry = new TreeHelper("cherry").Sapling.setSmallTreeGenerator(new WorldGenCherryTrees(true)).Sapling.setLargeTreeGenerator(new WorldGenBigCherryTree(true));
+    public static final TreeHelper cherry = new TreeHelper("cherry").Sapling.setSmallTreeGenerator(new WorldGenCherryTrees(true,4 ,3,3,false)).Sapling.setLargeTreeGenerator(new WorldGenBigCherryTree(true));
 
     public static final BlockStrippedLog strippedBirch = new BlockStrippedLog(getNextBlockID());
     public static final BlockStrippedLog strippedJungle = new BlockStrippedLog(getNextBlockID());
