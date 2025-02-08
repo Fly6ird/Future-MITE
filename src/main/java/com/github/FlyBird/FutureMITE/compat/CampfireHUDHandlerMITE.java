@@ -8,6 +8,7 @@ import mcp.mobius.waila.api.IWailaConfigHandler;
 import mcp.mobius.waila.api.IWailaDataAccessor;
 import mcp.mobius.waila.api.IWailaDataProvider;
 import mcp.mobius.waila.api.IWailaRegistrar;
+import mcp.mobius.waila.api.impl.ModuleRegistrar;
 import net.minecraft.*;
 
 import java.util.List;
@@ -27,12 +28,11 @@ public class CampfireHUDHandlerMITE implements IWailaDataProvider {
     @Override
     public List<String> getWailaBody(ItemStack itemStack, List<String> currenttip, IWailaDataAccessor accessor, IWailaConfigHandler config) {
         Block block = accessor.getBlock();
-        if(block instanceof BlockCampfire||block instanceof BlockExtinguishedCampfire){
-            TileEntity tileEntity= accessor.getTileEntity();
-            if(tileEntity instanceof TileEntityCampfire)
-            {
-                int burntime=((TileEntityCampfire) tileEntity).getBurnTime();
-                currenttip.add(EnumChatFormatting.RESET + StatCollector.translateToLocal("campfire.burntime")+":"+burntime);
+        if (block instanceof BlockCampfire || block instanceof BlockExtinguishedCampfire) {
+            TileEntity tileEntity = accessor.getTileEntity();
+            if (tileEntity instanceof TileEntityCampfire) {
+                int burntime = ((TileEntityCampfire) tileEntity).getBurnTime();
+                currenttip.add(EnumChatFormatting.RESET + StatCollector.translateToLocal("campfire.burntime") + ":" + burntime);
             }
         }
         return currenttip;
@@ -48,8 +48,13 @@ public class CampfireHUDHandlerMITE implements IWailaDataProvider {
         return null;
     }
 
+    public static void register() {
+        callbackRegister(ModuleRegistrar.instance());
+    }
+
     public static void callbackRegister(IWailaRegistrar registrar) {
         IWailaDataProvider instance = new CampfireHUDHandlerMITE();
-        registrar.registerBodyProvider(instance, Block.class);
+        registrar.registerBodyProvider(instance, BlockCampfire.class);
+        registrar.registerBodyProvider(instance, BlockExtinguishedCampfire.class);
     }
 }

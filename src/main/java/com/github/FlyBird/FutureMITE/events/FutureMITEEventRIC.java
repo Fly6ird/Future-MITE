@@ -12,5 +12,6 @@ public class FutureMITEEventRIC extends Handlers {
         TileEntityData.register(new TileEntityDataTypeRegistry());
         BiomeGenerate.register(new BiomeGenerateListener());
         PropertiesRegistry.register(new PropertyRegistry());
+        Initialization.register(new InitializationListener());
     }
 }
