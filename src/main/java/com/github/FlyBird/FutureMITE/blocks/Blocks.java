@@ -30,9 +30,11 @@ public class Blocks extends Block {
     public static final Block ancientChain = new BlockChain(getNextBlockID(), Material.ancient_metal);
     public static final Block mithrilChain = new BlockChain(getNextBlockID(), Material.mithril);
 
-    public static final Block campfire = new BlockCampfire(getNextBlockID(), 1.0f).setLightValue(0.6f);
-    public static final Block soulCampfire = new BlockCampfire(getNextBlockID(), 2.0f).setLightValue(0.6666f);
-    public static final Block normalCampfire = new BlockExtinguishedCampfire(getNextBlockID());
+    public static final Block extinguishedCampfire=new BlockCampfire(getNextBlockID(),0f,false);
+    public static final Block campfire = new BlockCampfire(getNextBlockID(), 1.0f,true).setLightValue(0.6f);
+    public static final Block soulCampfire = new BlockCampfire(getNextBlockID(), 2.0f,true).setLightValue(0.6666f);
+
+    //public static final Block normalCampfire = new BlockExtinguishedCampfire(getNextBlockID());
 
     public static final Block dirtPath = new BlockDirtPath(getNextBlockID());
 
@@ -141,7 +143,7 @@ public class Blocks extends Block {
 
         registryEvent.registerItemBlock(FutureMITEStart.NameSpaceCompact, "campfire", campfire);
         registryEvent.registerItemBlock(FutureMITEStart.NameSpaceCompact, "soul_campfire", soulCampfire);
-        registryEvent.registerItemBlock(FutureMITEStart.NameSpaceCompact, "normalCampfire", normalCampfire);
+        //registryEvent.registerItemBlock(FutureMITEStart.NameSpaceCompact, "normalCampfire", normalCampfire);
 
         registryEvent.registerItemBlock(FutureMITEStart.NameSpaceCompact, "futuremite:soul_torch", soulTorch);
         registryEvent.registerItemBlock(FutureMITEStart.NameSpaceCompact, "dirtPath", dirtPath);

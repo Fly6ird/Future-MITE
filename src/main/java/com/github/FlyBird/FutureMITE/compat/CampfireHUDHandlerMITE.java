@@ -2,7 +2,6 @@ package com.github.FlyBird.FutureMITE.compat;
 
 
 import com.github.FlyBird.FutureMITE.blocks.BlockCampfire;
-import com.github.FlyBird.FutureMITE.blocks.BlockExtinguishedCampfire;
 import com.github.FlyBird.FutureMITE.tileentities.TileEntityCampfire;
 import mcp.mobius.waila.api.IWailaConfigHandler;
 import mcp.mobius.waila.api.IWailaDataAccessor;
@@ -28,7 +27,7 @@ public class CampfireHUDHandlerMITE implements IWailaDataProvider {
     @Override
     public List<String> getWailaBody(ItemStack itemStack, List<String> currenttip, IWailaDataAccessor accessor, IWailaConfigHandler config) {
         Block block = accessor.getBlock();
-        if (block instanceof BlockCampfire || block instanceof BlockExtinguishedCampfire) {
+        if (block instanceof BlockCampfire ) {
             TileEntity tileEntity = accessor.getTileEntity();
             if (tileEntity instanceof TileEntityCampfire) {
                 int burntime = ((TileEntityCampfire) tileEntity).getBurnTime();
@@ -55,6 +54,6 @@ public class CampfireHUDHandlerMITE implements IWailaDataProvider {
     public static void callbackRegister(IWailaRegistrar registrar) {
         IWailaDataProvider instance = new CampfireHUDHandlerMITE();
         registrar.registerBodyProvider(instance, BlockCampfire.class);
-        registrar.registerBodyProvider(instance, BlockExtinguishedCampfire.class);
+        //registrar.registerBodyProvider(instance, BlockExtinguishedCampfire.class);
     }
 }

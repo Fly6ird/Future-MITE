@@ -1,16 +1,19 @@
 package com.github.FlyBird.FutureMITE.tileentities;
 
+import com.github.FlyBird.FutureMITE.blocks.BlockCampfire;
 import com.github.FlyBird.FutureMITE.blocks.Blocks;
 import net.minecraft.*;
 
 import java.util.Random;
+
+import static com.github.FlyBird.FutureMITE.blocks.BlockCampfire.updateCampfireBlockState;
 
 public class TileEntityCampfire extends TileEntity {
     private ItemStack[] burnItemStacks = new ItemStack[4];
     private int[] burnFoodTime = new int[4];
     protected static final Random RAND = new Random();
 
-    private int burnTime = 6000;//营火燃烧时间   默认600   1s=20tick   也就是5分钟
+    private int burnTime=6000;//营火燃烧时间   默认6000   1s=20tick   也就是5分钟
 
     public TileEntityCampfire() {
 
@@ -22,41 +25,29 @@ public class TileEntityCampfire extends TileEntity {
 
     @Override
     public void updateEntity() {
-        if (this.burnTime > 0 && this.getBlockType().blockID != Blocks.normalCampfire.blockID) {
-            --this.burnTime;
-            for (int i = 0; i < burnItemStacks.length; i++) {
-                if (burnItemStacks[i] != null) {
-                    if (burnFoodTime[i] > 0)
-                        --burnFoodTime[i];
-                    else if (burnFoodTime[i] <= 0 && !isCookedItemStack(burnItemStacks[i])) {//如果是还没熟的，并且时间小于0
-                        burnItemStacks[i] = getCookFood(burnItemStacks[i]);
-                        burnFoodTime[i] = 60;//熟肉只显示3s
-                    } else if (burnFoodTime[i] <= 0 && isCookedItemStack(burnItemStacks[i])) {//如果是熟的，并且时间小于0
-                        popItem(burnItemStacks[i], this.worldObj, this.xCoord, this.yCoord, this.zCoord);
-                        burnItemStacks[i] = null;
+        if(((BlockCampfire)this.getBlockType()).getIsActive()) {
+            if (this.burnTime > 0) {
+                --this.burnTime;
+                for (int i = 0; i < burnItemStacks.length; i++) {
+                    if (burnItemStacks[i] != null) {
+                        if (burnFoodTime[i] > 0)
+                            --burnFoodTime[i];
+                        else if (burnFoodTime[i] <= 0 && !isCookedItemStack(burnItemStacks[i])) {//如果是还没熟的，并且时间小于0
+                            burnItemStacks[i] = getCookFood(burnItemStacks[i]);
+                            burnFoodTime[i] = 60;//熟肉只显示3s
+                        } else if (burnFoodTime[i] <= 0 && isCookedItemStack(burnItemStacks[i])) {//如果是熟的，并且时间小于0
+                            popItem(burnItemStacks[i], this.worldObj, this.xCoord, this.yCoord, this.zCoord);
+                            burnItemStacks[i] = null;
+                        }
                     }
                 }
+            } else {
+                updateCampfireBlockState(false, this.worldObj, this.xCoord, this.yCoord, this.zCoord);
             }
-        } else if (this.burnTime <= 0 && this.getBlockType().blockID != Blocks.normalCampfire.blockID) {
-            updateCampfireBlockState(false, this.worldObj, this.xCoord, this.yCoord, this.zCoord);
         }
     }
 
-    public static void updateCampfireBlockState(boolean isBurned, World par1World, int x, int y, int z) {
-        int meta = par1World.getBlockMetadata(x, y, z);
-        TileEntity tileEntity = par1World.getBlockTileEntity(x, y, z);
 
-        if (isBurned) {
-            par1World.setBlock(x, y, z, Blocks.campfire.blockID, meta, 3);
-        } else {
-            par1World.setBlock(x, y, z, Blocks.normalCampfire.blockID, meta, 3);
-        }
-
-        if (tileEntity != null) {
-            tileEntity.validate();
-            par1World.setBlockTileEntity(x, y, z, tileEntity);
-        }
-    }
 
     /**
      * Drops all the campfire's items into the world.

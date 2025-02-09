@@ -1,8 +1,11 @@
+/*
 package com.github.FlyBird.FutureMITE.blocks;
 
 import com.github.FlyBird.FutureMITE.render.RenderTypes;
 import com.github.FlyBird.FutureMITE.tileentities.TileEntityCampfire;
 import net.minecraft.*;
+
+import static com.github.FlyBird.FutureMITE.blocks.BlockCampfire.updateCampfireBlockState;
 
 public class BlockExtinguishedCampfire extends BlockContainer {
     private Icon BlockCampfireIcon;
@@ -34,7 +37,7 @@ public class BlockExtinguishedCampfire extends BlockContainer {
         if(stack!=null) {
             if (tile != null && tile.getBurnTime() > 0) {
                 if (stack.getItem() instanceof ItemFlintAndSteel) {
-                    TileEntityCampfire.updateCampfireBlockState(true, world, x, y, z);
+                    updateCampfireBlockState(true, world, x, y, z);
                     if (player.onClient()) {
                         player.swingArm();
                     } else {
@@ -42,7 +45,7 @@ public class BlockExtinguishedCampfire extends BlockContainer {
                         player.tryDamageHeldItem(DamageSource.generic, 1);
                     }
                 } else if (stack.getItem() instanceof ItemFireball) {
-                    TileEntityCampfire.updateCampfireBlockState(true, world, x, y, z);
+                    updateCampfireBlockState(true, world, x, y, z);
                     if (player.onClient()) {
                         player.swingArm();
                     } else {
@@ -117,6 +120,9 @@ public class BlockExtinguishedCampfire extends BlockContainer {
 
     @Override
     public TileEntity createNewTileEntity(World world) {
+        TileEntityCampfire tileEntity=new TileEntityCampfire(this);
+
         return new TileEntityCampfire(this);
     }
 }
+*/

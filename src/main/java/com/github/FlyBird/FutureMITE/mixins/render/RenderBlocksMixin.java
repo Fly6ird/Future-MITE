@@ -72,8 +72,14 @@ public abstract class RenderBlocksMixin implements IRenderBlock {
       cir.setReturnValue(true);
     }
     if (RenderType == RenderTypes.campfireRenderType) {
-      RenderCampfire.instance.DrawRenderCampfire((BlockCampfire) par1Block, this.blockAccess.getBlockMetadata(x, y, z), x, y, z, this.blockAccess);
-      cir.setReturnValue(true);
+      if(par1Block instanceof BlockCampfire) {
+        if (((BlockCampfire) par1Block).getIsActive())
+          RenderCampfire.instance.DrawRenderCampfire((BlockCampfire) par1Block, this.blockAccess.getBlockMetadata(x, y, z), x, y, z, this.blockAccess);
+        else
+          RenderNormalCampfire.instance.DrawRenderCampfire(par1Block, this.blockAccess.getBlockMetadata(x, y, z), x, y, z, this.blockAccess);
+        cir.setReturnValue(true);
+      }
+
     }
     if (RenderType == RenderTypes.lanternRenderType) {
       RenderLantern.instance.DrawBlockLantern(par1Block, this.blockAccess.getBlockMetadata(x, y, z), x, y, z, this.blockAccess);

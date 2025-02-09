@@ -16,18 +16,24 @@ public class BlockCampfire extends BlockContainer {
     private Icon ItemCampfireIcon;
     private Icon campFire_FireIcon;
     private Icon campFire_LogLitIcon;
-
+    private boolean isActive;
+    private static boolean keepCampfireData;
     public static final DamageSource CAMPFIRE_DAMAGE = (new DamageSourceExtend("CampFire"));
 
     private final float damage;
 
-    protected BlockCampfire(int par1, float damage) {
+    protected BlockCampfire(int par1, float damage,boolean isActive) {
         super(par1, Material.wood, new BlockConstants().setNotAlwaysLegal().setNeverHidesAdjacentFaces());
         this.setBlockBoundsForAllThreads(0.0, 0.0, 0.0, 1.0, 0.4375, 1.0);
         this.setHardness(2.0f);
         this.setStepSound(soundWoodFootstep);
         this.damage = damage;
+        this.isActive=isActive;
         setCreativeTab(CreativeTabs.tabDecorations);
+    }
+
+    public boolean getIsActive(){
+        return this.isActive;
     }
 
     @Override
@@ -58,8 +64,10 @@ public class BlockCampfire extends BlockContainer {
         this.campFire_FireIcon = par1IconRegister.registerIcon("futuremite:campfire/" + this.getTextureName() + "_fire");
         this.BlockCampfireIcon = par1IconRegister.registerIcon("futuremite:campfire_log");
         this.campFire_LogLitIcon = par1IconRegister.registerIcon("futuremite:campfire/" + this.getTextureName() + "_log_lit");
-        this.ItemCampfireIcon = par1IconRegister.registerIcon("futuremite:item/" + this.getTextureName());
-
+        if(this.isActive)
+            this.ItemCampfireIcon = par1IconRegister.registerIcon("futuremite:item/" + this.getTextureName());
+        else
+            this.ItemCampfireIcon = par1IconRegister.registerIcon("futuremite:item/campfire_base" );
     }
 
     public Icon getFireIcon(int index) {
@@ -100,21 +108,23 @@ public class BlockCampfire extends BlockContainer {
     @Override
     public int getMetadataForPlacement(World world, int x, int y, int z, ItemStack item_stack, Entity entity, EnumFace face, float offset_x, float offset_y, float offset_z) {
         int metadata = super.getMetadataForPlacement(world, x, y, z, item_stack, entity, face, offset_x, offset_y, offset_z);
-        if (face.isEastOrWest()) {
-            metadata |= 4;
+        if (face.isEastOrWest()) {//    0000
+            metadata |= 4;//        4为  100      实际效果获取第三位的值
         } else if (face.isNorthOrSouth()) {
-            metadata |= 8;
+            metadata |= 8;    //实际效果获取第四位的值
         }
         return metadata;
     }
 
     public void breakBlock(World world, int x, int y, int z, int blockid, int metadata) {
-        if (!world.isRemote) {
-            TileEntity tile = world.getBlockTileEntity(x, y, z);
-            if (tile instanceof TileEntityCampfire)
-                ((TileEntityCampfire) tile).popItems();
+        if(!keepCampfireData) {
+            if (!world.isRemote) {
+                TileEntity tile = world.getBlockTileEntity(x, y, z);
+                if (tile instanceof TileEntityCampfire)
+                    ((TileEntityCampfire) tile).popItems();
+            }
+            super.breakBlock(world, x, y, z, blockid, metadata);
         }
-        super.breakBlock(world, x, y, z, blockid, metadata);
     }
 
     @Override
@@ -123,67 +133,119 @@ public class BlockCampfire extends BlockContainer {
         float var8;
         float var7;
         int var6;
-        if (par5Random.nextInt(10) == 0) {
-            par1World.playSound((float) x + 0.5f, (float) y + 0.5f, (float) z + 0.5f, "futuremite:block.campfire.crackle", 1.0f + par5Random.nextFloat(), par5Random.nextFloat() * 0.7f + 0.3f, false);
-        }
 
-        for (var6 = 0; var6 < 4; ++var6) {
-            var7 = (float) x + 0.5f + par5Random.nextFloat() * 0.1f;
-            var8 = (float) y + par5Random.nextFloat();//随机返回一个0—1.0的浮点
-            var9 = (float) z + 0.5f;
-            par1World.spawnParticle(EnumParticles.largerSmoke, x, y, z, 0.0, 0.0, 0.0);
-            par1World.spawnParticle(EnumParticle.smoke, var7, var8, var9, 0.0, 0.0, 0.0);
-        }
+        if(this.isActive) {
+            if (par5Random.nextInt(10) == 0) {
+                par1World.playSound((float) x + 0.5f, (float) y + 0.5f, (float) z + 0.5f, "futuremite:block.campfire.crackle", 1.0f + par5Random.nextFloat(), par5Random.nextFloat() * 0.7f + 0.3f, false);
+            }
 
-        if (par5Random.nextInt(5) == 0 && Objects.equals(this.getTextureName(), "campfire")) {
-            for (int i = 0; i < par5Random.nextInt(1) + 1; ++i) {
-                double var21 = (float) x + par5Random.nextFloat();
-                double var22 = (double) y + this.maxY[Minecraft.getThreadIndex()];
-                double var23 = (float) z + par5Random.nextFloat();
-                par1World.spawnParticle(EnumParticle.lava, var21, var22, var23, 0.0, 0.0, 0.0);
+            for (var6 = 0; var6 < 4; ++var6) {
+                var7 = (float) x + 0.5f + par5Random.nextFloat() * 0.1f;
+                var8 = (float) y + par5Random.nextFloat();//随机返回一个0—1.0的浮点
+                var9 = (float) z + 0.5f;
+                par1World.spawnParticle(EnumParticles.largerSmoke, x, y, z, 0.0, 0.0, 0.0);
+                par1World.spawnParticle(EnumParticle.smoke, var7, var8, var9, 0.0, 0.0, 0.0);
+            }
+
+            if (par5Random.nextInt(5) == 0 && Objects.equals(this.getTextureName(), "campfire")) {
+                for (int i = 0; i < par5Random.nextInt(1) + 1; ++i) {
+                    double var21 = (float) x + par5Random.nextFloat();
+                    double var22 = (double) y + this.maxY[Minecraft.getThreadIndex()];
+                    double var23 = (float) z + par5Random.nextFloat();
+                    par1World.spawnParticle(EnumParticle.lava, var21, var22, var23, 0.0, 0.0, 0.0);
+                }
             }
         }
 
     }
 
+    public static void updateCampfireBlockState(boolean isBurned, World par1World, int x, int y, int z) {
+        int meta = par1World.getBlockMetadata(x, y, z);
+        TileEntity tileEntity = par1World.getBlockTileEntity(x, y, z);
+
+        keepCampfireData=true;
+        if (isBurned) {
+            par1World.setBlock(x, y, z, Blocks.campfire.blockID, meta, 3);
+        } else {
+            par1World.setBlock(x, y, z, Blocks.extinguishedCampfire.blockID, meta, 3);
+        }
+
+        keepCampfireData=false;
+        if (tileEntity != null) {
+            tileEntity.validate();
+            par1World.setBlockTileEntity(x, y, z, tileEntity);
+        }
+    }
+
     @Override
     public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, EnumFace face, float dx, float dy, float dz) {
-        ItemStack heldItemStack = player.getHeldItemStack();
-        if(heldItemStack!=null) {
-            if (heldItemStack.getItem() instanceof ItemShovel) {
-                if (player.onClient()) {
-                    player.swingArm();
-                    Minecraft.theMinecraft.playerController.setUseButtonDelayOverride(200);
-                } else {
-                    //Auxiliary sound    1004灭火声音
-                    world.playAuxSFXAtEntity(null, 1004, x, y, z, 0);
-                    player.tryDamageHeldItem(DamageSource.generic, 2);
-                    TileEntityCampfire.updateCampfireBlockState(false, world, x, y, z);
-                }
-                return true;
-            }
-
+        ItemStack stack = player.getHeldItemStack();
+        if(stack!=null) {
             TileEntityCampfire tile = (TileEntityCampfire) world.getBlockTileEntity(x, y, z);
-            if (tile == null) {
-                return false;
-            }
-            if (tile.getCookFood(heldItemStack) != null) {
-                ItemStack queueItemStack = new ItemStack(heldItemStack.itemID, 1);
-                if (tile.joinCookQueue(queueItemStack)) {
+            if(isActive) {
+                if (stack.getItem() instanceof ItemShovel) {
+                    if (player.onClient()) {
+                        player.swingArm();
+                        Minecraft.theMinecraft.playerController.setUseButtonDelayOverride(200);
+                    } else {
+                        //Auxiliary sound    1004灭火声音
+                        world.playAuxSFXAtEntity(null, 1004, x, y, z, 0);
+                        player.tryDamageHeldItem(DamageSource.generic, 2);
+                        updateCampfireBlockState(false, world, x, y, z);
+                    }
+                    return true;
+                }
+
+
+                if (tile == null) {
+                    return false;
+                }
+                if (tile.getCookFood(stack) != null) {
+                    ItemStack queueItemStack = new ItemStack(stack.itemID, 1);
+                    if (tile.joinCookQueue(queueItemStack)) {
+                        if (world.isRemote) {
+                            player.swingArm();
+                        } else {
+                            if (!player.capabilities.isCreativeMode)
+                                --stack.stackSize;
+                        }
+                    }
+                } else if (stack.getItem().getBurnTime(stack) > 0 && stack.getItem().getHeatLevel(stack) < 3) {
                     if (world.isRemote) {
                         player.swingArm();
                     } else {
-                        if (!player.capabilities.isCreativeMode)
-                            --heldItemStack.stackSize;
+                        if (!player.capabilities.isCreativeMode && tile.addBurnTime(stack.getItem().getBurnTime(stack)))
+                            --stack.stackSize;
                     }
                 }
-            } else if (heldItemStack.getItem().getBurnTime(heldItemStack) > 0 && heldItemStack.getItem().getHeatLevel(heldItemStack) < 3) {
-                if (world.isRemote) {
-                    player.swingArm();
-                } else {
-                    if (!player.capabilities.isCreativeMode && tile.addBurnTime(heldItemStack.getItem().getBurnTime(heldItemStack)))
-                        --heldItemStack.stackSize;
+            }else{
+                if (tile != null && tile.getBurnTime() > 0) {
+                    if (stack.getItem() instanceof ItemFlintAndSteel) {
+                        updateCampfireBlockState(true, world, x, y, z);
+                        if (player.onClient()) {
+                            player.swingArm();
+                        } else {
+                            world.playSoundAtEntity(player, "fire.ignite", 1.0F, world.rand.nextFloat() * 0.4F + 0.8F);
+                            player.tryDamageHeldItem(DamageSource.generic, 1);
+                        }
+                    } else if (stack.getItem() instanceof ItemFireball) {
+                        updateCampfireBlockState(true, world, x, y, z);
+                        if (player.onClient()) {
+                            player.swingArm();
+                        } else {
+                            world.playSoundAtBlock(x, y, z, "fire.ignite", 1.0F, world.rand.nextFloat() * 0.4F + 0.8F);
+                            --stack.stackSize;
+                        }
+                    }
+                } else if (stack.getItem().getBurnTime(stack) > 0 && stack.getItem().getHeatLevel(stack) < 3) {
+                    if (world.isRemote) {
+                        player.swingArm();
+                    } else {
+                        if (tile != null && !player.capabilities.isCreativeMode && tile.addBurnTime(stack.getItem().getBurnTime(stack)))
+                            --stack.stackSize;
+                    }
                 }
+
             }
         }
         return true;
@@ -191,7 +253,9 @@ public class BlockCampfire extends BlockContainer {
 
     @Override
     public TileEntity createNewTileEntity(World world) {
-        return new TileEntityCampfire(this);
+        TileEntityCampfire tileEntity=new TileEntityCampfire(this);
+        //tileEntity.addBurnTime(6000);
+        return tileEntity;
     }
 }
 
