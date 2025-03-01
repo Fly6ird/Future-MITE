@@ -1,7 +1,6 @@
 package com.github.FlyBird.FutureMITE.mixins.item;
 
 import com.github.FlyBird.FutureMITE.blocks.Blocks;
-import com.github.FlyBird.FutureMITE.tileentities.TileEntityCampfire;
 import net.minecraft.*;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
@@ -53,22 +52,18 @@ public abstract class ItemShovelMixin extends ItemTool {
                 return false;
             }
         }
-        if (rc.face_hit.isTop()||rc.face_hit.isSide()) {
-            boolean flag1=tryTillSoil(rc.world, rc.block_hit_x, rc.block_hit_y, rc.block_hit_z, rc.face_hit, player, player.getHeldItemStack());
-            if(!flag1)
-            {
+        if (rc.face_hit.isTop() || rc.face_hit.isSide()) {
+            boolean flag1 = tryTillSoil(rc.world, rc.block_hit_x, rc.block_hit_y, rc.block_hit_z, rc.face_hit, player, player.getHeldItemStack());
+            if (!flag1) {
                 if (this.canBlock()) {
                     player.setHeldItemInUse();
                     return true;
                 } else {
                     return false;
                 }
-            }
-            else
+            } else
                 return true;
-        }
-        else
-        {
+        } else {
             if (this.canBlock()) {
                 player.setHeldItemInUse();
                 return true;

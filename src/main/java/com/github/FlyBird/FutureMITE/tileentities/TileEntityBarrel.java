@@ -142,11 +142,11 @@ public class TileEntityBarrel extends TileEntity implements IInventory {
         }
 
         // 如果桶的状态发生了变化，才进行更新和播放音效
-        if (this.laststate!=this.state) {
+        if (this.laststate != this.state) {
             double var8 = this.xCoord + 0.5D;
             double var11 = this.zCoord + 0.5D;
 
-            this.laststate=this.state;
+            this.laststate = this.state;
 
             // 只在状态变化时更新元数据和播放音效
             if (!this.worldObj.isRemote) {

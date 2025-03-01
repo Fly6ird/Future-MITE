@@ -4,7 +4,7 @@ import net.minecraft.*;
 import org.spongepowered.asm.mixin.Mixin;
 
 @Mixin(BlockTorch.class)
-public abstract class BlockTorchMixin extends BlockMounted{
+public abstract class BlockTorchMixin extends BlockMounted {
 
     public BlockTorchMixin(int id, Material material, BlockConstants constants) {
         super(id, material, constants);

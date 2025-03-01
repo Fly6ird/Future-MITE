@@ -2,7 +2,7 @@ package com.github.FlyBird.FutureMITE.mixins.item;
 
 import com.github.FlyBird.FutureMITE.blocks.BlockModStairs;
 import com.github.FlyBird.FutureMITE.blocks.BlockModWoodPlanks;
-import com.github.FlyBird.FutureMITE.blocks.BlockStrippedLog;
+import com.github.FlyBird.FutureMITE.blocks.BlockModLog;
 import net.minecraft.Block;
 import net.minecraft.Item;
 import net.minecraft.ItemBlock;
@@ -24,7 +24,7 @@ public class ItemBlockMixin extends Item {
     @Inject(method = "getBurnTime", at = @At("HEAD"), cancellable = true)
     private void inject(ItemStack item_stack, CallbackInfoReturnable<Integer> cir) {
         Block block = this.getBlock();
-        if (block instanceof BlockStrippedLog) {
+        if (block instanceof BlockModLog) {
             cir.setReturnValue(1600);
         }
         if (block instanceof BlockModWoodPlanks) {

@@ -2,7 +2,6 @@ package com.github.FlyBird.FutureMITE.mixins.world;
 
 import net.minecraft.MapGenVillage;
 import net.minecraft.World;
-import net.minecraft.WorldInfo;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Redirect;

@@ -7,9 +7,6 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
-import static net.minecraft.ItemDye.suppress_standard_particle_effect;
-import static net.minecraft.ItemDye.tryFertilize;
-
 @Mixin(ItemDye.class)
 public class ItemDyeMixin extends Item {
 
@@ -19,11 +16,9 @@ public class ItemDyeMixin extends Item {
         Block block = world.getBlock(x, y, z);
         if (block instanceof BlockModSapling) {
 
-            if((double)world.rand.nextFloat() < 0.45D) {
-                if(((BlockModSapling) block).markOrGrowMarked(world, x, y, z, world.rand))
-                {
-                    if (!world.isRemote)
-                    {
+            if ((double) world.rand.nextFloat() < 0.45D) {
+                if (((BlockModSapling) block).markOrGrowMarked(world, x, y, z, world.rand)) {
+                    if (!world.isRemote) {
                         world.playAuxSFX(2005, x, y, z, 0);
                     }
                 }

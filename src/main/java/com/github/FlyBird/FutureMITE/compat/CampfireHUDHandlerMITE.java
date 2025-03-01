@@ -27,7 +27,7 @@ public class CampfireHUDHandlerMITE implements IWailaDataProvider {
     @Override
     public List<String> getWailaBody(ItemStack itemStack, List<String> currenttip, IWailaDataAccessor accessor, IWailaConfigHandler config) {
         Block block = accessor.getBlock();
-        if (block instanceof BlockCampfire ) {
+        if (block instanceof BlockCampfire) {
             TileEntity tileEntity = accessor.getTileEntity();
             if (tileEntity instanceof TileEntityCampfire) {
                 int burntime = ((TileEntityCampfire) tileEntity).getBurnTime();

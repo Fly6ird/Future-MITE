@@ -4,7 +4,10 @@ package com.github.FlyBird.FutureMITE.world.biome;
 import com.github.FlyBird.FutureMITE.world.gen.WorldGenBigCherryTree;
 import com.github.FlyBird.FutureMITE.world.gen.WorldGenCherryForest;
 import com.github.FlyBird.FutureMITE.world.gen.WorldGenCherryTrees;
-import net.minecraft.*;
+import net.minecraft.BiomeGenBase;
+import net.minecraft.Block;
+import net.minecraft.WorldGenTallGrass;
+import net.minecraft.WorldGenerator;
 
 import java.util.Random;
 
@@ -17,16 +20,15 @@ public class CherryBlossomGroveBiome extends BiomeGenBase {
     protected CherryBlossomGroveBiome(int par1) {
         super(par1);
 
-        this.theBiomeDecorator.treesPerChunk=8;
+        this.theBiomeDecorator.treesPerChunk = 8;
 
         this.worldGenCherryForest = new WorldGenCherryForest(false);
         this.worldGenBigCherryTree = new WorldGenBigCherryTree(false);
-        this.worldGenCherryTrees=new WorldGenCherryTrees(false);
+        this.worldGenCherryTrees = new WorldGenCherryTrees(false);
     }
 
     @Override
-    public WorldGenerator getRandomWorldGenForTrees(Random par1Random)
-    {
+    public WorldGenerator getRandomWorldGenForTrees(Random par1Random) {
         return par1Random.nextInt(5) == 0 ? this.worldGenCherryForest : (par1Random.nextInt(10) == 0 ? this.worldGenBigCherryTree : this.worldGenCherryTrees);
     }
 

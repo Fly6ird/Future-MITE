@@ -17,12 +17,13 @@ public abstract class EntityCowMixin extends EntityLivestock {
     public EntityCowMixin(World world) {
         super(world);
     }
-    @Inject(method="isFoodSource",at=@At("RETURN"),locals = LocalCapture.CAPTURE_FAILSOFT, cancellable = true)
+
+    @Inject(method = "isFoodSource", at = @At("RETURN"), locals = LocalCapture.CAPTURE_FAILSOFT, cancellable = true)
     protected void isFoodSource(int block_id, CallbackInfoReturnable<Boolean> cir, Block block) {
-        cir.setReturnValue(cir.getReturnValue()||block == Blocks.bigGrass);
+        cir.setReturnValue(cir.getReturnValue() || block == Blocks.bigGrass);
     }
 
-    @Inject(method="getFoodBlockIDs",at=@At("RETURN"),locals = LocalCapture.CAPTURE_FAILSOFT, cancellable = true)
+    @Inject(method = "getFoodBlockIDs", at = @At("RETURN"), locals = LocalCapture.CAPTURE_FAILSOFT, cancellable = true)
     protected void getFoodBlockIDs(CallbackInfoReturnable<int[]> cir, int[] block_ids) {
         cir.setReturnValue(new int[]{Block.tallGrass.blockID, Block.plantYellow.blockID, Blocks.bigGrass.blockID});
     }

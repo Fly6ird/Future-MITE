@@ -13,10 +13,12 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(Block.class)
 public class BlockMixin {
-    @Shadow @Final public static Block sponge;
+    @Shadow
+    @Final
+    public static Block sponge;
 
-    @Inject(method="<clinit>",at=@At("TAIL"))
-    private static void clinit(CallbackInfo ci){
+    @Inject(method = "<clinit>", at = @At("TAIL"))
+    private static void clinit(CallbackInfo ci) {
         Item.itemsList[sponge.blockID] = new ItemSponge(sponge);
     }
 }

@@ -1,12 +1,8 @@
 package com.github.FlyBird.FutureMITE;
 
-import com.github.FlyBird.FutureMITE.common.GameRegistry;
 import com.github.FlyBird.FutureMITE.events.FutureMITEEventRIC;
 import com.github.FlyBird.FutureMITE.network.FutureMITENetWork;
-import com.github.FlyBird.FutureMITE.world.FutureMITEWorldGenerator;
-import com.github.FlyBird.FutureMITE.world.structure.OceanMonument;
 import net.fabricmc.api.ModInitializer;
-import net.xiaoyu233.fml.FishModLoader;
 import net.xiaoyu233.fml.ModResourceManager;
 import net.xiaoyu233.fml.reload.event.MITEEvents;
 

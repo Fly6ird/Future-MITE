@@ -27,7 +27,7 @@ public class BlockModWoodSlab extends BlockSlab {
     }
 
     public String[] getTypes() {
-        return new String[]{name};
+        return new String[]{"slab"};
     }
 
 

@@ -1,7 +1,6 @@
 package com.github.FlyBird.FutureMITE.mixins;
 
 import net.minecraft.CommandHandler;
-import net.minecraft.WorldInfo;
 import net.minecraft.WorldServer;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;

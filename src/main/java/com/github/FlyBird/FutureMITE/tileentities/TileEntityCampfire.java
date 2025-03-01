@@ -1,7 +1,6 @@
 package com.github.FlyBird.FutureMITE.tileentities;
 
 import com.github.FlyBird.FutureMITE.blocks.BlockCampfire;
-import com.github.FlyBird.FutureMITE.blocks.Blocks;
 import net.minecraft.*;
 
 import java.util.Random;
@@ -13,7 +12,7 @@ public class TileEntityCampfire extends TileEntity {
     private int[] burnFoodTime = new int[4];
     protected static final Random RAND = new Random();
 
-    private int burnTime=6000;//营火燃烧时间   默认6000   1s=20tick   也就是5分钟
+    private int burnTime = 6000;//营火燃烧时间   默认6000   1s=20tick   也就是5分钟
 
     public TileEntityCampfire() {
 
@@ -25,28 +24,33 @@ public class TileEntityCampfire extends TileEntity {
 
     @Override
     public void updateEntity() {
-        if(((BlockCampfire)this.getBlockType()).getIsActive()) {
-            if (this.burnTime > 0) {
-                --this.burnTime;
-                for (int i = 0; i < burnItemStacks.length; i++) {
-                    if (burnItemStacks[i] != null) {
-                        if (burnFoodTime[i] > 0)
-                            --burnFoodTime[i];
-                        else if (burnFoodTime[i] <= 0 && !isCookedItemStack(burnItemStacks[i])) {//如果是还没熟的，并且时间小于0
-                            burnItemStacks[i] = getCookFood(burnItemStacks[i]);
-                            burnFoodTime[i] = 60;//熟肉只显示3s
-                        } else if (burnFoodTime[i] <= 0 && isCookedItemStack(burnItemStacks[i])) {//如果是熟的，并且时间小于0
-                            popItem(burnItemStacks[i], this.worldObj, this.xCoord, this.yCoord, this.zCoord);
-                            burnItemStacks[i] = null;
+        Block currentBlock = this.worldObj.getBlock(this.xCoord, this.yCoord, this.zCoord);
+        if (currentBlock instanceof BlockCampfire) {
+            boolean isActive = ((BlockCampfire) currentBlock).getIsActive();
+            if (isActive) {
+                if (this.burnTime > 0) {
+                    --this.burnTime;
+                    for (int i = 0; i < burnItemStacks.length; i++) {
+                        if (burnItemStacks[i] != null) {
+                            if (burnFoodTime[i] > 0)
+                                --burnFoodTime[i];
+                            else if (burnFoodTime[i] <= 0 && !isCookedItemStack(burnItemStacks[i])) {//如果是还没熟的，并且时间小于0
+                                burnItemStacks[i] = getCookFood(burnItemStacks[i]);
+                                burnFoodTime[i] = 60;//熟肉只显示3s
+                            } else if (burnFoodTime[i] <= 0 && isCookedItemStack(burnItemStacks[i])) {//如果是熟的，并且时间小于0
+                                popItem(burnItemStacks[i], this.worldObj, this.xCoord, this.yCoord, this.zCoord);
+                                burnItemStacks[i] = null;
+                            }
                         }
                     }
+                } else {
+                    if (!this.worldObj.isRemote) {
+                        updateCampfireBlockState(false, this.worldObj, this.xCoord, this.yCoord, this.zCoord);
+                    }
                 }
-            } else {
-                updateCampfireBlockState(false, this.worldObj, this.xCoord, this.yCoord, this.zCoord);
             }
         }
     }
-
 
 
     /**

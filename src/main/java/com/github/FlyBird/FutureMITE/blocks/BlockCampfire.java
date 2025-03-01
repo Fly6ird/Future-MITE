@@ -22,17 +22,17 @@ public class BlockCampfire extends BlockContainer {
 
     private final float damage;
 
-    protected BlockCampfire(int par1, float damage,boolean isActive) {
+    protected BlockCampfire(int par1, float damage, boolean isActive) {
         super(par1, Material.wood, new BlockConstants().setNotAlwaysLegal().setNeverHidesAdjacentFaces());
         this.setBlockBoundsForAllThreads(0.0, 0.0, 0.0, 1.0, 0.4375, 1.0);
         this.setHardness(2.0f);
         this.setStepSound(soundWoodFootstep);
         this.damage = damage;
-        this.isActive=isActive;
+        this.isActive = isActive;
         setCreativeTab(CreativeTabs.tabDecorations);
     }
 
-    public boolean getIsActive(){
+    public boolean getIsActive() {
         return this.isActive;
     }
 
@@ -61,13 +61,16 @@ public class BlockCampfire extends BlockContainer {
 
     @Override
     public void registerIcons(IconRegister par1IconRegister) {
-        this.campFire_FireIcon = par1IconRegister.registerIcon("futuremite:campfire/" + this.getTextureName() + "_fire");
+        String textureName=isActive?this.getTextureName():"campfire";
+        if(isActive)
+
+        this.campFire_FireIcon = par1IconRegister.registerIcon("futuremite:campfire/" +textureName + "_fire");
         this.BlockCampfireIcon = par1IconRegister.registerIcon("futuremite:campfire_log");
-        this.campFire_LogLitIcon = par1IconRegister.registerIcon("futuremite:campfire/" + this.getTextureName() + "_log_lit");
-        if(this.isActive)
+        this.campFire_LogLitIcon = par1IconRegister.registerIcon("futuremite:campfire/" + textureName+ "_log_lit");
+        if (this.isActive)
             this.ItemCampfireIcon = par1IconRegister.registerIcon("futuremite:item/" + this.getTextureName());
         else
-            this.ItemCampfireIcon = par1IconRegister.registerIcon("futuremite:item/campfire_base" );
+            this.ItemCampfireIcon = par1IconRegister.registerIcon("futuremite:item/campfire_base");
     }
 
     public Icon getFireIcon(int index) {
@@ -117,7 +120,7 @@ public class BlockCampfire extends BlockContainer {
     }
 
     public void breakBlock(World world, int x, int y, int z, int blockid, int metadata) {
-        if(!keepCampfireData) {
+        if (!keepCampfireData) {
             if (!world.isRemote) {
                 TileEntity tile = world.getBlockTileEntity(x, y, z);
                 if (tile instanceof TileEntityCampfire)
@@ -134,7 +137,7 @@ public class BlockCampfire extends BlockContainer {
         float var7;
         int var6;
 
-        if(this.isActive) {
+        if (this.isActive) {
             if (par5Random.nextInt(10) == 0) {
                 par1World.playSound((float) x + 0.5f, (float) y + 0.5f, (float) z + 0.5f, "futuremite:block.campfire.crackle", 1.0f + par5Random.nextFloat(), par5Random.nextFloat() * 0.7f + 0.3f, false);
             }
@@ -163,14 +166,14 @@ public class BlockCampfire extends BlockContainer {
         int meta = par1World.getBlockMetadata(x, y, z);
         TileEntity tileEntity = par1World.getBlockTileEntity(x, y, z);
 
-        keepCampfireData=true;
+        //keepCampfireData = true;
         if (isBurned) {
             par1World.setBlock(x, y, z, Blocks.campfire.blockID, meta, 3);
         } else {
             par1World.setBlock(x, y, z, Blocks.extinguishedCampfire.blockID, meta, 3);
         }
 
-        keepCampfireData=false;
+        keepCampfireData = false;
         if (tileEntity != null) {
             tileEntity.validate();
             par1World.setBlockTileEntity(x, y, z, tileEntity);
@@ -180,9 +183,9 @@ public class BlockCampfire extends BlockContainer {
     @Override
     public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, EnumFace face, float dx, float dy, float dz) {
         ItemStack stack = player.getHeldItemStack();
-        if(stack!=null) {
+        if (stack != null) {
             TileEntityCampfire tile = (TileEntityCampfire) world.getBlockTileEntity(x, y, z);
-            if(isActive) {
+            if (isActive) {
                 if (stack.getItem() instanceof ItemShovel) {
                     if (player.onClient()) {
                         player.swingArm();
@@ -218,7 +221,7 @@ public class BlockCampfire extends BlockContainer {
                             --stack.stackSize;
                     }
                 }
-            }else{
+            } else {
                 if (tile != null && tile.getBurnTime() > 0) {
                     if (stack.getItem() instanceof ItemFlintAndSteel) {
                         updateCampfireBlockState(true, world, x, y, z);
@@ -253,7 +256,7 @@ public class BlockCampfire extends BlockContainer {
 
     @Override
     public TileEntity createNewTileEntity(World world) {
-        TileEntityCampfire tileEntity=new TileEntityCampfire(this);
+        TileEntityCampfire tileEntity = new TileEntityCampfire(this);
         //tileEntity.addBurnTime(6000);
         return tileEntity;
     }

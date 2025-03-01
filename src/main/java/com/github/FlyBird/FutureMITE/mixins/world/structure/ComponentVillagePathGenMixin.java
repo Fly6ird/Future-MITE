@@ -11,7 +11,7 @@ import org.spongepowered.asm.mixin.Mixin;
 public abstract class ComponentVillagePathGenMixin extends ComponentVillageRoadPiece {
     @Override
     protected int getBiomeSpecificBlock(int par1, int par2) {
-        if(super.getBiomeSpecificBlock(par1, par2) == Block.gravel.blockID)return Blocks.dirtPath.blockID;
+        if (super.getBiomeSpecificBlock(par1, par2) == Block.gravel.blockID) return Blocks.dirtPath.blockID;
         else return super.getBiomeSpecificBlock(par1, par2);
     }
 }

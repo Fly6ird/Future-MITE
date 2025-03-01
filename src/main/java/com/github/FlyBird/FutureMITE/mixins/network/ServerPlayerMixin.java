@@ -11,7 +11,7 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 
 @Mixin({ServerPlayer.class})
-public abstract class ServerPlayerMixin extends EntityPlayer implements ICrafting, IFutureMITEPlayer{
+public abstract class ServerPlayerMixin extends EntityPlayer implements ICrafting, IFutureMITEPlayer {
     public ServerPlayerMixin(World par1World, String par2Str) {
         super(par1World, par2Str);
     }
@@ -31,9 +31,9 @@ public abstract class ServerPlayerMixin extends EntityPlayer implements ICraftin
         TileEntity tile_entity = this.worldObj.getBlockTileEntity(x, y, z);
         Network.sendToClient(this.getAsEntityPlayerMP(), (new S2COpenWindow(this.currentWindowId, S2COpenWindow.EnumInventoryType.GrindStone, tile_entity.getCustomInvName(), 9, tile_entity.hasCustomName())).setCoords(x, y, z));
 
-        this.openContainer = (Container)new ContainerGrindStone(slots, this, x, y, z);
+        this.openContainer = (Container) new ContainerGrindStone(slots, this, x, y, z);
         this.openContainer.windowId = this.currentWindowId;
-        sendContainerAndContentsToPlayer(this.openContainer, ((ContainerGrindStone)this.openContainer).getInventory());
+        sendContainerAndContentsToPlayer(this.openContainer, ((ContainerGrindStone) this.openContainer).getInventory());
         this.openContainer.addCraftingToCrafters(this);
     }
 }

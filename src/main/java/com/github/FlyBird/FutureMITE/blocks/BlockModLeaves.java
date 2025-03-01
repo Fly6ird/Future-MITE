@@ -5,8 +5,6 @@
 
 package com.github.FlyBird.FutureMITE.blocks;
 
-import net.fabricmc.api.EnvType;
-import net.fabricmc.api.Environment;
 import net.minecraft.*;
 
 import java.util.Random;
@@ -18,7 +16,7 @@ public class BlockModLeaves extends BlockLeavesBase {
     private TreeHelper treeHelper;
     public final String id;
 
-    public BlockModLeaves(int par1, String id,TreeHelper treeHelper) {
+    public BlockModLeaves(int par1, String id, TreeHelper treeHelper) {
         super(par1, Material.tree_leaves, false);
         this.id = id;
         this.setTickRandomly(true);
@@ -26,9 +24,8 @@ public class BlockModLeaves extends BlockLeavesBase {
         this.setCreativeTab(CreativeTabs.tabDecorations);
         this.setUnlocalizedName(id);
         this.setCushioning(0.8F);
-        this.treeHelper=treeHelper;
+        this.treeHelper = treeHelper;
     }
-
 
 
     @Override
@@ -40,7 +37,6 @@ public class BlockModLeaves extends BlockLeavesBase {
     public int getRenderColor(int metadata) {
         return 0xffffff;
     }
-
 
 
     public int getBlockColor() {
@@ -261,7 +257,7 @@ public class BlockModLeaves extends BlockLeavesBase {
     }
 
     public void registerIcons(IconRegister par1IconRegister) {
-        this.iconLeaves=par1IconRegister.registerIcon("futuremite:leaves/"+id);
+        this.iconLeaves = par1IconRegister.registerIcon("futuremite:leaves/" + id);
 
     }
 

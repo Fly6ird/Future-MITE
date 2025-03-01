@@ -9,7 +9,6 @@ import moddedmite.rustedironcore.api.event.handler.EntityTrackerHandler;
 import net.minecraft.Entity;
 import net.minecraft.WorldClient;
 
-
 import java.util.function.Consumer;
 
 public class EntityTrackerRegistry implements Consumer<EntityTrackerRegisterEvent> {

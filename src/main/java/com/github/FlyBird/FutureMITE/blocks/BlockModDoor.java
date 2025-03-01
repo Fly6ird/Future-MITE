@@ -1,6 +1,8 @@
 package com.github.FlyBird.FutureMITE.blocks;
 
-import net.minecraft.*;
+import net.minecraft.BlockDoor;
+import net.minecraft.Item;
+import net.minecraft.Material;
 
 public class BlockModDoor extends BlockDoor {
     private Item itemdoor;
@@ -16,17 +18,17 @@ public class BlockModDoor extends BlockDoor {
         this.setTextureName("futuremite:doors/" + id);
     }
 
-    public BlockModDoor(int blockID, String id,Item item) {
+    public BlockModDoor(int blockID, String id, Item item) {
         this(blockID);
         this.setUnlocalizedName("doors." + id);
         this.setTextureName("futuremite:doors/" + id);
-        this.itemdoor=item;
+        this.itemdoor = item;
     }
 
-    public void setDoorItem(Item door)
-    {
-        this.itemdoor=door;
+    public void setDoorItem(Item door) {
+        this.itemdoor = door;
     }
+
     public Item getDoorItem() {
         return itemdoor;
     }

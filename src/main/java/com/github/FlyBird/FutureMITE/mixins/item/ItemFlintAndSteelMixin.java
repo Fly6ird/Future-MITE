@@ -1,7 +1,8 @@
 package com.github.FlyBird.FutureMITE.mixins.item;
 
 
-import net.minecraft.*;
+import net.minecraft.Item;
+import net.minecraft.ItemFlintAndSteel;
 import org.spongepowered.asm.mixin.Mixin;
 
 @Mixin({ItemFlintAndSteel.class})

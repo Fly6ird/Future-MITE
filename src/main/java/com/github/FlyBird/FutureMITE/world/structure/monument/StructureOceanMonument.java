@@ -88,10 +88,10 @@ public class StructureOceanMonument extends MapGenStructure
         	
         	*/
 /*
-        	 * Determines whether or not the "center" block of the monument is in a Deep Ocean biome.
-        	 * "Center" means the south-east block out of the four central ones.
-        	 * In other words: the north-west-most block of the south-east quadrant of the monument.
-        	 *//*
+ * Determines whether or not the "center" block of the monument is in a Deep Ocean biome.
+ * "Center" means the south-east block out of the four central ones.
+ * In other words: the north-west-most block of the south-east quadrant of the monument.
+ *//*
 
         	
     		if ( !areBiomesViableVN(i * 16 + 8, j * 16 + 8, 16, new String[] {"deepocean", "deep ocean"}, worldIn) ) //Changed from 29
@@ -101,8 +101,8 @@ public class StructureOceanMonument extends MapGenStructure
         	
         	*/
 /*
-        	 *  This appears to be the holdover condition that may not fire with non-vanilla chunk providers
-        	 *//*
+ *  This appears to be the holdover condition that may not fire with non-vanilla chunk providers
+ *//*
 
         	// Determines whether EVERY BLOCK within +/-15 is in a "legal" biome for a monument (field_175802_d)
         	boolean flag = areBiomesViableVN(i * 16 + 8, j * 16 + 8, 29, new String[]{"ocean", "river"}, worldIn); // "ocean", "river"
@@ -120,14 +120,14 @@ public class StructureOceanMonument extends MapGenStructure
     
     */
 /*
-     * Maybe I need my own areBiomesViable function?
-     *//*
+ * Maybe I need my own areBiomesViable function?
+ *//*
 
-    
-    */
+
+ */
 /**
-     * checks given Chunk's Biomes against List of allowed ones
-     *//*
+ * checks given Chunk's Biomes against List of allowed ones
+ *//*
 
     public static boolean areBiomesViableVN(int xChunkCenter, int zChunkCenter, int radius, String[] allowedBiomes, World worldIn)
     {
@@ -232,9 +232,9 @@ public class StructureOceanMonument extends MapGenStructure
 
             */
 /**
-             * Keeps iterating Structure Pieces and spawning them until the checks tell it to stop
-             * I THINK this is the correct method in 1.7.10...
-             *//*
+ * Keeps iterating Structure Pieces and spawning them until the checks tell it to stop
+ * I THINK this is the correct method in 1.7.10...
+ *//*
 
             @Override
 			public void generateStructure(World worldIn, Random rand, StructureBoundingBox structurebb)
@@ -263,13 +263,13 @@ public class StructureOceanMonument extends MapGenStructure
             
             */
 /*
-             *  This function is only in 1.8.9. Returns "true".
-             *  It is fired during MapGenStructure.generateStructuresInChunk()
-             *  if (structurestart.isSizeableStructure() && structurestart.func_175788_a(chunkCoord) && structurestart.getBoundingBox().intersectsWith(i, j, i + 15, j + 15))
-             *  The above if condition should be FALSE whenever return this.field_175791_c.contains(pair) and TRUE otherwise
-             *  
-             *  I believe this is used to prevent chunks from spawning in places they should not? Not sure.
-             *//*
+ *  This function is only in 1.8.9. Returns "true".
+ *  It is fired during MapGenStructure.generateStructuresInChunk()
+ *  if (structurestart.isSizeableStructure() && structurestart.func_175788_a(chunkCoord) && structurestart.getBoundingBox().intersectsWith(i, j, i + 15, j + 15))
+ *  The above if condition should be FALSE whenever return this.field_175791_c.contains(pair) and TRUE otherwise
+ *
+ *  I believe this is used to prevent chunks from spawning in places they should not? Not sure.
+ *//*
 
             public boolean func_175788_a(ChunkCoordIntPair pair)
             {
@@ -278,13 +278,13 @@ public class StructureOceanMonument extends MapGenStructure
             
             */
 /*
-             *  This function is only in 1.8.9. Returns nothing.
-             *  It is fired during MapGenStructure.generateStructuresInChunk()
-             *  when (structurestart.isSizeableStructure() && structurestart.getBoundingBox().intersectsWith(k, l, k + 15, l + 15)) == true
-             *  after structurestart.generateStructure(p_75051_1_, p_75051_2_, new StructureBoundingBox(k, l, k + 15, l + 15));
-             *  
-             *  It is used to compile the chunk coordinates for the 16 chunks involved in the Monument.
-             *//*
+ *  This function is only in 1.8.9. Returns nothing.
+ *  It is fired during MapGenStructure.generateStructuresInChunk()
+ *  when (structurestart.isSizeableStructure() && structurestart.getBoundingBox().intersectsWith(k, l, k + 15, l + 15)) == true
+ *  after structurestart.generateStructure(p_75051_1_, p_75051_2_, new StructureBoundingBox(k, l, k + 15, l + 15));
+ *
+ *  It is used to compile the chunk coordinates for the 16 chunks involved in the Monument.
+ *//*
 
             public void func_175787_b(ChunkCoordIntPair pair)
             {

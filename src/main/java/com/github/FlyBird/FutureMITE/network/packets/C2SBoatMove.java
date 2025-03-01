@@ -1,6 +1,5 @@
 package com.github.FlyBird.FutureMITE.network.packets;
 
-import com.github.FlyBird.FutureMITE.network.FutureMITENetWork;
 import moddedmite.rustedironcore.network.Packet;
 import moddedmite.rustedironcore.network.PacketByteBuf;
 import net.minecraft.*;

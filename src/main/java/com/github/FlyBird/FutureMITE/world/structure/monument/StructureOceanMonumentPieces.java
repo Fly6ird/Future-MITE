@@ -43,9 +43,9 @@ public class StructureOceanMonumentPieces
 
             */
 /**
-             * second Part of Structure generating, this for example places Spiderwebs, Mob Spawners, it closes
-             * Mineshafts at the end, it adds Fences...
-             *//*
+ * second Part of Structure generating, this for example places Spiderwebs, Mob Spawners, it closes
+ * Mineshafts at the end, it adds Fences...
+ *//*
 
             @Override
 			public boolean addComponentParts(World worldIn, Random randomIn, StructureBoundingBox structureBoundingBoxIn)
@@ -134,9 +134,9 @@ public class StructureOceanMonumentPieces
 
             */
 /**
-             * second Part of Structure generating, this for example places Spiderwebs, Mob Spawners, it closes
-             * Mineshafts at the end, it adds Fences...
-             *//*
+ * second Part of Structure generating, this for example places Spiderwebs, Mob Spawners, it closes
+ * Mineshafts at the end, it adds Fences...
+ *//*
 
             @Override
 			public boolean addComponentParts(World worldIn, Random randomIn, StructureBoundingBox structureBoundingBoxIn)
@@ -281,9 +281,9 @@ public class StructureOceanMonumentPieces
 
             */
 /**
-             * second Part of Structure generating, this for example places Spiderwebs, Mob Spawners, it closes
-             * Mineshafts at the end, it adds Fences...
-             *//*
+ * second Part of Structure generating, this for example places Spiderwebs, Mob Spawners, it closes
+ * Mineshafts at the end, it adds Fences...
+ *//*
 
             @Override
 			public boolean addComponentParts(World worldIn, Random randomIn, StructureBoundingBox structureBoundingBoxIn)
@@ -392,9 +392,9 @@ public class StructureOceanMonumentPieces
 
             */
 /**
-             * second Part of Structure generating, this for example places Spiderwebs, Mob Spawners, it closes
-             * Mineshafts at the end, it adds Fences...
-             *//*
+ * second Part of Structure generating, this for example places Spiderwebs, Mob Spawners, it closes
+ * Mineshafts at the end, it adds Fences...
+ *//*
 
             @Override
 			public boolean addComponentParts(World worldIn, Random randomIn, StructureBoundingBox structureBoundingBoxIn)
@@ -541,9 +541,9 @@ public class StructureOceanMonumentPieces
 
             */
 /**
-             * second Part of Structure generating, this for example places Spiderwebs, Mob Spawners, it closes
-             * Mineshafts at the end, it adds Fences...
-             *//*
+ * second Part of Structure generating, this for example places Spiderwebs, Mob Spawners, it closes
+ * Mineshafts at the end, it adds Fences...
+ *//*
 
             @Override
 			public boolean addComponentParts(World worldIn, Random randomIn, StructureBoundingBox structureBoundingBoxIn)
@@ -651,9 +651,9 @@ public class StructureOceanMonumentPieces
 
             */
 /**
-             * second Part of Structure generating, this for example places Spiderwebs, Mob Spawners, it closes
-             * Mineshafts at the end, it adds Fences...
-             *//*
+ * second Part of Structure generating, this for example places Spiderwebs, Mob Spawners, it closes
+ * Mineshafts at the end, it adds Fences...
+ *//*
 
             @Override
 			public boolean addComponentParts(World worldIn, Random randomIn, StructureBoundingBox structureBoundingBoxIn)
@@ -965,9 +965,9 @@ public class StructureOceanMonumentPieces
 
             */
 /**
-             * second Part of Structure generating, this for example places Spiderwebs, Mob Spawners, it closes
-             * Mineshafts at the end, it adds Fences...
-             *//*
+ * second Part of Structure generating, this for example places Spiderwebs, Mob Spawners, it closes
+ * Mineshafts at the end, it adds Fences...
+ *//*
 
             @Override
 			public boolean addComponentParts(World worldIn, Random randomIn, StructureBoundingBox structureBoundingBoxIn)
@@ -1416,9 +1416,9 @@ public class StructureOceanMonumentPieces
 
             */
 /**
-             * second Part of Structure generating, this for example places Spiderwebs, Mob Spawners, it closes
-             * Mineshafts at the end, it adds Fences...
-             *//*
+ * second Part of Structure generating, this for example places Spiderwebs, Mob Spawners, it closes
+ * Mineshafts at the end, it adds Fences...
+ *//*
 
             @Override
 			public boolean addComponentParts(World worldIn, Random randomIn, StructureBoundingBox structureBoundingBoxIn)
@@ -1522,9 +1522,9 @@ public class StructureOceanMonumentPieces
 
             */
 /**
-             * second Part of Structure generating, this for example places Spiderwebs, Mob Spawners, it closes
-             * Mineshafts at the end, it adds Fences...
-             *//*
+ * second Part of Structure generating, this for example places Spiderwebs, Mob Spawners, it closes
+ * Mineshafts at the end, it adds Fences...
+ *//*
 
             @Override
 			public boolean addComponentParts(World worldIn, Random randomIn, StructureBoundingBox structureBoundingBoxIn)
@@ -1666,8 +1666,8 @@ public class StructureOceanMonumentPieces
 
             */
 /**
-             * (abstract) Helper method to write subclass data to NBT
-             *//*
+ * (abstract) Helper method to write subclass data to NBT
+ *//*
 
             @Override
 			protected void func_143012_a(NBTTagCompound tagCompound) // Must leave method as this name
@@ -1676,8 +1676,8 @@ public class StructureOceanMonumentPieces
 
             */
 /**
-             * (abstract) Helper method to read subclass data from NBT
-             *//*
+ * (abstract) Helper method to read subclass data from NBT
+ *//*
 
             @Override
 			protected void func_143011_b(NBTTagCompound tagCompound) // Must leave method as this name
@@ -1869,9 +1869,9 @@ public class StructureOceanMonumentPieces
 
             */
 /**
-             * second Part of Structure generating, this for example places Spiderwebs, Mob Spawners, it closes
-             * Mineshafts at the end, it adds Fences...
-             *//*
+ * second Part of Structure generating, this for example places Spiderwebs, Mob Spawners, it closes
+ * Mineshafts at the end, it adds Fences...
+ *//*
 
             @Override
 			public boolean addComponentParts(World worldIn, Random randomIn, StructureBoundingBox structureBoundingBoxIn)
@@ -2074,9 +2074,9 @@ public class StructureOceanMonumentPieces
 
             */
 /**
-             * second Part of Structure generating, this for example places Spiderwebs, Mob Spawners, it closes
-             * Mineshafts at the end, it adds Fences...
-             *//*
+ * second Part of Structure generating, this for example places Spiderwebs, Mob Spawners, it closes
+ * Mineshafts at the end, it adds Fences...
+ *//*
 
             @Override
 			public boolean addComponentParts(World worldIn, Random randomIn, StructureBoundingBox structureBoundingBoxIn)
@@ -2145,9 +2145,9 @@ public class StructureOceanMonumentPieces
 
             */
 /**
-             * second Part of Structure generating, this for example places Spiderwebs, Mob Spawners, it closes
-             * Mineshafts at the end, it adds Fences...
-             *//*
+ * second Part of Structure generating, this for example places Spiderwebs, Mob Spawners, it closes
+ * Mineshafts at the end, it adds Fences...
+ *//*
 
             @Override
 			public boolean addComponentParts(World worldIn, Random randomIn, StructureBoundingBox structureBoundingBoxIn)

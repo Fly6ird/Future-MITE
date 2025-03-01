@@ -16,7 +16,7 @@ public class EntityPlayerMPMixin extends EntityPlayer {
     @Redirect(method = "onUpdate", at = @At(value = "FIELD", target = "Lnet/minecraft/ServerPlayer;ridingEntity:Lnet/minecraft/Entity;", opcode = Opcodes.GETFIELD))
     private Entity redirectRidingEntityCheck(ServerPlayer instance) {
         // 替换原判断逻辑
-        if(ridingEntity instanceof EntityNewBoatWithChest ||ridingEntity instanceof EntityNewBoat||ridingEntity instanceof EntityBoat)
+        if (ridingEntity instanceof EntityNewBoatWithChest || ridingEntity instanceof EntityNewBoat || ridingEntity instanceof EntityBoat)
             return new EntityBoat(this.getWorld());
 
         return ridingEntity;
@@ -27,7 +27,8 @@ public class EntityPlayerMPMixin extends EntityPlayer {
         super(par1World, par2Str);
     }
 
-    @Shadow public NetServerHandler playerNetServerHandler;
+    @Shadow
+    public NetServerHandler playerNetServerHandler;
 
     @Override
     public INetworkManager getNetManager() {
@@ -39,7 +40,8 @@ public class EntityPlayerMPMixin extends EntityPlayer {
         this.playerNetServerHandler.sendPacketToPlayer(new Packet3Chat(par1ChatMessageComponent));
     }
 
-    @Shadow public MinecraftServer mcServer;
+    @Shadow
+    public MinecraftServer mcServer;
 
     public boolean canCommandSenderUseCommand(int par1, String par2Str) {
         if (Minecraft.inDevMode()) {

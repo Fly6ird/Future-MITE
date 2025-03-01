@@ -17,8 +17,8 @@ public class StructureMesaMineshaftPieces {
 
 	*/
 /**
-	 * List of contents that can generate in Mineshafts.
-	 *//*
+ * List of contents that can generate in Mineshafts.
+ *//*
 
 
 	public static void registerStructurePieces() {
@@ -87,8 +87,8 @@ public class StructureMesaMineshaftPieces {
 		private boolean spawnerPlaced;
 		*/
 /**
-		 * A count of the different sections of this mine. The space between ceiling supports.
-		 *//*
+ * A count of the different sections of this mine. The space between ceiling supports.
+ *//*
 
 		private int sectionCount;
 
@@ -97,10 +97,10 @@ public class StructureMesaMineshaftPieces {
 
 		*/
 /**
-		 * (abstract) Helper method to write subclass data to NBT
-		 * <p>
-		 * MCP name: {@code writeStructureToNBT}
-		 *//*
+ * (abstract) Helper method to write subclass data to NBT
+ * <p>
+ * MCP name: {@code writeStructureToNBT}
+ *//*
 
 		@Override
 		protected void func_143012_a(NBTTagCompound p_143012_1_) {
@@ -112,10 +112,10 @@ public class StructureMesaMineshaftPieces {
 
 		*/
 /**
-		 * (abstract) Helper method to read subclass data from NBT
-		 * <p>
-		 * MCP name: {@code readStructureFromNBT}
-		 *//*
+ * (abstract) Helper method to read subclass data from NBT
+ * <p>
+ * MCP name: {@code readStructureFromNBT}
+ *//*
 
 		@Override
 		protected void func_143011_b(NBTTagCompound p_143011_1_) {
@@ -174,8 +174,8 @@ public class StructureMesaMineshaftPieces {
 
 		*/
 /**
-		 * Initiates construction of the Structure Component picked, at the current Location of StructGen
-		 *//*
+ * Initiates construction of the Structure Component picked, at the current Location of StructGen
+ *//*
 
 		@Override
 		public void buildComponent(StructureComponent p_74861_1_, List p_74861_2_, Random p_74861_3_) {
@@ -253,8 +253,8 @@ public class StructureMesaMineshaftPieces {
 
 		*/
 /**
-		 * Used to generate chests with items in it. ex: Temple Chests, Village Blacksmith Chests, Mineshaft Chests.
-		 *//*
+ * Used to generate chests with items in it. ex: Temple Chests, Village Blacksmith Chests, Mineshaft Chests.
+ *//*
 
 		@Override
 		protected boolean generateStructureChestContents(World p_74879_1_, StructureBoundingBox p_74879_2_, Random p_74879_3_, int p_74879_4_, int p_74879_5_, int p_74879_6_, WeightedRandomChestContent[] p_74879_7_, int p_74879_8_) {
@@ -275,9 +275,9 @@ public class StructureMesaMineshaftPieces {
 
 		*/
 /**
-		 * second Part of Structure generating, this for example places Spiderwebs, Mob Spawners, it closes
-		 * Mineshafts at the end, it adds Fences...
-		 *//*
+ * second Part of Structure generating, this for example places Spiderwebs, Mob Spawners, it closes
+ * Mineshafts at the end, it adds Fences...
+ *//*
 
 		@Override
 		public boolean addComponentParts(World p_74875_1_, Random p_74875_2_, StructureBoundingBox p_74875_3_) {
@@ -386,10 +386,10 @@ public class StructureMesaMineshaftPieces {
 
 		*/
 /**
-		 * (abstract) Helper method to write subclass data to NBT
-		 * <p>
-		 * MCP name: {@code writeStructureToNBT}
-		 *//*
+ * (abstract) Helper method to write subclass data to NBT
+ * <p>
+ * MCP name: {@code writeStructureToNBT}
+ *//*
 
 		@Override
 		protected void func_143012_a(NBTTagCompound p_143012_1_) {
@@ -399,10 +399,10 @@ public class StructureMesaMineshaftPieces {
 
 		*/
 /**
-		 * (abstract) Helper method to read subclass data from NBT
-		 * <p>
-		 * MCP name: {@code readStructureFromNBT}
-		 *//*
+ * (abstract) Helper method to read subclass data from NBT
+ * <p>
+ * MCP name: {@code readStructureFromNBT}
+ *//*
 
 		@Override
 		protected void func_143011_b(NBTTagCompound p_143011_1_) {
@@ -451,8 +451,8 @@ public class StructureMesaMineshaftPieces {
 
 		*/
 /**
-		 * Initiates construction of the Structure Component picked, at the current Location of StructGen
-		 *//*
+ * Initiates construction of the Structure Component picked, at the current Location of StructGen
+ *//*
 
 		@Override
 		public void buildComponent(StructureComponent p_74861_1_, List p_74861_2_, Random p_74861_3_) {
@@ -501,9 +501,9 @@ public class StructureMesaMineshaftPieces {
 
 		*/
 /**
-		 * second Part of Structure generating, this for example places Spiderwebs, Mob Spawners, it closes
-		 * Mineshafts at the end, it adds Fences...
-		 *//*
+ * second Part of Structure generating, this for example places Spiderwebs, Mob Spawners, it closes
+ * Mineshafts at the end, it adds Fences...
+ *//*
 
 		@Override
 		public boolean addComponentParts(World p_74875_1_, Random p_74875_2_, StructureBoundingBox p_74875_3_) {
@@ -541,8 +541,8 @@ public class StructureMesaMineshaftPieces {
 	public static class MesaRoom extends Piece {
 		*/
 /**
-		 * List of other Mineshaft components linked to this room.
-		 *//*
+ * List of other Mineshaft components linked to this room.
+ *//*
 
 		private final List<StructureBoundingBox> roomsLinkedToTheRoom = new LinkedList<>();
 
@@ -556,8 +556,8 @@ public class StructureMesaMineshaftPieces {
 
 		*/
 /**
-		 * Initiates construction of the Structure Component picked, at the current Location of StructGen
-		 *//*
+ * Initiates construction of the Structure Component picked, at the current Location of StructGen
+ *//*
 
 		@Override
 		public void buildComponent(StructureComponent p_74861_1_, List p_74861_2_, Random p_74861_3_) {
@@ -635,9 +635,9 @@ public class StructureMesaMineshaftPieces {
 
 		*/
 /**
-		 * second Part of Structure generating, this for example places Spiderwebs, Mob Spawners, it closes
-		 * Mineshafts at the end, it adds Fences...
-		 *//*
+ * second Part of Structure generating, this for example places Spiderwebs, Mob Spawners, it closes
+ * Mineshafts at the end, it adds Fences...
+ *//*
 
 		@Override
 		public boolean addComponentParts(World p_74875_1_, Random p_74875_2_, StructureBoundingBox p_74875_3_) {
@@ -659,10 +659,10 @@ public class StructureMesaMineshaftPieces {
 
 		*/
 /**
-		 * (abstract) Helper method to write subclass data to NBT
-		 * <p>
-		 * MCP name: {@code writeStructureToNBT}
-		 *//*
+ * (abstract) Helper method to write subclass data to NBT
+ * <p>
+ * MCP name: {@code writeStructureToNBT}
+ *//*
 
 		@Override
 		protected void func_143012_a(NBTTagCompound p_143012_1_) {
@@ -679,10 +679,10 @@ public class StructureMesaMineshaftPieces {
 
 		*/
 /**
-		 * (abstract) Helper method to read subclass data from NBT
-		 * <p>
-		 * MCP name: {@code readStructureFromNBT}
-		 *//*
+ * (abstract) Helper method to read subclass data from NBT
+ * <p>
+ * MCP name: {@code readStructureFromNBT}
+ *//*
 
 		@Override
 		protected void func_143011_b(NBTTagCompound p_143011_1_) {
@@ -715,10 +715,10 @@ public class StructureMesaMineshaftPieces {
 
 		*/
 /**
-		 * (abstract) Helper method to write subclass data to NBT
-		 * <p>
-		 * MCP name: {@code writeStructureToNBT}
-		 *//*
+ * (abstract) Helper method to write subclass data to NBT
+ * <p>
+ * MCP name: {@code writeStructureToNBT}
+ *//*
 
 		@Override
 		protected void func_143012_a(NBTTagCompound p_143012_1_) {
@@ -726,10 +726,10 @@ public class StructureMesaMineshaftPieces {
 
 		*/
 /**
-		 * (abstract) Helper method to read subclass data from NBT
-		 * <p>
-		 * MCP name: {@code readStructureFromNBT}
-		 *//*
+ * (abstract) Helper method to read subclass data from NBT
+ * <p>
+ * MCP name: {@code readStructureFromNBT}
+ *//*
 
 		@Override
 		protected void func_143011_b(NBTTagCompound p_143011_1_) {
@@ -737,8 +737,8 @@ public class StructureMesaMineshaftPieces {
 
 		*/
 /**
-		 * Trys to find a valid place to put this component.
-		 *//*
+ * Trys to find a valid place to put this component.
+ *//*
 
 		public static StructureBoundingBox findValidPlacement(List<StructureComponent> p_74950_0_, Random p_74950_1_, int p_74950_2_, int p_74950_3_, int p_74950_4_, int p_74950_5_) {
 			StructureBoundingBox structureboundingbox = new StructureBoundingBox(p_74950_2_, p_74950_3_ - 5, p_74950_4_, p_74950_2_, p_74950_3_ + 2, p_74950_4_);
@@ -766,8 +766,8 @@ public class StructureMesaMineshaftPieces {
 
 		*/
 /**
-		 * Initiates construction of the Structure Component picked, at the current Location of StructGen
-		 *//*
+ * Initiates construction of the Structure Component picked, at the current Location of StructGen
+ *//*
 
 		@Override
 		public void buildComponent(StructureComponent p_74861_1_, List p_74861_2_, Random p_74861_3_) {
@@ -790,9 +790,9 @@ public class StructureMesaMineshaftPieces {
 
 		*/
 /**
-		 * second Part of Structure generating, this for example places Spiderwebs, Mob Spawners, it closes
-		 * Mineshafts at the end, it adds Fences...
-		 *//*
+ * second Part of Structure generating, this for example places Spiderwebs, Mob Spawners, it closes
+ * Mineshafts at the end, it adds Fences...
+ *//*
 
 		@Override
 		public boolean addComponentParts(World p_74875_1_, Random p_74875_2_, StructureBoundingBox p_74875_3_) {

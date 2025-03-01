@@ -53,15 +53,15 @@ item.prismarineCrystals.name=Prismarine Crystal
 
 tile.acacia_sapling.name=Acacia Sapling
 tile.planks.acacia.name=Acacia Planks
-tile.slab.acacia.name=Acacia Slab
+tile.acacia.slab.name=Acacia Slab
 tile.stairs.acacia.name=Acacia Stairs
 tile.planks.dark_oak.name=Dark_Oak Planks
-tile.slab.dark_oak.name=Dark_Oak Slab
+tile.dark_oak.slab.name=Dark_Oak Slab
 tile.stairs.dark_oak.name=Dark_Oak Stairs
 
 tile.cherry_sapling.name=Cherry Sapling
 tile.planks.cherry.name=Cherry Planks
-tile.slab.cherry.name=Cherry Slab
+tile.cherry.slab.name=Cherry Slab
 tile.stairs.cherry.name=Cherry Stairs
 tile.log.cherry_log.name=Cherry Log
 tile.log.cherry_wood.name=Cherry Wood
@@ -212,6 +212,6 @@ leaves.acacia.name=Acacia Leaves
 leaves.dark_oak.name=Dark Oak Leaves
 leaves.cherry.name=Cherry Leaves
 item.woodChips.name=Wood Chips
-
-tile.normalCampfire.name=Extinguished Campfire
+tile.dark_oak_sapling.name=Dark Oak Sapling
+tile.extinguished_Campfire.name=Extinguished Campfire
 campfire.burntime=Burn Time

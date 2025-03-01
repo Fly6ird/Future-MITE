@@ -20,6 +20,6 @@ public class BlockWallMixin {
         if (block == null || block instanceof BlockFence) {
             return false;
         }
-        return  block.connectsWithFence()||block instanceof BlockWall;
+        return block.connectsWithFence() || block instanceof BlockWall;
     }
 }

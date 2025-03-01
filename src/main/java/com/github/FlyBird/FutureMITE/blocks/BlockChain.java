@@ -27,7 +27,7 @@ public class BlockChain extends Block {
 
     @Override
     public void registerIcons(IconRegister par1IconRegister) {
-        this.chain = par1IconRegister.registerIcon("futuremite:"+this.getTextureName());//blocks
+        this.chain = par1IconRegister.registerIcon("futuremite:" + this.getTextureName());//blocks
         this.itemChain = par1IconRegister.registerIcon("futuremite:item/" + this.getTextureName());
     }
 

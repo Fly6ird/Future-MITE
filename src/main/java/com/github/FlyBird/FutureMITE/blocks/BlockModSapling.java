@@ -11,14 +11,14 @@ public class BlockModSapling extends BlockPlant {
     private WorldGenerator smallTreeGenerator; // 小树生成器
     private TreeHelper treeHelper;
 
-    protected BlockModSapling(int blockID,TreeHelper treeHelper) {
+    protected BlockModSapling(int blockID, TreeHelper treeHelper) {
         super(blockID);
         float var2 = 0.4F;
         this.setBlockBoundsForAllThreads(0.5F - var2, 0.0D, 0.5F - var2, 0.5F + var2, var2 * 2.0F, 0.5F + var2);
         this.setMaxStackSize(16);
         this.setCreativeTab(CreativeTabs.tabDecorations);
         this.setCushioning(0.2F);
-        this.treeHelper=treeHelper;
+        this.treeHelper = treeHelper;
         this.setStepSound(soundGrassFootstep);
     }
 

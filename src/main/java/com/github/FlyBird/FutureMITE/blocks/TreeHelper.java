@@ -14,7 +14,7 @@ import static net.xiaoyu233.fml.reload.utils.IdUtil.getNextItemID;
 public class TreeHelper {
     public final String id;
 
-    public final BlockStrippedLog Log;
+    public final BlockModLog Log;
     public final BlockModWoodPlanks Planks;
     public final BlockModLeaves Leaves;
     public final Block Stairs;
@@ -27,13 +27,13 @@ public class TreeHelper {
 
     public TreeHelper(String id) {
         this.id = id;
-        this.Log = new BlockStrippedLog(getNextBlockID(), id);
+        this.Log = new BlockModLog(getNextBlockID(), id);
         this.Planks = new BlockModWoodPlanks(getNextBlockID(), id);
         this.Stairs = (new BlockModStairs(getNextBlockID(), this.Planks, 0));
         this.SingleSlab = (new BlockModWoodSlab(getNextBlockID(), this.Planks, 0, id));
         this.DoubleSlab = (new BlockDoubleSlab(getNextBlockID(), this.SingleSlab));
         this.TrapDoor = (new BlockModTrapDoor(getNextBlockID(), id, Planks));
-        this.Leaves = new BlockModLeaves(getNextBlockID(), id,this);
+        this.Leaves = new BlockModLeaves(getNextBlockID(), id, this);
     }
 
     public void registerRecipes(RecipeRegistryEvent register) {
@@ -52,7 +52,7 @@ public class TreeHelper {
         registryEvent.register(FutureMITEStart.NameSpaceCompact, "futuremite:doors/" + id, "doors." + id, this.ItemDoor);
         registryEvent.registerItemBlock(FutureMITEStart.NameSpaceCompact, "futuremite:planks/" + id, "planks." + id, this.Planks);
         registryEvent.registerItemBlock(FutureMITEStart.NameSpaceCompact, this.DoubleSlab);
-        registerModItemBlocks(registryEvent, this.SingleSlab, "slab." + id);
+        registerModItemBlocks(registryEvent, this.SingleSlab, id);
         registryEvent.registerItemBlock(FutureMITEStart.NameSpaceCompact, "futuremite:doors/" + id, id + "_door", this.Door);
         registerModItemBlocks(registryEvent, this.Log, "log." + id + "_wood");
         registerModItemBlocks(registryEvent, this.Leaves, "leaves." + id);

@@ -1,11 +1,13 @@
 package com.github.FlyBird.FutureMITE.mixins.network;
 
 
-
 import com.github.FlyBird.FutureMITE.api.IFutureMITEPlayer;
 import com.github.FlyBird.FutureMITE.gui.grindstone.GrindStoneSlots;
 import com.github.FlyBird.FutureMITE.gui.grindstone.GuiGrindStone;
-import net.minecraft.*;
+import net.minecraft.AbstractClientPlayer;
+import net.minecraft.ClientPlayer;
+import net.minecraft.Minecraft;
+import net.minecraft.World;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 
@@ -22,7 +24,6 @@ public abstract class ClientPlayerMixin extends AbstractClientPlayer implements 
     public void futureMITE$displayGUIGrindstone(int x, int y, int z, GrindStoneSlots slots) {
         this.mc.displayGuiScreen(new GuiGrindStone(this, x, y, z, slots));
     }
-
 
 
 }

@@ -7,7 +7,6 @@ import com.github.FlyBird.FutureMITE.network.packets.S2COpenWindow;
 import moddedmite.rustedironcore.network.Network;
 import moddedmite.rustedironcore.network.Packet;
 import moddedmite.rustedironcore.network.PacketReader;
-
 import net.minecraft.ResourceLocation;
 import net.minecraft.ServerPlayer;
 import net.xiaoyu233.fml.FishModLoader;

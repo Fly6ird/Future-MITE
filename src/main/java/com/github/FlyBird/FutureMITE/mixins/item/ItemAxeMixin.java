@@ -17,7 +17,8 @@ public abstract class ItemAxeMixin extends ItemTool {
         super(par1, material);
     }
 
-    @Shadow public abstract float getBaseDamageVsEntity();
+    @Shadow
+    public abstract float getBaseDamageVsEntity();
 
     @Unique
     private static boolean tryBecomeWood(World world, int x, int y, int z, EnumFace face, EntityPlayer player, ItemStack item_stack) {
@@ -36,23 +37,24 @@ public abstract class ItemAxeMixin extends ItemTool {
             Minecraft.theMinecraft.playerController.setUseButtonDelayOverride(200);
         } else {
             if (meta == 0)
-                world.setBlock(x, y, z, Blocks.strippedOak.blockID, direction, 2);
+                world.setBlock(x, y, z, Blocks.oakLog.blockID, direction, 2);
             if (meta == 1)
-                world.setBlock(x, y, z, Blocks.strippedSpruce.blockID,direction,2);
+                world.setBlock(x, y, z, Blocks.spruceLog.blockID, direction, 2);
             if (meta == 2)
-                world.setBlock(x, y, z, Blocks.strippedBirch.blockID,direction,2);
+                world.setBlock(x, y, z, Blocks.birchLog.blockID, direction, 2);
             if (meta == 3)
-                world.setBlock(x, y, z, Blocks.strippedJungle.blockID,direction,2);
+                world.setBlock(x, y, z, Blocks.jungleLog.blockID, direction, 2);
             world.setBlockMetadataWithNotify(x, y, z, 1, 2);
 
             world.playSoundAtBlock(x, y, z, Block.wood.stepSound.getStepSound(), (Block.wood.stepSound.getVolume() + 1.0f) / 2.0f, Block.wood.stepSound.getPitch() * 0.8f);
             player.tryDamageHeldItem(DamageSource.generic, 10);
             player.addHungerServerSide(world.getBlockHardness(x, y, z) / 2.0f * EnchantmentHelper.getEnduranceModifier(player));
-            dropWoodChips(world,x,y,z);
+            dropWoodChips(world, x, y, z);
 
         }
         return true;
     }
+
     @Unique
     private static void dropWoodChips(World world, int x, int y, int z) {
         Random rand = new Random();
@@ -85,7 +87,7 @@ public abstract class ItemAxeMixin extends ItemTool {
 
             // 创建木屑实体
             EntityItem woodChip = new EntityItem(world, x + offsetX, y + offsetY, z + offsetZ,
-                    new ItemStack(Items.woodChips,1)); // 这里的`Items.apple`替换成你想要掉落的木屑物品
+                    new ItemStack(Items.woodChips, 1)); // 这里的`Items.apple`替换成你想要掉落的木屑物品
 
             // 设置木屑的掉落速度
             float velocityFactor = 0.05F;
@@ -111,9 +113,8 @@ public abstract class ItemAxeMixin extends ItemTool {
             }
         }
 
-        boolean flag=tryBecomeWood(rc.world, rc.block_hit_x, rc.block_hit_y, rc.block_hit_z, rc.face_hit, player, player.getHeldItemStack());
-        if(!flag)
-        {
+        boolean flag = tryBecomeWood(rc.world, rc.block_hit_x, rc.block_hit_y, rc.block_hit_z, rc.face_hit, player, player.getHeldItemStack());
+        if (!flag) {
             if (this.canBlock()) {
                 player.setHeldItemInUse();
                 return true;

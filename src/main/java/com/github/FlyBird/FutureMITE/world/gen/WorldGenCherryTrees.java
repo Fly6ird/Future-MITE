@@ -47,7 +47,8 @@ public class WorldGenCherryTrees extends WorldGenerator {
                     for (var11 = z - var9; var11 <= z + var9 && var7; ++var11) {
                         if (var8 >= 0 && var8 < 256) {
                             var12 = world.getBlockId(var10, var8, var11);
-                            if (var12 == 0 || var12 == Blocks.cherry.Leaves.blockID || var12 == Block.grass.blockID || var12 == Block.dirt.blockID || var12 == Block.wood.blockID) continue;
+                            if (var12 == 0 || var12 == Blocks.cherry.Leaves.blockID || var12 == Block.grass.blockID || var12 == Block.dirt.blockID || var12 == Block.wood.blockID)
+                                continue;
                             var7 = false;
                             continue;
                         }
@@ -78,7 +79,8 @@ public class WorldGenCherryTrees extends WorldGenerator {
                         for (int var16 = z - var13; var16 <= z + var13; ++var16) {
                             int var18;
                             int var17 = var16 - z;
-                            if (var15 == var13 && -var15 == var13 && var17 == var13 && -var17 == var13 && (random.nextInt(2) == 0 || var12 == 0) || (var18 = world.getBlockId(var14, var11, var16)) != 0 && var18 != Blocks.cherry.Leaves.blockID) continue;
+                            if (var15 == var13 && -var15 == var13 && var17 == var13 && -var17 == var13 && (random.nextInt(2) == 0 || var12 == 0) || (var18 = world.getBlockId(var14, var11, var16)) != 0 && var18 != Blocks.cherry.Leaves.blockID)
+                                continue;
                             this.setBlockAndMetadata(world, var14, var11, var16, Blocks.cherry.Leaves.blockID, this.metaLeaves);
                         }
                     }

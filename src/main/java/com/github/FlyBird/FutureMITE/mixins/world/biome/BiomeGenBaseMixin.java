@@ -3,7 +3,6 @@ package com.github.FlyBird.FutureMITE.mixins.world.biome;
 import com.github.FlyBird.FutureMITE.world.structure.OceanMonument;
 import net.minecraft.BiomeGenBase;
 import net.minecraft.BiomeGenOcean;
-import net.minecraft.ItemBlock;
 import net.minecraft.World;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;

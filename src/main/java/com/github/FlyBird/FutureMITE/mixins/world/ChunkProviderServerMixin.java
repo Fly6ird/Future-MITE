@@ -1,7 +1,6 @@
 package com.github.FlyBird.FutureMITE.mixins.world;
 
 
-import com.github.FlyBird.FutureMITE.common.GameRegistry;
 import net.minecraft.ChunkProviderServer;
 import net.minecraft.IChunkProvider;
 import net.minecraft.WorldServer;

@@ -10,10 +10,10 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(EntityEnderPearl.class)
-public class EntityEnderPearlMixin   {
-    EntityEnderPearl This= (EntityEnderPearl)(Object)this;
+public class EntityEnderPearlMixin {
+    EntityEnderPearl This = (EntityEnderPearl) (Object) this;
 
-    @Inject(method = {"onImpact"}, at=@At(value="INVOKE",target="Lnet/minecraft/EntityEnderPearl;getThrower()Lnet/minecraft/EntityLivingBase;",ordinal = 6))
+    @Inject(method = {"onImpact"}, at = @At(value = "INVOKE", target = "Lnet/minecraft/EntityEnderPearl;getThrower()Lnet/minecraft/EntityLivingBase;", ordinal = 6))
     protected void onImpact(RaycastCollision rc, CallbackInfo ci) {
         if (This.getThrower().getRNG().nextFloat() < 0.05F && This.getThrower().worldObj.getGameRules().getGameRuleBooleanValue("doMobSpawning")) {
             EntityEndermite entityendermite = new EntityEndermite(This.getThrower().worldObj);

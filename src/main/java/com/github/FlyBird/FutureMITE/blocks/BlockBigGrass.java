@@ -14,7 +14,7 @@ public class BlockBigGrass extends BlockPlant {
         super(id, Material.vine);
         float size = 0.4F;
         this.setUnlocalizedName(name);
-        this.setBlockBoundsForAllThreads((double) (0.5F - size), 0.0, (double) (0.5F - size), (double) (0.5F + size), 0.800000011920929, (double) (0.5F + size));
+        this.setBlockBoundsForAllThreads(0.5F - size, 0.0, 0.5F - size, 0.5F + size, 0.800000011920929, 0.5F + size);
     }
 
     public Icon getIcon(int par1, int par2) {
@@ -108,7 +108,7 @@ public class BlockBigGrass extends BlockPlant {
     }
 
     public int getBlockSubtypeUnchecked(int metadata) {
-        return metadata & 3;
+        return metadata & 3;  //01 10 11 100
     }
 
     public void registerIcons(IconRegister par1IconRegister) {

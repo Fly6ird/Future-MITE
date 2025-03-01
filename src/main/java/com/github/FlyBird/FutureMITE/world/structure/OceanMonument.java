@@ -5,7 +5,10 @@ import com.github.FlyBird.FutureMITE.FutureMITEStart;
 import com.github.FlyBird.FutureMITE.blocks.Blocks;
 import com.github.FlyBird.FutureMITE.world.WorldCoord;
 import com.github.FlyBird.FutureMITE.world.biome.ModBiomes;
-import net.minecraft.*;
+import net.minecraft.BiomeGenBase;
+import net.minecraft.Block;
+import net.minecraft.Material;
+import net.minecraft.World;
 
 import java.io.*;
 import java.util.*;

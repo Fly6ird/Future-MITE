@@ -1,7 +1,6 @@
 package com.github.FlyBird.FutureMITE;
 
 import com.github.FlyBird.FutureMITE.blocks.Blocks;
-import com.github.FlyBird.FutureMITE.blocks.TreeHelper;
 import com.github.FlyBird.FutureMITE.entities.*;
 import com.github.FlyBird.FutureMITE.items.Items;
 import com.github.FlyBird.FutureMITE.render.RenderCampfireTileEntity;

@@ -37,7 +37,8 @@ public class RaycastPoliciesMixin {
 
 
     @Unique
-    RaycastPolicies This= (RaycastPolicies)(Object)this;
+    RaycastPolicies This = (RaycastPolicies) (Object) this;
+
     /**
      * @author FlyBird
      * @reason 修复高草丛第三人称挡视角问题
@@ -71,7 +72,7 @@ public class RaycastPoliciesMixin {
                 return true;
             } else if (this.reeds_policy != -1 && block instanceof BlockReed && !raycast.isFullyImpeded(this.reeds_policy)) {
                 return true;
-            } else if (this.vines_policy != -1 && (block instanceof BlockVine||block instanceof BlockBigGrass) && !raycast.isFullyImpeded(this.vines_policy)) {
+            } else if (this.vines_policy != -1 && (block instanceof BlockVine || block instanceof BlockBigGrass) && !raycast.isFullyImpeded(this.vines_policy)) {
                 return true;
             } else if (this.fence_policy != -1 && block instanceof BlockFence && !raycast.isFullyImpeded(this.fence_policy)) {
                 return true;

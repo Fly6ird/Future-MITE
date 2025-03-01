@@ -24,7 +24,7 @@ public class ItemNewBoat extends Item {
     public final BoatInfo boatinfo;
 
     public ItemNewBoat(int id, EntityNewBoat.Type type, boolean isChest) {
-        super(id, Material.wood, "futuremite:"+type.getName() + (isChest ? "_chest_boat" : "_boat"));
+        super(id, Material.wood, "futuremite:" + type.getName() + (isChest ? "_chest_boat" : "_boat"));
         //super(type.getName() + (isChest ? "_chest_boat" : "_boat"));
         this.type = type;
         this.name = type.getName();

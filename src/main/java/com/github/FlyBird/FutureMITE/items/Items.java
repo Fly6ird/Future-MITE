@@ -53,12 +53,12 @@ public class Items extends Item {
     }
 
     public static void registerItems(ItemRegistryEvent event) {
-        event.register(FutureMITEStart.NameSpaceCompact,"futuremite:rabbit_raw","rabbitRaw",rabbitRaw);
-        event.register(FutureMITEStart.NameSpaceCompact,"futuremite:rabbit_cooked","rabbitCooked",rabbitCooked);
-        event.register(FutureMITEStart.NameSpaceCompact,"futuremite:rabbit_hide","rabbitHide",rabbitHide);
-        event.register(FutureMITEStart.NameSpaceCompact,"futuremite:rabbit_foot","rabbitFoot",rabbitFoot);
-        event.register(FutureMITEStart.NameSpaceCompact,"futuremite:bowls/rabbit_stew","rabbit_stew",bowlRabbitStew);
-        event.register(FutureMITEStart.NameSpaceCompact,"futuremite:food/sweet_berries","sweetberries",sweetBerry);
+        event.register(FutureMITEStart.NameSpaceCompact, "futuremite:rabbit_raw", "rabbitRaw", rabbitRaw);
+        event.register(FutureMITEStart.NameSpaceCompact, "futuremite:rabbit_cooked", "rabbitCooked", rabbitCooked);
+        event.register(FutureMITEStart.NameSpaceCompact, "futuremite:rabbit_hide", "rabbitHide", rabbitHide);
+        event.register(FutureMITEStart.NameSpaceCompact, "futuremite:rabbit_foot", "rabbitFoot", rabbitFoot);
+        event.register(FutureMITEStart.NameSpaceCompact, "futuremite:bowls/rabbit_stew", "rabbit_stew", bowlRabbitStew);
+        event.register(FutureMITEStart.NameSpaceCompact, "futuremite:food/sweet_berries", "sweetberries", sweetBerry);
 
         // 注册未注册的物品
         event.register(FutureMITEStart.NameSpaceCompact, oakBoat);
@@ -102,7 +102,7 @@ public class Items extends Item {
         register.registerShapelessRecipe(new ItemStack(bowlRabbitStew, 1, 0), true, new ItemStack(rabbitCooked), new ItemStack(carrot), new ItemStack(potato), new ItemStack(Block.mushroomBrown), new ItemStack(bowlWater));
         register.registerShapedRecipe(new ItemStack(leather, 1), true, new Object[]{"AA", "AA", 'A', new ItemStack(rabbitHide, 1)});
 
-        for (ItemNewBoat itemNewBoat : new ItemNewBoat[]{oakBoat, birchBoat, jungleBoat, spruceBoat, cherryBoat,darkOakBoat,acaciaBoat,oakChestBoat, birchChestBoat, jungleChestBoat, spruceChestBoat,cherryChestBoat,darkOakChestBoat,acaciaChestBoat}) {
+        for (ItemNewBoat itemNewBoat : new ItemNewBoat[]{oakBoat, birchBoat, jungleBoat, spruceBoat, cherryBoat, darkOakBoat, acaciaBoat, oakChestBoat, birchChestBoat, jungleChestBoat, spruceChestBoat, cherryChestBoat, darkOakChestBoat, acaciaChestBoat}) {
             itemNewBoat.registerBoatRecipes(register);
         }
     }
